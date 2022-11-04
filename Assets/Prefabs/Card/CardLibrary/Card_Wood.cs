@@ -8,4 +8,5 @@ public class Card_Wood : Card
   {
     _resourcesManager.Gain(Resource.Wood, 1);
   }
+  public override void EndOfTurn() { }
 }

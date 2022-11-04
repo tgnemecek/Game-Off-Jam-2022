@@ -28,7 +28,6 @@ public class Hand : MonoBehaviour
       if (card != null)
       {
         card.transform.SetParent(transform);
-        card.Initialize(_resourcesManager, this);
         _cards.Add(card);
       }
     }
@@ -66,7 +65,8 @@ public class Hand : MonoBehaviour
         transform.position.y,
         transform.position.z
       );
-      LeanTween.move(_cards[i].gameObject, worldPos, movementTime).setDelay(delay).setEaseInOutCubic();
+
+      _cards[i].Draw(_resourcesManager, this, worldPos);
       LeanTween.rotateAround(_cards[i].gameObject, Vector3.up, -180f, movementTime).setDelay(delay).setEaseInOutCubic();
     }
   }
