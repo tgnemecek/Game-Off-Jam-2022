@@ -4,11 +4,34 @@ using System;
 using UnityEngine;
 using TMPro;
 
+
+public class ResourceCostDictionary : Dictionary<Resource, int>
+{
+  public ResourceCostDictionary() : base() { }
+  public ResourceCostDictionary(Dictionary<Resource, int> dict) : base(dict) { }
+}
+
 public class ResourcesManager : MonoBehaviour
 {
+  private static ResourcesManager _instance;
+
+  public static ResourcesManager Instance { get { return _instance; } }
+
   [SerializeField]
   private TextMeshProUGUI _resourceText;
-  private Dictionary<Resource, int> _resources = new Dictionary<Resource, int>();
+  private ResourceCostDictionary _resources = new ResourceCostDictionary();
+
+  private void Awake()
+  {
+    if (_instance != null && _instance != this)
+    {
+      Destroy(this.gameObject);
+    }
+    else
+    {
+      _instance = this;
+    }
+  }
 
   void Start()
   {
@@ -27,19 +50,36 @@ public class ResourcesManager : MonoBehaviour
     _resources[resource] = currentAmount + amount;
     UpdateText();
   }
-  public bool TryConsume(Resource resource, int amount)
+  public bool TryConsume(ResourceCostDictionary cost)
   {
-    if (amount > 0) return false;
+    ResourceCostDictionary newRes = new ResourceCostDictionary(_resources);
 
-    int currentAmount = _resources[resource];
-    int finalAmount = currentAmount + amount;
-
-    if (finalAmount < 0) return false;
-
-    _resources[resource] = currentAmount - amount;
+    foreach (Resource resource in Enum.GetValues(typeof(Resource)))
+    {
+      int amount = 0;
+      if (cost.TryGetValue(resource, out amount))
+      {
+        if (!TryConsume(resource, amount))
+        {
+          return false;
+        }
+        newRes[resource] -= amount;
+      }
+    }
+    _resources = newRes;
     UpdateText();
     return true;
   }
+  private bool TryConsume(Resource resource, int cost)
+  {
+    if (cost > 0) return false;
+
+    int currentAmount = _resources[resource];
+    int finalAmount = currentAmount + cost;
+
+    return finalAmount >= 0;
+  }
+
   void UpdateText()
   {
     string str = "";

@@ -7,7 +7,10 @@ public class CardState_InBoard : CardState
   public CardState_InBoard(Card context, CardStateFactory factory) : base(context, factory) { }
 
 
-  public override void EnterState() { }
+  public override void EnterState()
+  {
+    _context.Hand.OnCardPlayed(_context);
+  }
   public override void UpdateState() { }
   public override void FixedUpdateState() { }
   public override void OnMouseEnter() { }

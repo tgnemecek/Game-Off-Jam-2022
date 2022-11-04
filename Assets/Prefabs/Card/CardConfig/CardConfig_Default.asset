@@ -15,8 +15,11 @@ MonoBehaviour:
   ScaleOnHover: 1.6
   ScaleOnHoverTime: 0.2
   OffsetYOnHover: 0.5
-  MovementToHandTime: 0.2
-  CatchUpTimeWhileDragging: 0.1
-  CardBendSpeed: 1
-  CardBendSensitivity: 1
-  CardBendMaxRotation: 0
+  MovementToHandTime: 0.5
+  CatchUpSpeedWhileDragging: 0.2
+  CardBendSpeed: 10
+  CardBendMaxRotation: 60
+  CardBendSmoothness: 0.2
+  BoardLayerMask:
+    serializedVersion: 2
+    m_Bits: 128

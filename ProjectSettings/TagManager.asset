@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Board
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: CardDragged
     uniqueID: 667278683
+    locked: 0
+  - name: WorldSpaceUI
+    uniqueID: 167551979
     locked: 0
