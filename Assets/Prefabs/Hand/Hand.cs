@@ -5,24 +5,26 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
   [SerializeField]
-  int _drawUpTo;
+  private int _drawUpTo;
+  [SerializeField]
+  private float _drawDelay = 0f;
+
   private List<Card> _cards = new List<Card>();
 
   [SerializeField]
-  DrawPile _drawPile;
+  private DrawPile _drawPile;
 
   [SerializeField]
-  DiscardPile _discardPile;
-
-  [SerializeField]
-  ResourcesManager _resourcesManager;
+  private DiscardPile _discardPile;
 
   public void DrawHand()
   {
     int cardsInHand = _cards.Count;
     if (cardsInHand >= _drawUpTo) return;
 
-    for (int i = cardsInHand; i <= _drawUpTo; i++)
+    int cardsToDraw = _drawUpTo - cardsInHand;
+
+    for (int i = 0; i < cardsToDraw; i++)
     {
       Card card = _drawPile.TryDraw();
       if (card != null)
@@ -31,27 +33,38 @@ public class Hand : MonoBehaviour
         _cards.Add(card);
       }
     }
-    PositionCardsInHand();
+
+    CalculateHandPositions();
+
+    for (int i = 0; i < _cards.Count; i++)
+    {
+      StartCoroutine(DrawCard(_drawDelay * i, _cards[i]));
+    }
   }
 
-  void PositionCardsInHand()
+  IEnumerator DrawCard(float delay, Card card)
+  {
+    yield return new WaitForSeconds(delay);
+    card.Draw(this);
+  }
+
+  void CalculateHandPositions()
   {
     float space = 1.8f;
-    float movementTime = 1f;
-
     List<float> positionsX = new List<float>();
-
     float firstElementX = 0;
     float lastElementX = 0;
 
     for (int i = 0; i < _cards.Count; i++)
     {
-      var card = _cards[i];
+      Card card = _cards[i];
       float x = i * space;
 
       if (i == 0) firstElementX = x;
       if (i == _cards.Count - 1) lastElementX = x;
 
+      if (i == 0) firstElementX = x;
+      if (i == _cards.Count - 1) lastElementX = x;
       positionsX.Add(x);
     }
 
@@ -66,15 +79,20 @@ public class Hand : MonoBehaviour
         transform.position.z
       );
 
-      _cards[i].Draw(_resourcesManager, this, worldPos);
-      LeanTween.rotateAround(_cards[i].gameObject, Vector3.up, -180f, movementTime).setDelay(delay).setEaseInOutCubic();
+      _cards[i].SetPositionInHand(worldPos);
     }
+  }
+
+  public void OnCardPlayed(Card card)
+  {
+    _cards.Remove(card);
+    CalculateHandPositions();
   }
 
   public void DiscardCard(Card card)
   {
     _cards.Remove(card);
-    card.enabled = false;
     _discardPile.Discard(card);
+    CalculateHandPositions();
   }
 }

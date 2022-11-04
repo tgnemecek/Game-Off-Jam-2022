@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardState_InHand : CardState
 {
   bool _isHovering = false;
-
+  bool _isHoveringQueued = false;
 
   public CardState_InHand(Card context, CardStateFactory factory) : base(context, factory) { }
 
@@ -13,29 +13,47 @@ public class CardState_InHand : CardState
   public override void EnterState()
   {
     _context.DrawnOnThisFrame = false;
+    _isHoveringQueued = false;
     ScaleToHandSize();
     MoveToHandPosition();
+    RotateToHand();
   }
   public override void UpdateState()
   {
     CheckCardSide();
     DetectClick();
+    CheckForQueuedHover();
+    DetectPositionChangeInHand();
   }
 
   void CheckCardSide()
   {
     float absRotationY = Mathf.Abs(_context.transform.rotation.eulerAngles.y);
-    _context.NameText.gameObject.SetActive(absRotationY < 90);
+
+    bool facingCamera = absRotationY < 90;
+
+    _context.BackSprite.gameObject.SetActive(!facingCamera);
+    _context.NameText.gameObject.SetActive(facingCamera);
   }
 
   void DetectClick()
   {
     if (!_isHovering) return;
+    if (PlayerController.Instance.IsDraggingCard) return;
 
     if (Input.GetMouseButtonDown(0))
     {
       SwitchState(_factory.Dragged());
       return;
+    }
+  }
+
+  void DetectPositionChangeInHand()
+  {
+    if (_context.PositionChangedThisFrame)
+    {
+      _context.PositionChangedThisFrame = false;
+      MoveToHandPosition();
     }
   }
 
@@ -52,10 +70,33 @@ public class CardState_InHand : CardState
     LeanTween.move(_context.gameObject, _context.PositionInHand, _context.CardConfig.MovementToHandTime).setEaseInOutCubic();
   }
 
+  void RotateToHand()
+  {
+    LeanTween.rotate(_context.gameObject, Vector3.zero, _context.CardConfig.MovementToHandTime).setEaseInOutCubic();
+  }
+
   public override void FixedUpdateState() { }
   public override void OnMouseEnter()
   {
+    if (PlayerController.Instance.IsDraggingCard)
+    {
+      _isHoveringQueued = true;
+      return;
+    }
+    OnHoverStart();
+  }
+
+  void CheckForQueuedHover()
+  {
+    if (!_isHoveringQueued) return;
+
+    if (!PlayerController.Instance.IsDraggingCard) OnHoverStart();
+  }
+
+  void OnHoverStart()
+  {
     _isHovering = true;
+    _isHoveringQueued = false;
     _context.CardLayerController.SetDraggedLayer();
 
     CardConfig cardConfig = _context.CardConfig;
@@ -63,9 +104,11 @@ public class CardState_InHand : CardState
     LeanTween.scale(_context.gameObject, _context.transform.localScale * cardConfig.ScaleOnHover, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
     LeanTween.moveLocalY(_context.gameObject, cardConfig.OffsetYOnHover, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
   }
+
   public override void OnMouseExit()
   {
     _isHovering = false;
+    _isHoveringQueued = false;
     _context.CardLayerController.SetDefaultLayer();
     ScaleToHandSize();
   }
