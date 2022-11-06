@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Card_Wood : Card
+public class Card_Wood : Card_Resource
 {
-  public override void Play()
-  {
-    ResourcesManager.Instance.Gain(Resource.Wood, 1);
-  }
-  public override void EndOfTurn() { }
+public Card_Wood() : base("Wood", 0, 0) { }
+
+public override void Play()
+{
+  // TODO: Add logic
+}
 }

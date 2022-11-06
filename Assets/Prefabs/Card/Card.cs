@@ -4,8 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public enum CardTypes
+{
+  Resource,
+  Unit,
+  Item,
+  Spell,
+}
+
 public abstract class Card : MonoBehaviour
 {
+  [SerializeField]
+  private string _id;
   [SerializeField]
   private string _name;
   [SerializeField]
@@ -14,6 +24,8 @@ public abstract class Card : MonoBehaviour
   private int _stoneCost = 0;
   [SerializeField]
   private CardConfig _cardConfig; public CardConfig CardConfig => _cardConfig;
+  [SerializeField]
+  private CardTypes _type;
 
   [SerializeField]
   private TextMeshProUGUI _nameText; public TextMeshProUGUI NameText => _nameText;
@@ -32,6 +44,14 @@ public abstract class Card : MonoBehaviour
   private bool _isHovering; public bool IsHovering => _isHovering;
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
+
+  public Card(CardTypes type, string name, int woodCost, int stoneCost)
+  {
+    _type = type;
+    _name = name;
+    _woodCost = woodCost;
+    _stoneCost = stoneCost;
+  }
 
   public void Draw(Hand hand)
   {
