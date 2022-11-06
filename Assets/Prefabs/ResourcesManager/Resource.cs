@@ -1,5 +1,5 @@
 public enum Resource
 {
-  Wood,
-  Stone
+  Wood = 0,
+  Stone = 10,
 }
