@@ -6,10 +6,11 @@ using TMPro;
 
 public enum CardTypes
 {
-  Resource,
-  Unit,
-  Item,
-  Spell,
+  Resource = 0,
+  Unit = 10,
+  Item = 20,
+  Spell = 30,
+  Building = 40,
 }
 
 public abstract class Card : MonoBehaviour
