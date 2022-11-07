@@ -5,6 +5,8 @@ public class CardPrefabGenerator : EditorWindow
 {
   private string pathName = "Prefabs/Card/CardLibrary";
 
+  private string baseCardPathName = "Assets/Prefabs/Card/CardLibrary/Card_Base.prefab";
+
   [MenuItem("Custom Utilities/Mass Card Prefab Generator")]
   public static void ShowWindow()
   {
@@ -31,13 +33,18 @@ public class CardPrefabGenerator : EditorWindow
 
       string localPath = AssetDatabase.GenerateUniqueAssetPath(prefabPath);
 
-      GameObject gameObj = new GameObject();
+      GameObject parentPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(baseCardPathName);
 
-      gameObj.AddComponent(foundCard.GetClass());
+      GameObject cardPrefab = PrefabUtility.InstantiatePrefab(parentPrefab) as GameObject;
 
-      PrefabUtility.SaveAsPrefabAssetAndConnect(gameObj, localPath, InteractionMode.UserAction);
+      cardPrefab.GetComponent<Card_Base>().enabled = false;
 
-      DestroyImmediate(gameObj);
+      cardPrefab.AddComponent(foundCard.GetClass());
+
+      PrefabUtility.SaveAsPrefabAssetAndConnect(cardPrefab, localPath, InteractionMode.UserAction);
+
+      DestroyImmediate(cardPrefab);
+      DestroyImmediate(parentPrefab);
     }
   }
 }
