@@ -35,7 +35,10 @@ export type ValidateCardFn = (
 ) => Promise<void>;
 
 export type CardConstructorArgs = [
+  id: number,
   name: string,
+  description: string,
+  image: string,
   woodCost: number | string | undefined,
   stoneCost: number | string | undefined
 ];

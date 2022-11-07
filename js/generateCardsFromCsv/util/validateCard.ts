@@ -1,7 +1,5 @@
 import Joi from "joi";
-import { CardRow, CardType, ValidateCardFn } from "../types";
-
-const idMap: Record<string, true> = {};
+import { CardType, ValidateCardFn } from "../types";
 
 const baseSchema: Joi.SchemaMap = {
   id: Joi.number().positive().allow(0).required(),

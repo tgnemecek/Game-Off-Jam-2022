@@ -1,7 +1,10 @@
 import { Card, CardConstructorArgs } from "../types";
 
 const CardConstructor = new Map([
+  ["id", "int"],
   ["title", "string"],
+  ["description", "string"],
+  ["image", "string"],
   ["woodCost", "int"],
   ["stoneCost", "int"],
 ]);
@@ -9,7 +12,7 @@ const CardConstructor = new Map([
 const buildConstructor = (card: Card, args: CardConstructorArgs) => {
   const entries = Array.from(CardConstructor.entries());
 
-  const formattedArgs = entries.map(([fieldName, fieldType], index) => {
+  const formattedArgs = entries.map(([_, fieldType], index) => {
     if (fieldType === "string") return `"${args[index]}"`;
     if (fieldType === "int") return Number(args[index]) || 0;
     return args[index];
