@@ -16,9 +16,13 @@ public enum CardTypes
 public abstract class Card : MonoBehaviour
 {
   [SerializeField]
-  private string _id;
+  private int _id;
   [SerializeField]
   private string _name;
+  [SerializeField]
+  private string _description;
+  [SerializeField]
+  private string _image;
   [SerializeField]
   private int _woodCost = 0;
   [SerializeField]
@@ -46,10 +50,21 @@ public abstract class Card : MonoBehaviour
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
 
-  public Card(CardTypes type, string name, int woodCost, int stoneCost)
+  public Card(
+    int id,
+    CardTypes type,
+    string name,
+    string description,
+    string image,
+    int woodCost,
+    int stoneCost
+  )
   {
+    _id = id;
     _type = type;
     _name = name;
+    _description = description;
+    _image = image;
     _woodCost = woodCost;
     _stoneCost = stoneCost;
   }

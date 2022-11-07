@@ -1,6 +1,22 @@
-public class Card_Building : Card
+public class Card_Building : Card_Base
 {
-  public Card_Building(string name, int woodCost, int stoneCost) : base(CardTypes.Building, name, woodCost, stoneCost) { }
+  public Card_Building(
+    int id,
+    string name,
+    string description,
+    string image,
+    int woodCost,
+    int stoneCost
+  ) : base(
+    id,
+    CardTypes.Building,
+    name,
+    description,
+    image,
+    woodCost,
+    stoneCost
+  )
+  { }
 
   public override void Play()
   {

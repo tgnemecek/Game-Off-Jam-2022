@@ -1,7 +1,8 @@
-public class Card_Resource : Card_Base
+public class Card_Base : Card
 {
-  public Card_Resource(
+  public Card_Base(
     int id,
+    CardTypes type,
     string name,
     string description,
     string image,
@@ -9,7 +10,7 @@ public class Card_Resource : Card_Base
     int stoneCost
   ) : base(
     id,
-    CardTypes.Resource,
+    type,
     name,
     description,
     image,
@@ -20,7 +21,7 @@ public class Card_Resource : Card_Base
 
   public override void Play()
   {
-    ResourcesManager.Instance.Gain(Resource.Wood, 1);
+    // noop
   }
 
   public override void EndOfTurn()
