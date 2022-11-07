@@ -2,8 +2,11 @@ import fs from "fs";
 import path from "path";
 import * as csv from "fast-csv";
 import { Card, CardType } from "./types";
-import { buildCardOutput, validateCard } from "./builders";
-import formatCard from "./builders/formatCard";
+import { validateCard } from "./builders";
+import formatCard from "./util/formatCard";
+import updateCard from "./updateCard";
+import getFileName from "./util/getFileName";
+import createCard from "./createCard";
 
 const CSV_PATH = path.join(__dirname, "./input.csv");
 const CARD_LIBRARY_PATH = path.join(
@@ -49,9 +52,12 @@ const generateCardsFromCsv = async () => {
 
   // Build cards and write to card library
   for (const card of cards) {
-    const { fileName, data } = buildCardOutput(card);
+    const fileName = getFileName(card);
 
-    fs.writeFileSync(`${CARD_LIBRARY_PATH}/${fileName}.cs`, data);
+    const cardPath = `${CARD_LIBRARY_PATH}/${fileName}.cs`;
+
+    if (fs.existsSync(cardPath)) updateCard(card, cardPath);
+    else createCard(card, cardPath);
   }
 };
 

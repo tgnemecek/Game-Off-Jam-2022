@@ -25,10 +25,7 @@ export type CardRow = {
 
 export type Card = CardRow & { internalTitle?: string };
 
-export type BuildCardOutput = {
-  fileName: string;
-  data: string;
-};
+export type BuildCardOutput = string;
 
 export type BuildCardFn = (card: Card) => BuildCardOutput;
 
@@ -36,3 +33,9 @@ export type ValidateCardFn = (
   card: Card,
   customSchema?: Joi.SchemaMap
 ) => Promise<void>;
+
+export type CardConstructorArgs = [
+  name: string,
+  woodCost: number | string | undefined,
+  stoneCost: number | string | undefined
+];
