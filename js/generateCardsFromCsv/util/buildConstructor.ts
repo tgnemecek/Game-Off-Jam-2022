@@ -17,8 +17,7 @@ const buildConstructor = (card: Card, args: CardConstructorArgs) => {
 
   const propertiesName = `${card.internalTitle}_Properties`;
 
-  const propertiesClass = `
-public class ${propertiesName}
+  const propertiesClass = `public class ${propertiesName}
 {
   ${entries
     .map(

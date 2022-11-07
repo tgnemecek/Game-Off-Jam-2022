@@ -1,2 +1,5 @@
 // DO NOT TOUCH
-export const START_HERE_TEXT = "/** -- START HERE -- */";
+export const AUTO_GENERATED = "AUTO-GENERATED";
+export const CUSTOM_CODE_START = `#endregion ${AUTO_GENERATED}`;
+
+// TOUCH
