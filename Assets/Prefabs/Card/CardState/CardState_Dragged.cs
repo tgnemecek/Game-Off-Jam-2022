@@ -13,53 +13,39 @@ public class CardState_Dragged : CardState
   {
     // @TODO Replace Camera.main
     if (_camera == null) _camera = Camera.main;
-    Vector3 mouseWorldPosition = GetMouseWorldPosition();
-    _mousePositionOffset = _context.transform.position - mouseWorldPosition;
+    PlayerController.Instance.IsDraggingCard = true;
   }
   public override void UpdateState()
   {
-    UpdatePosition();
-    BendCard();
     DetectClick();
   }
 
-  void UpdatePosition()
+  public override void FixedUpdateState()
   {
-    Vector3 sumOfPositions = GetMouseWorldPosition() + _mousePositionOffset;
-    Vector3 newPosition = new Vector3(
-      sumOfPositions.x,
-      sumOfPositions.y,
-      _context.transform.position.z
-    );
-    LeanTween.move(
-      _context.gameObject,
-      newPosition,
-      _context.CardConfig.CatchUpTimeWhileDragging
-    );
+    SnapToBoard();
   }
 
-  void BendCard()
+  void SnapToBoard()
   {
-    float x = Input.GetAxis("Mouse X");
-    float currentY = _context.transform.rotation.eulerAngles.y;
+    Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+    RaycastHit hitInfo;
 
-    var _cardBendSpeed = _context.CardConfig.CardBendSpeed;
-    var _cardBendMaxRotation = _context.CardConfig.CardBendMaxRotation;
-    var _cardBendSmoothness = _context.CardConfig.CardBendSmoothness;
 
-    float amountMultiplied = x * _cardBendSpeed;
-    float amountLerped = Mathf.Lerp(currentY, currentY + amountMultiplied, 1 / _cardBendSmoothness);
-    float amountClamped = Mathf.Clamp(amountLerped, -_cardBendMaxRotation, _cardBendMaxRotation);
+    if (Physics.Raycast(ray, out hitInfo, 9999, _context.CardConfig.BoardLayerMask))
+    {
+      Vector3 point = hitInfo.point;
 
-    _context.transform.rotation = Quaternion.Euler(0f, amountClamped, 0f);
-
-    // LeanTween.rotateY(
-    //   _context.gameObject,
-    //   amountClamped,
-    //   _context.CardConfig.CatchUpTimeWhileDragging
-    // ).setEaseInOutCubic().setDelay(_cardBendSmoothness);
-
-    // _context.transform.rotation = Quaternion.Euler(0f, amountClamped, 0f);
+      _context.transform.position = Vector3.Lerp(
+        _context.transform.position,
+        point,
+        _context.CardConfig.CatchUpSpeedWhileDragging
+      );
+      _context.transform.rotation = Quaternion.Lerp(
+        _context.transform.rotation,
+        hitInfo.collider.transform.rotation,
+        _context.CardConfig.CatchUpSpeedWhileDragging
+      );
+    }
   }
 
   Vector3 GetMouseWorldPosition() => _camera.ScreenToWorldPoint(Input.mousePosition);
@@ -73,12 +59,17 @@ public class CardState_Dragged : CardState
         SwitchState(_factory.InHand());
         return;
       }
-      SwitchState(_factory.InBoard());
+      if (ResourcesManager.Instance.TryConsume(_context.Cost))
+      {
+        SwitchState(_factory.InBoard());
+      }
     }
   }
 
-  public override void FixedUpdateState() { }
   public override void OnMouseEnter() { }
   public override void OnMouseExit() { }
-  public override void ExitState() { }
+  public override void ExitState()
+  {
+    PlayerController.Instance.IsDraggingCard = false;
+  }
 }

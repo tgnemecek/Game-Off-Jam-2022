@@ -54,9 +54,9 @@ MonoBehaviour:
   _woodCost: 0
   _stoneCost: 0
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
-  _rigidbody: {fileID: 76550943291182281}
   _nameText: {fileID: 4990637270326167258}
   _cardLayerController: {fileID: 8253251176509130484}
+  _backSprite: {fileID: 4234440130428508640}
 --- !u!65 &7868710288479565875
 BoxCollider:
   m_ObjectHideFlags: 0

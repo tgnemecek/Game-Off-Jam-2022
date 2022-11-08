@@ -9,8 +9,9 @@ public class CardConfig : ScriptableObject
   public float ScaleOnHoverTime = 1f;
   public float OffsetYOnHover = 0f;
   public float MovementToHandTime = 1f;
-  public float CatchUpTimeWhileDragging = .1f;
+  public float CatchUpSpeedWhileDragging = .1f;
   public float CardBendSpeed = 1f;
   public float CardBendMaxRotation = 0f;
   public float CardBendSmoothness = 0f;
+  public LayerMask BoardLayerMask;
 }

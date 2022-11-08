@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawUpTo: 5
+  _drawDelay: 0.2
   _drawPile: {fileID: 0}
   _discardPile: {fileID: 0}
   _resourcesManager: {fileID: 0}
