@@ -1,11 +1,21 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
 public class CardPrefabGenerator : EditorWindow
 {
-  private string pathName = "Prefabs/Card/CardLibrary";
+  private Dictionary<CardTypes, string> cardTypeLabelMap = new Dictionary<CardTypes, string>()
+  {
+    [CardTypes.Resource] = "Resource",
+    [CardTypes.Unit] = "Unit",
+    [CardTypes.Item] = "Item",
+    [CardTypes.Spell] = "Spell",
+    [CardTypes.Building] = "Building",
+  };
 
-  private string baseCardPathName = "Assets/Prefabs/Card/CardLibrary/Card_Base.prefab";
+  private CardTypes cardType = CardTypes.Resource;
+
+  private string pathName = "Prefabs/Card/CardLibrary";
 
   [MenuItem("Custom Utilities/Mass Card Prefab Generator")]
   public static void ShowWindow()
@@ -16,7 +26,10 @@ public class CardPrefabGenerator : EditorWindow
   private void OnGUI()
   {
     GUILayout.Label("Mass Card Prefab Generator", EditorStyles.boldLabel);
-    pathName = EditorGUILayout.TextField("Save Path", this.pathName);
+    this.pathName = EditorGUILayout.TextField("Save Path", this.pathName);
+    this.cardType = (CardTypes)EditorGUILayout.EnumPopup("Card Type", this.cardType);
+
+    Debug.Log(cardType);
 
     if (GUILayout.Button("Build Prefabs")) GeneratePrefabs();
   }
@@ -33,11 +46,11 @@ public class CardPrefabGenerator : EditorWindow
 
       string localPath = AssetDatabase.GenerateUniqueAssetPath(prefabPath);
 
-      GameObject parentPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(baseCardPathName);
+      string cardTypeLabel = this.cardTypeLabelMap[cardType];
+
+      GameObject parentPrefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/{pathName}/BaseCards/Card_{cardTypeLabel}.prefab");
 
       GameObject cardPrefab = PrefabUtility.InstantiatePrefab(parentPrefab) as GameObject;
-
-      cardPrefab.GetComponent<Card_Base>().enabled = false;
 
       cardPrefab.AddComponent(foundCard.GetClass());
 

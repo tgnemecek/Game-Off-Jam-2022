@@ -1,30 +1,25 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
-public class Rubber_Ducky_Factory_Properties
-{
-  public static int __id__ = 5;
-	public static string __title__ = "Rubber Ducky Factory";
-	public static string __description__ = "Mass produces Rubber Duckies to promote Duckland nationalism";
-	public static string __image__ = "https://via.placeholder.com/150";
-	public static int __woodCost__ = 10;
-	public static int __stoneCost__ = 10;
-}
-  
 public class Card_Rubber_Ducky_Factory : Card_Building
 {
-  public Card_Rubber_Ducky_Factory() : base(
-    Rubber_Ducky_Factory_Properties.__id__,
-		Rubber_Ducky_Factory_Properties.__title__,
-		Rubber_Ducky_Factory_Properties.__description__,
-		Rubber_Ducky_Factory_Properties.__image__,
-		Rubber_Ducky_Factory_Properties.__woodCost__,
-		Rubber_Ducky_Factory_Properties.__stoneCost__
-  )
-  { }
+  public Card_Rubber_Ducky_Factory()
+  {
+    this.Id = 5;
+		this.Name = "Rubber Ducky Factory";
+		this.Description = "Mass produces Rubber Duckies to promote Duckland nationalism";
+		this.Image = "https://via.placeholder.com/150";
+		this.WoodCost = 10;
+		this.StoneCost = 10;
+  }
 
   #endregion AUTO-GENERATED
   
   public override void Play()
+  {
+    // TODO: Add logic
+  }
+
+  public override void EndOfTurn()
   {
     // TODO: Add logic
   }

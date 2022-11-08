@@ -15,22 +15,21 @@ public enum CardTypes
 
 public abstract class Card : MonoBehaviour
 {
-  [SerializeField]
-  private int _id;
-  [SerializeField]
-  private string _name;
-  [SerializeField]
-  private string _description;
-  [SerializeField]
-  private string _image;
-  [SerializeField]
-  private int _woodCost = 0;
-  [SerializeField]
-  private int _stoneCost = 0;
-  [SerializeField]
-  private CardConfig _cardConfig; public CardConfig CardConfig => _cardConfig;
-  [SerializeField]
-  private CardTypes _type;
+  public int Id { get; set; }
+
+  public string Name { get; set; }
+
+  public string Description { get; set; }
+
+  public string Image { get; set; }
+
+  public int WoodCost { get; set; }
+
+  public int StoneCost { get; set; }
+
+  public CardTypes Type { get; set; }
+
+  public CardConfig _cardConfig; public CardConfig CardConfig => _cardConfig;
 
   [SerializeField]
   private TextMeshProUGUI _nameText; public TextMeshProUGUI NameText => _nameText;
@@ -50,31 +49,12 @@ public abstract class Card : MonoBehaviour
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
 
-  public Card(
-    int id,
-    CardTypes type,
-    string name,
-    string description,
-    string image,
-    int woodCost,
-    int stoneCost
-  )
-  {
-    _id = id;
-    _type = type;
-    _name = name;
-    _description = description;
-    _image = image;
-    _woodCost = woodCost;
-    _stoneCost = stoneCost;
-  }
-
   public void Draw(Hand hand)
   {
     _drawnOnThisFrame = true;
-    _cost.Add(Resource.Wood, _woodCost);
-    _cost.Add(Resource.Stone, _stoneCost);
-    _nameText.text = _name;
+    _cost.Add(Resource.Wood, WoodCost);
+    _cost.Add(Resource.Stone, StoneCost);
+    _nameText.text = Name;
     _hand = hand;
   }
 
