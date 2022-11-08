@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import * as csv from "fast-csv";
-import { Card, CardType } from "./types";
+import { Card, CardRow } from "./types";
 import { validateCard } from "./builders";
 import formatCard from "./util/formatCard";
 import updateCard from "./updateCard";
@@ -14,16 +14,6 @@ const CARD_LIBRARY_PATH = path.join(
   "../..",
   "Assets/Prefabs/Card/CardLibrary"
 );
-
-type CardRow = {
-  type: CardType;
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  woodCost?: string;
-  stoneCost?: string;
-};
 
 const generateCardsFromCsv = async () => {
   const cards: Card[] = [];

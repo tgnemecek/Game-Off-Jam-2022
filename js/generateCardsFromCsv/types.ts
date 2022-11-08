@@ -14,16 +14,18 @@ export enum Resource {
 }
 
 export type CardRow = {
-  id: number;
-  type: CardType;
-  title: string;
-  description: string;
-  image: string;
-  woodCost?: string;
-  stoneCost?: string;
+  Id: number;
+  Type: CardType;
+  Name: string;
+  Description: string;
+  Image: string;
+  WoodCost: string;
+  StoneCost: string;
 };
 
-export type Card = CardRow & { internalTitle?: string };
+export type Card = CardRow & {
+  InternalTitle?: string;
+};
 
 export type BuildCardOutput = string;
 
@@ -33,12 +35,3 @@ export type ValidateCardFn = (
   card: Card,
   customSchema?: Joi.SchemaMap
 ) => Promise<void>;
-
-export type CardConstructorArgs = [
-  id: number,
-  name: string,
-  description: string,
-  image: string,
-  woodCost: number | string | undefined,
-  stoneCost: number | string | undefined
-];
