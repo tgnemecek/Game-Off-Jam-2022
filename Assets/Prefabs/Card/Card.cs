@@ -23,7 +23,10 @@ public abstract class Card : MonoBehaviour
   private Canvas _canvas;
   
   [SerializeField]
-  private Image _backImage; public Image BackImage => _backImage;
+  private GameObject _cardFront;
+
+  [SerializeField]
+  private GameObject _cardBack;
 
   [SerializeField]
   private string _draggedSortingLayerName;
@@ -59,13 +62,13 @@ public abstract class Card : MonoBehaviour
 
   #region - Layout Control
   public void showFront() {
-    _backImage.gameObject.SetActive(false);
-    _nameText.gameObject.SetActive(true);
+    _cardBack.gameObject.SetActive(false);
+    _cardFront.gameObject.SetActive(true);
   }
 
   public void showBack() {
-    _backImage.gameObject.SetActive(true);
-    _nameText.gameObject.SetActive(false);
+    _cardBack.gameObject.SetActive(true);
+    _cardFront.gameObject.SetActive(false);
   }
 
   public void SetLayerDragged()
@@ -81,7 +84,7 @@ public abstract class Card : MonoBehaviour
 
   void Awake()
   {
-    _nameText.gameObject.SetActive(false);
+    showBack();
   }
 
   void Start()
