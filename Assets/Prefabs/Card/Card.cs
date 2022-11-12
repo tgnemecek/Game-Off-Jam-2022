@@ -17,10 +17,19 @@ public abstract class Card : MonoBehaviour
 
   [SerializeField]
   private TextMeshProUGUI _nameText; public TextMeshProUGUI NameText => _nameText;
+
+  #region - Layout control
   [SerializeField]
-  private CardLayerController _cardLayerController; public CardLayerController CardLayerController => _cardLayerController;
+  private Canvas _canvas;
+  
   [SerializeField]
-  private SpriteRenderer _backSprite; public SpriteRenderer BackSprite => _backSprite;
+  private Image _backImage; public Image BackImage => _backImage;
+
+  [SerializeField]
+  private string _draggedSortingLayerName;
+  private int _defaultSortingLayerID;
+  #endregion
+
 
   protected Hand _hand; public Hand Hand => _hand;
   private ResourceCostDictionary _cost = new ResourceCostDictionary(); public ResourceCostDictionary Cost => _cost;
@@ -48,6 +57,28 @@ public abstract class Card : MonoBehaviour
     _positionChangedThisFrame = true;
   }
 
+  #region - Layout Control
+  public void showFront() {
+    _backImage.gameObject.SetActive(false);
+    _nameText.gameObject.SetActive(true);
+  }
+
+  public void showBack() {
+    _backImage.gameObject.SetActive(true);
+    _nameText.gameObject.SetActive(false);
+  }
+
+  public void SetLayerDragged()
+  {
+    _canvas.sortingLayerName = _draggedSortingLayerName;
+  }
+
+  public void SetLayerDefault()
+  {
+    _canvas.sortingLayerID = _defaultSortingLayerID;
+  }
+  #endregion
+
   void Awake()
   {
     _nameText.gameObject.SetActive(false);
@@ -55,6 +86,8 @@ public abstract class Card : MonoBehaviour
 
   void Start()
   {
+    _defaultSortingLayerID = _canvas.sortingLayerID;
+
     _stateFactory = new CardStateFactory(this);
     _currentState = _stateFactory.NotInPlay();
     _currentState.EnterState();
@@ -67,6 +100,7 @@ public abstract class Card : MonoBehaviour
   {
     _currentState.UpdateState();
   }
+
   void FixedUpdate() => _currentState.FixedUpdateState();
 
   public abstract void Play();

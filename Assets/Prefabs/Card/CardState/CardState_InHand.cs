@@ -32,8 +32,11 @@ public class CardState_InHand : CardState
 
     bool facingCamera = absRotationY < 90;
 
-    _context.BackSprite.gameObject.SetActive(!facingCamera);
-    _context.NameText.gameObject.SetActive(facingCamera);
+    if (facingCamera) {
+      _context.showFront();
+    } else {
+      _context.showBack();
+    }
   }
 
   void DetectClick()
@@ -97,7 +100,7 @@ public class CardState_InHand : CardState
   {
     _isHovering = true;
     _isHoveringQueued = false;
-    _context.CardLayerController.SetDraggedLayer();
+    _context.SetLayerDragged();
 
     CardConfig cardConfig = _context.CardConfig;
 
@@ -109,7 +112,7 @@ public class CardState_InHand : CardState
   {
     _isHovering = false;
     _isHoveringQueued = false;
-    _context.CardLayerController.SetDefaultLayer();
+    _context.SetLayerDefault();
     ScaleToHandSize();
   }
   public override void ExitState() { }
