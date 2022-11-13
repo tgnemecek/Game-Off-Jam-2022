@@ -26,10 +26,7 @@ public class CardPrefabGenerator : EditorWindow
   private void OnGUI()
   {
     GUILayout.Label("Mass Card Prefab Generator", EditorStyles.boldLabel);
-    this.pathName = EditorGUILayout.TextField("Save Path", this.pathName);
     this.cardType = (CardTypes)EditorGUILayout.EnumPopup("Card Type", this.cardType);
-
-    Debug.Log(cardType);
 
     if (GUILayout.Button("Build Prefabs")) GeneratePrefabs();
   }
@@ -38,21 +35,31 @@ public class CardPrefabGenerator : EditorWindow
   {
     foreach (string guid in Selection.assetGUIDs)
     {
+      string cardTypeLabel = this.cardTypeLabelMap[cardType];
+
       string assetPath = AssetDatabase.GUIDToAssetPath(guid);
 
       MonoScript foundCard = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
 
-      string prefabPath = $"Assets/{pathName}/{foundCard.name}.prefab";
+      MonoScript foundParentCard = AssetDatabase.LoadAssetAtPath<MonoScript>($"Assets/{pathName}/BaseCardLibrary/Card_{cardTypeLabel}.cs");
+
+      string prefabPath = $"Assets/{pathName}/{cardTypeLabel}CardLibrary/{foundCard.name}.prefab";
 
       string localPath = AssetDatabase.GenerateUniqueAssetPath(prefabPath);
 
-      string cardTypeLabel = this.cardTypeLabelMap[cardType];
+      GameObject existingPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(localPath);
 
-      GameObject parentPrefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/{pathName}/BaseCards/Card_{cardTypeLabel}.prefab");
+      if (existingPrefab) return;
 
-      GameObject cardPrefab = PrefabUtility.InstantiatePrefab(parentPrefab) as GameObject;
+      GameObject parentPrefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/{pathName}/BaseCardLibrary/Card_{cardTypeLabel}.prefab");
+
+      GameObject cardPrefab = (GameObject)PrefabUtility.InstantiatePrefab(parentPrefab);
 
       cardPrefab.AddComponent(foundCard.GetClass());
+
+      Card cardScriptComponent = (Card)cardPrefab.GetComponent(foundCard.GetClass());
+
+      cardScriptComponent.InjectDefaultDependencies();
 
       PrefabUtility.SaveAsPrefabAssetAndConnect(cardPrefab, localPath, InteractionMode.UserAction);
 
