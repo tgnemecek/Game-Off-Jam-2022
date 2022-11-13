@@ -1,13 +1,13 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
-public class Card_Wood : Card_Resource
+public class Card_Infantry_Duck : Card_Unit
 {
-  public Card_Wood()
+  public Card_Infantry_Duck()
   {
-    this.Id = 1;
-		this.Name = "Wood";
+    this.Id = 5;
+		this.Name = "Infantry Duck";
 		this.Description = "";
-		this.Image = "https://github.com/tgnemecek/Game-Off-Jam-2022/blob/master/img/resource/wood.png";
+		this.Image = "";
 		this.WoodCost = 0;
 		this.StoneCost = 0;
   }
