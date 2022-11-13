@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 using TMPro;
 
 public enum CardTypes
@@ -48,6 +49,51 @@ public abstract class Card : MonoBehaviour
   private bool _isHovering; public bool IsHovering => _isHovering;
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
+
+  void Reset()
+  {
+    InjectDefaultDependencies();
+  }
+
+  void InjectDefaultDependencies()
+  {
+    void InjectCardConfig()
+    {
+      string[] cardConfigs = AssetDatabase.FindAssets("t:CardConfig", null);
+
+      if (cardConfigs.Length > 0)
+      {
+        var path = AssetDatabase.GUIDToAssetPath(cardConfigs[0]);
+        _cardConfig = AssetDatabase.LoadAssetAtPath<CardConfig>(path);
+      }
+    }
+    void InjectNameText()
+    {
+      _nameText = GetComponentInChildren<TextMeshProUGUI>();
+    }
+    void InjectCardLayerController()
+    {
+      _cardLayerController = GetComponentInChildren<CardLayerController>();
+    }
+    void InjectCardSpriteBack()
+    {
+      var sprites = GetComponentsInChildren<SpriteRenderer>();
+      foreach (var sprite in sprites)
+      {
+        if (sprite.gameObject.name == "Sprite Back")
+        {
+          _backSprite = sprite;
+        }
+      }
+    }
+
+
+    InjectCardConfig();
+    InjectNameText();
+    InjectCardLayerController();
+    InjectCardSpriteBack();
+  }
+
 
   public void Draw(Hand hand)
   {
