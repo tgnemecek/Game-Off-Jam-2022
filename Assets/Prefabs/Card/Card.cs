@@ -4,16 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public enum CardTypes
+{
+  Resource = 0,
+  Unit = 10,
+  Item = 20,
+  Spell = 30,
+  Building = 40,
+}
+
 public abstract class Card : MonoBehaviour
 {
-  [SerializeField]
-  private string _name;
-  [SerializeField]
-  private int _woodCost = 0;
-  [SerializeField]
-  private int _stoneCost = 0;
-  [SerializeField]
-  private CardConfig _cardConfig; public CardConfig CardConfig => _cardConfig;
+  public int Id { get; set; }
+
+  public string Name { get; set; }
+
+  public string Description { get; set; }
+
+  public string Image { get; set; }
+
+  public int WoodCost { get; set; }
+
+  public int StoneCost { get; set; }
+
+  public CardTypes Type { get; set; }
+
+  public CardConfig _cardConfig; public CardConfig CardConfig => _cardConfig;
 
   [SerializeField]
   private TextMeshProUGUI _nameText; public TextMeshProUGUI NameText => _nameText;
@@ -36,9 +52,9 @@ public abstract class Card : MonoBehaviour
   public void Draw(Hand hand)
   {
     _drawnOnThisFrame = true;
-    _cost.Add(Resource.Wood, _woodCost);
-    _cost.Add(Resource.Stone, _stoneCost);
-    _nameText.text = _name;
+    _cost.Add(Resource.Wood, WoodCost);
+    _cost.Add(Resource.Stone, StoneCost);
+    _nameText.text = Name;
     _hand = hand;
   }
 
