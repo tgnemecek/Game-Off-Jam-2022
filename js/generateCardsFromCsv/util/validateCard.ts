@@ -8,10 +8,11 @@ const baseSchema: Joi.SchemaMap = {
     .required(),
   Name: Joi.string().required(),
   InternalTitle: Joi.string().disallow(" ").required(),
-  Description: Joi.string(),
-  Image: Joi.string(), // not sure how images will be handled
+  Description: Joi.string().optional().allow(""),
+  Image: Joi.string().optional().allow(""), // not sure how images will be handled
   WoodCost: Joi.number().positive().allow(0),
   StoneCost: Joi.number().positive().allow(0),
+  Comments: Joi.string().optional().allow(""),
 };
 
 const validateCard: ValidateCardFn = async (card, customSchema) => {

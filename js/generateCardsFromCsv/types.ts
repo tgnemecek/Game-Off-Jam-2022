@@ -8,6 +8,14 @@ export enum CardType {
   Building = 40,
 }
 
+// TODO: Autogenerate
+export type CardTypeString =
+  | "Resource"
+  | "Unit"
+  | "Item"
+  | "Spell"
+  | "Building";
+
 export enum Resource {
   Wood = 0,
   Stone = 10,
@@ -15,15 +23,17 @@ export enum Resource {
 
 export type CardRow = {
   Id: number;
-  Type: CardType;
+  Type: CardTypeString;
   Name: string;
   Description: string;
   Image: string;
   WoodCost: string;
   StoneCost: string;
+  Comments?: string;
 };
 
-export type Card = CardRow & {
+export type Card = Omit<CardRow, "Type"> & {
+  Type: CardType;
   InternalTitle?: string;
 };
 
