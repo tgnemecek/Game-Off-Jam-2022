@@ -106,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7986838004421548093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f025425fc7fdb4daae85d762a1b36b, type: 3}
+  m_Script: {fileID: 11500000, guid: b5590963eb574ec4d85d98cf971200b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
