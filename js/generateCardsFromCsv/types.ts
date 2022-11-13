@@ -35,6 +35,7 @@ export type CardRow = {
 export type Card = Omit<CardRow, "Type"> & {
   Type: CardType;
   InternalTitle?: string;
+  TypeName: CardTypeString;
 };
 
 export type BuildCardOutput = string;

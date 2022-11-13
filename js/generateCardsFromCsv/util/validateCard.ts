@@ -6,6 +6,7 @@ const baseSchema: Joi.SchemaMap = {
   Type: Joi.number()
     .valid(...Object.values(CardType))
     .required(),
+  TypeName: Joi.string().required(),
   Name: Joi.string().required(),
   InternalTitle: Joi.string().disallow(" ").required(),
   Description: Joi.string().optional().allow(""),

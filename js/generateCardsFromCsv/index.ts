@@ -8,9 +8,10 @@ import formatCard from "./util/formatCard";
 import updateCard from "./updateCard";
 import getFileName from "./util/getFileName";
 import createCard from "./createCard";
+import getFolderName from "./util/getFolderName";
 
 const CSV_PATH = path.join(__dirname, "./input.csv");
-const CARD_LIBRARY_PATH = path.join(
+const BASE_CARD_LIBRARY_PATH = path.join(
   __dirname,
   "../..",
   "Assets/Prefabs/Card/CardLibrary"
@@ -48,15 +49,15 @@ const generateCardsFromCsv = async () => {
 
   // Validate before building
   for (const card of cards) {
-    console.log({ card });
     await validateCard(card);
   }
 
   // Build cards and write to card library
   for (const card of cards) {
     const fileName = getFileName(card);
+    const folderName = getFolderName(card);
 
-    const cardPath = `${CARD_LIBRARY_PATH}/${fileName}.cs`;
+    const cardPath = `${BASE_CARD_LIBRARY_PATH}/${folderName}/${fileName}.cs`;
 
     if (fs.existsSync(cardPath)) updateCard(card, cardPath);
     else createCard(card, cardPath);

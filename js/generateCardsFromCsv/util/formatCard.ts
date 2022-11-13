@@ -4,6 +4,7 @@ const formatCard = (card: CardRow): Card => {
   return {
     ...card,
     Type: CardType[card.Type],
+    TypeName: card.Type,
     InternalTitle: card.Name.replace(/ /g, "_"),
     Comments: card.Comments?.replace(/\n/g, ". "),
   };
