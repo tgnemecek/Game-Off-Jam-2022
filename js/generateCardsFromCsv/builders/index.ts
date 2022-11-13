@@ -18,9 +18,9 @@ const CardBuilderMap: Record<
 };
 
 const buildCardOutput: BuildCardFn = (card) =>
-  CardBuilderMap[card.type].buildOutput(card);
+  CardBuilderMap[card.Type].buildOutput(card);
 
 const validateCard: ValidateCardFn = (card) =>
-  CardBuilderMap[card.type].validate(card);
+  CardBuilderMap[card.Type].validate(card);
 
 export { buildCardOutput, validateCard };

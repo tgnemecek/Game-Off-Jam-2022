@@ -1,14 +1,4 @@
-public class Card_Building : Card
+public class Card_Building : Card_Base
 {
-  public Card_Building(string name, int woodCost, int stoneCost) : base(CardTypes.Building, name, woodCost, stoneCost) { }
-
-  public override void Play()
-  {
-    // noop
-  }
-
-  public override void EndOfTurn()
-  {
-    // noop
-  }
+  new public CardTypes Type = CardTypes.Building;
 }

@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
+import chalk from "chalk";
 import * as csv from "fast-csv";
-import { Card, CardType } from "./types";
+import { Card, CardRow } from "./types";
 import { validateCard } from "./builders";
 import formatCard from "./util/formatCard";
 import updateCard from "./updateCard";
@@ -14,16 +15,6 @@ const CARD_LIBRARY_PATH = path.join(
   "../..",
   "Assets/Prefabs/Card/CardLibrary"
 );
-
-type CardRow = {
-  type: CardType;
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  woodCost?: string;
-  stoneCost?: string;
-};
 
 const generateCardsFromCsv = async () => {
   const cards: Card[] = [];
@@ -38,7 +29,17 @@ const generateCardsFromCsv = async () => {
         process.exit(0);
       })
       .on("data", (row: CardRow) => {
-        cards.push(formatCard(row));
+        if (!row.Type)
+          console.log(
+            chalk.red(
+              `Could not add card with id: ${row.Id} due to missing Type`
+            )
+          );
+        else {
+          const formatted = formatCard(row);
+          console.log({ formatted });
+          cards.push(formatted);
+        }
       })
       .on("end", () => {
         resolve(null);
@@ -47,6 +48,7 @@ const generateCardsFromCsv = async () => {
 
   // Validate before building
   for (const card of cards) {
+    console.log({ card });
     await validateCard(card);
   }
 

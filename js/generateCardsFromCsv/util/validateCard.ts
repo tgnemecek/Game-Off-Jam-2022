@@ -1,19 +1,18 @@
 import Joi from "joi";
-import { CardRow, CardType, ValidateCardFn } from "../types";
-
-const idMap: Record<string, true> = {};
+import { CardType, ValidateCardFn } from "../types";
 
 const baseSchema: Joi.SchemaMap = {
-  id: Joi.number().positive().allow(0).required(),
-  type: Joi.number()
+  Id: Joi.number().positive().allow(0).required(),
+  Type: Joi.number()
     .valid(...Object.values(CardType))
     .required(),
-  title: Joi.string().required(),
-  internalTitle: Joi.string().disallow(" ").required(),
-  description: Joi.string(),
-  image: Joi.string(), // not sure how images will be handled
-  woodCost: Joi.number().positive().allow(0),
-  stoneCost: Joi.number().positive().allow(0),
+  Name: Joi.string().required(),
+  InternalTitle: Joi.string().disallow(" ").required(),
+  Description: Joi.string().optional().allow(""),
+  Image: Joi.string().optional().allow(""), // not sure how images will be handled
+  WoodCost: Joi.number().positive().allow(0),
+  StoneCost: Joi.number().positive().allow(0),
+  Comments: Joi.string().optional().allow(""),
 };
 
 const validateCard: ValidateCardFn = async (card, customSchema) => {

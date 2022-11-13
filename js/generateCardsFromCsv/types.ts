@@ -8,22 +8,34 @@ export enum CardType {
   Building = 40,
 }
 
+// TODO: Autogenerate
+export type CardTypeString =
+  | "Resource"
+  | "Unit"
+  | "Item"
+  | "Spell"
+  | "Building";
+
 export enum Resource {
   Wood = 0,
   Stone = 10,
 }
 
 export type CardRow = {
-  id: number;
-  type: CardType;
-  title: string;
-  description: string;
-  image: string;
-  woodCost?: string;
-  stoneCost?: string;
+  Id: number;
+  Type: CardTypeString;
+  Name: string;
+  Description: string;
+  Image: string;
+  WoodCost: string;
+  StoneCost: string;
+  Comments?: string;
 };
 
-export type Card = CardRow & { internalTitle?: string };
+export type Card = Omit<CardRow, "Type"> & {
+  Type: CardType;
+  InternalTitle?: string;
+};
 
 export type BuildCardOutput = string;
 
@@ -33,9 +45,3 @@ export type ValidateCardFn = (
   card: Card,
   customSchema?: Joi.SchemaMap
 ) => Promise<void>;
-
-export type CardConstructorArgs = [
-  name: string,
-  woodCost: number | string | undefined,
-  stoneCost: number | string | undefined
-];
