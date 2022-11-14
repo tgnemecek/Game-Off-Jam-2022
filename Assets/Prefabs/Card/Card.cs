@@ -98,9 +98,6 @@ public abstract class Card : MonoBehaviour
   public void Draw(Hand hand)
   {
     _drawnOnThisFrame = true;
-    _cost.Add(Resource.Wood, WoodCost);
-    _cost.Add(Resource.Stone, StoneCost);
-    _nameText.text = Name;
     _hand = hand;
   }
 
@@ -112,6 +109,9 @@ public abstract class Card : MonoBehaviour
 
   void Awake()
   {
+    _cost.Add(Resource.Wood, WoodCost);
+    _cost.Add(Resource.Stone, StoneCost);
+    _nameText.text = Name;
     _nameText.gameObject.SetActive(false);
   }
 
