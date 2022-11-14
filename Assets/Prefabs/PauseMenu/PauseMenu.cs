@@ -5,57 +5,55 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
+  [SerializeField]
+  private GameObject pausePanel;
+  private bool _isPaused = false;
 
-    // This variable can be used globally to pause any Update function
-    public static bool isPaused=false;
+  void Start()
+  {
+    pausePanel.SetActive(false);
+  }
 
-
-    // Start is called before the first frame update
-    void Start()
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.Escape))
     {
-        pauseMenu.SetActive(false);
+      if (_isPaused)
+      {
+        ResumeGame();
+      }
+      else
+      {
+        PauseGame();
+      }
     }
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)){
-            if(isPaused)
-            {
-                ResumeGame();
-            }
-            else{
-                PauseGame();
-            }
-        }
-    }
+  void PauseGame()
+  {
+    pausePanel.SetActive(true);
+    Time.timeScale = 0f;
+    _isPaused = true;
+  }
 
-    public void PauseGame()
-    {
-        pauseMenu.SetActive(true);
-        Time.timeScale=0f;
-        isPaused=true;
-    }
+  void ResumeGame()
+  {
+    pausePanel.SetActive(false);
+    Time.timeScale = 1f;
+    _isPaused = false;
+  }
 
-    public void ResumeGame()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale=1f;
-        isPaused=false;
-    }
+  void GoToMainMenu()
+  {
+    Time.timeScale = 1f;
+    // Todo: We need to add a scene for the Main Menu
+    SceneManager.LoadScene("MainMenu");
+    _isPaused = false;
+  }
 
-    public void GoToMainMenu()
-    {
-        Time.timeScale=1f;
-        // Todo: We need to add a scene for the Main Menu
-        SceneManager.LoadScene("MainMenu");
-        isPaused=false;
-    }
-
-    public void QuitGame()
-    {
-        // This only works when the game is built. Not in the editor
-        Application.Quit();
-    }
+  void QuitGame()
+  {
+    // This only works when the game is built. Not in the editor
+    Application.Quit();
+  }
 }

@@ -13,5 +13,8 @@ public class CardConfig : ScriptableObject
   public float CardBendSpeed = 1f;
   public float CardBendMaxRotation = 0f;
   public float CardBendSmoothness = 0f;
+  public float DistanceToBoardWhenPlaced = .3f;
+  public float TimeToPlaceOnBoard = 1f;
+  public float OnBoardHoverOutlineSize = 0f;
   public LayerMask BoardLayerMask;
 }

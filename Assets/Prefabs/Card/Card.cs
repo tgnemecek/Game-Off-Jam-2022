@@ -38,6 +38,8 @@ public abstract class Card : MonoBehaviour
   private CardLayerController _cardLayerController; public CardLayerController CardLayerController => _cardLayerController;
   [SerializeField]
   private SpriteRenderer _backSprite; public SpriteRenderer BackSprite => _backSprite;
+  [SerializeField]
+  private SpriteRenderer _onHoverSprite; public SpriteRenderer OnHoverSprite => _onHoverSprite;
 
   protected Hand _hand; public Hand Hand => _hand;
   private ResourceCostDictionary _cost = new ResourceCostDictionary(); public ResourceCostDictionary Cost => _cost;
@@ -49,6 +51,7 @@ public abstract class Card : MonoBehaviour
   private bool _isHovering; public bool IsHovering => _isHovering;
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
+  private bool _canReturnToHand = true; public bool CanReturnToHand { get { return _canReturnToHand; } set { _canReturnToHand = value; } }
 
   void Reset()
   {
@@ -76,7 +79,7 @@ public abstract class Card : MonoBehaviour
     {
       _cardLayerController = GetComponentInChildren<CardLayerController>();
     }
-    void InjectCardSpriteBack()
+    void InjectCardSprites()
     {
       var sprites = GetComponentsInChildren<SpriteRenderer>();
       foreach (var sprite in sprites)
@@ -85,13 +88,17 @@ public abstract class Card : MonoBehaviour
         {
           _backSprite = sprite;
         }
+        if (sprite.gameObject.name == "Sprite OnHover")
+        {
+          _onHoverSprite = sprite;
+        }
       }
     }
 
     InjectCardConfig();
     InjectNameText();
     InjectCardLayerController();
-    InjectCardSpriteBack();
+    InjectCardSprites();
   }
 
 
@@ -122,8 +129,8 @@ public abstract class Card : MonoBehaviour
     _currentState.EnterState();
   }
 
-  void OnMouseEnter() => _currentState.OnMouseEnter();
-  void OnMouseExit() => _currentState.OnMouseExit();
+  public void MouseEnter() => _currentState.OnMouseEnter();
+  public void MouseExit() => _currentState.OnMouseExit();
 
   void Update()
   {
