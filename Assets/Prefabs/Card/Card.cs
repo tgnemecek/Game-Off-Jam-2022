@@ -55,7 +55,7 @@ public abstract class Card : MonoBehaviour
     InjectDefaultDependencies();
   }
 
-  void InjectDefaultDependencies()
+  public void InjectDefaultDependencies()
   {
     void InjectCardConfig()
     {
@@ -70,6 +70,7 @@ public abstract class Card : MonoBehaviour
     void InjectNameText()
     {
       _nameText = GetComponentInChildren<TextMeshProUGUI>();
+      _nameText.text = Name;
     }
     void InjectCardLayerController()
     {
@@ -86,7 +87,6 @@ public abstract class Card : MonoBehaviour
         }
       }
     }
-
 
     InjectCardConfig();
     InjectNameText();
