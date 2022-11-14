@@ -53,14 +53,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 430121206203247573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9237686466767264e8802feb52a25b8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 241cc88d446341b4e8db9de90493ba87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 0
+  _name: Wood
+  _description: This is some wood
+  _image: https://via.placeholder.com/150
+  _woodCost: 0
+  _stoneCost: 0
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
+  _type: 0
   _nameText: {fileID: 4990637270326167258}
   _cardLayerController: {fileID: 8253251176509130484}
   _backSprite: {fileID: 4234440130428508640}
-  Type: 0
 --- !u!65 &7868710288479565875
 BoxCollider:
   m_ObjectHideFlags: 0

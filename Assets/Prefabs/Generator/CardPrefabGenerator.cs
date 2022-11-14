@@ -1,19 +1,11 @@
 using UnityEngine;
 using UnityEditor;
-using System.Collections.Generic;
 
 public class CardPrefabGenerator : EditorWindow
 {
-  private Dictionary<CardTypes, string> cardTypeLabelMap = new Dictionary<CardTypes, string>()
-  {
-    [CardTypes.Resource] = "Resource",
-    [CardTypes.Unit] = "Unit",
-    [CardTypes.Item] = "Item",
-    [CardTypes.Spell] = "Spell",
-    [CardTypes.Building] = "Building",
-  };
+  private bool working = false;
 
-  private CardTypes cardType = CardTypes.Resource;
+  private string[] CardTypeLabels = new string[] { "Resource", "Unit", "Item", "Spell", "Building" };
 
   private string pathName = "Prefabs/Card/CardLibrary";
 
@@ -26,38 +18,62 @@ public class CardPrefabGenerator : EditorWindow
   private void OnGUI()
   {
     GUILayout.Label("Mass Card Prefab Generator", EditorStyles.boldLabel);
-    this.pathName = EditorGUILayout.TextField("Save Path", this.pathName);
-    this.cardType = (CardTypes)EditorGUILayout.EnumPopup("Card Type", this.cardType);
+    if (GUILayout.Button("Build Prefabs"))
+    {
+      if (this.working) return;
 
-    Debug.Log(cardType);
+      this.working = true;
 
-    if (GUILayout.Button("Build Prefabs")) GeneratePrefabs();
+      foreach (string type in CardTypeLabels)
+      {
+        Debug.Log($"Generate for type: {type}");
+        GeneratePrefabs(type);
+      }
+
+      this.working = false;
+    }
   }
 
-  private void GeneratePrefabs()
+  private void GeneratePrefabs(string type)
   {
-    foreach (string guid in Selection.assetGUIDs)
+    string[] assets = AssetDatabase.FindAssets("t:MonoScript", new string[] { $"Assets/{pathName}/{type}CardLibrary/" });
+
+    Debug.Log($"Found {assets.Length} assets");
+
+    foreach (string guid in assets)
     {
       string assetPath = AssetDatabase.GUIDToAssetPath(guid);
 
       MonoScript foundCard = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
 
-      string prefabPath = $"Assets/{pathName}/{foundCard.name}.prefab";
+      MonoScript foundParentCard = AssetDatabase.LoadAssetAtPath<MonoScript>($"Assets/{pathName}/BaseCardLibrary/Card_{type}.cs");
 
-      string localPath = AssetDatabase.GenerateUniqueAssetPath(prefabPath);
+      string prefabPath = $"Assets/{pathName}/{type}CardLibrary/{foundCard.name}.prefab";
 
-      string cardTypeLabel = this.cardTypeLabelMap[cardType];
+      GameObject existingPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
 
-      GameObject parentPrefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/{pathName}/BaseCards/Card_{cardTypeLabel}.prefab");
+      if (existingPrefab)
+      {
+        Debug.Log($"Prefab already exists for card: {foundCard.name}. Skipping");
+        continue;
+      }
 
-      GameObject cardPrefab = PrefabUtility.InstantiatePrefab(parentPrefab) as GameObject;
+      GameObject parentPrefab = AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/{pathName}/BaseCardLibrary/Card_{type}.prefab");
+
+      GameObject cardPrefab = (GameObject)PrefabUtility.InstantiatePrefab(parentPrefab);
 
       cardPrefab.AddComponent(foundCard.GetClass());
 
-      PrefabUtility.SaveAsPrefabAssetAndConnect(cardPrefab, localPath, InteractionMode.UserAction);
+      Card cardScriptComponent = (Card)cardPrefab.GetComponent(foundCard.GetClass());
+
+      cardScriptComponent.InjectDefaultDependencies();
+
+      PrefabUtility.SaveAsPrefabAssetAndConnect(cardPrefab, prefabPath, InteractionMode.UserAction);
 
       DestroyImmediate(cardPrefab);
       DestroyImmediate(parentPrefab);
+
+      Debug.Log($"Created prefab for card: {foundCard.name}");
     }
   }
 }
