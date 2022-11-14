@@ -129,6 +129,18 @@ public abstract class Card : MonoBehaviour
     _currentState.EnterState();
   }
 
+  public void ShowCardBack()
+  {
+    _backSprite.gameObject.SetActive(true);
+    _nameText.gameObject.SetActive(false);
+  }
+
+  public void ShowCardFront()
+  {
+    _backSprite.gameObject.SetActive(false);
+    _nameText.gameObject.SetActive(true);
+  }
+
   public void MouseEnter() => _currentState.OnMouseEnter();
   public void MouseExit() => _currentState.OnMouseExit();
 
