@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lowerSectionTrigger: {fileID: 0}
+  _cardLayerMask:
+    serializedVersion: 2
+    m_Bits: 256

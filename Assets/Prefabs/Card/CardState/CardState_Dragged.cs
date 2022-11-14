@@ -7,7 +7,6 @@ public class CardState_Dragged : CardState
   public CardState_Dragged(Card context, CardStateFactory factory) : base(context, factory) { }
 
   Camera _camera;
-  Vector3 _mousePositionOffset;
 
   public override void EnterState()
   {
@@ -48,13 +47,11 @@ public class CardState_Dragged : CardState
     }
   }
 
-  Vector3 GetMouseWorldPosition() => _camera.ScreenToWorldPoint(Input.mousePosition);
-
   void DetectClick()
   {
     if (Input.GetMouseButtonDown(0))
     {
-      if (PlayerController.Instance.IsHoveringOnLowerSection)
+      if (PlayerController.Instance.IsHoveringOnLowerSection && _context.CanReturnToHand)
       {
         SwitchState(_factory.InHand());
         return;

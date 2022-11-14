@@ -20,6 +20,8 @@ MonoBehaviour:
   CardBendSpeed: 10
   CardBendMaxRotation: 60
   CardBendSmoothness: 0.2
+  DistanceToBoardWhenPlaced: 0.3
+  TimeToPlaceOnBoard: 1
   BoardLayerMask:
     serializedVersion: 2
     m_Bits: 128
