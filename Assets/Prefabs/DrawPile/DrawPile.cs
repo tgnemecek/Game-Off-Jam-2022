@@ -6,7 +6,7 @@ using TMPro;
 public class DrawPile : MonoBehaviour
 {
   [SerializeField]
-  private Deck _deck;
+  private Deck _deck; public Deck Deck => _deck;
   [SerializeField]
   private TextMeshProUGUI _counter;
 

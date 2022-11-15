@@ -34,10 +34,10 @@ public class CardState_InHand : CardState
 
     if (facingCamera)
     {
-      _context.ShowCardFront();
+      _context.CardLayerController.ShowCardFront();
       return;
     }
-    _context.ShowCardBack();
+    _context.CardLayerController.ShowCardBack();
   }
 
   void DetectClick()
