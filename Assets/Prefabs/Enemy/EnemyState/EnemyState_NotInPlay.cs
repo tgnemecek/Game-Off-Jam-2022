@@ -10,7 +10,7 @@ public class EnemyState_NotInPlay : EnemyState
   public override void EnterState() { }
   public override void UpdateState()
   {
-    if (_context.DrawnOnThisFrame)
+    if (_context.Target != null)
     {
       SwitchState(_factory.Hunting());
       return;

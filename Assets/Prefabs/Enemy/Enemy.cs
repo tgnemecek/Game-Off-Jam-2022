@@ -13,18 +13,16 @@ public class Enemy : MonoBehaviour
   [SerializeField]
   private int _damage = 0;
   [SerializeField]
-  private Transform _target = null; public Transform target { get { return _target; } set { _target = value; } }
+  private Transform _target; public Transform Target { get { return _target; } set { _target = value; } }
+  [SerializeField]
+  private Rigidbody _rb; public Rigidbody Rigidbody => _rb;
+  [SerializeField]
+  private EnemyConfig _enemyConfig; public EnemyConfig EnemyConfig => _enemyConfig;
 
   private EnemyStateFactory _stateFactory;
   private EnemyState _currentState; public EnemyState CurrentState { get { return _currentState; } set { _currentState = value; } }
 
   private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
-  private Transform _transform; public Transform transform { get { return _transform; } set { _transform = value; } }
-
-  public void Spawn() 
-  {
-    _drawnOnThisFrame = true;
-  }
 
   void Awake() { }
 
@@ -33,7 +31,6 @@ public class Enemy : MonoBehaviour
     _stateFactory = new EnemyStateFactory(this);
     _currentState = _stateFactory.NotInPlay();
     _currentState.EnterState();
-    _transform = GetComponent<Transform>();
   }
 
   void Update()
@@ -41,12 +38,12 @@ public class Enemy : MonoBehaviour
     _currentState.UpdateState();
   }
 
-  void FixedUpdate() 
+  void FixedUpdate()
   {
     _currentState.FixedUpdateState();
-  } 
+  }
 
-  public void EndOfTurn() 
+  public void EndOfTurn()
   {
     _currentState.EndOfTurn();
   }

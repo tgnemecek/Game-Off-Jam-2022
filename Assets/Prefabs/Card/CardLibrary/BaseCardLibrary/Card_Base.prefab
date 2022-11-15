@@ -89,6 +89,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardLayerController
       objectReference: {fileID: 0}
+    - target: {fileID: 2434122889869881479, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Name
+      value: Sprite Shadow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2434122889869881479, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485184831167638871, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3542867229057458111, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
       propertyPath: m_RootOrder
       value: 0

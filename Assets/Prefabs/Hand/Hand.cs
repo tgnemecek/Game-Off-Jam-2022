@@ -15,6 +15,9 @@ public class Hand : MonoBehaviour
   private DrawPile _drawPile;
 
   [SerializeField]
+  private Board _board;
+
+  [SerializeField]
   private DiscardPile _discardPile;
 
   public void DrawHand()
@@ -86,6 +89,7 @@ public class Hand : MonoBehaviour
   public void OnCardPlayed(Card card)
   {
     _cards.Remove(card);
+    _board.AddCardToBoard(card);
     CalculateHandPositions();
   }
 

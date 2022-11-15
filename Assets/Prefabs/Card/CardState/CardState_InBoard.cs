@@ -13,6 +13,7 @@ public class CardState_InBoard : CardState
   public override void EnterState()
   {
     _context.Hand.OnCardPlayed(_context);
+    _context.CardLayerController.SetDefaultLayer();
     _context.CanReturnToHand = false;
     _isHovering = true;
     _isHoveringQueued = false;
