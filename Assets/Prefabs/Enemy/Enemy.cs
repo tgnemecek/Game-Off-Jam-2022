@@ -19,9 +19,8 @@ public class Enemy : MonoBehaviour
   private EnemyState _currentState; public EnemyState CurrentState { get { return _currentState; } set { _currentState = value; } }
 
   private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
-  private Transform _transform; public Transform transform { get { return _transform; } set { _transform = value; } }
 
-  public void Spawn() 
+  public void Spawn()
   {
     _drawnOnThisFrame = true;
   }
@@ -33,7 +32,6 @@ public class Enemy : MonoBehaviour
     _stateFactory = new EnemyStateFactory(this);
     _currentState = _stateFactory.NotInPlay();
     _currentState.EnterState();
-    _transform = GetComponent<Transform>();
   }
 
   void Update()
@@ -41,12 +39,12 @@ public class Enemy : MonoBehaviour
     _currentState.UpdateState();
   }
 
-  void FixedUpdate() 
+  void FixedUpdate()
   {
     _currentState.FixedUpdateState();
-  } 
+  }
 
-  public void EndOfTurn() 
+  public void EndOfTurn()
   {
     _currentState.EndOfTurn();
   }
