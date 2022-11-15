@@ -33,13 +33,7 @@ public abstract class Card : MonoBehaviour
   public CardConfig _cardConfig; public CardConfig CardConfig => _cardConfig;
 
   [SerializeField]
-  private TextMeshProUGUI _nameText; public TextMeshProUGUI NameText => _nameText;
-  [SerializeField]
   private CardLayerController _cardLayerController; public CardLayerController CardLayerController => _cardLayerController;
-  [SerializeField]
-  private SpriteRenderer _backSprite; public SpriteRenderer BackSprite => _backSprite;
-  [SerializeField]
-  private SpriteRenderer _onHoverSprite; public SpriteRenderer OnHoverSprite => _onHoverSprite;
 
   protected Hand _hand; public Hand Hand => _hand;
   private ResourceCostDictionary _cost = new ResourceCostDictionary(); public ResourceCostDictionary Cost => _cost;
@@ -70,37 +64,14 @@ public abstract class Card : MonoBehaviour
         _cardConfig = AssetDatabase.LoadAssetAtPath<CardConfig>(path);
       }
     }
-    void InjectNameText()
-    {
-      _nameText = GetComponentInChildren<TextMeshProUGUI>();
-      _nameText.text = Name;
-    }
     void InjectCardLayerController()
     {
       _cardLayerController = GetComponentInChildren<CardLayerController>();
     }
-    void InjectCardSprites()
-    {
-      var sprites = GetComponentsInChildren<SpriteRenderer>();
-      foreach (var sprite in sprites)
-      {
-        if (sprite.gameObject.name == "Sprite Back")
-        {
-          _backSprite = sprite;
-        }
-        if (sprite.gameObject.name == "Sprite OnHover")
-        {
-          _onHoverSprite = sprite;
-        }
-      }
-    }
 
     InjectCardConfig();
-    InjectNameText();
     InjectCardLayerController();
-    InjectCardSprites();
   }
-
 
   public void Draw(Hand hand)
   {
@@ -118,8 +89,7 @@ public abstract class Card : MonoBehaviour
   {
     _cost.Add(Resource.Wood, WoodCost);
     _cost.Add(Resource.Stone, StoneCost);
-    _nameText.text = Name;
-    _nameText.gameObject.SetActive(false);
+    CardLayerController.Initialize(Name, _cardConfig);
   }
 
   void Start()

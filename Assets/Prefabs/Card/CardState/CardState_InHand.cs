@@ -32,8 +32,12 @@ public class CardState_InHand : CardState
 
     bool facingCamera = absRotationY < 90;
 
-    _context.BackSprite.gameObject.SetActive(!facingCamera);
-    _context.NameText.gameObject.SetActive(facingCamera);
+    if (facingCamera)
+    {
+      _context.CardLayerController.ShowCardFront();
+      return;
+    }
+    _context.CardLayerController.ShowCardBack();
   }
 
   void DetectClick()

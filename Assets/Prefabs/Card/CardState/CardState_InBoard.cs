@@ -70,21 +70,14 @@ public class CardState_InBoard : CardState
   {
     _isHovering = false;
     _isHoveringQueued = false;
-
-    _context.OnHoverSprite.transform.localScale = Vector3.one;
+    _context.CardLayerController.ToggleHoverOutline(false);
   }
 
   void OnHoverStart()
   {
     _isHovering = true;
     _isHoveringQueued = false;
-
-    float offsetSize = _context.CardConfig.OnBoardHoverOutlineSize;
-
-    float x = _context.BackSprite.transform.localScale.x + offsetSize;
-    float y = _context.BackSprite.transform.localScale.y + offsetSize;
-
-    _context.OnHoverSprite.transform.localScale = new Vector3(x, y, 1);
+    _context.CardLayerController.ToggleHoverOutline(true);
   }
 
 
