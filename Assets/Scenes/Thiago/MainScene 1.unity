@@ -179,33 +179,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
+      propertyPath: _board
+      value: 
+      objectReference: {fileID: 101726511}
+    - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
       propertyPath: _spawnArea
       value: 
       objectReference: {fileID: 45512453}
     - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
       propertyPath: _nextWave.Array.size
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
       propertyPath: _nextWave.Array.data[0]
       value: 
-      objectReference: {fileID: 2768287760501927760, guid: 287e7809c22fa8b409b1610825f2d64b, type: 3}
+      objectReference: {fileID: 2132554236322058779, guid: 442e8d276043b7845b599de9ec71da5a, type: 3}
     - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
       propertyPath: _nextWave.Array.data[1]
       value: 
-      objectReference: {fileID: 2768287760501927760, guid: 287e7809c22fa8b409b1610825f2d64b, type: 3}
+      objectReference: {fileID: 2132554236322058779, guid: 442e8d276043b7845b599de9ec71da5a, type: 3}
     - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
       propertyPath: _nextWave.Array.data[2]
       value: 
-      objectReference: {fileID: 2768287760501927760, guid: 287e7809c22fa8b409b1610825f2d64b, type: 3}
+      objectReference: {fileID: 2132554236322058779, guid: 442e8d276043b7845b599de9ec71da5a, type: 3}
     - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
       propertyPath: _nextWave.Array.data[3]
       value: 
-      objectReference: {fileID: 2768287760501927760, guid: 287e7809c22fa8b409b1610825f2d64b, type: 3}
+      objectReference: {fileID: 2132554236322058779, guid: 442e8d276043b7845b599de9ec71da5a, type: 3}
     - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
       propertyPath: _nextWave.Array.data[4]
       value: 
-      objectReference: {fileID: 2768287760501927760, guid: 287e7809c22fa8b409b1610825f2d64b, type: 3}
+      objectReference: {fileID: 2132554236322058779, guid: 442e8d276043b7845b599de9ec71da5a, type: 3}
     - target: {fileID: 8185177588401775426, guid: 6d8ea50f5be1b71478d9153461af5a23, type: 3}
       propertyPath: _nextWave.Array.data[5]
       value: 
@@ -368,6 +372,17 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 7763088580196110323, guid: 63510df001069034892acb27f6a5eb10, type: 3}
   m_PrefabInstance: {fileID: 6783028979025825082}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &101726511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5361067586236207898, guid: 63510df001069034892acb27f6a5eb10, type: 3}
+  m_PrefabInstance: {fileID: 6783028979025825082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf987bc5f796e348a0e59a956159ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &140770039 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 733446318231687966, guid: 445d9804d2aaa074e9a53a0db18180ac, type: 3}
@@ -900,7 +915,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 6.47
+  m_Intensity: 22.18
   m_Range: 36.36
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1160,7 +1175,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1557,6 +1572,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 733446318231687966, guid: 445d9804d2aaa074e9a53a0db18180ac, type: 3}
+      propertyPath: _board
+      value: 
+      objectReference: {fileID: 101726511}
     - target: {fileID: 733446318231687966, guid: 445d9804d2aaa074e9a53a0db18180ac, type: 3}
       propertyPath: _drawPile
       value: 

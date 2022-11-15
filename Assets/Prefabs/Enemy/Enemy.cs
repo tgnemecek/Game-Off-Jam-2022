@@ -13,17 +13,16 @@ public class Enemy : MonoBehaviour
   [SerializeField]
   private int _damage = 0;
   [SerializeField]
-  private Transform _target = null; public Transform target { get { return _target; } set { _target = value; } }
+  private Transform _target; public Transform Target { get { return _target; } set { _target = value; } }
+  [SerializeField]
+  private Rigidbody _rb; public Rigidbody Rigidbody => _rb;
+  [SerializeField]
+  private EnemyConfig _enemyConfig; public EnemyConfig EnemyConfig => _enemyConfig;
 
   private EnemyStateFactory _stateFactory;
   private EnemyState _currentState; public EnemyState CurrentState { get { return _currentState; } set { _currentState = value; } }
 
   private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
-
-  public void Spawn()
-  {
-    _drawnOnThisFrame = true;
-  }
 
   void Awake() { }
 

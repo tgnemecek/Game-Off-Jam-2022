@@ -43,7 +43,7 @@ public class DeckBook : MonoBehaviour
 
       canvas.transform.SetParent(_gridLayoutGroup.transform);
       canvas.transform.localScale = Vector3.one;
-      Destroy(card);
+      Destroy(card.gameObject);
     }
   }
 }

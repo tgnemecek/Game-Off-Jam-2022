@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
   [SerializeField]
+  Board _board;
+  [SerializeField]
   Collider _spawnArea;
 
   [SerializeField]
@@ -19,8 +21,10 @@ public class EnemyManager : MonoBehaviour
   {
     foreach (var e in _nextWave)
     {
-      Enemy enemy = Instantiate(e, _spawnArea.transform.position, _spawnArea.transform.rotation, _spawnArea.transform);
+      Enemy enemy = Instantiate(e, _spawnArea.transform.position, Quaternion.identity, _spawnArea.transform);
       enemy.transform.localPosition = GetRandomPositionInSpawnArea();
+      enemy.transform.localRotation = Quaternion.Euler(90, 0, 0);
+      //   enemy.Target = _board.Cards[0].transform;
     }
   }
   public Vector3 GetRandomPositionInSpawnArea()
