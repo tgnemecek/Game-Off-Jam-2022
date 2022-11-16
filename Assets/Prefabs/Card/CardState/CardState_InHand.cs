@@ -6,6 +6,7 @@ public class CardState_InHand : CardState
 {
   bool _isHovering = false;
   bool _isHoveringQueued = false;
+  Camera _camera = Camera.main;
 
   public CardState_InHand(Card context, CardStateFactory factory) : base(context, factory) { }
 
@@ -28,16 +29,22 @@ public class CardState_InHand : CardState
 
   void CheckCardSide()
   {
-    float absRotationY = Mathf.Abs(_context.transform.rotation.eulerAngles.y);
+    // float dot = Vector3.Dot(_context.transform.forward, (_camera.transform.position - _context.transform.position).normalized);
+    // bool facingCamera = dot > .7f;
 
-    bool facingCamera = absRotationY < 90;
 
-    if (facingCamera)
-    {
-      _context.CardLayerController.ShowCardFront();
-      return;
-    }
-    _context.CardLayerController.ShowCardBack();
+
+
+    // // float absRotationY = Mathf.Abs(_context.transform.rotation.eulerAngles.y);
+
+    // // bool facingCamera = absRotationY < 90;
+
+    // if (facingCamera)
+    // {
+    //   _context.CardLayerController.ShowCardFront();
+    //   return;
+    // }
+    // _context.CardLayerController.ShowCardBack();
   }
 
   void DetectClick()
