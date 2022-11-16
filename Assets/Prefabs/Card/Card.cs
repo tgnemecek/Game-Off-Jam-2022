@@ -45,7 +45,8 @@ public abstract class Card : MonoBehaviour
 
   [SerializeField]
   private CardLayerController _cardLayerController; public CardLayerController CardLayerController => _cardLayerController;
-
+  [SerializeField]
+  private CardProximityDetector _cardProximityDetector; public CardProximityDetector CardProximityDetector => _cardProximityDetector;
   protected Hand _hand; public Hand Hand => _hand;
   private ResourceCostDictionary _cost = new ResourceCostDictionary(); public ResourceCostDictionary Cost => _cost;
 
@@ -57,6 +58,7 @@ public abstract class Card : MonoBehaviour
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
   private bool _canReturnToHand = true; public bool CanReturnToHand { get { return _canReturnToHand; } set { _canReturnToHand = value; } }
+  public Vector3 LastValidBoardPosition { get; set; }
 
   void Reset()
   {
@@ -75,13 +77,14 @@ public abstract class Card : MonoBehaviour
         _cardConfig = AssetDatabase.LoadAssetAtPath<CardConfig>(path);
       }
     }
-    void InjectCardLayerController()
+    void InjectSubComponents()
     {
       _cardLayerController = GetComponentInChildren<CardLayerController>();
+      _cardProximityDetector = GetComponentInChildren<CardProximityDetector>();
     }
 
     InjectCardConfig();
-    InjectCardLayerController();
+    InjectSubComponents();
   }
 
   public void Draw(Hand hand)
@@ -110,8 +113,16 @@ public abstract class Card : MonoBehaviour
     _currentState.EnterState();
   }
 
-  public void MouseEnter() => _currentState.OnMouseEnter();
-  public void MouseExit() => _currentState.OnMouseExit();
+  public void MouseEnter()
+  {
+    _isHovering = true;
+    _currentState.OnMouseEnter();
+  }
+  public void MouseExit()
+  {
+    _isHovering = false;
+    _currentState.OnMouseExit();
+  }
 
   void Update()
   {

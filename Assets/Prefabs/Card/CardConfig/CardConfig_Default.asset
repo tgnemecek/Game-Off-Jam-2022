@@ -17,7 +17,7 @@ MonoBehaviour:
   ScaleOnHover: 1.6
   ScaleOnHoverTime: 0.2
   OffsetYOnHover: 0.5
-  MovementToHandTime: 5
+  MovementToHandTime: 0.5
   CatchUpSpeedWhileDragging: 0.2
   CardBendSpeed: 10
   CardBendMaxRotation: 60

@@ -1,16 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2909335264335235380
+--- !u!1001 &2330548746444637664
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1930126718657431138, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
-      propertyPath: m_text
-      value: Tropical Forest
-      objectReference: {fileID: 0}
     - target: {fileID: 2402168949140496067, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_Name
       value: Card_Building
@@ -21,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4521102765380268841, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1941776
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4521102765380268841, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15105285
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4521102765380268841, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.020489562
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4521102765380268841, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_LocalRotation.w
@@ -61,43 +57,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
---- !u!1 &663787181181376503 stripped
+--- !u!1 &72605503627107107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2402168949140496067, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
-  m_PrefabInstance: {fileID: 2909335264335235380}
+  m_PrefabInstance: {fileID: 2330548746444637664}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4210105689965953021
+--- !u!114 &8782049302101826971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663787181181376503}
+  m_GameObject: {fileID: 72605503627107107}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 174ebcc1c5b594f4eb4e4cb4e6795f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
-  _nameText: {fileID: 3650511662540722006}
-  _cardLayerController: {fileID: 4446759622038378518}
-  _backSprite: {fileID: 7146096556528768942}
+  _cardLayerController: {fileID: 3855605672805487810}
+  _cardProximityDetector: {fileID: 6730181693129872375}
   Type: 40
---- !u!114 &3650511662540722006 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1930126718657431138, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
-  m_PrefabInstance: {fileID: 2909335264335235380}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4446759622038378518 stripped
+--- !u!114 &3855605672805487810 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1573472963181531426, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
-  m_PrefabInstance: {fileID: 2909335264335235380}
+  m_PrefabInstance: {fileID: 2330548746444637664}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -105,8 +89,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9301693c1627464a92951417edd2eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &7146096556528768942 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5425713811136061082, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
-  m_PrefabInstance: {fileID: 2909335264335235380}
+--- !u!114 &6730181693129872375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9021181929722435095, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
+  m_PrefabInstance: {fileID: 2330548746444637664}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
