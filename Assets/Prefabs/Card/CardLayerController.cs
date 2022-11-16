@@ -27,7 +27,6 @@ public class CardLayerController : MonoBehaviour
     _nameText.text = cardName;
     _cardConfig = cardConfig;
     _defaultSortingLayerID = _canvas.sortingLayerID;
-    _nameText.gameObject.SetActive(false);
   }
 
   public void SetDraggedLayer()
@@ -43,14 +42,14 @@ public class CardLayerController : MonoBehaviour
   public void ShowCardBack()
   {
     _backSprite.gameObject.SetActive(true);
-    _nameText.gameObject.SetActive(false);
+    _canvas.gameObject.SetActive(false);
     _nameText.fontSize = _cardConfig.FontSizeInHand;
   }
 
   public void ShowCardFront()
   {
     _backSprite.gameObject.SetActive(false);
-    _nameText.gameObject.SetActive(true);
+    _canvas.gameObject.SetActive(true);
     _nameText.fontSize = _cardConfig.FontSizeInHand;
   }
 

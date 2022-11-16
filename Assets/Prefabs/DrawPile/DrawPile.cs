@@ -23,8 +23,9 @@ public class DrawPile : MonoBehaviour
     while (tempList.Count > 0)
     {
       int randomIndex = UnityEngine.Random.Range(0, tempList.Count - 1);
-      var card = Instantiate(tempList[randomIndex], transform.position, Quaternion.Euler(0, 180, 0), transform);
+      var card = Instantiate(tempList[randomIndex], transform.position, Quaternion.Euler(-90, -180, 0), transform);
       _cards.Push(card);
+      card.CardLayerController.ShowCardBack();
       tempList.RemoveAt(randomIndex);
       _counter.text = _cards.Count.ToString();
     }
