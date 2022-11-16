@@ -24,13 +24,17 @@ public class CardLayerController : MonoBehaviour
 
   public void Initialize(string cardName, Sprite sprite, CardConfig cardConfig)
   {
+    _cardConfig = cardConfig;
     _nameText.text = cardName;
     _nameText.fontSize = _cardConfig.FontSizeInHand;
     _cardImage.sprite = sprite;
-    _cardConfig = cardConfig;
     _defaultSortingLayerID = _canvas.sortingLayerID;
 
     ShowCardBack();
+  }
+
+  public void SetCardImage(Sprite sprite) {
+    _cardImage.sprite = sprite;
   }
 
   public void SetDraggedLayer()
@@ -58,7 +62,6 @@ public class CardLayerController : MonoBehaviour
   public void ShowCardForUI()
   {
     ShowCardFront();
-    _nameText.fontSize = _cardConfig.FontSizeInDeckBook;
   }
 
   public void ToggleHoverOutline(bool enabled)
