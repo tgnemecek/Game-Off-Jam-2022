@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 733446318231687953}
   - component: {fileID: 733446318231687966}
+  - component: {fileID: 4765887438545146319}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -49,3 +50,16 @@ MonoBehaviour:
   _drawPile: {fileID: 0}
   _board: {fileID: 0}
   _discardPile: {fileID: 0}
+--- !u!65 &4765887438545146319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733446318231687967}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.04, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
