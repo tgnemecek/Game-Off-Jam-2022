@@ -11,7 +11,7 @@ public class CardLayerController : MonoBehaviour
   [SerializeField]
   private string _draggedSortingLayerName;
   [SerializeField]
-  private Image _cardPanel;
+  private Image _cardImage;
   [SerializeField]
   private SpriteRenderer _backSprite;
   [SerializeField]
@@ -22,11 +22,15 @@ public class CardLayerController : MonoBehaviour
 
   private int _defaultSortingLayerID;
 
-  public void Initialize(string cardName, CardConfig cardConfig)
+  public void Initialize(string cardName, Sprite sprite, CardConfig cardConfig)
   {
     _nameText.text = cardName;
+    _nameText.fontSize = _cardConfig.FontSizeInHand;
+    _cardImage.sprite = sprite;
     _cardConfig = cardConfig;
     _defaultSortingLayerID = _canvas.sortingLayerID;
+
+    ShowCardBack();
   }
 
   public void SetDraggedLayer()
@@ -43,14 +47,12 @@ public class CardLayerController : MonoBehaviour
   {
     _backSprite.gameObject.SetActive(true);
     _canvas.gameObject.SetActive(false);
-    _nameText.fontSize = _cardConfig.FontSizeInHand;
   }
 
   public void ShowCardFront()
   {
     _backSprite.gameObject.SetActive(false);
     _canvas.gameObject.SetActive(true);
-    _nameText.fontSize = _cardConfig.FontSizeInHand;
   }
 
   public void ShowCardForUI()

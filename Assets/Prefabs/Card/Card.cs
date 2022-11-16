@@ -22,7 +22,18 @@ public abstract class Card : MonoBehaviour
 
   public string Description { get; set; }
 
-  public string Image { get; set; }
+  private string _Image; public string Image
+  {
+    get { return _Image; }
+    set
+    {
+      if (_cardLayerController)
+      {
+        _cardLayerController.SetCardImage(Resources.Load<Sprite>(value));
+      }
+      _Image = value;
+    }
+  }
 
   public int WoodCost { get; set; }
 
@@ -89,7 +100,7 @@ public abstract class Card : MonoBehaviour
   {
     _cost.Add(Resource.Wood, WoodCost);
     _cost.Add(Resource.Stone, StoneCost);
-    CardLayerController.Initialize(Name, _cardConfig);
+    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _cardConfig);
   }
 
   void Start()
