@@ -29,6 +29,7 @@ public class CardState_InHand : CardState
 
   void CheckCardSide()
   {
+    _context.CardLayerController.ShowCardFront();
     // float dot = Vector3.Dot(_context.transform.forward, (_camera.transform.position - _context.transform.position).normalized);
     // bool facingCamera = dot > .7f;
 
