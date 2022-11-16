@@ -7,7 +7,7 @@ public class Card_Cavalry_Duck : Card_Unit
     this.Id = 6;
 		this.Name = "Cavalry Duck";
 		this.Description = "A knight in shining armor";
-		this.Image = "https://github.com/tgnemecek/Game-Off-Jam-2022/blob/master/img/unit/duck_cavalry.png";
+		this.Image = "Card/Unit/Duck_cavalry";
 		this.WoodCost = 0;
 		this.StoneCost = 0;
   }

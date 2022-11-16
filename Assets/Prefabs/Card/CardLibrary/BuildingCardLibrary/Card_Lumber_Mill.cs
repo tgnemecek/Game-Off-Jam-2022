@@ -7,7 +7,7 @@ public class Card_Lumber_Mill : Card_Building
     this.Id = 17;
 		this.Name = "Lumber Mill";
 		this.Description = "Gain 2 Wood at the end of each turn";
-		this.Image = "https://github.com/tgnemecek/Game-Off-Jam-2022/blob/master/img/building/lumber_mill.png";
+		this.Image = "Card/Building/Lumber_mill";
 		this.WoodCost = 0;
 		this.StoneCost = 0;
   }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3639877987328248569
+--- !u!1001 &5218144033650179046
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -57,46 +57,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
---- !u!114 &1587848970832553513 stripped
+--- !u!114 &290336647689998339 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2633019768617528528, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
-  m_PrefabInstance: {fileID: 3639877987328248569}
+  m_CorrespondingSourceObject: {fileID: 5507315198729251813, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
+  m_PrefabInstance: {fileID: 5218144033650179046}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
+  m_Script: {fileID: 11500000, guid: a9301693c1627464a92951417edd2eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5363425400897203965 stripped
+--- !u!1 &3496857200787513314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8713839944000218116, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
-  m_PrefabInstance: {fileID: 3639877987328248569}
+  m_PrefabInstance: {fileID: 5218144033650179046}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2267661846201773971
+--- !u!114 &5077668357921505104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5363425400897203965}
+  m_GameObject: {fileID: 3496857200787513314}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed602bd8a0588bf49a416d3e9c576ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
-  _cardLayerController: {fileID: 9146415294320419100}
-  _cardProximityDetector: {fileID: 1587848970832553513}
+  _cardLayerController: {fileID: 290336647689998339}
+  _cardProximityDetector: {fileID: 7845499100912785206}
   Type: 20
---- !u!114 &9146415294320419100 stripped
+--- !u!114 &7845499100912785206 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5507315198729251813, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
-  m_PrefabInstance: {fileID: 3639877987328248569}
+  m_CorrespondingSourceObject: {fileID: 2633019768617528528, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
+  m_PrefabInstance: {fileID: 5218144033650179046}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9301693c1627464a92951417edd2eeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

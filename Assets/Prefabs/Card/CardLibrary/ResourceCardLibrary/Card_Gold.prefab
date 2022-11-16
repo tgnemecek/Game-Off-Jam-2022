@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7865224520925935296
+--- !u!1001 &8243415181555223594
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -57,10 +57,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
---- !u!114 &2042696979318508971 stripped
+--- !u!114 &223355330763503425 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8178530411269356395, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
-  m_PrefabInstance: {fileID: 7865224520925935296}
+  m_PrefabInstance: {fileID: 8243415181555223594}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -68,31 +68,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9301693c1627464a92951417edd2eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2943437330144870986 stripped
+--- !u!1 &4006421090254125216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5043983958204986506, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
-  m_PrefabInstance: {fileID: 7865224520925935296}
+  m_PrefabInstance: {fileID: 8243415181555223594}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1490004070892393325
+--- !u!114 &4463184017070323126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2943437330144870986}
+  m_GameObject: {fileID: 4006421090254125216}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ab0d3078b565ed44b799320bc5564dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
-  _cardLayerController: {fileID: 2042696979318508971}
-  _cardProximityDetector: {fileID: 8412348541272427166}
+  _cardLayerController: {fileID: 223355330763503425}
+  _cardProximityDetector: {fileID: 7781710002322124916}
   Type: 0
---- !u!114 &8412348541272427166 stripped
+--- !u!114 &7781710002322124916 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1844310265406618718, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
-  m_PrefabInstance: {fileID: 7865224520925935296}
+  m_PrefabInstance: {fileID: 8243415181555223594}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
