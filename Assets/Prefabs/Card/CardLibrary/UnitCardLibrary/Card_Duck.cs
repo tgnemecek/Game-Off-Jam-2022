@@ -7,7 +7,7 @@ public class Card_Duck : Card_Unit
     this.Id = 4;
 		this.Name = "Duck";
 		this.Description = "Normal duck";
-		this.Image = "https://github.com/tgnemecek/Game-Off-Jam-2022/blob/master/img/unit/duck.png";
+		this.Image = "Card/Unit/Duck";
 		this.WoodCost = 0;
 		this.StoneCost = 0;
   }

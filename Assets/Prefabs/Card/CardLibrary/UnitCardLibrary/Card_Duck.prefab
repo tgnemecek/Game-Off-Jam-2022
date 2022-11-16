@@ -7,9 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 406295301742019790, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944673593939103420, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156130546160464047, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5495328957036909638, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_Name
-      value: Card_Unit
+      value: Card_Duck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835756066698871970, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6028996631765105068, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_RootOrder
@@ -55,17 +71,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6637399255155510310, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8636869971037998311, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_text
       value: Duck
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
---- !u!212 &2801234879610116366 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2763348192594908191, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
-  m_PrefabInstance: {fileID: 37892204446747921}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5532050164150458711 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5495328957036909638, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
@@ -84,21 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
-  _nameText: {fileID: 8600412632253153782}
   _cardLayerController: {fileID: 8666584760949642934}
-  _backSprite: {fileID: 2801234879610116366}
   Type: 10
---- !u!114 &8600412632253153782 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8636869971037998311, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
-  m_PrefabInstance: {fileID: 37892204446747921}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8666584760949642934 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8701933244976307111, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}

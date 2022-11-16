@@ -7,7 +7,7 @@ public class Card_Fishing : Card_Item
     this.Id = 8;
 		this.Name = "Fishing";
 		this.Description = "Gain 1 Fish";
-		this.Image = "https://github.com/tgnemecek/Game-Off-Jam-2022/blob/master/img/item/fishing.jpg";
+		this.Image = "Card/Item/Fishing";
 		this.WoodCost = 0;
 		this.StoneCost = 0;
   }

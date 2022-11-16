@@ -7,7 +7,7 @@ public class Card_Fish : Card_Resource
     this.Id = 2;
 		this.Name = "Fish";
 		this.Description = "";
-		this.Image = "https://github.com/tgnemecek/Game-Off-Jam-2022/blob/master/img/resource/fish.png";
+		this.Image = "Card/Resource/Fish";
 		this.WoodCost = 0;
 		this.StoneCost = 0;
   }
