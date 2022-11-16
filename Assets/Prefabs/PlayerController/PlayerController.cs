@@ -9,12 +9,12 @@ public class PlayerController : MonoBehaviour
   public static PlayerController Instance { get { return _instance; } }
 
   [SerializeField]
-  SectionTrigger _lowerSectionTrigger;
+  Hand _hand;
   [SerializeField]
   LayerMask _cardLayerMask;
   private Camera _camera;
 
-  public bool IsHoveringOnLowerSection => _lowerSectionTrigger.IsHovering;
+  public bool IsHoveringOnLowerSection => _hand.IsHovering;
   [HideInInspector]
   public Card CardPointedTo;
   private bool _isDraggingCard = false; public bool IsDraggingCard { get { return _isDraggingCard; } set { _isDraggingCard = value; } }
@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     if (Physics.Raycast(ray, out hit, 99f, _cardLayerMask))
     {
+      print(hit.collider.name);
       Card card;
       if (hit.collider.TryGetComponent<Card>(out card))
       {

@@ -6,13 +6,13 @@ public class CardState_Dragged : CardState
 {
   public CardState_Dragged(Card context, CardStateFactory factory) : base(context, factory) { }
 
-  Camera _camera;
+  Camera _camera = Camera.main;
+  Vector3 _lastValidPosition;
 
   public override void EnterState()
   {
-    // @TODO Replace Camera.main
-    if (_camera == null) _camera = Camera.main;
     PlayerController.Instance.IsDraggingCard = true;
+    _context.CardLayerController.SetDraggedLayer();
   }
   public override void UpdateState()
   {
@@ -22,6 +22,7 @@ public class CardState_Dragged : CardState
   public override void FixedUpdateState()
   {
     SnapToBoard();
+    SaveLastValidPosition();
   }
 
   void SnapToBoard()
@@ -45,6 +46,13 @@ public class CardState_Dragged : CardState
         _context.CardConfig.CatchUpSpeedWhileDragging
       );
     }
+  }
+
+  void SaveLastValidPosition()
+  {
+    if (PlayerController.Instance.IsHoveringOnLowerSection) return;
+    if (_context.CardProximityDetector.IsCloseToAnotherCard()) return;
+    _context.LastValidBoardPosition = _context.transform.position;
   }
 
   void DetectClick()

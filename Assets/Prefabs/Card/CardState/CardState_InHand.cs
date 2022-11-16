@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CardState_InHand : CardState
 {
-  bool _isHovering = false;
   bool _isHoveringQueued = false;
   Camera _camera = Camera.main;
 
@@ -50,7 +49,7 @@ public class CardState_InHand : CardState
 
   void DetectClick()
   {
-    if (!_isHovering) return;
+    if (!_context.IsHovering) return;
     if (PlayerController.Instance.IsDraggingCard) return;
 
     if (Input.GetMouseButtonDown(0))
@@ -84,7 +83,10 @@ public class CardState_InHand : CardState
 
   void RotateToHand()
   {
-    LeanTween.rotate(_context.gameObject, Vector3.zero, _context.CardConfig.MovementToHandTime).setEaseInOutCubic();
+    float targetX = _camera.transform.rotation.eulerAngles.x;
+    Quaternion rotation = Quaternion.Euler(targetX, 0, 0);
+
+    LeanTween.rotate(_context.gameObject, rotation.eulerAngles, _context.CardConfig.MovementToHandTime).setEaseInOutCubic();
   }
 
   public override void FixedUpdateState() { }
@@ -107,7 +109,6 @@ public class CardState_InHand : CardState
 
   void OnHoverStart()
   {
-    _isHovering = true;
     _isHoveringQueued = false;
     _context.CardLayerController.SetDraggedLayer();
 
@@ -119,7 +120,6 @@ public class CardState_InHand : CardState
 
   public override void OnMouseExit()
   {
-    _isHovering = false;
     _isHoveringQueued = false;
     _context.CardLayerController.SetDefaultLayer();
     ScaleToHandSize();

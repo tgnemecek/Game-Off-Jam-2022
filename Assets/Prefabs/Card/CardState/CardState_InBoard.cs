@@ -35,14 +35,15 @@ public class CardState_InBoard : CardState
 
   void PositionCard()
   {
+    Vector3 basePosition = _context.LastValidBoardPosition;
     float offset = _context.CardConfig.DistanceToBoardWhenPlaced;
     float time = _context.CardConfig.TimeToPlaceOnBoard;
 
-    float y = _context.transform.position.y - offset;
-    float z = _context.transform.position.z + offset;
+    float y = basePosition.y - offset;
+    float z = basePosition.z + offset;
 
     var target = new Vector3(
-      _context.transform.position.x,
+      basePosition.x,
       y,
       z
     );

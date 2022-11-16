@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 715259857232081646}
   m_Layer: 8
   m_Name: Card_Base
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 2951282319880660418}
+  _cardProximityDetector: {fileID: 4616959120924877559}
 --- !u!65 &7863358496437064660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85,13 +86,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 260428065236813769}
     m_Modifications:
+    - target: {fileID: 1241639285130992016, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1302159212749150357, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
       propertyPath: m_Name
       value: CardLayerController
       objectReference: {fileID: 0}
+    - target: {fileID: 1302159212749150357, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2434122889869881479, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
       propertyPath: m_Name
       value: Sprite Shadow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2434122889869881479, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2434122889869881479, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
       propertyPath: m_IsActive
@@ -100,6 +113,10 @@ PrefabInstance:
     - target: {fileID: 2485184831167638871, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
       propertyPath: m_CastShadows
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3510452973000625812, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3542867229057458111, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
       propertyPath: m_RootOrder
@@ -145,6 +162,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3855055189612136566, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3855055189612136566, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860663729322471626, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925280326050849888, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287524715237425354, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168812301291112490, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9168812301291112490, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -160,6 +201,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9301693c1627464a92951417edd2eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4616959120924877559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 598689847502118074, guid: 24e6c736e34b91d43940efd9991c257a, type: 3}
+  m_PrefabInstance: {fileID: 5214116021308571213}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8752332579707986418 stripped
