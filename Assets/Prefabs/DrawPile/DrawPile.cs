@@ -25,9 +25,12 @@ public class DrawPile : MonoBehaviour
       int randomIndex = UnityEngine.Random.Range(0, tempList.Count - 1);
       var card = Instantiate(tempList[randomIndex], transform.position, Quaternion.Euler(-90, -180, 0), transform);
       _cards.Push(card);
+      card.CardLayerController.SetDrawPileLayer();
       card.CardLayerController.ShowCardBack();
       tempList.RemoveAt(randomIndex);
-      _counter.text = _cards.Count.ToString();
+
+      if (_cards.Count == 0) _counter.text = "";
+      else _counter.text = _cards.Count.ToString();
     }
   }
 

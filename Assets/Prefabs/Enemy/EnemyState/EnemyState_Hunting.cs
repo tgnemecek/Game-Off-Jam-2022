@@ -10,7 +10,7 @@ public class EnemyState_Hunting : EnemyState
   public override void EnterState() { }
   public override void UpdateState()
   {
-    Vector3 difference = _context.Target.position - _context.transform.position;
+    Vector3 difference = _context.Target.transform.position - _context.transform.position;
     if (difference.magnitude <= 1)
     {
       SwitchState(_factory.Attacking());
@@ -20,21 +20,45 @@ public class EnemyState_Hunting : EnemyState
   public override void FixedUpdateState()
   {
     Vector3 target = new Vector3(
-      _context.Target.position.x,
-      _context.Target.position.y,
-      _context.transform.position.z
+      _context.Target.transform.position.x,
+      _context.transform.position.y,
+      _context.Target.transform.position.z
     );
 
     Vector3 distance = target - _context.transform.position;
+    float distanceMag = distance.magnitude;
     Vector3 direction = distance.normalized;
-    Vector3 force = (direction * _context.EnemyConfig.MovementSpeed) / distance.sqrMagnitude;
+    Vector3 velocity = (direction * _context.EnemyConfig.MovementSpeed);
 
-    _context.Rigidbody.AddForce(force);
+    float decelerationDistance = _context.EnemyConfig.DecelerationDistanceFromTarget;
+    float stopDistance = _context.EnemyConfig.StopDistanceFromTarget;
+
+    if (distanceMag < stopDistance)
+    {
+      _context.Rigidbody.velocity = Vector3.zero;
+      return;
+    }
+
+    if (distanceMag < decelerationDistance)
+    {
+      float magFromStop = distanceMag - stopDistance;
+      float decelerationDistanceFromStop = decelerationDistance - stopDistance;
+      float multiplier = magFromStop / decelerationDistanceFromStop;
+
+      velocity *= multiplier;
+
+      if (multiplier < 0.1f)
+      {
+        velocity = Vector3.zero;
+      }
+    }
+
+    _context.Rigidbody.velocity = velocity;
   }
   public override void ExitState() { }
   public override void EndOfTurn()
   {
-    Vector3 difference = _context.Target.position - _context.transform.position;
+    Vector3 difference = _context.Target.transform.position - _context.transform.position;
     difference.Normalize();
     _context.transform.position += difference;
   }

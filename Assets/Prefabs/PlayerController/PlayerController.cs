@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
   void CastRayForCards()
   {
+    if (!GameManager.Instance.IsCardInteractionActive) return;
+
     if (IsDraggingCard)
     {
       CardPointedTo = CardBeingDragged;
@@ -71,6 +73,8 @@ public class PlayerController : MonoBehaviour
 
   void CastRayForHand()
   {
+    if (!GameManager.Instance.IsCardInteractionActive) return;
+
     var (success, hit) = CastRayForLayerMask(_handLayerMask);
     _isHoveringOnHand = success;
   }

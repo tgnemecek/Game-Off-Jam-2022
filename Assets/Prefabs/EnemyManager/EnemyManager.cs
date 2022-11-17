@@ -5,17 +5,13 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
   [SerializeField]
-  Board _board;
+  private Board _board;
   [SerializeField]
-  Collider _spawnArea;
+  private Collider _spawnArea;
 
   [SerializeField]
-  List<Enemy> _nextWave = new List<Enemy>();
-
-  void Start()
-  {
-    SpawnNextWave();
-  }
+  private List<Enemy> _nextWave = new List<Enemy>();
+  private List<Enemy> _currentWave = new List<Enemy>();
 
   public void SpawnNextWave()
   {
@@ -24,10 +20,22 @@ public class EnemyManager : MonoBehaviour
       Enemy enemy = Instantiate(e, _spawnArea.transform.position, Quaternion.identity, _spawnArea.transform);
       enemy.transform.localPosition = GetRandomPositionInSpawnArea();
       enemy.transform.localRotation = Quaternion.Euler(90, 0, 0);
-      //   enemy.Target = _board.Cards[0].transform;
+
+      int randomIndex = UnityEngine.Random.Range(0, _board.Cards.Count - 1);
+      var randomCard = _board.Cards[randomIndex];
+      enemy.Target = randomCard;
+      _currentWave.Add(enemy);
     }
   }
-  public Vector3 GetRandomPositionInSpawnArea()
+  public void ClearWave()
+  {
+    foreach (var enemy in _currentWave)
+    {
+      Destroy(enemy.gameObject);
+    }
+    _currentWave.Clear();
+  }
+  private Vector3 GetRandomPositionInSpawnArea()
   {
     Vector3 extents = _spawnArea.transform.InverseTransformVector(_spawnArea.bounds.extents);
 
