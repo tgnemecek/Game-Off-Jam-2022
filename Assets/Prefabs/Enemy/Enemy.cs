@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
   [SerializeField]
   private int _damage = 0;
   [SerializeField]
-  private Transform _target; public Transform Target { get { return _target; } set { _target = value; } }
+  private Card _target; public Card Target { get { return _target; } set { _target = value; } }
   [SerializeField]
   private Rigidbody _rb; public Rigidbody Rigidbody => _rb;
   [SerializeField]

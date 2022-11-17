@@ -20,6 +20,9 @@ public class Hand : MonoBehaviour
   [SerializeField]
   private DiscardPile _discardPile;
 
+  [SerializeField]
+  private float _spaceBetweenCardsInHand;
+
   public void DrawHand()
   {
     int cardsInHand = _cards.Count;
@@ -33,6 +36,7 @@ public class Hand : MonoBehaviour
       if (card != null)
       {
         card.transform.SetParent(transform);
+        card.CardLayerController.SetDefaultLayer();
         _cards.Add(card);
       }
     }
@@ -53,7 +57,6 @@ public class Hand : MonoBehaviour
 
   void CalculateHandPositions()
   {
-    float space = 1.8f;
     List<float> positionsX = new List<float>();
     float firstElementX = 0;
     float lastElementX = 0;
@@ -61,7 +64,7 @@ public class Hand : MonoBehaviour
     for (int i = 0; i < _cards.Count; i++)
     {
       Card card = _cards[i];
-      float x = i * space;
+      float x = i * _spaceBetweenCardsInHand;
 
       if (i == 0) firstElementX = x;
       if (i == _cards.Count - 1) lastElementX = x;

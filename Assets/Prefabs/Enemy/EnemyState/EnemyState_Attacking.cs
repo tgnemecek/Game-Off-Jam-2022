@@ -13,9 +13,9 @@ public class EnemyState_Attacking : EnemyState
   public override void ExitState() { }
   public override void EndOfTurn()
   {
-    Vector3 difference = _context.transform.position - _context.Target.position;
+    Vector3 difference = _context.transform.position - _context.Target.transform.position;
     difference.Normalize();
-    _context.Target.position -= 3 * difference;
+    _context.Target.transform.position -= 3 * difference;
     SwitchState(_factory.Attacked());
   }
 }

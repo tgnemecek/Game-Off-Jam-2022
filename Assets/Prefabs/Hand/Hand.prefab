@@ -50,6 +50,7 @@ MonoBehaviour:
   _drawPile: {fileID: 0}
   _board: {fileID: 0}
   _discardPile: {fileID: 0}
+  _spaceBetweenCardsInHand: 1.7
 --- !u!65 &4765887438545146319
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -67,7 +67,6 @@ public class CardState_InHand : CardState
 
   void MoveToHandPosition()
   {
-    Debug.Log("MoveToHandPosition");
     LeanTween.move(_context.gameObject, _context.PositionInHand, _context.CardConfig.MovementToHandTime).setEaseInOutCubic();
   }
 
