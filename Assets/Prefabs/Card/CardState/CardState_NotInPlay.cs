@@ -17,7 +17,5 @@ public class CardState_NotInPlay : CardState
     }
   }
   public override void FixedUpdateState() { }
-  public override void OnMouseEnter() { }
-  public override void OnMouseExit() { }
   public override void ExitState() { }
 }

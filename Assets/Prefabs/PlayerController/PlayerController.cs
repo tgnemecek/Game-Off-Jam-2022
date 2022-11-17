@@ -9,15 +9,17 @@ public class PlayerController : MonoBehaviour
   public static PlayerController Instance { get { return _instance; } }
 
   [SerializeField]
-  Hand _hand;
-  [SerializeField]
   LayerMask _cardLayerMask;
+  [SerializeField]
+  LayerMask _handLayerMask;
   private Camera _camera;
-
-  public bool IsHoveringOnLowerSection => _hand.IsHovering;
   [HideInInspector]
   public Card CardPointedTo;
-  private bool _isDraggingCard = false; public bool IsDraggingCard { get { return _isDraggingCard; } set { _isDraggingCard = value; } }
+  [HideInInspector]
+  public Card CardBeingDragged;
+
+  public bool IsDraggingCard => CardBeingDragged != null;
+  private bool _isHoveringOnHand = false; public bool IsHoveringOnHand => _isHoveringOnHand;
 
   private void Awake()
   {
@@ -38,26 +40,46 @@ public class PlayerController : MonoBehaviour
 
   void FixedUpdate()
   {
-    RaycastHit hit;
-    Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+    CastRayForCards();
+    CastRayForHand();
+  }
 
-    if (Physics.Raycast(ray, out hit, 99f, _cardLayerMask))
+  void CastRayForCards()
+  {
+    if (IsDraggingCard)
     {
-      print(hit.collider.name);
+      CardPointedTo = CardBeingDragged;
+      return;
+    }
+
+    var (success, hit) = CastRayForLayerMask(_cardLayerMask);
+
+    if (success)
+    {
       Card card;
       if (hit.collider.TryGetComponent<Card>(out card))
       {
         if (card == CardPointedTo) return;
-        if (CardPointedTo != null) CardPointedTo.MouseExit();
-
         CardPointedTo = card;
-        CardPointedTo.MouseEnter();
       }
     }
     else if (CardPointedTo != null)
     {
-      CardPointedTo.MouseExit();
       CardPointedTo = null;
     }
+  }
+
+  void CastRayForHand()
+  {
+    var (success, hit) = CastRayForLayerMask(_handLayerMask);
+    _isHoveringOnHand = success;
+  }
+
+  (bool, RaycastHit) CastRayForLayerMask(LayerMask mask)
+  {
+    RaycastHit hit;
+    Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+    bool success = Physics.Raycast(ray, out hit, 99f, mask);
+    return (success, hit);
   }
 }

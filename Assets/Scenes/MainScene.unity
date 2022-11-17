@@ -1566,18 +1566,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand
       objectReference: {fileID: 0}
-    - target: {fileID: 4765887438545146319, guid: 445d9804d2aaa074e9a53a0db18180ac, type: 3}
-      propertyPath: m_Size.x
-      value: 8.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765887438545146319, guid: 445d9804d2aaa074e9a53a0db18180ac, type: 3}
-      propertyPath: m_Size.y
-      value: 3.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765887438545146319, guid: 445d9804d2aaa074e9a53a0db18180ac, type: 3}
-      propertyPath: m_Size.z
-      value: 2.71
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 445d9804d2aaa074e9a53a0db18180ac, type: 3}
 --- !u!1001 &910590815064141227
@@ -1769,14 +1757,6 @@ PrefabInstance:
     - target: {fileID: 2308797820297943495, guid: b49e84767d6c129468587f2088272a58, type: 3}
       propertyPath: m_Name
       value: PlayerController
-      objectReference: {fileID: 0}
-    - target: {fileID: 5209894484357987201, guid: b49e84767d6c129468587f2088272a58, type: 3}
-      propertyPath: _hand
-      value: 
-      objectReference: {fileID: 140770039}
-    - target: {fileID: 5209894484357987201, guid: b49e84767d6c129468587f2088272a58, type: 3}
-      propertyPath: _lowerSectionTrigger
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8415791437421992458, guid: b49e84767d6c129468587f2088272a58, type: 3}
       propertyPath: m_RootOrder

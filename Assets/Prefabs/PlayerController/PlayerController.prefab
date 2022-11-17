@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c308f8864a84ad4f8c065f072b42c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lowerSectionTrigger: {fileID: 0}
   _cardLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  _handLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  CardPointedTo: {fileID: 0}
+  CardBeingDragged: {fileID: 0}

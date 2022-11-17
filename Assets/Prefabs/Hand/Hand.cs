@@ -20,11 +20,6 @@ public class Hand : MonoBehaviour
   [SerializeField]
   private DiscardPile _discardPile;
 
-  bool _isHovering = false; public bool IsHovering => _isHovering;
-
-  void OnMouseEnter() => _isHovering = true;
-  void OnMouseExit() => _isHovering = false;
-
   public void DrawHand()
   {
     int cardsInHand = _cards.Count;
