@@ -11,7 +11,7 @@ public class CardState_Dragged : CardState
 
   public override void EnterState()
   {
-    PlayerController.Instance.IsDraggingCard = true;
+    PlayerController.Instance.CardBeingDragged = _context;
     _context.CardLayerController.SetDraggedLayer();
   }
   public override void UpdateState()
@@ -27,30 +27,49 @@ public class CardState_Dragged : CardState
 
   void SnapToBoard()
   {
-    Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-    RaycastHit hitInfo;
-
-
-    if (Physics.Raycast(ray, out hitInfo, 9999, _context.CardConfig.BoardLayerMask))
+    (Vector3, Quaternion) GetTarget()
     {
-      Vector3 point = hitInfo.point;
+      if (PlayerController.Instance.IsHoveringOnHand && _context.CanReturnToHand)
+      {
+        float targetX = _camera.transform.rotation.eulerAngles.x;
+        Quaternion rotation = Quaternion.Euler(targetX, 0, 0);
 
-      _context.transform.position = Vector3.Lerp(
-        _context.transform.position,
-        point,
-        _context.CardConfig.CatchUpSpeedWhileDragging
-      );
-      _context.transform.rotation = Quaternion.Lerp(
-        _context.transform.rotation,
-        hitInfo.collider.transform.rotation,
-        _context.CardConfig.CatchUpSpeedWhileDragging
-      );
+        Vector3 screenPos = new Vector3(
+          Input.mousePosition.x,
+          Input.mousePosition.y,
+          _camera.WorldToScreenPoint(_context.PositionInHand).z
+        );
+
+        Vector3 worldPos = _camera.ScreenToWorldPoint(screenPos);
+
+        return (worldPos, rotation);
+      }
+      Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+      RaycastHit hitInfo;
+      if (Physics.Raycast(ray, out hitInfo, 9999, _context.CardConfig.BoardLayerMask))
+      {
+        return (hitInfo.point, hitInfo.collider.transform.rotation);
+      }
+      return (_context.transform.position, _context.transform.rotation);
     }
+
+    var (target, rotation) = GetTarget();
+
+    _context.transform.position = Vector3.Lerp(
+      _context.transform.position,
+      target,
+      _context.CardConfig.CatchUpSpeedWhileDragging
+    );
+    _context.transform.rotation = Quaternion.Lerp(
+      _context.transform.rotation,
+      rotation,
+      _context.CardConfig.CatchUpSpeedWhileDragging
+    );
   }
 
   void SaveLastValidPosition()
   {
-    if (PlayerController.Instance.IsHoveringOnLowerSection) return;
+    if (PlayerController.Instance.IsHoveringOnHand) return;
     if (_context.CardProximityDetector.IsCloseToAnotherCard()) return;
     _context.LastValidBoardPosition = _context.transform.position;
   }
@@ -59,7 +78,7 @@ public class CardState_Dragged : CardState
   {
     if (Input.GetMouseButtonDown(0))
     {
-      if (PlayerController.Instance.IsHoveringOnLowerSection && _context.CanReturnToHand)
+      if (PlayerController.Instance.IsHoveringOnHand && _context.CanReturnToHand)
       {
         SwitchState(_factory.InHand());
         return;
@@ -71,10 +90,8 @@ public class CardState_Dragged : CardState
     }
   }
 
-  public override void OnMouseEnter() { }
-  public override void OnMouseExit() { }
   public override void ExitState()
   {
-    PlayerController.Instance.IsDraggingCard = false;
+    PlayerController.Instance.CardBeingDragged = null;
   }
 }

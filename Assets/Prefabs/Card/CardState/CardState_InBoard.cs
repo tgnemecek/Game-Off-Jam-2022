@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CardState_InBoard : CardState
 {
-  bool _isHovering = false;
-  bool _isHoveringQueued = false;
+  bool _lastHoverState = false;
 
   public CardState_InBoard(Card context, CardStateFactory factory) : base(context, factory) { }
 
@@ -15,16 +14,13 @@ public class CardState_InBoard : CardState
     _context.Hand.OnCardPlayed(_context);
     _context.CardLayerController.SetDefaultLayer();
     _context.CanReturnToHand = false;
-    _isHovering = true;
-    _isHoveringQueued = false;
     PositionCard();
     OnHoverStart();
   }
 
   void DetectClick()
   {
-    if (!_isHovering) return;
-    if (PlayerController.Instance.IsDraggingCard) return;
+    if (!_context.IsHovering) return;
 
     if (Input.GetMouseButtonDown(0))
     {
@@ -51,43 +47,26 @@ public class CardState_InBoard : CardState
     LeanTween.move(_context.gameObject, target, time).setEaseInCubic();
   }
 
-  void CheckForQueuedHover()
+  void OnHoverEnd()
   {
-    if (!_isHoveringQueued) return;
-
-    if (!PlayerController.Instance.IsDraggingCard) OnHoverStart();
-  }
-
-  public override void OnMouseEnter()
-  {
-    if (PlayerController.Instance.IsDraggingCard)
-    {
-      _isHoveringQueued = true;
-      return;
-    }
-    OnHoverStart();
-  }
-
-  public override void OnMouseExit()
-  {
-    _isHovering = false;
-    _isHoveringQueued = false;
     _context.CardLayerController.ToggleHoverOutline(false);
+
   }
 
   void OnHoverStart()
   {
-    _isHovering = true;
-    _isHoveringQueued = false;
     _context.CardLayerController.ToggleHoverOutline(true);
   }
-
 
   public override void UpdateState()
   {
     DetectClick();
-    CheckForQueuedHover();
   }
-  public override void FixedUpdateState() { }
+  public override void FixedUpdateState()
+  {
+    if (_lastHoverState == false && _context.IsHovering) OnHoverStart();
+    else if (_lastHoverState == true && !_context.IsHovering) OnHoverEnd();
+    _lastHoverState = _context.IsHovering;
+  }
   public override void ExitState() { }
 }

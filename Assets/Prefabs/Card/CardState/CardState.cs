@@ -24,7 +24,5 @@ public abstract class CardState
   public abstract void EnterState();
   public abstract void UpdateState();
   public abstract void FixedUpdateState();
-  public abstract void OnMouseEnter();
-  public abstract void OnMouseExit();
   public abstract void ExitState();
 }

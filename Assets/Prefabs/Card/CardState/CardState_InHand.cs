@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardState_InHand : CardState
 {
-  bool _isHoveringQueued = false;
+  bool _lastHoverState = false;
   Camera _camera = Camera.main;
 
   public CardState_InHand(Card context, CardStateFactory factory) : base(context, factory) { }
@@ -13,8 +13,6 @@ public class CardState_InHand : CardState
   public override void EnterState()
   {
     _context.DrawnOnThisFrame = false;
-    _isHoveringQueued = false;
-    ScaleToHandSize();
     MoveToHandPosition();
     RotateToHand();
   }
@@ -22,35 +20,26 @@ public class CardState_InHand : CardState
   {
     CheckCardSide();
     DetectClick();
-    CheckForQueuedHover();
     DetectPositionChangeInHand();
   }
 
   void CheckCardSide()
   {
-    _context.CardLayerController.ShowCardFront();
-    // float dot = Vector3.Dot(_context.transform.forward, (_camera.transform.position - _context.transform.position).normalized);
-    // bool facingCamera = dot > .7f;
+    float dot = Vector3.Dot(-_context.transform.forward, (_camera.transform.position - _context.transform.position).normalized);
 
+    bool facingCamera = dot > 0f;
 
-
-
-    // // float absRotationY = Mathf.Abs(_context.transform.rotation.eulerAngles.y);
-
-    // // bool facingCamera = absRotationY < 90;
-
-    // if (facingCamera)
-    // {
-    //   _context.CardLayerController.ShowCardFront();
-    //   return;
-    // }
-    // _context.CardLayerController.ShowCardBack();
+    if (facingCamera)
+    {
+      _context.CardLayerController.ShowCardFront();
+      return;
+    }
+    _context.CardLayerController.ShowCardBack();
   }
 
   void DetectClick()
   {
     if (!_context.IsHovering) return;
-    if (PlayerController.Instance.IsDraggingCard) return;
 
     if (Input.GetMouseButtonDown(0))
     {
@@ -78,6 +67,7 @@ public class CardState_InHand : CardState
 
   void MoveToHandPosition()
   {
+    Debug.Log("MoveToHandPosition");
     LeanTween.move(_context.gameObject, _context.PositionInHand, _context.CardConfig.MovementToHandTime).setEaseInOutCubic();
   }
 
@@ -89,27 +79,15 @@ public class CardState_InHand : CardState
     LeanTween.rotate(_context.gameObject, rotation.eulerAngles, _context.CardConfig.MovementToHandTime).setEaseInOutCubic();
   }
 
-  public override void FixedUpdateState() { }
-  public override void OnMouseEnter()
+  public override void FixedUpdateState()
   {
-    if (PlayerController.Instance.IsDraggingCard)
-    {
-      _isHoveringQueued = true;
-      return;
-    }
-    OnHoverStart();
-  }
-
-  void CheckForQueuedHover()
-  {
-    if (!_isHoveringQueued) return;
-
-    if (!PlayerController.Instance.IsDraggingCard) OnHoverStart();
+    if (_lastHoverState == false && _context.IsHovering) OnHoverStart();
+    else if (_lastHoverState == true && !_context.IsHovering) OnHoverEnd();
+    _lastHoverState = _context.IsHovering;
   }
 
   void OnHoverStart()
   {
-    _isHoveringQueued = false;
     _context.CardLayerController.SetDraggedLayer();
 
     CardConfig cardConfig = _context.CardConfig;
@@ -118,11 +96,11 @@ public class CardState_InHand : CardState
     LeanTween.moveLocalY(_context.gameObject, cardConfig.OffsetYOnHover, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
   }
 
-  public override void OnMouseExit()
+  void OnHoverEnd()
   {
-    _isHoveringQueued = false;
     _context.CardLayerController.SetDefaultLayer();
     ScaleToHandSize();
   }
+
   public override void ExitState() { }
 }

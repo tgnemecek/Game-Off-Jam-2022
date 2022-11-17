@@ -54,7 +54,6 @@ public abstract class Card : MonoBehaviour
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }
 
   private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
-  private bool _isHovering; public bool IsHovering => _isHovering;
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
   private bool _canReturnToHand = true; public bool CanReturnToHand { get { return _canReturnToHand; } set { _canReturnToHand = value; } }
@@ -113,16 +112,7 @@ public abstract class Card : MonoBehaviour
     _currentState.EnterState();
   }
 
-  public void MouseEnter()
-  {
-    _isHovering = true;
-    _currentState.OnMouseEnter();
-  }
-  public void MouseExit()
-  {
-    _isHovering = false;
-    _currentState.OnMouseExit();
-  }
+  public bool IsHovering => PlayerController.Instance.CardPointedTo == this;
 
   void Update()
   {
