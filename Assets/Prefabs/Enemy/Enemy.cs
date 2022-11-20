@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class Enemy : MonoBehaviour
   private int _damage = 0;
   [SerializeField]
   private Card _target; public Card Target { get { return _target; } set { _target = value; } }
-  [SerializeField]
-  private Rigidbody _rb; public Rigidbody Rigidbody => _rb;
+  [HideInInspector]
+  public Rigidbody Rigidbody;
+  [HideInInspector]
+  public Seeker Seeker;
   [SerializeField]
   private EnemyConfig _enemyConfig; public EnemyConfig EnemyConfig => _enemyConfig;
 
@@ -24,7 +27,11 @@ public class Enemy : MonoBehaviour
 
   private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
 
-  void Awake() { }
+  void Awake()
+  {
+    Rigidbody = GetComponent<Rigidbody>();
+    Seeker = GetComponent<Seeker>();
+  }
 
   void Start()
   {
