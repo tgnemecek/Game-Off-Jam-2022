@@ -13,3 +13,14 @@ MonoBehaviour:
   m_Name: GameConfig_Default
   m_EditorClassIdentifier: 
   DelayBetweenEndOfTurnTasks: 0.2
+  EnemyTurnDuration: 10
+  CardLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  HandLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  BoardLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  CardTag: Card

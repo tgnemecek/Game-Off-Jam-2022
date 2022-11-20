@@ -54,6 +54,11 @@ public class CardPrefabGenerator : EditorWindow
 
       if (existingPrefab)
       {
+        Card card;
+        if (existingPrefab.TryGetComponent<Card>(out card))
+        {
+          card.InjectDefaultDependencies();
+        }
         Debug.Log($"Prefab already exists for card: {foundCard.name}. Skipping");
         continue;
       }

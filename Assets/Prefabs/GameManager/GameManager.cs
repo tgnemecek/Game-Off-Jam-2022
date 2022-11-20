@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
   private EnemyManager _enemyManager; public EnemyManager EnemyManager => _enemyManager;
   [SerializeField]
   private Hand _hand; public Hand Hand => _hand;
+  [SerializeField]
+  private Core _core; public Core Core => _core;
 
   private GameStateFactory _stateFactory;
   private GameState _currentState; public GameState CurrentState { set { _currentState = value; } }
@@ -39,6 +41,11 @@ public class GameManager : MonoBehaviour
   {
     _stateFactory = new GameStateFactory(this);
     StartCoroutine(WaitAndStartTurn());
+  }
+
+  public void GameOver()
+  {
+
   }
 
   IEnumerator WaitAndStartTurn()

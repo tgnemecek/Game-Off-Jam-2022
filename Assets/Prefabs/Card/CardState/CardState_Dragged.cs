@@ -46,7 +46,7 @@ public class CardState_Dragged : CardState
       }
       Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
       RaycastHit hitInfo;
-      if (Physics.Raycast(ray, out hitInfo, 9999, _context.CardConfig.BoardLayerMask))
+      if (Physics.Raycast(ray, out hitInfo, 9999, GameManager.Instance.GameConfig.BoardLayerMask))
       {
         return (hitInfo.point, hitInfo.collider.transform.rotation);
       }

@@ -23,17 +23,22 @@ public class EnemyManager : MonoBehaviour
 
       int randomIndex = UnityEngine.Random.Range(0, _board.Cards.Count - 1);
       var randomCard = _board.Cards[randomIndex];
-      enemy.Target = randomCard;
       _currentWave.Add(enemy);
     }
   }
-  public void ClearWave()
+
+  public bool AreEnemiesStillAlive() => _currentWave.Count > 0;
+
+  public void RegisterEnemyDeath(Enemy enemy)
+  {
+    _currentWave.Remove(enemy);
+  }
+  public void DisableAllEnemies()
   {
     foreach (var enemy in _currentWave)
     {
-      Destroy(enemy.gameObject);
+      enemy.enabled = false;
     }
-    _currentWave.Clear();
   }
   private Vector3 GetRandomPositionInSpawnArea()
   {

@@ -2,24 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState_EnemyTurn : GameState
+public class GameState_GameOver : GameState
 {
-  public GameState_EnemyTurn(GameManager context, GameStateFactory factory) : base(context, factory) { }
+  public GameState_GameOver(GameManager context, GameStateFactory factory) : base(context, factory) { }
 
 
   public override void EnterState()
   {
     _context.IsCardInteractionActive = false;
-    _context.EnemyManager.SpawnNextWave();
+    _context.EnemyManager.DisableAllEnemies();
   }
 
-  public override void UpdateState()
-  {
-    if (!_context.EnemyManager.AreEnemiesStillAlive())
-    {
-      SwitchState(_factory.PlayerTurn());
-    }
-  }
+  public override void UpdateState() { }
   public override void FixedUpdateState() { }
   public override void EndPlayerTurn() { }
   public override void EndEnemyTurn() { }

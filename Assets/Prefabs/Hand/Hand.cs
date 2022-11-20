@@ -36,7 +36,6 @@ public class Hand : MonoBehaviour
       if (card != null)
       {
         card.transform.SetParent(transform);
-        card.CardLayerController.SetDefaultLayer();
         _cards.Add(card);
       }
     }

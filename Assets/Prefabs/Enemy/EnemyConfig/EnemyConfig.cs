@@ -6,6 +6,10 @@ using UnityEngine;
 public class EnemyConfig : ScriptableObject
 {
   public float MovementSpeed = 1f;
-  public float DecelerationDistanceFromTarget = 1f;
   public float StopDistanceFromTarget = .5f;
+  [Range(0.1f, 10f)]
+  public float AttackSpeed = 1f;
+  [Range(0f, 90f)]
+  public float WalkRotationAmount = 5f;
+  public float WalkRotationSpeed = 1f;
 }
