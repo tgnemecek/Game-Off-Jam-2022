@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 24f01ef97ad92294bae911c813c0eb16, type: 2}
 --- !u!1001 &14374653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2015,10 +2015,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2302400535848397053, guid: 63510df001069034892acb27f6a5eb10, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6783028978839627842, guid: 63510df001069034892acb27f6a5eb10, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -2066,18 +2062,6 @@ PrefabInstance:
     - target: {fileID: 6783028978839627854, guid: 63510df001069034892acb27f6a5eb10, type: 3}
       propertyPath: m_Name
       value: Board
-      objectReference: {fileID: 0}
-    - target: {fileID: 6814457858901312571, guid: 63510df001069034892acb27f6a5eb10, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6814457858901312571, guid: 63510df001069034892acb27f6a5eb10, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -14.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 7763088580196110323, guid: 63510df001069034892acb27f6a5eb10, type: 3}
-      propertyPath: m_Size.y
-      value: 8.29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63510df001069034892acb27f6a5eb10, type: 3}

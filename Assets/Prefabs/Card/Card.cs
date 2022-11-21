@@ -52,6 +52,8 @@ public abstract class Card : MonoBehaviour, IHitable
   private CardProximityDetector _cardProximityDetector; public CardProximityDetector CardProximityDetector => _cardProximityDetector;
   [SerializeField]
   private Collider _collider;
+  [SerializeField]
+  private HealthBar _healthBar;
   [Header("Debug Options")]
   [ReadOnly] public string CurrentStateName;
 
@@ -89,6 +91,7 @@ public abstract class Card : MonoBehaviour, IHitable
     {
       _cardLayerController = GetComponentInChildren<CardLayerController>();
       _cardProximityDetector = GetComponentInChildren<CardProximityDetector>();
+      _healthBar = GetComponentInChildren<HealthBar>();
       _collider = GetComponent<Collider>();
     }
 
@@ -118,6 +121,7 @@ public abstract class Card : MonoBehaviour, IHitable
   void Start()
   {
     HP = _cardConfig.MaxHP;
+    _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
     _stateFactory = new CardStateFactory(this);
     _currentState = _stateFactory.NotInPlay();
     _currentState.EnterState();
@@ -138,6 +142,7 @@ public abstract class Card : MonoBehaviour, IHitable
   public void ReceiveDamage(int damage)
   {
     HP -= damage;
+    _healthBar.UpdateHealth(HP);
   }
 
   public void StartBattle(IHitable hitable)

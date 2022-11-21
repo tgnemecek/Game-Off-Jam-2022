@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Pathfinding;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Enemy : MonoBehaviour
   [SerializeField]
   private int _hp = 0;
   [SerializeField]
-  private int _damage = 0;
+  private int _damage = 0; public int Damage => _damage;
   [SerializeField]
   private IHitable _target; public IHitable Target { get { return _target; } set { _target = value; } }
   [SerializeField]
@@ -25,7 +26,8 @@ public class Enemy : MonoBehaviour
   [HideInInspector]
   public Rigidbody Rigidbody;
   [HideInInspector]
-  public Seeker Seeker;
+  public NavMeshAgent NavMeshAgent;
+
   [Header("Debug Options")]
   [ReadOnly] public string CurrentStateName;
 
@@ -37,7 +39,7 @@ public class Enemy : MonoBehaviour
   void Awake()
   {
     Rigidbody = GetComponent<Rigidbody>();
-    Seeker = GetComponent<Seeker>();
+    NavMeshAgent = GetComponent<NavMeshAgent>();
     _core = GameManager.Instance.Core;
   }
 
