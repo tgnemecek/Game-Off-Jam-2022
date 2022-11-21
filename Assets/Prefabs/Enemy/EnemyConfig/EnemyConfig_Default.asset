@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyConfig_Default
   m_EditorClassIdentifier: 
   MovementSpeed: 90
-  StopDistanceFromTarget: 2
+  StopDistanceFromTarget: 1
   AttackSpeed: 1
   WalkRotationAmount: 3
   WalkRotationSpeed: 10
