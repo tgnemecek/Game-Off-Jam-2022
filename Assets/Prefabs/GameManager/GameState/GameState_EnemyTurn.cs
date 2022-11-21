@@ -11,21 +11,17 @@ public class GameState_EnemyTurn : GameState
   {
     _context.IsCardInteractionActive = false;
     _context.EnemyManager.SpawnNextWave();
-    _context.StartCoroutine(TurnTimer());
   }
 
-  IEnumerator TurnTimer()
+  public override void UpdateState()
   {
-    yield return new WaitForSeconds(_context.GameConfig.EnemyTurnDuration);
-    SwitchState(_factory.PlayerTurn());
+    if (!_context.EnemyManager.AreEnemiesStillAlive())
+    {
+      SwitchState(_factory.PlayerTurn());
+    }
   }
-
-  public override void UpdateState() { }
   public override void FixedUpdateState() { }
   public override void EndPlayerTurn() { }
   public override void EndEnemyTurn() { }
-  public override void ExitState()
-  {
-    _context.EnemyManager.ClearWave();
-  }
+  public override void ExitState() { }
 }

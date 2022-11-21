@@ -6,8 +6,11 @@ public class EnemyState_NotInPlay : EnemyState
 {
   public EnemyState_NotInPlay(Enemy context, EnemyStateFactory factory) : base(context, factory) { }
 
+  public override void EnterState()
+  {
+    _context.Target = _context.Core;
+  }
 
-  public override void EnterState() { }
   public override void UpdateState()
   {
     if (_context.Target != null)

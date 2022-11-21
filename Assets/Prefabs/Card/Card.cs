@@ -14,7 +14,7 @@ public enum CardTypes
   Building = 40,
 }
 
-public abstract class Card : MonoBehaviour
+public abstract class Card : MonoBehaviour, IHitable
 {
   public int Id { get; set; }
 
@@ -39,14 +39,22 @@ public abstract class Card : MonoBehaviour
 
   public int StoneCost { get; set; }
 
+  public int HP { get; set; }
+
   public CardTypes Type { get; set; }
 
-  public CardConfig _cardConfig; public CardConfig CardConfig => _cardConfig;
-
+  [Header("Dependencies")]
+  [SerializeField]
+  private CardConfig _cardConfig; public CardConfig CardConfig => _cardConfig;
   [SerializeField]
   private CardLayerController _cardLayerController; public CardLayerController CardLayerController => _cardLayerController;
   [SerializeField]
   private CardProximityDetector _cardProximityDetector; public CardProximityDetector CardProximityDetector => _cardProximityDetector;
+  [SerializeField]
+  private Collider _collider;
+  [Header("Debug Options")]
+  [ReadOnly] public string CurrentStateName;
+
   protected Hand _hand; public Hand Hand => _hand;
   private ResourceCostDictionary _cost = new ResourceCostDictionary(); public ResourceCostDictionary Cost => _cost;
 
@@ -58,6 +66,7 @@ public abstract class Card : MonoBehaviour
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
   private bool _canReturnToHand = true; public bool CanReturnToHand { get { return _canReturnToHand; } set { _canReturnToHand = value; } }
   public Vector3 LastValidBoardPosition { get; set; }
+  public List<IHitable> BattlingAgainst = new List<IHitable>();
 
   void Reset()
   {
@@ -80,6 +89,7 @@ public abstract class Card : MonoBehaviour
     {
       _cardLayerController = GetComponentInChildren<CardLayerController>();
       _cardProximityDetector = GetComponentInChildren<CardProximityDetector>();
+      _collider = GetComponent<Collider>();
     }
 
     InjectCardConfig();
@@ -107,6 +117,7 @@ public abstract class Card : MonoBehaviour
 
   void Start()
   {
+    HP = _cardConfig.MaxHP;
     _stateFactory = new CardStateFactory(this);
     _currentState = _stateFactory.NotInPlay();
     _currentState.EnterState();
@@ -117,9 +128,23 @@ public abstract class Card : MonoBehaviour
   void Update()
   {
     _currentState.UpdateState();
+    CurrentStateName = _currentState.GetType().Name;
   }
   void FixedUpdate() => _currentState.FixedUpdateState();
 
   public abstract void Play();
   public abstract void EndOfTurn();
+
+  public void ReceiveDamage(int damage)
+  {
+    HP -= damage;
+  }
+
+  public void StartBattle(IHitable hitable)
+  {
+    BattlingAgainst.Add(hitable);
+  }
+
+  public Collider GetCollider() => _collider;
+  public Transform GetTransform() => transform;
 }

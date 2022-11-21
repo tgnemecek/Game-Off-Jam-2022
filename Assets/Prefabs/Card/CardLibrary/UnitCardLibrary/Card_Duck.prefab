@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5495328957036909638, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_Name
-      value: Card_Unit
+      value: Card_Duck
       objectReference: {fileID: 0}
     - target: {fileID: 6028996631765105068, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_RootOrder
@@ -68,6 +68,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &4284583258022923917 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4401766606963174833, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+  m_PrefabInstance: {fileID: 460443229829833532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5341416766308874106 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5495328957036909638, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
@@ -88,6 +93,8 @@ MonoBehaviour:
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 9124478129484871835}
   _cardProximityDetector: {fileID: 1605283652678107054}
+  _collider: {fileID: 4284583258022923917}
+  CurrentStateName: 
   Type: 10
 --- !u!114 &9124478129484871835 stripped
 MonoBehaviour:

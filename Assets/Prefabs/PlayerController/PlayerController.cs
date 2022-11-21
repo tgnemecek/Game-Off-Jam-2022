@@ -8,10 +8,6 @@ public class PlayerController : MonoBehaviour
 
   public static PlayerController Instance { get { return _instance; } }
 
-  [SerializeField]
-  LayerMask _cardLayerMask;
-  [SerializeField]
-  LayerMask _handLayerMask;
   private Camera _camera;
   [HideInInspector]
   public Card CardPointedTo;
@@ -54,7 +50,7 @@ public class PlayerController : MonoBehaviour
       return;
     }
 
-    var (success, hit) = CastRayForLayerMask(_cardLayerMask);
+    var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.CardLayerMask);
 
     if (success)
     {
@@ -75,7 +71,7 @@ public class PlayerController : MonoBehaviour
   {
     if (!GameManager.Instance.IsCardInteractionActive) return;
 
-    var (success, hit) = CastRayForLayerMask(_handLayerMask);
+    var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.HandLayerMask);
     _isHoveringOnHand = success;
   }
 

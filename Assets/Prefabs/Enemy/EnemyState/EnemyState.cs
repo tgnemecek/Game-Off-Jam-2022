@@ -16,10 +16,9 @@ public abstract class EnemyState
   protected void SwitchState(EnemyState newState)
   {
     ExitState();
-    newState.EnterState();
     _context.CurrentState = newState;
+    newState.EnterState();
   }
-
 
   public abstract void EnterState();
   public abstract void UpdateState();

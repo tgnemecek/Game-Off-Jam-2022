@@ -50,6 +50,8 @@ MonoBehaviour:
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 2951282319880660418}
   _cardProximityDetector: {fileID: 4616959120924877559}
+  _collider: {fileID: 7863358496437064660}
+  CurrentStateName: 
 --- !u!65 &7863358496437064660
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -7,4 +7,9 @@ public class GameConfig : ScriptableObject
 {
   public float DelayBetweenEndOfTurnTasks = .2f;
   public float EnemyTurnDuration = 10f;
+  [Header("Layer Masks & Tags")]
+  public LayerMask CardLayerMask;
+  public LayerMask HandLayerMask;
+  public LayerMask BoardLayerMask;
+  public string CardTag;
 }

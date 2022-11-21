@@ -16,10 +16,19 @@ public abstract class CardState
   protected void SwitchState(CardState newState)
   {
     ExitState();
-    newState.EnterState();
     _context.CurrentState = newState;
+    newState.EnterState();
   }
 
+  protected bool DetectDestroyed()
+  {
+    if (_context.HP <= 0)
+    {
+      SwitchState(_factory.Destroyed());
+      return true;
+    }
+    return false;
+  }
 
   public abstract void EnterState();
   public abstract void UpdateState();
