@@ -77,7 +77,7 @@ MonoBehaviour:
   _destinationForBooster: {x: 0, y: 4.75, z: 0}
   _destinationForCards: {fileID: 5143034689309897400}
   _numberOfCardsInBooster: 3
-  _boosterSpeed: 10
+  _boosterSpeed: 3
   _shakeStrength: 3
   _shakeSpeed: 10
   _shakeDuration: 1

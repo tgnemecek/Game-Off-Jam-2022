@@ -22,12 +22,20 @@ public class GameState_EnemyTurn : GameState
   }
   public override void OnWaveClear()
   {
+    _context.StartCoroutine(WaitBeforeExiting());
+  }
+
+  IEnumerator WaitBeforeExiting()
+  {
+    yield return new WaitForSeconds(2f);
     if (_context.DrawPile.Cards.Count == 0)
     {
       SwitchState(_factory.BoosterPack());
     }
     else SwitchState(_factory.PlayerTurn());
   }
+
+
   public override void FixedUpdateState() { }
   public override void EndPlayerTurn() { }
   public override void EndEnemyTurn() { }
