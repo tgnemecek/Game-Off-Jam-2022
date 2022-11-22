@@ -22,7 +22,11 @@ public class GameState_EnemyTurn : GameState
   }
   public override void OnWaveClear()
   {
-    SwitchState(_factory.PlayerTurn());
+    if (_context.DrawPile.Cards.Count == 0)
+    {
+      SwitchState(_factory.BoosterPack());
+    }
+    else SwitchState(_factory.PlayerTurn());
   }
   public override void FixedUpdateState() { }
   public override void EndPlayerTurn() { }

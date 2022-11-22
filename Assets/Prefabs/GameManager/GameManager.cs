@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
   private DiscardPile _discardPile; public DiscardPile DiscardPile => _discardPile;
   [SerializeField]
   private Deck _deck; public Deck Deck => _deck;
+  [SerializeField]
+  private BoosterPack _boosterPack; public BoosterPack BoosterPack => _boosterPack;
 
   private GameStateFactory _stateFactory;
   private GameState _currentState; public GameState CurrentState { set { _currentState = value; } }
