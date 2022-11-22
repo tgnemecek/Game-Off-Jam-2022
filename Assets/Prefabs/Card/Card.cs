@@ -65,7 +65,7 @@ public abstract class Card : MonoBehaviour, IHitable
   [Header("Debug Options")]
   [ReadOnly] public string CurrentStateName;
 
-  private ResourceCostDictionary _cost = new ResourceCostDictionary(); public ResourceCostDictionary Cost => _cost;
+  private ResourceDictionary _cost = new ResourceDictionary(); public ResourceDictionary Cost => _cost;
 
   protected CardStateFactory _stateFactory;
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }

@@ -13,6 +13,7 @@ public class CardState_InBoard : CardState
   {
     GameManager.Instance.Hand.RemoveCard(_context);
     GameManager.Instance.Board.AddCardToBoard(_context);
+    _context.Play();
     _context.CardLayerController.SetDefaultLayer();
     _context.CanReturnToHand = false;
     PositionCard();

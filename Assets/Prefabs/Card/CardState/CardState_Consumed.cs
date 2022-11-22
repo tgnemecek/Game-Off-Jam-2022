@@ -12,6 +12,7 @@ public class CardState_Consumed : CardState
   public override void EnterState()
   {
     GameManager.Instance.Hand.RemoveCard(_context);
+    _context.Play();
 
     var duration = _context.CardConfig.ConsumeAnimationTime;
     var rotation = _context.CardConfig.ConsumeAnimationRotation;
