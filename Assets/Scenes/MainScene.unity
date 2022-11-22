@@ -736,7 +736,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 22.18
+  m_Intensity: 1.92
   m_Range: 36.36
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2033,14 +2033,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8916486161563888078, guid: ecf4bad962f09ca489aec06b2d09f190, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 871532617}
-    - target: {fileID: 8916486161563888078, guid: ecf4bad962f09ca489aec06b2d09f190, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 167551979
-      objectReference: {fileID: 0}
     - target: {fileID: 8916486162066803234, guid: ecf4bad962f09ca489aec06b2d09f190, type: 3}
       propertyPath: m_Name
       value: Core
