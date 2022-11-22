@@ -199,7 +199,6 @@ MonoBehaviour:
   _hp: 4
   _damage: 7
   _enemyConfig: {fileID: 11400000, guid: c7c3e3ef480f85642be473ef2461d09d, type: 2}
-  _core: {fileID: 0}
   _cardProximityDetector: {fileID: 6759121287631922687}
   Rigidbody: {fileID: 0}
   NavMeshAgent: {fileID: 0}
@@ -435,7 +434,6 @@ GameObject:
   - component: {fileID: 1913932000038420494}
   - component: {fileID: 4047411127188700665}
   - component: {fileID: 4267470612631727407}
-  - component: {fileID: 6935627810372727676}
   m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
@@ -539,19 +537,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.04}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6935627810372727676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8708097398328995257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  uniqueID: 5810868024966576588
-  updateError: 1
-  checkTime: 0.2

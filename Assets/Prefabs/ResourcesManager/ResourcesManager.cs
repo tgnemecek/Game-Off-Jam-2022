@@ -5,10 +5,10 @@ using UnityEngine;
 using TMPro;
 
 
-public class ResourceCostDictionary : Dictionary<Resource, int>
+public class ResourceDictionary : Dictionary<Resource, int>
 {
-  public ResourceCostDictionary() : base() { }
-  public ResourceCostDictionary(Dictionary<Resource, int> dict) : base(dict) { }
+  public ResourceDictionary() : base() { }
+  public ResourceDictionary(Dictionary<Resource, int> dict) : base(dict) { }
 }
 
 public class ResourcesManager : MonoBehaviour
@@ -18,8 +18,12 @@ public class ResourcesManager : MonoBehaviour
   public static ResourcesManager Instance { get { return _instance; } }
 
   [SerializeField]
-  private TextMeshProUGUI _resourceText;
-  private ResourceCostDictionary _resources = new ResourceCostDictionary();
+  private TextMeshProUGUI _woodText;
+  [SerializeField]
+  private TextMeshProUGUI _stoneText;
+  [SerializeField]
+  private TextMeshProUGUI _fishText;
+  private ResourceDictionary _resources = new ResourceDictionary();
 
   private void Awake()
   {
@@ -50,9 +54,9 @@ public class ResourcesManager : MonoBehaviour
     _resources[resource] = currentAmount + amount;
     UpdateText();
   }
-  public bool TryConsume(ResourceCostDictionary cost)
+  public bool TryConsume(ResourceDictionary cost)
   {
-    ResourceCostDictionary newRes = new ResourceCostDictionary(_resources);
+    ResourceDictionary newRes = new ResourceDictionary(_resources);
 
     foreach (Resource resource in Enum.GetValues(typeof(Resource)))
     {
@@ -82,12 +86,19 @@ public class ResourcesManager : MonoBehaviour
 
   void UpdateText()
   {
-    string str = "";
 
     foreach (var entry in _resources)
     {
-      str += entry.Key + ": " + entry.Value.ToString() + "\n";
+      string str = "x";
+
+      TextMeshProUGUI textMesh = _woodText;
+      string key = entry.Key.ToString();
+      if (key == "Wood") textMesh = _woodText;
+      if (key == "Stone") textMesh = _stoneText;
+      if (key == "Fish") textMesh = _fishText;
+
+      str += entry.Value.ToString();
+      textMesh.text = str;
     }
-    _resourceText.text = str;
   }
 }

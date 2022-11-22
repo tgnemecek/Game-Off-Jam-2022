@@ -25,8 +25,6 @@ public class EnemyManager : MonoBehaviour
     foreach (var e in _nextWave)
     {
       Enemy enemy = Instantiate(e, spawnPoints[spawnMapIndex].position, Quaternion.identity, transform);
-      // enemy.transform.localPosition = GetRandomPositionInSpawnArea();
-      // enemy.transform.localRotation = Quaternion.Euler(90, 0, 0);
 
       if (spawnMapIndex + 1 == spawnPoints.Count)
       {
@@ -41,7 +39,14 @@ public class EnemyManager : MonoBehaviour
 
   public bool AreEnemiesStillAlive() => _currentWave.Count > 0;
 
-  public void RegisterEnemyDeath(Enemy enemy) => _currentWave.Remove(enemy);
+  public void RegisterEnemyDeath(Enemy enemy)
+  {
+    _currentWave.Remove(enemy);
+    if (_currentWave.Count == 0)
+    {
+      GameManager.Instance.OnWaveClear();
+    }
+  }
   public void DisableAllEnemies()
   {
     foreach (var enemy in _currentWave)

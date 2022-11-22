@@ -5,26 +5,38 @@ using UnityEngine;
 public class CardState_Consumed : CardState
 {
   Camera _camera = Camera.main;
+  float _startTime;
 
   public CardState_Consumed(Card context, CardStateFactory factory) : base(context, factory) { }
 
   public override void EnterState()
   {
-    // _context.StartCoroutine(Rotation());
-    // var time = _context.CardConfig.ConsumeAnimationTime;
+    GameManager.Instance.Hand.RemoveCard(_context);
+    _context.Play();
 
+    var duration = _context.CardConfig.ConsumeAnimationTime;
+    var rotation = _context.CardConfig.ConsumeAnimationRotation;
 
-    // LeanTween.rotateAroundLocal(_context.gameObject, Vector3.up, rotation, time);
+    Vector3 smallestSize = new Vector3(
+      0.01f,
+      0.01f,
+      0.01f
+    );
+
+    LeanTween.rotateAroundLocal(_context.gameObject, Vector3.up, rotation, duration);
+    LeanTween.scale(_context.gameObject, smallestSize, duration)
+      .setEaseInSine()
+      .setOnComplete(() =>
+      {
+        GameManager.Instance.DiscardPile.Discard(_context);
+        SwitchState(_factory.NotInPlay());
+      });
   }
 
   public override void UpdateState()
   {
     base.CheckCardSide(_camera);
   }
-  public override void FixedUpdateState()
-  {
-    var amount = _context.CardConfig.ConsumeAnimationRotation + _context.transform.rotation.eulerAngles.y;
-    _context.transform.rotation = Quaternion.Euler(_context.transform.rotation.x, amount, _context.transform.rotation.z);
-  }
+  public override void FixedUpdateState() { }
   public override void ExitState() { }
 }

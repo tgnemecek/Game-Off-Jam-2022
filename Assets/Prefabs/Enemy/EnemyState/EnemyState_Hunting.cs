@@ -28,7 +28,7 @@ public class EnemyState_Hunting : EnemyState
 
   void DetectCardsToBattleWith()
   {
-    if (_context.Target.GetTransform() != _context.Core.transform) return;
+    if (_context.Target.GetTransform() != GameManager.Instance.Core.transform) return;
     if (_context.CardProximityDetector.IsCloseToAnotherCard())
     {
       Collider newTarget = _context.CardProximityDetector.GetClosestCollider();

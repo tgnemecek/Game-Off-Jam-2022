@@ -15,9 +15,17 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private EnemyManager _enemyManager; public EnemyManager EnemyManager => _enemyManager;
   [SerializeField]
+  private DeckBook _deckBook; public DeckBook DeckBook => _deckBook;
+  [SerializeField]
   private Hand _hand; public Hand Hand => _hand;
   [SerializeField]
   private Core _core; public Core Core => _core;
+  [SerializeField]
+  private DrawPile _drawPile; public DrawPile DrawPile => _drawPile;
+  [SerializeField]
+  private DiscardPile _discardPile; public DiscardPile DiscardPile => _discardPile;
+  [SerializeField]
+  private Deck _deck; public Deck Deck => _deck;
 
   private GameStateFactory _stateFactory;
   private GameState _currentState; public GameState CurrentState { set { _currentState = value; } }
@@ -40,8 +48,13 @@ public class GameManager : MonoBehaviour
   void Start()
   {
     _stateFactory = new GameStateFactory(this);
+    _drawPile.UseDeck(_deck);
+    _drawPile.Shuffle();
+    _deckBook.PopulateCards(_deck.Cards);
     StartCoroutine(WaitAndStartTurn());
   }
+
+  public void OnWaveClear() => _currentState.OnWaveClear();
 
   public void GameOver()
   {

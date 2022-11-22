@@ -65,8 +65,7 @@ public abstract class Card : MonoBehaviour, IHitable
   [Header("Debug Options")]
   [ReadOnly] public string CurrentStateName;
 
-  protected Hand _hand; public Hand Hand => _hand;
-  private ResourceCostDictionary _cost = new ResourceCostDictionary(); public ResourceCostDictionary Cost => _cost;
+  private ResourceDictionary _cost = new ResourceDictionary(); public ResourceDictionary Cost => _cost;
 
   protected CardStateFactory _stateFactory;
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }
@@ -107,11 +106,7 @@ public abstract class Card : MonoBehaviour, IHitable
     InjectSubComponents();
   }
 
-  public void Draw(Hand hand)
-  {
-    _drawnOnThisFrame = true;
-    _hand = hand;
-  }
+  public void Draw() => _drawnOnThisFrame = true;
 
   public void SetPositionInHand(Vector3 positionInHand)
   {

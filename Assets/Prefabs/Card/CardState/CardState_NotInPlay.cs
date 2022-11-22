@@ -7,7 +7,13 @@ public class CardState_NotInPlay : CardState
   public CardState_NotInPlay(Card context, CardStateFactory factory) : base(context, factory) { }
 
 
-  public override void EnterState() { }
+  public override void EnterState()
+  {
+    _context.transform.localScale = Vector3.one;
+    _context.transform.rotation = Quaternion.Euler(-90, -180, 0);
+    _context.CardLayerController.ShowCardBack();
+    _context.CardLayerController.SetDrawPileLayer();
+  }
   public override void UpdateState()
   {
     if (_context.DrawnOnThisFrame)

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
   public Card CardPointedTo;
   [HideInInspector]
   public Card CardBeingDragged;
+  private IPile _pilePointedTo;
 
   public bool IsDraggingCard => CardBeingDragged != null;
   private bool _isHoveringOnHand = false; public bool IsHoveringOnHand => _isHoveringOnHand;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
   {
     CastRayForCards();
     CastRayForHand();
+    CastRayForPiles();
   }
 
   void CastRayForCards()
@@ -73,6 +75,29 @@ public class PlayerController : MonoBehaviour
 
     var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.HandLayerMask);
     _isHoveringOnHand = success;
+  }
+
+  void CastRayForPiles()
+  {
+    if (!GameManager.Instance.IsCardInteractionActive) return;
+    if (IsDraggingCard) return;
+
+    var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.PileLayerMask);
+
+    if (!success && _pilePointedTo != null)
+    {
+      _pilePointedTo.MouseExit();
+      _pilePointedTo = null;
+      return;
+    }
+
+    IPile pile;
+    if (success && hit.collider.TryGetComponent<IPile>(out pile))
+    {
+      if (_pilePointedTo != null) _pilePointedTo.MouseExit();
+      pile.MouseEnter();
+      _pilePointedTo = pile;
+    };
   }
 
   (bool, RaycastHit) CastRayForLayerMask(LayerMask mask)

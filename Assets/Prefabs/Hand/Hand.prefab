@@ -47,10 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drawUpTo: 5
   _drawDelay: 0.05
-  _drawPile: {fileID: 0}
-  _board: {fileID: 0}
-  _discardPile: {fileID: 0}
-  _spaceBetweenCardsInHand: 1.7
+  _spaceBetweenCardsInHand: 1.62
 --- !u!65 &4765887438545146319
 BoxCollider:
   m_ObjectHideFlags: 0

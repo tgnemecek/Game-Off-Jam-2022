@@ -12,19 +12,12 @@ public class Hand : MonoBehaviour
   private List<Card> _cards = new List<Card>();
 
   [SerializeField]
-  private DrawPile _drawPile;
-
-  [SerializeField]
-  private Board _board;
-
-  [SerializeField]
-  private DiscardPile _discardPile;
-
-  [SerializeField]
   private float _spaceBetweenCardsInHand;
 
   public void DrawHand()
   {
+    var drawPile = GameManager.Instance.DrawPile;
+
     int cardsInHand = _cards.Count;
     if (cardsInHand >= _drawUpTo) return;
 
@@ -32,7 +25,7 @@ public class Hand : MonoBehaviour
 
     for (int i = 0; i < cardsToDraw; i++)
     {
-      Card card = _drawPile.TryDraw();
+      Card card = drawPile.TryDraw();
       if (card != null)
       {
         card.transform.SetParent(transform);
@@ -51,7 +44,7 @@ public class Hand : MonoBehaviour
   IEnumerator DrawCard(float delay, Card card)
   {
     yield return new WaitForSeconds(delay);
-    card.Draw(this);
+    card.Draw();
   }
 
   void CalculateHandPositions()
@@ -88,17 +81,9 @@ public class Hand : MonoBehaviour
     }
   }
 
-  public void OnCardPlayed(Card card)
+  public void RemoveCard(Card card)
   {
     _cards.Remove(card);
-    _board.AddCardToBoard(card);
-    CalculateHandPositions();
-  }
-
-  public void DiscardCard(Card card)
-  {
-    _cards.Remove(card);
-    _discardPile.Discard(card);
     CalculateHandPositions();
   }
 }

@@ -26,5 +26,5 @@ MonoBehaviour:
   DistanceToBoardWhenPlaced: 0.3
   TimeToPlaceOnBoard: 0.2
   OnBoardHoverOutlineSize: 0.05
-  ConsumeAnimationTime: 3
-  ConsumeAnimationRotation: 3.63
+  ConsumeAnimationTime: 1
+  ConsumeAnimationRotation: 1000
