@@ -9,14 +9,26 @@ public class EnemyState_Attacking : EnemyState
 
   public override void EnterState()
   {
-    _context.StartCoroutine(AttackAnimation());
+    _context.Rigidbody.velocity = Vector3.zero;
+
+    LeanTween
+      .rotateY(_context.gameObject, 0f, 1f / _context.EnemyConfig.WalkRotationSpeed)
+      .setOnComplete(Attack);
   }
 
-  IEnumerator AttackAnimation()
+  void Attack()
   {
-    yield return new WaitForSeconds(.5f);
-    // @TODO: Animation here
-    SwitchState(_factory.InBattle());
+    var target = _context.Target.GetTransform().position;
+
+    LeanTween.move(_context.gameObject, target, 1f / _context.EnemyConfig.AttackSpeed).setEaseInElastic();
+    LeanTween.scale(_context.gameObject, Vector3.zero, 1f / _context.EnemyConfig.AttackSpeed).setEaseInElastic()
+      .setOnComplete(OnAttackLanded);
+  }
+
+  void OnAttackLanded()
+  {
+    _context.Target.ReceiveDamage(_context.Damage);
+    SwitchState(_factory.Dead());
   }
 
   public override void UpdateState() { }

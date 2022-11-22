@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dda44df7d8f674ab788f73ed08bda3, type: 3}
   m_Name: CardConfig_Default
   m_EditorClassIdentifier: 
+  MaxHP: 100
   FontSizeInHand: 0.1
   FontSizeInDeckBook: 25
   ScaleOnHover: 1.6
@@ -25,6 +26,5 @@ MonoBehaviour:
   DistanceToBoardWhenPlaced: 0.3
   TimeToPlaceOnBoard: 0.2
   OnBoardHoverOutlineSize: 0.05
-  BoardLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  ConsumeAnimationTime: 3
+  ConsumeAnimationRotation: 3.63

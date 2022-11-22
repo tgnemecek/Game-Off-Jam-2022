@@ -18,23 +18,9 @@ public class CardState_InHand : CardState
   }
   public override void UpdateState()
   {
-    CheckCardSide();
+    base.CheckCardSide(_camera);
     DetectClick();
     DetectPositionChangeInHand();
-  }
-
-  void CheckCardSide()
-  {
-    float dot = Vector3.Dot(-_context.transform.forward, (_camera.transform.position - _context.transform.position).normalized);
-
-    bool facingCamera = dot > 0f;
-
-    if (facingCamera)
-    {
-      _context.CardLayerController.ShowCardFront();
-      return;
-    }
-    _context.CardLayerController.ShowCardBack();
   }
 
   void DetectClick()
