@@ -27,7 +27,7 @@ public class EnemyState_Attacked : EnemyState
     LeanTween.scale(_context.gameObject, scaleVector, time).setOnComplete(() => LeanTween.scale(_context.gameObject, Vector3.one, time));
     
     yield return new WaitForSeconds(time);
-    SwitchState(_factory.InBattle());
+    SwitchState(_factory.Dead());
   }
 
   public override void UpdateState() { }

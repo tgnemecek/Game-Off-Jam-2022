@@ -14,4 +14,5 @@ public class EnemyConfig : ScriptableObject
   public float WalkRotationSpeed = 1f;
   public float AttackedShrinkScale = 0.85f;
   public float AttackedRotationMultiplier = 6f;
+  public float DeathDuration = 1f;
 }

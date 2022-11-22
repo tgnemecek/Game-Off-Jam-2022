@@ -19,16 +19,19 @@ public class EnemyState_Attacking : EnemyState
   void Attack()
   {
     var target = _context.Target.GetTransform().position;
+    var startPos = _context.transform.position;
+    var seq = LeanTween.sequence();
 
-    LeanTween.move(_context.gameObject, target, 1f / _context.EnemyConfig.AttackSpeed).setEaseInElastic();
-    LeanTween.scale(_context.gameObject, Vector3.zero, 1f / _context.EnemyConfig.AttackSpeed).setEaseInElastic()
-      .setOnComplete(OnAttackLanded);
+    seq.append(LeanTween.move(_context.gameObject, target, 0.5f / _context.EnemyConfig.AttackSpeed).setEaseInBack());
+    seq.append(LeanTween.move(_context.gameObject, startPos, 0.5f / _context.EnemyConfig.AttackSpeed).setEaseOutExpo()
+      .setOnComplete(OnAttackLanded));
   }
+
 
   void OnAttackLanded()
   {
     _context.Target.ReceiveDamage(_context.Damage);
-    SwitchState(_factory.Dead());
+    SwitchState(_factory.Attacked());
   }
 
   public override void UpdateState() { }
