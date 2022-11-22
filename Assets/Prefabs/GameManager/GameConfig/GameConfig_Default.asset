@@ -23,4 +23,7 @@ MonoBehaviour:
   BoardLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  PileLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
   CardTag: Card

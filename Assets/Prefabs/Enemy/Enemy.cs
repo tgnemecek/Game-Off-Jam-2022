@@ -15,8 +15,6 @@ public class Enemy : MonoBehaviour
   [SerializeField]
   private EnemyConfig _enemyConfig; public EnemyConfig EnemyConfig => _enemyConfig;
   [SerializeField]
-  private Core _core; public Core Core => _core;
-  [SerializeField]
   private CardProximityDetector _cardProximityDetector; public CardProximityDetector CardProximityDetector => _cardProximityDetector;
   [HideInInspector]
   public Rigidbody Rigidbody;
@@ -35,7 +33,6 @@ public class Enemy : MonoBehaviour
   {
     Rigidbody = GetComponent<Rigidbody>();
     NavMeshAgent = GetComponent<NavMeshAgent>();
-    _core = GameManager.Instance.Core;
   }
 
   void Start()

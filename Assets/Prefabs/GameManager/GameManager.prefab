@@ -47,4 +47,10 @@ MonoBehaviour:
   _board: {fileID: 0}
   _gameConfig: {fileID: 11400000, guid: a328cb28c95d4a047af5b0d57a1f3cb9, type: 2}
   _enemyManager: {fileID: 0}
+  _deckBook: {fileID: 0}
+  _hand: {fileID: 0}
+  _core: {fileID: 0}
+  _drawPile: {fileID: 0}
+  _discardPile: {fileID: 0}
+  _deck: {fileID: 11400000, guid: 383accd2b8b4de34cbc031e761dae752, type: 2}
   IsCardInteractionActive: 0

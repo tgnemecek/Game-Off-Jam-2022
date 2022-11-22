@@ -13,6 +13,7 @@ public class GameState_GameOver : GameState
     _context.EnemyManager.DisableAllEnemies();
   }
 
+  public override void OnWaveClear() { }
   public override void UpdateState() { }
   public override void FixedUpdateState() { }
   public override void EndPlayerTurn() { }

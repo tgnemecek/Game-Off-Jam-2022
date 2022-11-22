@@ -20,6 +20,10 @@ public class GameState_EnemyTurn : GameState
       SwitchState(_factory.PlayerTurn());
     }
   }
+  public override void OnWaveClear()
+  {
+    SwitchState(_factory.PlayerTurn());
+  }
   public override void FixedUpdateState() { }
   public override void EndPlayerTurn() { }
   public override void EndEnemyTurn() { }

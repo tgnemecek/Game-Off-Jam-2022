@@ -13,6 +13,7 @@ public class CardState_InHand : CardState
   public override void EnterState()
   {
     _context.DrawnOnThisFrame = false;
+    _context.CardLayerController.SetDefaultLayer();
     MoveToHandPosition();
     RotateToHand();
   }

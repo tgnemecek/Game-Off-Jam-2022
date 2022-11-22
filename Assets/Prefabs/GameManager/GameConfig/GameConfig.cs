@@ -11,5 +11,6 @@ public class GameConfig : ScriptableObject
   public LayerMask CardLayerMask;
   public LayerMask HandLayerMask;
   public LayerMask BoardLayerMask;
+  public LayerMask PileLayerMask;
   public string CardTag;
 }

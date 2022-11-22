@@ -8,7 +8,7 @@ public class EnemyState_NotInPlay : EnemyState
 
   public override void EnterState()
   {
-    _context.Target = _context.Core;
+    _context.Target = GameManager.Instance.Core;
   }
 
   public override void UpdateState()

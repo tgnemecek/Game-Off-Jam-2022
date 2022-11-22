@@ -11,7 +11,8 @@ public class CardState_InBoard : CardState
 
   public override void EnterState()
   {
-    _context.Hand.OnCardPlayed(_context);
+    GameManager.Instance.Hand.RemoveCard(_context);
+    GameManager.Instance.Board.AddCardToBoard(_context);
     _context.CardLayerController.SetDefaultLayer();
     _context.CanReturnToHand = false;
     PositionCard();

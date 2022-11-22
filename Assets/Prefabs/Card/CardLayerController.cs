@@ -31,8 +31,6 @@ public class CardLayerController : MonoBehaviour
     _nameText.fontSize = _cardConfig.FontSizeInHand;
     _cardImage.sprite = sprite;
     _defaultSortingLayerID = _canvas.sortingLayerID;
-
-    ShowCardBack();
   }
 
   public void SetCardImage(Sprite sprite)
@@ -75,6 +73,7 @@ public class CardLayerController : MonoBehaviour
 
   public void ShowCardForUI()
   {
+    _canvas.transform.rotation = Quaternion.identity;
     ShowCardFront();
   }
 
