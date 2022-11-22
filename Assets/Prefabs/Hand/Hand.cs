@@ -25,6 +25,8 @@ public class Hand : MonoBehaviour
 
   public void DrawHand()
   {
+    if (GameState.Instance.currentPhase != GamePhases.Draw) return;
+
     int cardsInHand = _cards.Count;
     if (cardsInHand >= _drawUpTo) return;
 
@@ -97,6 +99,8 @@ public class Hand : MonoBehaviour
 
   public void DiscardCard(Card card)
   {
+    if (GameState.Instance.currentPhase != GamePhases.Discard) return;
+
     _cards.Remove(card);
     _discardPile.Discard(card);
     CalculateHandPositions();
