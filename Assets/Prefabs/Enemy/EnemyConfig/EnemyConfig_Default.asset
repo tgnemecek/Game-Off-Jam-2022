@@ -17,3 +17,6 @@ MonoBehaviour:
   AttackSpeed: 1
   WalkRotationAmount: 3
   WalkRotationSpeed: 10
+  AttackedShrinkScale: 0.85
+  AttackedRotationMultiplier: 6
+  DeathDuration: 1
