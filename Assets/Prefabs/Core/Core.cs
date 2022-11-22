@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using Com.LuisPedroFonseca.ProCamera2D;
 
 public class Core : MonoBehaviour, IHitable
 {
@@ -25,6 +23,7 @@ public class Core : MonoBehaviour, IHitable
     _hp -= damage;
 
     _healthBar.UpdateHealth(_hp);
+    ProCamera2DShake.Instance.Shake("Shake_CoreHit");
 
     if (_hp <= 0)
     {

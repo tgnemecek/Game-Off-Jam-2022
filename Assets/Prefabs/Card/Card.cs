@@ -16,6 +16,14 @@ public enum CardTypes
 
 public abstract class Card : MonoBehaviour, IHitable
 {
+  public static bool IsConsumableCardType(CardTypes type)
+  {
+    if (type == CardTypes.Resource) return true;
+    if (type == CardTypes.Item) return true;
+    if (type == CardTypes.Spell) return true;
+    return false;
+  }
+
   public int Id { get; set; }
 
   public string Name { get; set; }
@@ -60,7 +68,7 @@ public abstract class Card : MonoBehaviour, IHitable
   protected Hand _hand; public Hand Hand => _hand;
   private ResourceCostDictionary _cost = new ResourceCostDictionary(); public ResourceCostDictionary Cost => _cost;
 
-  private CardStateFactory _stateFactory;
+  protected CardStateFactory _stateFactory;
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }
 
   private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
@@ -150,6 +158,66 @@ public abstract class Card : MonoBehaviour, IHitable
     BattlingAgainst.Add(hitable);
   }
 
+  protected void SnapToBoard(Camera camera)
+  {
+    if (PlayerController.Instance.IsHoveringOnHand && CanReturnToHand)
+    {
+      SnapToScreen(camera);
+    }
+    else
+    {
+      Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+      RaycastHit hitInfo;
+
+      Vector3 worldPos = transform.position;
+      Quaternion rotation = transform.rotation;
+
+      if (Physics.Raycast(ray, out hitInfo, 9999, GameManager.Instance.GameConfig.BoardLayerMask))
+      {
+        worldPos = hitInfo.point;
+        rotation = hitInfo.collider.transform.rotation;
+      }
+
+      transform.position = Vector3.Lerp(
+        transform.position,
+        worldPos,
+        CardConfig.CatchUpSpeedWhileDragging
+      );
+      transform.rotation = Quaternion.Lerp(
+        transform.rotation,
+        rotation,
+        CardConfig.CatchUpSpeedWhileDragging
+      );
+    }
+  }
+
+  protected void SnapToScreen(Camera camera)
+  {
+    float targetX = camera.transform.rotation.eulerAngles.x;
+    Quaternion rotation = Quaternion.Euler(targetX, 0, 0);
+
+    Vector3 screenPos = new Vector3(
+      Input.mousePosition.x,
+      Input.mousePosition.y,
+      camera.WorldToScreenPoint(PositionInHand).z
+    );
+
+    Vector3 worldPos = camera.ScreenToWorldPoint(screenPos);
+
+    transform.position = Vector3.Lerp(
+      transform.position,
+      worldPos,
+      CardConfig.CatchUpSpeedWhileDragging
+    );
+    transform.rotation = Quaternion.Lerp(
+      transform.rotation,
+      rotation,
+      CardConfig.CatchUpSpeedWhileDragging
+    );
+  }
+
+  public abstract CardState OnConsume();
+  public abstract void Drag(Camera camera);
   public Collider GetCollider() => _collider;
   public Transform GetTransform() => transform;
 }

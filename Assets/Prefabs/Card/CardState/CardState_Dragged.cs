@@ -21,50 +21,8 @@ public class CardState_Dragged : CardState
 
   public override void FixedUpdateState()
   {
-    SnapToBoard();
+    _context.Drag(_camera);
     SaveLastValidPosition();
-  }
-
-  void SnapToBoard()
-  {
-    (Vector3, Quaternion) GetTarget()
-    {
-      if (PlayerController.Instance.IsHoveringOnHand && _context.CanReturnToHand)
-      {
-        float targetX = _camera.transform.rotation.eulerAngles.x;
-        Quaternion rotation = Quaternion.Euler(targetX, 0, 0);
-
-        Vector3 screenPos = new Vector3(
-          Input.mousePosition.x,
-          Input.mousePosition.y,
-          _camera.WorldToScreenPoint(_context.PositionInHand).z
-        );
-
-        Vector3 worldPos = _camera.ScreenToWorldPoint(screenPos);
-
-        return (worldPos, rotation);
-      }
-      Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-      RaycastHit hitInfo;
-      if (Physics.Raycast(ray, out hitInfo, 9999, GameManager.Instance.GameConfig.BoardLayerMask))
-      {
-        return (hitInfo.point, hitInfo.collider.transform.rotation);
-      }
-      return (_context.transform.position, _context.transform.rotation);
-    }
-
-    var (target, rotation) = GetTarget();
-
-    _context.transform.position = Vector3.Lerp(
-      _context.transform.position,
-      target,
-      _context.CardConfig.CatchUpSpeedWhileDragging
-    );
-    _context.transform.rotation = Quaternion.Lerp(
-      _context.transform.rotation,
-      rotation,
-      _context.CardConfig.CatchUpSpeedWhileDragging
-    );
   }
 
   void SaveLastValidPosition()
@@ -85,7 +43,7 @@ public class CardState_Dragged : CardState
       }
       if (ResourcesManager.Instance.TryConsume(_context.Cost))
       {
-        SwitchState(_factory.InBoard());
+        SwitchState(_context.OnConsume());
       }
     }
   }

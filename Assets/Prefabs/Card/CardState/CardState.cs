@@ -30,6 +30,20 @@ public abstract class CardState
     return false;
   }
 
+  protected void CheckCardSide(Camera camera)
+  {
+    float dot = Vector3.Dot(-_context.transform.forward, (camera.transform.position - _context.transform.position).normalized);
+
+    bool facingCamera = dot > 0f;
+
+    if (facingCamera)
+    {
+      _context.CardLayerController.ShowCardFront();
+      return;
+    }
+    _context.CardLayerController.ShowCardBack();
+  }
+
   public abstract void EnterState();
   public abstract void UpdateState();
   public abstract void FixedUpdateState();
