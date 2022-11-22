@@ -9,8 +9,8 @@ public class EnemyState_Dead : EnemyState
 
   public override void EnterState()
   {
-    // @TODO: Death animation
     GameManager.Instance.EnemyManager.RegisterEnemyDeath(_context);
+    _context.gameObject.SetActive(false);
   }
   public override void UpdateState() { }
   public override void FixedUpdateState() { }

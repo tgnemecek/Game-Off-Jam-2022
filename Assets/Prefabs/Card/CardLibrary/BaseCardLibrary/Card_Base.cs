@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Card_Base : Card
 {
   public override void Play()
@@ -9,4 +11,7 @@ public class Card_Base : Card
   {
     // noop
   }
+
+  public override void Drag(Camera camera) { }
+  public override CardState OnConsume() => _stateFactory.NotInPlay();
 }

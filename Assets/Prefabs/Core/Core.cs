@@ -1,34 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using Com.LuisPedroFonseca.ProCamera2D;
 
 public class Core : MonoBehaviour, IHitable
 {
   [SerializeField]
   int _maxHP;
   [SerializeField]
-  RectTransform _hpBarForeground;
-  [SerializeField]
   Collider _collider;
+  [SerializeField]
+  HealthBar _healthBar;
+
   int _hp;
 
   void Start()
   {
     _hp = _maxHP;
+    _healthBar.Initialize(transform, _maxHP, true);
   }
 
   public void ReceiveDamage(int damage)
   {
     _hp -= damage;
 
+    _healthBar.UpdateHealth(_hp);
+    ProCamera2DShake.Instance.Shake("Shake_CoreHit");
+
     if (_hp <= 0)
     {
       _hp = 0;
       GameManager.Instance.GameOver();
     }
-    float right = _maxHP - _hp;
-    _hpBarForeground.offsetMax = new Vector2(-right, _hpBarForeground.offsetMax.y);
   }
 
   public void StartBattle(IHitable hitable) { }

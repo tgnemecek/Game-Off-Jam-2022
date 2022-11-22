@@ -22,4 +22,6 @@ public class CardConfig : ScriptableObject
   public float DistanceToBoardWhenPlaced = .3f;
   public float TimeToPlaceOnBoard = 1f;
   public float OnBoardHoverOutlineSize = 0f;
+  public float ConsumeAnimationTime = 1f;
+  public float ConsumeAnimationRotation = 90f;
 }
