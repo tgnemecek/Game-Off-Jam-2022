@@ -5,6 +5,8 @@ using UnityEngine;
 enum CardStateEnum
 {
   NotInPlay,
+  InBooster,
+  InPile,
   InHand,
   InBoard,
   InBattle,
@@ -22,6 +24,8 @@ public class CardStateFactory
   {
     _context = context;
     _states[CardStateEnum.NotInPlay] = new CardState_NotInPlay(_context, this);
+    _states[CardStateEnum.InBooster] = new CardState_InBooster(_context, this);
+    _states[CardStateEnum.InPile] = new CardState_InPile(_context, this);
     _states[CardStateEnum.InHand] = new CardState_InHand(_context, this);
     _states[CardStateEnum.InBoard] = new CardState_InBoard(_context, this);
     _states[CardStateEnum.InBattle] = new CardState_InBattle(_context, this);
@@ -31,6 +35,8 @@ public class CardStateFactory
   }
 
   public CardState NotInPlay() => _states[CardStateEnum.NotInPlay];
+  public CardState InBooster() => _states[CardStateEnum.InBooster];
+  public CardState InPile() => _states[CardStateEnum.InPile];
   public CardState InHand() => _states[CardStateEnum.InHand];
   public CardState InBoard() => _states[CardStateEnum.InBoard];
   public CardState InBattle() => _states[CardStateEnum.InBattle];

@@ -14,6 +14,12 @@ public enum CardTypes
   Building = 40,
 }
 
+public enum CardInitializer
+{
+  Pile,
+  BoosterPack
+}
+
 public abstract class Card : MonoBehaviour, IHitable
 {
   public static bool IsConsumableCardType(CardTypes type)
@@ -74,6 +80,7 @@ public abstract class Card : MonoBehaviour, IHitable
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
   private bool _canReturnToHand = true; public bool CanReturnToHand { get { return _canReturnToHand; } set { _canReturnToHand = value; } }
+  private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
   public Vector3 LastValidBoardPosition { get; set; }
   public List<IHitable> BattlingAgainst = new List<IHitable>();
 
@@ -129,6 +136,8 @@ public abstract class Card : MonoBehaviour, IHitable
     _currentState = _stateFactory.NotInPlay();
     _currentState.EnterState();
   }
+
+  public void InitializedBy(CardInitializer cardInitializer) => _cardInitializer = cardInitializer;
 
   public bool IsHovering => PlayerController.Instance.CardPointedTo == this;
 

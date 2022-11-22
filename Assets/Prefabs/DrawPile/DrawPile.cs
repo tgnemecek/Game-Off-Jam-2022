@@ -9,7 +9,7 @@ public class DrawPile : MonoBehaviour, IPile
   private TextMeshProUGUI _counter;
   [SerializeField]
   private DeckBook _deckBook;
-  private List<Card> _cards = new List<Card>();
+  private List<Card> _cards = new List<Card>(); public List<Card> Cards => _cards;
   private bool _isHovering = false;
 
   void Update()
@@ -25,6 +25,7 @@ public class DrawPile : MonoBehaviour, IPile
     foreach (var c in deck.Cards)
     {
       var card = Instantiate(c, transform.position, Quaternion.Euler(-90, -180, 0), transform);
+      card.InitializedBy(CardInitializer.Pile);
       _cards.Add(card);
     }
     _deckBook.PopulateCards(_cards);
