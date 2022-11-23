@@ -7,7 +7,7 @@ public class Card_DanceWithTheDevil : Card_Spell
     this.Id = 43;
 		this.Name = "Dance with the devil";
 		this.Description = "Pay 50% of your life to deal 50% damage to enemy [unit]s";
-		this.Image = "Assets/Resources/Card/Spell/DanceWithTheDevil";
+		this.Image = "Card/Spell/DanceWithTheDevil";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 3;

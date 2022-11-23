@@ -7,7 +7,7 @@ public class Card_DressedToKill : Card_Spell
     this.Id = 36;
 		this.Name = "Dressed to kill";
 		this.Description = "Deal [X] damage to a unit ";
-		this.Image = "Assets/Resources/Card/Spell/DressedToKill";
+		this.Image = "Card/Spell/DressedToKill";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

@@ -1,23 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
-[CreateAssetMenu(fileName = "Resource_", menuName = "ScriptableObjects/Resource", order = 4)]
-public class Resource : ScriptableObject
+public abstract class Resource
 {
-  public string Name;
-  [SerializeField]
-  private string _spritePath;
-  private Sprite _sprite;
+  protected Sprite _sprite;
+  protected string _name = "";
+  protected int _amount = 0;
 
-  [HideInInspector]
-  public int Amount = 0;
-  public void SetAmount(int amount) => Amount = amount;
-  public Sprite GetSprite() => _sprite;
-
-  void Awake()
+  public Sprite Sprite
   {
-    _sprite = AssetDatabase.LoadAssetAtPath<Sprite>(_spritePath);
+    get
+    {
+      if (_sprite == null)
+      {
+        _sprite = Resources.Load<Sprite>("Card/Resource/" + _name);
+      }
+      return _sprite;
+    }
   }
+
+  public string Name => _name;
+  public int Amount => _amount;
+
+  public void IncrementAmount(int amount) => _amount += amount;
 }

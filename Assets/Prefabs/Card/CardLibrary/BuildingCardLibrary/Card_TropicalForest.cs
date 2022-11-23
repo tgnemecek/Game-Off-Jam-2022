@@ -7,7 +7,7 @@ public class Card_TropicalForest : Card_Building
     this.Id = 21;
 		this.Name = "Tropical Forest";
 		this.Description = "Gain 3 Wood at the end of each turn";
-		this.Image = "Assets/Resources/Card/Building/TropicalForest";
+		this.Image = "Card/Building/TropicalForest";
 		this.WoodCost = 3;
 		this.FishCost = 0;
 		this.GoldCost = 2;

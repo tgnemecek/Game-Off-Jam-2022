@@ -7,7 +7,7 @@ public class Card_LumberMill : Card_Building
     this.Id = 20;
 		this.Name = "Lumber Mill";
 		this.Description = "Gain 2 Wood at the end of each turn";
-		this.Image = "Assets/Resources/Card/Building/LumberMill";
+		this.Image = "Card/Building/LumberMill";
 		this.WoodCost = 2;
 		this.FishCost = 0;
 		this.GoldCost = 1;

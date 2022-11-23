@@ -7,7 +7,7 @@ public class Card_BackSeatDriver : Card_Spell
     this.Id = 37;
 		this.Name = "Back-seat driver";
 		this.Description = "Each turn, lose [X] life and deal 2x[X] damage to each enemy";
-		this.Image = "Assets/Resources/Card/Spell/BackSeatDriver";
+		this.Image = "Card/Spell/BackSeatDriver";
 		this.WoodCost = 4;
 		this.FishCost = 4;
 		this.GoldCost = 0;

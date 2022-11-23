@@ -7,7 +7,7 @@ public class Card_AllInADaysWork : Card_Spell
     this.Id = 26;
 		this.Name = "All in a day's work";
 		this.Description = "Generate double resources this turn";
-		this.Image = "Assets/Resources/Card/Spell/AllInADaysWork";
+		this.Image = "Card/Spell/AllInADaysWork";
 		this.WoodCost = 1;
 		this.FishCost = 1;
 		this.GoldCost = 0;

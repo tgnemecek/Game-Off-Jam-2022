@@ -7,7 +7,7 @@ public class Card_BomberDuck : Card_Unit
     this.Id = 9;
 		this.Name = "Bomber Duck";
 		this.Description = "This duck deals [X] damage";
-		this.Image = "Assets/Resources/Card/Unit/BomberDuck";
+		this.Image = "Card/Unit/BomberDuck";
 		this.WoodCost = 0;
 		this.FishCost = 6;
 		this.GoldCost = 3;

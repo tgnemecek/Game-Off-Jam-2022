@@ -7,7 +7,7 @@ public class Card_LongShot : Card_Spell
     this.Id = 28;
 		this.Name = "Long shot";
 		this.Description = "[Item]s generate double the resources";
-		this.Image = "Assets/Resources/Card/Spell/LongShot";
+		this.Image = "Card/Spell/LongShot";
 		this.WoodCost = 7;
 		this.FishCost = 0;
 		this.GoldCost = 0;

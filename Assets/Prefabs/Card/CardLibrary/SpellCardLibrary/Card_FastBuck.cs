@@ -7,7 +7,7 @@ public class Card_FastBuck : Card_Spell
     this.Id = 27;
 		this.Name = "Fast buck";
 		this.Description = "[Building] upgrades cost one less resource";
-		this.Image = "Assets/Resources/Card/Spell/FastBuck";
+		this.Image = "Card/Spell/FastBuck";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 3;

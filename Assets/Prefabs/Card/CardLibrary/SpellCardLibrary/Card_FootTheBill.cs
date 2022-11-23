@@ -7,7 +7,7 @@ public class Card_FootTheBill : Card_Spell
     this.Id = 34;
 		this.Name = "Foot the bill";
 		this.Description = "Pay [X] life to generate 2x [X] shield";
-		this.Image = "Assets/Resources/Card/Spell/FootTheBill";
+		this.Image = "Card/Spell/FootTheBill";
 		this.WoodCost = 2;
 		this.FishCost = 2;
 		this.GoldCost = 0;

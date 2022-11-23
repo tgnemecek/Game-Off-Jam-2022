@@ -7,7 +7,7 @@ public class Card_DownTheDrain : Card_Spell
     this.Id = 35;
 		this.Name = "Down the drain";
 		this.Description = "Whenever you lose [X] life, generate [X/Y] gold";
-		this.Image = "Assets/Resources/Card/Spell/DownTheDrain";
+		this.Image = "Card/Spell/DownTheDrain";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 5;

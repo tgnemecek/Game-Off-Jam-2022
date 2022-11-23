@@ -7,7 +7,7 @@ public class Card_InForTheLongHaul : Card_Spell
     this.Id = 29;
 		this.Name = "In for the long haul";
 		this.Description = "Generate one extra resource for each [item] casted";
-		this.Image = "Assets/Resources/Card/Spell/InForTheLongHaul";
+		this.Image = "Card/Spell/InForTheLongHaul";
 		this.WoodCost = 2;
 		this.FishCost = 2;
 		this.GoldCost = 0;

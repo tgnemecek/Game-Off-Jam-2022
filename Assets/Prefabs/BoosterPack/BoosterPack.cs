@@ -31,11 +31,6 @@ public class BoosterPack : MonoBehaviour
 
   List<Card> _boosterCards = new List<Card>();
 
-  void OnValidate()
-  {
-    UpdateCardList();
-  }
-
   public void UpdateCardList()
   {
     string[] guids = AssetDatabase.FindAssets("Card_ t:GameObject", cardPaths);

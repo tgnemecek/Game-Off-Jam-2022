@@ -123,13 +123,12 @@ public abstract class Card : MonoBehaviour, IHitable
     _positionChangedThisFrame = true;
   }
 
-  void Awake()
-  {
-    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _cost, _cardConfig);
-  }
-
   void Start()
   {
+    _cost.Add(new Resource_Wood(WoodCost));
+    _cost.Add(new Resource_Fish(FishCost));
+    _cost.Add(new Resource_Gold(GoldCost));
+    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _cost, _cardConfig);
     HP = _cardConfig.MaxHP;
     _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
     _stateFactory = new CardStateFactory(this);

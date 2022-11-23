@@ -140,6 +140,7 @@ MonoBehaviour:
   _shadowSprite: {fileID: 2485184831167638871}
   _onHoverSprite: {fileID: 326103082829130535}
   _nameText: {fileID: 8049731418897075407}
+  _cardCost: {fileID: 2907798517761156430}
 --- !u!1 &2218253603778028939
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,11 +768,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_RootOrder
@@ -779,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -791,15 +792,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -811,7 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.00000035762787
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -831,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -849,12 +850,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4041251505324449644, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4199637516876173535, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
       propertyPath: m_Name
       value: CardCost
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
+--- !u!114 &2907798517761156430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6529908653788045841, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}
+  m_PrefabInstance: {fileID: 8269864602645727071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b71f22c48907144b3d3599792826c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6136572303670997311 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2876971083272681056, guid: 27d847a5b1d80d24596710a7caff7d4f, type: 3}

@@ -13,7 +13,7 @@ public class ResourceDisplay : MonoBehaviour
 
   public void SetResource(Resource resource)
   {
-    _icon.sprite = resource.GetSprite();
+    _icon.sprite = resource.Sprite;
     _text.text = "x" + resource.Amount;
   }
 }

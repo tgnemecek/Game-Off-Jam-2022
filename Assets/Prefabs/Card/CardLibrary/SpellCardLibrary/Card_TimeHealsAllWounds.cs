@@ -7,7 +7,7 @@ public class Card_TimeHealsAllWounds : Card_Spell
     this.Id = 33;
 		this.Name = "Time heals all wounds";
 		this.Description = "Heal [X] life at the end of every turn";
-		this.Image = "Assets/Resources/Card/Spell/TimeHealsAllWounds";
+		this.Image = "Card/Spell/TimeHealsAllWounds";
 		this.WoodCost = 4;
 		this.FishCost = 4;
 		this.GoldCost = 0;

@@ -7,7 +7,7 @@ public class Card_Marino : Card_Unit
     this.Id = 10;
 		this.Name = "Marino";
 		this.Description = "Final Boss";
-		this.Image = "Assets/Resources/Card/Unit/Marino";
+		this.Image = "Card/Unit/Marino";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

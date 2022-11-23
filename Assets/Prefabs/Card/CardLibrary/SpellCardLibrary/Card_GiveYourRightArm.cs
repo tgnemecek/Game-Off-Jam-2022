@@ -7,7 +7,7 @@ public class Card_GiveYourRightArm : Card_Spell
     this.Id = 40;
 		this.Name = "Give your right arm";
 		this.Description = "Pay half of your life to heal all your [units]";
-		this.Image = "Assets/Resources/Card/Spell/GiveYourRightArm";
+		this.Image = "Card/Spell/GiveYourRightArm";
 		this.WoodCost = 3;
 		this.FishCost = 3;
 		this.GoldCost = 0;

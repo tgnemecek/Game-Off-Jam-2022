@@ -7,7 +7,7 @@ public class Card_EvergreenForest : Card_Building
     this.Id = 22;
 		this.Name = "Evergreen Forest";
 		this.Description = "Gain 4 Wood at the end of each turn";
-		this.Image = "Assets/Resources/Card/Building/EvergreenForest";
+		this.Image = "Card/Building/EvergreenForest";
 		this.WoodCost = 4;
 		this.FishCost = 0;
 		this.GoldCost = 3;

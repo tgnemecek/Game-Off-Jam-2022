@@ -7,7 +7,7 @@ public class Card_PlentyOfFishInTheSea : Card_Item
     this.Id = 13;
 		this.Name = "Plenty of fish in the sea";
 		this.Description = "Gain 3 Fish & Lose 1 Wood";
-		this.Image = "Assets/Resources/Card/Item/PlentyOfFishInTheSea";
+		this.Image = "Card/Item/PlentyOfFishInTheSea";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

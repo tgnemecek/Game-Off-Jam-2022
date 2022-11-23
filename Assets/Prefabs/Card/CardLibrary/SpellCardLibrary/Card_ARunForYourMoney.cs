@@ -7,7 +7,7 @@ public class Card_ARunForYourMoney : Card_Spell
     this.Id = 39;
 		this.Name = "A run for your money";
 		this.Description = "Pay [X] gold to generate 2x[X] life";
-		this.Image = "Assets/Resources/Card/Spell/ARunForYourMoney";
+		this.Image = "Card/Spell/ARunForYourMoney";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

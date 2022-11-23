@@ -7,7 +7,7 @@ public class Card_GiveAHand : Card_Spell
     this.Id = 41;
 		this.Name = "Give a hand";
 		this.Description = "Discard your hand, draw the same number of cards discarded";
-		this.Image = "Assets/Resources/Card/Spell/GiveAHand";
+		this.Image = "Card/Spell/GiveAHand";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 2;

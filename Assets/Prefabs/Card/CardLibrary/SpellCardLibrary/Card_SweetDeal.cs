@@ -7,7 +7,7 @@ public class Card_SweetDeal : Card_Spell
     this.Id = 42;
 		this.Name = "Sweet deal";
 		this.Description = "[Unit]s gain [X] attack power";
-		this.Image = "Assets/Resources/Card/Spell/SweetDeal";
+		this.Image = "Card/Spell/SweetDeal";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

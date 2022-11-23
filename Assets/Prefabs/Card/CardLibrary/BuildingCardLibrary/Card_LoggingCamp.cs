@@ -7,7 +7,7 @@ public class Card_LoggingCamp : Card_Building
     this.Id = 19;
 		this.Name = "Logging Camp";
 		this.Description = "Gain 1 Wood at the end of each turn";
-		this.Image = "Assets/Resources/Card/Building/LoggingCamp";
+		this.Image = "Card/Building/LoggingCamp";
 		this.WoodCost = 1;
 		this.FishCost = 0;
 		this.GoldCost = 1;

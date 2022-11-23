@@ -7,7 +7,7 @@ public class Card_2020Hindsight : Card_Spell
     this.Id = 30;
 		this.Name = "20-20 hindsight";
 		this.Description = "Deal [X] damage to every enemy unit";
-		this.Image = "Assets/Resources/Card/Spell/2020Hindsight";
+		this.Image = "Card/Spell/2020Hindsight";
 		this.WoodCost = 4;
 		this.FishCost = 1;
 		this.GoldCost = 0;

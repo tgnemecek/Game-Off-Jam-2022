@@ -7,7 +7,7 @@ public class Card_KnockOnWood : Card_Item
     this.Id = 14;
 		this.Name = "Knock on wood";
 		this.Description = "Gain 3 Wood & Lose 1 Fish";
-		this.Image = "Assets/Resources/Card/Item/KnockOnWood";
+		this.Image = "Card/Item/KnockOnWood";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

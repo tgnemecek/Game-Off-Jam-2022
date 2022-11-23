@@ -7,7 +7,7 @@ public class Card_ComeUpShort : Card_Spell
     this.Id = 32;
 		this.Name = "Come up short";
 		this.Description = "Discard [X] number of cards from your hand. Generate [X] gold.";
-		this.Image = "Assets/Resources/Card/Spell/ComeUpShort";
+		this.Image = "Card/Spell/ComeUpShort";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

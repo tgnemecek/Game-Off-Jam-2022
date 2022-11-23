@@ -7,7 +7,7 @@ public class Card_BreatheFire : Card_Spell
     this.Id = 23;
 		this.Name = "Breathe Fire";
 		this.Description = "Breathe Fire";
-		this.Image = "Assets/Resources/Card/Spell/BreatheFire";
+		this.Image = "Card/Spell/BreatheFire";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;
