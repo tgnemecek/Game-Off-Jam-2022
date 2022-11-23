@@ -11,6 +11,7 @@ public class GameState_GameOver : GameState
   {
     _context.IsCardInteractionActive = false;
     _context.EnemyManager.DisableAllEnemies();
+    _context.GameOverMenu.Show();
   }
 
   public override void OnWaveClear() { }

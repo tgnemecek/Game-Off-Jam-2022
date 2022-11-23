@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private Board _board; public Board Board => _board;
   [SerializeField]
+  private GameOverMenu _gameOverMenu; public GameOverMenu GameOverMenu => _gameOverMenu;
+  [SerializeField]
   private GameConfig _gameConfig; public GameConfig GameConfig => _gameConfig;
   [SerializeField]
   private EnemyManager _enemyManager; public EnemyManager EnemyManager => _enemyManager;
@@ -60,7 +62,8 @@ public class GameManager : MonoBehaviour
 
   public void GameOver()
   {
-
+    _currentState = _stateFactory.GameOver();
+    _currentState.EnterState();
   }
 
   IEnumerator WaitAndStartTurn()
