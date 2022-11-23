@@ -6,7 +6,8 @@ CardProperties.set("Name", "string");
 CardProperties.set("Description", "string");
 CardProperties.set("Image", "string");
 CardProperties.set("WoodCost", "int");
-CardProperties.set("StoneCost", "int");
+CardProperties.set("FishCost", "int");
+CardProperties.set("GoldCost", "int");
 
 const buildConstructor = (card: Card) => {
   const entries = Array.from(CardProperties.entries());

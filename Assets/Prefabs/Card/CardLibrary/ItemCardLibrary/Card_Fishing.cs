@@ -4,12 +4,13 @@ public class Card_Fishing : Card_Item
 {
   public Card_Fishing()
   {
-    this.Id = 8;
+    this.Id = 11;
 		this.Name = "Fishing";
-		this.Description = "Gain 1 Fish";
+		this.Description = "Gain 2 Fish";
 		this.Image = "Card/Item/Fishing";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 0;
   }
 
   #endregion AUTO-GENERATED

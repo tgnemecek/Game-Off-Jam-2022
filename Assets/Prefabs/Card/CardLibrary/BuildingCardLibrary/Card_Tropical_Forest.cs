@@ -4,12 +4,13 @@ public class Card_Tropical_Forest : Card_Building
 {
   public Card_Tropical_Forest()
   {
-    this.Id = 18;
+    this.Id = 21;
 		this.Name = "Tropical Forest";
 		this.Description = "Gain 3 Wood at the end of each turn";
 		this.Image = "";
-		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.WoodCost = 3;
+		this.FishCost = 0;
+		this.GoldCost = 2;
   }
 
   #endregion AUTO-GENERATED

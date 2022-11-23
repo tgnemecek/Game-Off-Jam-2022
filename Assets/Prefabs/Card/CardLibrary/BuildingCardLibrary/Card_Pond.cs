@@ -4,12 +4,13 @@ public class Card_Pond : Card_Building
 {
   public Card_Pond()
   {
-    this.Id = 12;
+    this.Id = 15;
 		this.Name = "Pond";
 		this.Description = "Gain 1 Fish at the end of each turn";
 		this.Image = "";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 1;
+		this.GoldCost = 1;
   }
 
   #endregion AUTO-GENERATED

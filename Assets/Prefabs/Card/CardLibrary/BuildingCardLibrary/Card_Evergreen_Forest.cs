@@ -4,12 +4,13 @@ public class Card_Evergreen_Forest : Card_Building
 {
   public Card_Evergreen_Forest()
   {
-    this.Id = 19;
+    this.Id = 22;
 		this.Name = "Evergreen Forest";
 		this.Description = "Gain 4 Wood at the end of each turn";
 		this.Image = "";
-		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.WoodCost = 4;
+		this.FishCost = 0;
+		this.GoldCost = 3;
   }
 
   #endregion AUTO-GENERATED

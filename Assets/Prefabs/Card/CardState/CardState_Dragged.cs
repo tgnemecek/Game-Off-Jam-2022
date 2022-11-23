@@ -41,10 +41,10 @@ public class CardState_Dragged : CardState
         SwitchState(_factory.InHand());
         return;
       }
-      if (ResourcesManager.Instance.TryConsume(_context.Cost))
-      {
-        SwitchState(_context.OnConsume());
-      }
+      // if (ResourcesManager.Instance.TryConsume(_context.Cost))
+      // {
+      //   SwitchState(_context.OnConsume());
+      // }
     }
   }
 

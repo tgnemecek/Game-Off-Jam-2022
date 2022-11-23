@@ -18,7 +18,8 @@ export type CardTypeString =
 
 export enum Resource {
   Wood = 0,
-  Stone = 10,
+  Fish = 10,
+  Gold = 20
 }
 
 export type CardRow = {
@@ -28,7 +29,8 @@ export type CardRow = {
   Description: string;
   Image: string;
   WoodCost: string;
-  StoneCost: string;
+  FishCost: string;
+  GoldCost: string;
   Comments?: string;
 };
 

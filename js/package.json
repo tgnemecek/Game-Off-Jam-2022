@@ -11,8 +11,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/uppercamelcase": "^3.0.0",
     "chalk": "^4.1.2",
     "fast-csv": "^4.3.6",
     "joi": "^17.7.0"
+  },
+  "dependencies": {
+    "camelcase": "^7.0.0",
+    "uppercamelcase": "^3.0.0"
   }
 }

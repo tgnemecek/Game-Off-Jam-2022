@@ -4,12 +4,13 @@ public class Card_Breathe_Fire : Card_Spell
 {
   public Card_Breathe_Fire()
   {
-    this.Id = 20;
+    this.Id = 23;
 		this.Name = "Breathe Fire";
 		this.Description = "Breathe Fire";
 		this.Image = "";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 0;
   }
 
   #endregion AUTO-GENERATED

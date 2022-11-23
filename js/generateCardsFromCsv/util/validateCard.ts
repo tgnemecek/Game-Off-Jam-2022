@@ -1,7 +1,7 @@
 import Joi from "joi";
-import { CardType, ValidateCardFn } from "../types";
+import { CardType, Card, ValidateCardFn } from "../types";
 
-const baseSchema: Joi.SchemaMap = {
+const baseSchema: Joi.SchemaMap<Card> = {
   Id: Joi.number().positive().allow(0).required(),
   Type: Joi.number()
     .valid(...Object.values(CardType))
@@ -12,7 +12,8 @@ const baseSchema: Joi.SchemaMap = {
   Description: Joi.string().optional().allow(""),
   Image: Joi.string().optional().allow(""), // not sure how images will be handled
   WoodCost: Joi.number().positive().allow(0),
-  StoneCost: Joi.number().positive().allow(0),
+  FishCost: Joi.number().positive().allow(0),
+  GoldCost: Joi.number().positive().allow(0),
   Comments: Joi.string().optional().allow(""),
 };
 

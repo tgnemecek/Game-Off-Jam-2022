@@ -4,12 +4,13 @@ public class Card_Wooding : Card_Item
 {
   public Card_Wooding()
   {
-    this.Id = 9;
+    this.Id = 12;
 		this.Name = "Wooding";
-		this.Description = "Gain 1 Wood";
+		this.Description = "Gain 2 Wood";
 		this.Image = "";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 0;
   }
 
   #endregion AUTO-GENERATED

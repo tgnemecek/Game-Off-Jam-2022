@@ -9,7 +9,8 @@ public class Card_Cavalry_Duck : Card_Unit
 		this.Description = "A knight in shining armor";
 		this.Image = "Card/Unit/Duck_cavalry";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 3;
+		this.GoldCost = 2;
   }
 
   #endregion AUTO-GENERATED

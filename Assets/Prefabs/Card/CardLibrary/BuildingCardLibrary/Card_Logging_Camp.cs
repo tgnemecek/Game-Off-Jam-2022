@@ -4,12 +4,13 @@ public class Card_Logging_Camp : Card_Building
 {
   public Card_Logging_Camp()
   {
-    this.Id = 16;
+    this.Id = 19;
 		this.Name = "Logging Camp";
 		this.Description = "Gain 1 Wood at the end of each turn";
 		this.Image = "";
-		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.WoodCost = 1;
+		this.FishCost = 0;
+		this.GoldCost = 1;
   }
 
   #endregion AUTO-GENERATED

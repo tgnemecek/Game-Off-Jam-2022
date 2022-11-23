@@ -51,7 +51,9 @@ public abstract class Card : MonoBehaviour, IHitable
 
   public int WoodCost { get; set; }
 
-  public int StoneCost { get; set; }
+  public int FishCost { get; set; }
+
+  public int GoldCost { get; set; }
 
   public int HP { get; set; }
 
@@ -71,7 +73,7 @@ public abstract class Card : MonoBehaviour, IHitable
   [Header("Debug Options")]
   [ReadOnly] public string CurrentStateName;
 
-  private ResourceDictionary _cost = new ResourceDictionary(); public ResourceDictionary Cost => _cost;
+  private List<Resource> _cost = new List<Resource>(); public List<Resource> Cost => _cost;
 
   protected CardStateFactory _stateFactory;
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }
@@ -123,9 +125,7 @@ public abstract class Card : MonoBehaviour, IHitable
 
   void Awake()
   {
-    _cost.Add(Resource.Wood, WoodCost);
-    _cost.Add(Resource.Stone, StoneCost);
-    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _cardConfig);
+    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _cost, _cardConfig);
   }
 
   void Start()
