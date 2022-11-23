@@ -24,4 +24,5 @@ public class CardConfig : ScriptableObject
   public float OnBoardHoverOutlineSize = 0f;
   public float ConsumeAnimationTime = 1f;
   public float ConsumeAnimationRotation = 90f;
+  public float DeathDuration = 1f;
 }

@@ -14,8 +14,10 @@ public class CardState_Destroyed : CardState
 
   IEnumerator DestroyedAnimation()
   {
+    LeanTween.rotateAround(_context.gameObject, Vector3.up, 360 * 5, _context.CardConfig.DeathDuration).setEaseOutCirc();
+    LeanTween.scale(_context.gameObject, Vector3.zero, _context.CardConfig.DeathDuration);
+
     yield break;
-    // @TODO: Add animation here
   }
 
   public override void UpdateState() { }
