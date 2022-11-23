@@ -17,20 +17,25 @@ public class CardLayerController : MonoBehaviour
   [SerializeField]
   private SpriteRenderer _backSprite;
   [SerializeField]
+  private SpriteRenderer _shadowSprite;
+  [SerializeField]
   private SpriteRenderer _onHoverSprite;
   [SerializeField]
   private TextMeshProUGUI _nameText;
+  [SerializeField]
+  private CardCost _cardCost;
   private CardConfig _cardConfig;
 
   private int _defaultSortingLayerID;
 
-  public void Initialize(string cardName, Sprite sprite, CardConfig cardConfig)
+  public void Initialize(string cardName, Sprite sprite, List<Resource> cost, CardConfig cardConfig)
   {
     _cardConfig = cardConfig;
     _nameText.text = cardName;
     _nameText.fontSize = _cardConfig.FontSizeInHand;
     _cardImage.sprite = sprite;
     _defaultSortingLayerID = _canvas.sortingLayerID;
+    _cardCost.SetCost(cost);
   }
 
   public void SetCardImage(Sprite sprite)
@@ -75,6 +80,11 @@ public class CardLayerController : MonoBehaviour
   {
     _canvas.transform.rotation = Quaternion.identity;
     ShowCardFront();
+  }
+
+  public void ToggleShadow(bool enabled)
+  {
+    _shadowSprite.gameObject.SetActive(enabled);
   }
 
   public void ToggleHoverOutline(bool enabled)

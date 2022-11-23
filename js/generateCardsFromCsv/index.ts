@@ -57,7 +57,7 @@ const generateCardsFromCsv = async () => {
     const fileName = getFileName(card);
     const folderName = getFolderName(card);
 
-    const cardPath = `${BASE_CARD_LIBRARY_PATH}/${folderName}/${fileName}.cs`;
+    const cardPath = path.normalize(`${BASE_CARD_LIBRARY_PATH}/${folderName}/${fileName}.cs`);
 
     if (fs.existsSync(cardPath)) updateCard(card, cardPath);
     else createCard(card, cardPath);

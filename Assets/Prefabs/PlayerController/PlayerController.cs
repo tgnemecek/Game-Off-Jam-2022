@@ -37,67 +37,45 @@ public class PlayerController : MonoBehaviour
 
   void FixedUpdate()
   {
-    CastRayForCards();
-    CastRayForHand();
-    CastRayForPiles();
+    CastMouseRays();
+    DetectHoverOnHand();
   }
 
-  void CastRayForCards()
+  void CastMouseRays()
   {
-    if (!GameManager.Instance.IsCardInteractionActive) return;
+    var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.MouseHoverLayerMask);
 
-    if (IsDraggingCard)
+    HandleCardHover(hit.collider);
+    HandlePileHover(hit.collider);
+  }
+
+  void HandleCardHover(Collider collider)
+  {
+    Card card = collider?.GetComponent<Card>();
+    CardPointedTo = card;
+  }
+
+  void HandlePileHover(Collider collider)
+  {
+    IPile pile = collider?.GetComponent<IPile>();
+    if (pile != null)
     {
-      CardPointedTo = CardBeingDragged;
+      if (_pilePointedTo != pile) _pilePointedTo?.MouseExit();
+      pile.MouseEnter();
+      _pilePointedTo = pile;
       return;
     }
-
-    var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.CardLayerMask);
-
-    if (success)
-    {
-      Card card;
-      if (hit.collider.TryGetComponent<Card>(out card))
-      {
-        if (card == CardPointedTo) return;
-        CardPointedTo = card;
-      }
-    }
-    else if (CardPointedTo != null)
-    {
-      CardPointedTo = null;
-    }
-  }
-
-  void CastRayForHand()
-  {
-    if (!GameManager.Instance.IsCardInteractionActive) return;
-
-    var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.HandLayerMask);
-    _isHoveringOnHand = success;
-  }
-
-  void CastRayForPiles()
-  {
-    if (!GameManager.Instance.IsCardInteractionActive) return;
-    if (IsDraggingCard) return;
-
-    var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.PileLayerMask);
-
-    if (!success && _pilePointedTo != null)
+    if (_pilePointedTo != null)
     {
       _pilePointedTo.MouseExit();
       _pilePointedTo = null;
-      return;
     }
+  }
 
-    IPile pile;
-    if (success && hit.collider.TryGetComponent<IPile>(out pile))
-    {
-      if (_pilePointedTo != null) _pilePointedTo.MouseExit();
-      pile.MouseEnter();
-      _pilePointedTo = pile;
-    };
+  void DetectHoverOnHand()
+  {
+    var (success, hit) = CastRayForLayerMask(GameManager.Instance.GameConfig.HandLayerMask);
+    _isHoveringOnHand = success;
   }
 
   (bool, RaycastHit) CastRayForLayerMask(LayerMask mask)

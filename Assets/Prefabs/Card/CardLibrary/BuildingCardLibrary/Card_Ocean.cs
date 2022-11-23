@@ -4,12 +4,13 @@ public class Card_Ocean : Card_Building
 {
   public Card_Ocean()
   {
-    this.Id = 15;
+    this.Id = 18;
 		this.Name = "Ocean";
 		this.Description = "Gain 4 Fish at the end of each turn";
-		this.Image = "";
+		this.Image = "Card/Building/Ocean";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 4;
+		this.GoldCost = 3;
   }
 
   #endregion AUTO-GENERATED

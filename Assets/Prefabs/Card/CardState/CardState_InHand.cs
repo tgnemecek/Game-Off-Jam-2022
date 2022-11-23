@@ -14,6 +14,7 @@ public class CardState_InHand : CardState
   {
     _context.DrawnOnThisFrame = false;
     _context.CardLayerController.SetDefaultLayer();
+    _context.CardLayerController.ToggleShadow(false);
     MoveToHandPosition();
     RotateToHand();
   }
@@ -67,9 +68,11 @@ public class CardState_InHand : CardState
 
   public override void FixedUpdateState()
   {
-    if (_lastHoverState == false && _context.IsHovering) OnHoverStart();
-    else if (_lastHoverState == true && !_context.IsHovering) OnHoverEnd();
-    _lastHoverState = _context.IsHovering;
+    bool hoveringThisCard = _context.IsHovering && !PlayerController.Instance.CardBeingDragged;
+
+    if (_lastHoverState == false && hoveringThisCard) OnHoverStart();
+    else if (_lastHoverState == true && !hoveringThisCard) OnHoverEnd();
+    _lastHoverState = hoveringThisCard;
   }
 
   void OnHoverStart()
@@ -88,5 +91,8 @@ public class CardState_InHand : CardState
     ScaleToHandSize();
   }
 
-  public override void ExitState() { }
+  public override void ExitState()
+  {
+    _context.CardLayerController.ToggleShadow(true);
+  }
 }

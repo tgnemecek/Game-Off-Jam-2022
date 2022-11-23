@@ -4,12 +4,13 @@ public class Card_Marino : Card_Unit
 {
   public Card_Marino()
   {
-    this.Id = 7;
+    this.Id = 10;
 		this.Name = "Marino";
 		this.Description = "Final Boss";
-		this.Image = "";
+		this.Image = "Card/Unit/Marino";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 0;
   }
 
   #endregion AUTO-GENERATED

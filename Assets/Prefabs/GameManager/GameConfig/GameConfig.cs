@@ -6,11 +6,9 @@ using UnityEngine;
 public class GameConfig : ScriptableObject
 {
   public float DelayBetweenEndOfTurnTasks = .2f;
-  public float EnemyTurnDuration = 10f;
   [Header("Layer Masks & Tags")]
-  public LayerMask CardLayerMask;
-  public LayerMask HandLayerMask;
+  public LayerMask MouseHoverLayerMask;
   public LayerMask BoardLayerMask;
-  public LayerMask PileLayerMask;
+  public LayerMask HandLayerMask;
   public string CardTag;
 }

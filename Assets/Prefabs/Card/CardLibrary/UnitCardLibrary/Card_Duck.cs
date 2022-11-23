@@ -6,10 +6,11 @@ public class Card_Duck : Card_Unit
   {
     this.Id = 4;
 		this.Name = "Duck";
-		this.Description = "Normal duck";
+		this.Description = "This duck deals [X] damage";
 		this.Image = "Card/Unit/Duck";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 1;
+		this.GoldCost = 1;
   }
 
   #endregion AUTO-GENERATED

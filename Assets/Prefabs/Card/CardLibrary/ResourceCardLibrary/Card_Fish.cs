@@ -9,7 +9,8 @@ public class Card_Fish : Card_Resource
 		this.Description = "";
 		this.Image = "Card/Resource/Fish";
 		this.WoodCost = 0;
-		this.StoneCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 0;
   }
 
   #endregion AUTO-GENERATED
