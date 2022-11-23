@@ -7,7 +7,7 @@ public class Card_Sea : Card_Building
     this.Id = 17;
 		this.Name = "Sea";
 		this.Description = "Gain 3 Fish at the end of each turn";
-		this.Image = "";
+		this.Image = "Assets/Resources/Card/Building/Sea";
 		this.WoodCost = 0;
 		this.FishCost = 3;
 		this.GoldCost = 2;

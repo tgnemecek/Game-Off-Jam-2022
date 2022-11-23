@@ -1,16 +1,16 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
-public class Card_Logging_Camp : Card_Building
+public class Card_FastBuck : Card_Spell
 {
-  public Card_Logging_Camp()
+  public Card_FastBuck()
   {
-    this.Id = 19;
-		this.Name = "Logging Camp";
-		this.Description = "Gain 1 Wood at the end of each turn";
-		this.Image = "";
-		this.WoodCost = 1;
+    this.Id = 27;
+		this.Name = "Fast buck";
+		this.Description = "[Building] upgrades cost one less resource";
+		this.Image = "Assets/Resources/Card/Spell/FastBuck";
+		this.WoodCost = 0;
 		this.FishCost = 0;
-		this.GoldCost = 1;
+		this.GoldCost = 3;
   }
 
   #endregion AUTO-GENERATED

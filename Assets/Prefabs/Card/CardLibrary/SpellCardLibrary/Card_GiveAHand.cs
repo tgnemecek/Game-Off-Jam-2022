@@ -1,16 +1,16 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
-public class Card_Breathe_Fire : Card_Spell
+public class Card_GiveAHand : Card_Spell
 {
-  public Card_Breathe_Fire()
+  public Card_GiveAHand()
   {
-    this.Id = 23;
-		this.Name = "Breathe Fire";
-		this.Description = "Breathe Fire";
-		this.Image = "";
+    this.Id = 41;
+		this.Name = "Give a hand";
+		this.Description = "Discard your hand, draw the same number of cards discarded";
+		this.Image = "Assets/Resources/Card/Spell/GiveAHand";
 		this.WoodCost = 0;
 		this.FishCost = 0;
-		this.GoldCost = 0;
+		this.GoldCost = 2;
   }
 
   #endregion AUTO-GENERATED

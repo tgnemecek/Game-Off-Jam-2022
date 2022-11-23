@@ -7,7 +7,7 @@ public class Card_Wooding : Card_Item
     this.Id = 12;
 		this.Name = "Wooding";
 		this.Description = "Gain 2 Wood";
-		this.Image = "";
+		this.Image = "Assets/Resources/Card/Item/Wooding";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

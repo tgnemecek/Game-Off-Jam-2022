@@ -1,13 +1,13 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
-public class Card_Fish : Card_Resource
+public class Card_SweetDeal : Card_Spell
 {
-  public Card_Fish()
+  public Card_SweetDeal()
   {
-    this.Id = 2;
-		this.Name = "Fish";
-		this.Description = "";
-		this.Image = "Assets/Resources/Card/Resource/Fish";
+    this.Id = 42;
+		this.Name = "Sweet deal";
+		this.Description = "[Unit]s gain [X] attack power";
+		this.Image = "Assets/Resources/Card/Spell/SweetDeal";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

@@ -1,16 +1,16 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
-public class Card_Evergreen_Forest : Card_Building
+public class Card_TimeHealsAllWounds : Card_Spell
 {
-  public Card_Evergreen_Forest()
+  public Card_TimeHealsAllWounds()
   {
-    this.Id = 22;
-		this.Name = "Evergreen Forest";
-		this.Description = "Gain 4 Wood at the end of each turn";
-		this.Image = "";
+    this.Id = 33;
+		this.Name = "Time heals all wounds";
+		this.Description = "Heal [X] life at the end of every turn";
+		this.Image = "Assets/Resources/Card/Spell/TimeHealsAllWounds";
 		this.WoodCost = 4;
-		this.FishCost = 0;
-		this.GoldCost = 3;
+		this.FishCost = 4;
+		this.GoldCost = 0;
   }
 
   #endregion AUTO-GENERATED

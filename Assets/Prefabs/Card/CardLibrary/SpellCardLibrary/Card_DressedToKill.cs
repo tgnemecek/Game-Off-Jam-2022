@@ -1,16 +1,16 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
-public class Card_Tropical_Forest : Card_Building
+public class Card_DressedToKill : Card_Spell
 {
-  public Card_Tropical_Forest()
+  public Card_DressedToKill()
   {
-    this.Id = 21;
-		this.Name = "Tropical Forest";
-		this.Description = "Gain 3 Wood at the end of each turn";
-		this.Image = "";
-		this.WoodCost = 3;
+    this.Id = 36;
+		this.Name = "Dressed to kill";
+		this.Description = "Deal [X] damage to a unit ";
+		this.Image = "Assets/Resources/Card/Spell/DressedToKill";
+		this.WoodCost = 0;
 		this.FishCost = 0;
-		this.GoldCost = 2;
+		this.GoldCost = 0;
   }
 
   #endregion AUTO-GENERATED
