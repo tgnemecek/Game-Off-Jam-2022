@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-  [SerializeField]
-  private GameObject pausePanel;
   private bool _isPaused = false;
 
   void Start()
   {
-    pausePanel.SetActive(false);
+    this.gameObject.SetActive(false);
   }
 
   void Update()
@@ -31,14 +29,14 @@ public class PauseMenu : MonoBehaviour
 
   void PauseGame()
   {
-    pausePanel.SetActive(true);
+    this.gameObject.SetActive(true);
     Time.timeScale = 0f;
     _isPaused = true;
   }
 
   void ResumeGame()
   {
-    pausePanel.SetActive(false);
+    this.gameObject.SetActive(false);
     Time.timeScale = 1f;
     _isPaused = false;
   }
