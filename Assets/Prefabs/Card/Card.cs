@@ -81,7 +81,7 @@ public abstract class Card : MonoBehaviour, IHitable
   private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
-  private bool _canReturnToHand = true; public bool CanReturnToHand { get { return _canReturnToHand; } set { _canReturnToHand = value; } }
+  private bool _wasPlayed = false; public bool WasPlayed { get { return _wasPlayed; } set { _wasPlayed = value; } }
   private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
   public Vector3 LastValidBoardPosition { get; set; }
   public List<IHitable> BattlingAgainst = new List<IHitable>();
@@ -125,18 +125,22 @@ public abstract class Card : MonoBehaviour, IHitable
 
   void Start()
   {
-    _cost.Add(new Resource_Wood(WoodCost));
-    _cost.Add(new Resource_Fish(FishCost));
-    _cost.Add(new Resource_Gold(GoldCost));
-    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _cost, _cardConfig);
-    HP = _cardConfig.MaxHP;
-    _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
     _stateFactory = new CardStateFactory(this);
     _currentState = _stateFactory.NotInPlay();
     _currentState.EnterState();
   }
 
-  public void InitializedBy(CardInitializer cardInitializer) => _cardInitializer = cardInitializer;
+  public void Initialize(CardInitializer cardInitializer)
+  {
+    _cardInitializer = cardInitializer;
+    _cost.Add(new Resource_Wood(WoodCost));
+    _cost.Add(new Resource_Fish(FishCost));
+    _cost.Add(new Resource_Gold(GoldCost));
+    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _cost, _cardConfig);
+    CardProximityDetector.Initialize(this);
+    HP = _cardConfig.MaxHP;
+    _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
+  }
 
   public bool IsHovering => PlayerController.Instance.CardPointedTo == this;
 
@@ -163,7 +167,7 @@ public abstract class Card : MonoBehaviour, IHitable
 
   protected void SnapToBoard(Camera camera)
   {
-    if (PlayerController.Instance.IsHoveringOnHand && CanReturnToHand)
+    if (PlayerController.Instance.IsHoveringOnHand && !WasPlayed)
     {
       SnapToScreen(camera);
     }

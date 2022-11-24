@@ -103,5 +103,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card_Spell
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -9220227906806616179, guid: caf734dbf64cb4a44996c2e6942e38c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: caf734dbf64cb4a44996c2e6942e38c6, type: 3}

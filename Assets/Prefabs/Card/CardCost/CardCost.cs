@@ -18,8 +18,11 @@ public class CardCost : MonoBehaviour
 
     foreach (var resource in cost)
     {
-      var display = Instantiate<ResourceDisplay>(_displayPrefab, _layoutGroup.transform);
-      display.SetResource(resource);
+      if (resource.Amount > 0)
+      {
+        var display = Instantiate<ResourceDisplay>(_displayPrefab, _layoutGroup.transform);
+        display.SetResource(resource);
+      }
     }
   }
 

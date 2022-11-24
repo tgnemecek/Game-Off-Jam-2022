@@ -64,7 +64,7 @@ public class BoosterPack : MonoBehaviour
       int randomIndex = UnityEngine.Random.Range(0, _allCards.Count - 1);
       Card card = Instantiate(_allCards[randomIndex], _mesh.position, _mesh.rotation, transform);
       card.transform.SetParent(_mesh);
-      card.InitializedBy(CardInitializer.BoosterPack);
+      card.Initialize(CardInitializer.BoosterPack);
       _boosterCards.Add(card);
     }
     StartCoroutine(Animation());

@@ -7,23 +7,16 @@ public class CardState_NotInPlay : CardState
   public CardState_NotInPlay(Card context, CardStateFactory factory) : base(context, factory) { }
 
 
-  public override void EnterState()
+  public override void EnterState() { }
+  public override void UpdateState()
   {
     if (_context.CardInitializer == CardInitializer.BoosterPack)
     {
       SwitchState(_factory.InBooster());
     }
-    else
+    else if (_context.CardInitializer == CardInitializer.Pile)
     {
       SwitchState(_factory.InPile());
-    }
-  }
-  public override void UpdateState()
-  {
-    if (_context.DrawnOnThisFrame)
-    {
-      SwitchState(_factory.InHand());
-      return;
     }
   }
   public override void FixedUpdateState() { }
