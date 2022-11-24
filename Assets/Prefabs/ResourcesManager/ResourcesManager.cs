@@ -11,6 +11,8 @@ public class ResourcesManager : MonoBehaviour
   public static ResourcesManager Instance { get { return _instance; } }
 
   [SerializeField]
+  private int _initialResourceAmount = 0;
+  [SerializeField]
   private TextMeshProUGUI _woodText;
   [SerializeField]
   private TextMeshProUGUI _stoneText;
@@ -33,9 +35,9 @@ public class ResourcesManager : MonoBehaviour
 
   void Start()
   {
-    _resources.Add(new Resource_Wood());
-    _resources.Add(new Resource_Fish());
-    _resources.Add(new Resource_Gold());
+    _resources.Add(new Resource_Wood(_initialResourceAmount));
+    _resources.Add(new Resource_Fish(_initialResourceAmount));
+    _resources.Add(new Resource_Gold(_initialResourceAmount));
     UpdateText();
   }
 

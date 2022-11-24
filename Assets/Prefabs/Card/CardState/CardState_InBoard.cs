@@ -15,7 +15,7 @@ public class CardState_InBoard : CardState
     GameManager.Instance.Board.AddCardToBoard(_context);
     _context.Play();
     _context.CardLayerController.SetDefaultLayer();
-    _context.CanReturnToHand = false;
+    _context.WasPlayed = true;
     PositionCard();
     OnHoverStart();
   }

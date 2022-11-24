@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class CardProximityDetector : MonoBehaviour
 {
+  private Card _card;
   HashSet<Collider> _overlappingColliders = new HashSet<Collider>();
+
+  public void Initialize(Card card)
+  {
+    _card = card;
+  }
 
   public bool IsCloseToAnotherCard()
   {
@@ -41,7 +47,14 @@ public class CardProximityDetector : MonoBehaviour
   {
     if (collider.CompareTag(GameManager.Instance.GameConfig.CardTag))
     {
-      _overlappingColliders.Add(collider);
+      Card otherCard;
+      if (collider.TryGetComponent<Card>(out otherCard))
+      {
+        if (_card != otherCard)
+        {
+          _overlappingColliders.Add(collider);
+        }
+      }
     }
   }
   void OnTriggerExit(Collider collider)

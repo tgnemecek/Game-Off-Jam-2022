@@ -36,15 +36,20 @@ public class CardState_Dragged : CardState
   {
     if (Input.GetMouseButtonDown(0))
     {
-      if (PlayerController.Instance.IsHoveringOnHand && _context.CanReturnToHand)
+      if (PlayerController.Instance.IsHoveringOnHand && !_context.WasPlayed)
       {
         SwitchState(_factory.InHand());
         return;
       }
-      // if (ResourcesManager.Instance.TryConsume(_context.Cost))
-      // {
-      //   SwitchState(_context.OnConsume());
-      // }
+      if (_context.WasPlayed)
+      {
+        SwitchState(_factory.InBoard());
+        return;
+      }
+      if (ResourcesManager.Instance.TryConsume(_context.Cost))
+      {
+        SwitchState(_context.OnConsume());
+      }
     }
   }
 

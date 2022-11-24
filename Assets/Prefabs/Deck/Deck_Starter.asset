@@ -13,4 +13,20 @@ MonoBehaviour:
   m_Name: Deck_Starter
   m_EditorClassIdentifier: 
   Cards:
+  - {fileID: 4471829069634088668, guid: c3b68e7a088acc640bdf06fa51add662, type: 3}
+  - {fileID: 6820015131837343318, guid: 7aa3d2afa89e4d246aa91fdcbde4f38d, type: 3}
+  - {fileID: 5077668357921505104, guid: 8f9cfaa8fc4034e4e8f89db939ffcdf5, type: 3}
   - {fileID: 4568233482148737745, guid: 8a89e98e37f461a4ab0083de78dd322a, type: 3}
+  - {fileID: 7886706528149863899, guid: 363dd8407cab11b4b9e60a6f254925b3, type: 3}
+  - {fileID: 8907580167087936518, guid: 0d51e75a4922fef4bad6bf425a14e0be, type: 3}
+  - {fileID: 8907580167087936518, guid: 0d51e75a4922fef4bad6bf425a14e0be, type: 3}
+  - {fileID: 8907580167087936518, guid: 0d51e75a4922fef4bad6bf425a14e0be, type: 3}
+  - {fileID: 4568233482148737745, guid: 8a89e98e37f461a4ab0083de78dd322a, type: 3}
+  - {fileID: 4471829069634088668, guid: c3b68e7a088acc640bdf06fa51add662, type: 3}
+  - {fileID: 4471829069634088668, guid: c3b68e7a088acc640bdf06fa51add662, type: 3}
+  - {fileID: 4471829069634088668, guid: c3b68e7a088acc640bdf06fa51add662, type: 3}
+  - {fileID: 4471829069634088668, guid: c3b68e7a088acc640bdf06fa51add662, type: 3}
+  - {fileID: 7886706528149863899, guid: 363dd8407cab11b4b9e60a6f254925b3, type: 3}
+  - {fileID: 7886706528149863899, guid: 363dd8407cab11b4b9e60a6f254925b3, type: 3}
+  - {fileID: 6820015131837343318, guid: 7aa3d2afa89e4d246aa91fdcbde4f38d, type: 3}
+  - {fileID: 6820015131837343318, guid: 7aa3d2afa89e4d246aa91fdcbde4f38d, type: 3}

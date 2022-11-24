@@ -25,7 +25,7 @@ public class DrawPile : MonoBehaviour, IPile
     foreach (var c in deck.Cards)
     {
       var card = Instantiate(c, transform.position, Quaternion.Euler(-90, -180, 0), transform);
-      card.InitializedBy(CardInitializer.Pile);
+      card.Initialize(CardInitializer.Pile);
       _cards.Add(card);
     }
     _deckBook.PopulateCards(_cards);
