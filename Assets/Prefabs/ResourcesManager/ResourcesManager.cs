@@ -4,6 +4,13 @@ using System;
 using UnityEngine;
 using TMPro;
 
+public enum ResourceTypes
+{
+  Wood = 0,
+  Fish = 10,
+  Gold = 20,
+}
+
 public class ResourcesManager : MonoBehaviour
 {
   private static ResourcesManager _instance;
@@ -11,15 +18,21 @@ public class ResourcesManager : MonoBehaviour
   public static ResourcesManager Instance { get { return _instance; } }
 
   [SerializeField]
-  private int _initialResourceAmount = 0;
+  private int _initialWoodAmount = 0;
+  [SerializeField]
+  private int _initialFishAmount = 0;
+  [SerializeField]
+  private int _initialGoldAmount = 0;
   [SerializeField]
   private TextMeshProUGUI _woodText;
   [SerializeField]
   private TextMeshProUGUI _stoneText;
   [SerializeField]
+  private TextMeshProUGUI _goldText;
+  [SerializeField]
   private TextMeshProUGUI _fishText;
 
-  private List<Resource> _resources = new List<Resource>(); public List<Resource> Resources => _resources;
+  public ResourcesDictionary _resourcesDictionary;
 
   private void Awake()
   {
@@ -35,63 +48,60 @@ public class ResourcesManager : MonoBehaviour
 
   void Start()
   {
-    _resources.Add(new Resource_Wood(_initialResourceAmount));
-    _resources.Add(new Resource_Fish(_initialResourceAmount));
-    _resources.Add(new Resource_Gold(_initialResourceAmount));
+    _resourcesDictionary = new ResourcesDictionary(this._initialWoodAmount, this._initialFishAmount, this._initialGoldAmount);
     UpdateText();
   }
 
-  public void Gain(Resource resource)
+  public void Gain(int amount, ResourceTypes type)
   {
-    var amount = resource.Amount;
-
     if (amount <= 0) return;
 
-    var currentResource = _resources.Find((r) => r.Name == resource.Name);
-    currentResource.IncrementAmount(amount);
-    UpdateText();
-  }
-  public bool TryConsume(List<Resource> cost)
-  {
-    List<Resource> newList = new List<Resource>(_resources);
-
-    for (int i = 0; i < cost.Count; i++)
+    if (Enum.IsDefined(typeof(ResourceTypes), type))
     {
-      var resourceCost = cost[i];
+      _resourcesDictionary.getResource(type).GainResource(amount);
 
-      if (!CanConsume(resourceCost))
+      UpdateText();
+    }
+
+  }
+  public bool TryConsume(ResourcesDictionary cost)
+  {
+    foreach (var entry in cost.getValues())
+    {
+      if (!CanConsume(entry.Value))
       {
         return false;
       }
-      newList[i].IncrementAmount(-resourceCost.Amount);
     }
 
-    _resources = newList;
+    foreach (var entry in cost.getValues())
+    {
+      _resourcesDictionary.getResource(entry.Value.Type).SpendResource(entry.Value.Amount);
+    }
+
     UpdateText();
     return true;
   }
   private bool CanConsume(Resource resource)
   {
-    var cost = resource.Amount;
-    var currentResourceAmount = _resources.Find((r) => r.Name == resource.Name).Amount;
-
-    return (cost <= currentResourceAmount);
+    return resource.Amount <= _resourcesDictionary.getResource(resource.Type).Amount;
   }
 
   void UpdateText()
   {
 
-    foreach (var entry in _resources)
+    foreach (var entry in _resourcesDictionary.getValues())
     {
       string str = "x";
 
       TextMeshProUGUI textMesh = _woodText;
-      string key = entry.Name.ToString();
+      string key = entry.Value.Name.ToString();
       if (key == "Wood") textMesh = _woodText;
       if (key == "Stone") textMesh = _stoneText;
+      if (key == "Gold") textMesh = _goldText;
       if (key == "Fish") textMesh = _fishText;
 
-      str += entry.Amount.ToString();
+      str += entry.Value.Amount.ToString();
       textMesh.text = str;
     }
   }
