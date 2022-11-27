@@ -5,16 +5,16 @@ public class Card_EvergreenForest : Card_Building
   public Card_EvergreenForest()
   {
     this.Id = 22;
-		this.Name = "Evergreen Forest";
-		this.Description = "Gain 4 Wood at the end of each turn";
-		this.Image = "Card/Building/EvergreenForest";
-		this.WoodCost = 4;
-		this.FishCost = 0;
-		this.GoldCost = 3;
+    this.Name = "Evergreen Forest";
+    this.Description = "Gain 4 Wood at the end of each turn";
+    this.Image = "Card/Building/EvergreenForest";
+    this.WoodCost = 4;
+    this.FishCost = 0;
+    this.GoldCost = 3;
   }
 
   #endregion AUTO-GENERATED
-  
+
   public override void Play()
   {
     // TODO: Add logic
@@ -22,6 +22,6 @@ public class Card_EvergreenForest : Card_Building
 
   public override void EndOfTurn()
   {
-    // TODO: Add logic
+    ResourcesManager.Instance.Gain(4, ResourceTypes.Wood);
   }
 }

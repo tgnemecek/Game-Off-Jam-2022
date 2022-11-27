@@ -73,7 +73,7 @@ public abstract class Card : MonoBehaviour, IHitable
   [Header("Debug Options")]
   [ReadOnly] public string CurrentStateName;
 
-  private List<Resource> _cost = new List<Resource>(); public List<Resource> Cost => _cost;
+  private ResourcesDictionary _resourcesCostDictionary; public ResourcesDictionary ResourcesCostDictionary => _resourcesCostDictionary;
 
   protected CardStateFactory _stateFactory;
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }
@@ -133,10 +133,8 @@ public abstract class Card : MonoBehaviour, IHitable
   public void Initialize(CardInitializer cardInitializer)
   {
     _cardInitializer = cardInitializer;
-    _cost.Add(new Resource_Wood(WoodCost));
-    _cost.Add(new Resource_Fish(FishCost));
-    _cost.Add(new Resource_Gold(GoldCost));
-    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _cost, _cardConfig);
+    _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
+    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
     HP = _cardConfig.MaxHP;
     _healthBar.Initialize(transform, _cardConfig.MaxHP, false);

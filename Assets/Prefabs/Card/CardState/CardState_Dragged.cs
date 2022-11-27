@@ -46,7 +46,7 @@ public class CardState_Dragged : CardState
         SwitchState(_factory.InBoard());
         return;
       }
-      if (ResourcesManager.Instance.TryConsume(_context.Cost))
+      if (ResourcesManager.Instance.TryConsume(_context.ResourcesCostDictionary))
       {
         SwitchState(_context.OnConsume());
       }

@@ -28,14 +28,14 @@ public class CardLayerController : MonoBehaviour
 
   private int _defaultSortingLayerID;
 
-  public void Initialize(string cardName, Sprite sprite, List<Resource> cost, CardConfig cardConfig)
+  public void Initialize(string cardName, Sprite sprite, ResourcesDictionary resourcesDictionary, CardConfig cardConfig)
   {
     _cardConfig = cardConfig;
     _nameText.text = cardName;
     _nameText.fontSize = _cardConfig.FontSizeInHand;
     _cardImage.sprite = sprite;
     _defaultSortingLayerID = _canvas.sortingLayerID;
-    _cardCost.SetCost(cost);
+    _cardCost.SetResourcesDictionary(resourcesDictionary);
   }
 
   public void SetCardImage(Sprite sprite)
