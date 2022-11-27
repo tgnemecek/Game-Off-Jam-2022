@@ -1,5 +1,7 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
+using System.Collections;
+
 public class Card_Gold : Card_Resource
 {
   public Card_Gold()
@@ -18,10 +20,5 @@ public class Card_Gold : Card_Resource
   public override void Play()
   {
     ResourcesManager.Instance.Gain(1, ResourceTypes.Gold);
-  }
-
-  public override void EndOfTurn()
-  {
-    // TODO: Add logic
   }
 }

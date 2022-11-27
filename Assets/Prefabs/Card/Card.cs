@@ -148,7 +148,6 @@ public abstract class Card : MonoBehaviour, IHitable
   void FixedUpdate() => _currentState.FixedUpdateState();
 
   public abstract void Play();
-  public abstract void EndOfTurn();
 
   public void ReceiveDamage(int damage)
   {

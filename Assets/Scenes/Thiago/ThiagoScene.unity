@@ -2297,38 +2297,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8510746832514531999, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
-      propertyPath: _mixer
-      value: 
-      objectReference: {fileID: 24100000, guid: ba09c392e3f358140a07d74373e146ea, type: 2}
-    - target: {fileID: 8510746832514531999, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
-      propertyPath: _defaultSnapshot
-      value: 
-      objectReference: {fileID: 1476345136137756198, guid: ba09c392e3f358140a07d74373e146ea, type: 2}
-    - target: {fileID: 8510746832514531999, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
-      propertyPath: _endOfTurnSnapshot
-      value: 
-      objectReference: {fileID: -7430430197613941252, guid: ba09c392e3f358140a07d74373e146ea, type: 2}
-    - target: {fileID: 8510746832514531999, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
-      propertyPath: _endOfTurnFadeInTime
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510746832514531999, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
-      propertyPath: _endOfTurnFadeOutTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510746832514531999, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
-      propertyPath: _endOfTurnTransitionTail
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510746832514531999, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
-      propertyPath: _endOfTurnTransitionAttack
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510746832514531999, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
-      propertyPath: _endOfTurnTransitionSustain
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
 --- !u!1001 &8916486162442362738

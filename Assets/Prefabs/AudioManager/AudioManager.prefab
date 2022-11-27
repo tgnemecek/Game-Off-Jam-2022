@@ -143,3 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _source: {fileID: 6184738379346698865}
   _endTurn: {fileID: 8300000, guid: 3990910738dcfa24495e18c4cdd21c14, type: 3}
+  _mixer: {fileID: 24100000, guid: ba09c392e3f358140a07d74373e146ea, type: 2}
+  _defaultSnapshot: {fileID: 1476345136137756198, guid: ba09c392e3f358140a07d74373e146ea, type: 2}
+  _endOfTurnSnapshot: {fileID: -7430430197613941252, guid: ba09c392e3f358140a07d74373e146ea, type: 2}
+  _endOfTurnTransitionAttack: 0.2
+  _endOfTurnTransitionSustain: 1
+  _endOfTurnTransitionTail: 0.3

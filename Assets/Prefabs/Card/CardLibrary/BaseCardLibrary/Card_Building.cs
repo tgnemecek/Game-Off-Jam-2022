@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 
-public class Card_Building : Card_Base
+public class Card_Building : Card_Base, ICardEndOfTurn
 {
   public Card_Building()
   {
@@ -11,4 +12,6 @@ public class Card_Building : Card_Base
     base.SnapToBoard(camera);
   }
   public override CardState OnConsume() => _stateFactory.InBoard();
+
+  public virtual IEnumerator EndOfTurn() { yield break; }
 }

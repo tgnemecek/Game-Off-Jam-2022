@@ -1,5 +1,7 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
+using System.Collections;
+
 public class Card_EvergreenForest : Card_Building
 {
   public Card_EvergreenForest()
@@ -20,8 +22,9 @@ public class Card_EvergreenForest : Card_Building
     // TODO: Add logic
   }
 
-  public override void EndOfTurn()
+  public override IEnumerator EndOfTurn()
   {
     ResourcesManager.Instance.Gain(4, ResourceTypes.Wood);
+    yield break;
   }
 }

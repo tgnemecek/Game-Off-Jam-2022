@@ -45,8 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23a68fb5f39e1946be78dfdc635515b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _initialWoodAmount: 10
+  _initialFishAmount: 10
+  _initialGoldAmount: 10
   _woodText: {fileID: 910590816142421163}
   _stoneText: {fileID: 8044429224148303520}
+  _goldText: {fileID: 8044429224148303520}
   _fishText: {fileID: 3149231000206066536}
 --- !u!1 &910590816142421332
 GameObject:
@@ -373,7 +377,7 @@ GameObject:
   - component: {fileID: 390078140658100680}
   - component: {fileID: 8044429224148303520}
   m_Layer: 0
-  m_Name: StoneText
+  m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,7 +733,7 @@ GameObject:
   - component: {fileID: 4712978199794057707}
   - component: {fileID: 40830047529848014}
   m_Layer: 0
-  m_Name: StoneIcon
+  m_Name: GoldIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -783,7 +787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 480c6677035d64041bda4e6d4f395552, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0f1d4ebb01321243b16af88598d1757, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
