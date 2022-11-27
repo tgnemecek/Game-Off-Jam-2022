@@ -35,16 +35,17 @@ public class Hand : MonoBehaviour
 
     CalculateHandPositions();
 
-    for (int i = 0; i < _cards.Count; i++)
-    {
-      StartCoroutine(DrawCard(_drawDelay * i, _cards[i]));
-    }
+    StartCoroutine(DrawCards());
   }
 
-  IEnumerator DrawCard(float delay, Card card)
+  IEnumerator DrawCards()
   {
-    yield return new WaitForSeconds(delay);
-    card.Draw();
+    for (int i = 0; i < _cards.Count; i++)
+    {
+      float delay = _drawDelay * i;
+      yield return new WaitForSeconds(delay);
+      _cards[i].Draw();
+    }
   }
 
   void CalculateHandPositions()

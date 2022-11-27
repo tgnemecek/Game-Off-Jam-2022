@@ -16,6 +16,7 @@ public class CardState_InBoard : CardState
     _context.Play();
     _context.CardLayerController.SetDefaultLayer();
     _context.WasPlayed = true;
+    _context.CardAudio.PlayCardTouchBoard();
     PositionCard();
     OnHoverStart();
   }
