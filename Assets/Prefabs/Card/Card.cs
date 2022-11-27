@@ -70,6 +70,8 @@ public abstract class Card : MonoBehaviour, IHitable
   private Collider _collider;
   [SerializeField]
   private HealthBar _healthBar;
+  [HideInInspector]
+  public CardAudio CardAudio;
   [Header("Debug Options")]
   [ReadOnly] public string CurrentStateName;
 
@@ -93,26 +95,13 @@ public abstract class Card : MonoBehaviour, IHitable
 
   public void InjectDefaultDependencies()
   {
-    void InjectCardConfig()
-    {
-      string[] cardConfigs = AssetDatabase.FindAssets("t:CardConfig", null);
+    string[] cardConfigs = AssetDatabase.FindAssets("t:CardConfig", null);
 
-      if (cardConfigs.Length > 0)
-      {
-        var path = AssetDatabase.GUIDToAssetPath(cardConfigs[0]);
-        _cardConfig = AssetDatabase.LoadAssetAtPath<CardConfig>(path);
-      }
-    }
-    void InjectSubComponents()
+    if (cardConfigs.Length > 0)
     {
-      _cardLayerController = GetComponentInChildren<CardLayerController>();
-      _cardProximityDetector = GetComponentInChildren<CardProximityDetector>();
-      _healthBar = GetComponentInChildren<HealthBar>();
-      _collider = GetComponent<Collider>();
+      var path = AssetDatabase.GUIDToAssetPath(cardConfigs[0]);
+      _cardConfig = AssetDatabase.LoadAssetAtPath<CardConfig>(path);
     }
-
-    InjectCardConfig();
-    InjectSubComponents();
   }
 
   public void Draw() => _drawnOnThisFrame = true;
@@ -121,6 +110,15 @@ public abstract class Card : MonoBehaviour, IHitable
   {
     _positionInHand = positionInHand;
     _positionChangedThisFrame = true;
+  }
+
+  void Awake()
+  {
+    _cardLayerController = GetComponentInChildren<CardLayerController>();
+    _cardProximityDetector = GetComponentInChildren<CardProximityDetector>();
+    _healthBar = GetComponentInChildren<HealthBar>();
+    _collider = GetComponent<Collider>();
+    CardAudio = GetComponent<CardAudio>();
   }
 
   void Start()

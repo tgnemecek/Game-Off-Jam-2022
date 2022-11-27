@@ -13,6 +13,7 @@ public class CardState_Consumed : CardState
   {
     GameManager.Instance.Hand.RemoveCard(_context);
     _context.Play();
+    _context.CardAudio.PlayCardConsumed();
 
     var duration = _context.CardConfig.ConsumeAnimationTime;
     var rotation = _context.CardConfig.ConsumeAnimationRotation;
@@ -38,5 +39,8 @@ public class CardState_Consumed : CardState
     base.CheckCardSide(_camera);
   }
   public override void FixedUpdateState() { }
-  public override void ExitState() { }
+  public override void ExitState()
+  {
+    _context.CardAudio.StopCardConsumed();
+  }
 }
