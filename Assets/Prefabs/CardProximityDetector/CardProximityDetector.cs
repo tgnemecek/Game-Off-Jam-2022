@@ -24,13 +24,15 @@ public class CardProximityDetector : MonoBehaviour
 
     List<Collider> list = new List<Collider>(_overlappingColliders);
 
-    if (list.Count == 1) return list[0];
-
-    Collider closer = list[0];
+    Collider closer = null;
     float shortestDistance = 9999;
 
     foreach (var collider in list)
     {
+      if (!collider.enabled)
+      {
+        continue;
+      }
       var distance = (transform.position - collider.transform.position).magnitude;
       if (distance < shortestDistance)
       {
@@ -45,6 +47,12 @@ public class CardProximityDetector : MonoBehaviour
 
   void OnTriggerEnter(Collider collider)
   {
+    if (!collider.enabled)
+    {
+      _overlappingColliders.Remove(collider);
+      return;
+    }
+
     if (collider.CompareTag(GameManager.Instance.GameConfig.CardTag))
     {
       Card otherCard;

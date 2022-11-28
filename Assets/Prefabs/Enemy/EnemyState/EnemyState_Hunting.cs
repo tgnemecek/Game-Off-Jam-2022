@@ -12,7 +12,14 @@ public class EnemyState_Hunting : EnemyState
   {
     _walkCoroutine = _context.StartCoroutine(WalkAnimation());
     _context.NavMeshAgent.enabled = true;
-    SetTarget(_context.Target);
+    if (_context.Target.isDead())
+    {
+      SetTarget(GameManager.Instance.Core);
+    } else 
+    {
+      SetTarget(_context.Target);
+    }
+    
   }
   public override void UpdateState()
   {
@@ -28,15 +35,16 @@ public class EnemyState_Hunting : EnemyState
 
   void DetectCardsToBattleWith()
   {
-    if (_context.Target.GetTransform() != GameManager.Instance.Core.transform) return;
     if (_context.CardProximityDetector.IsCloseToAnotherCard())
     {
       Collider newTarget = _context.CardProximityDetector.GetClosestCollider();
       IHitable hitable;
 
-      if (newTarget.gameObject.TryGetComponent<IHitable>(out hitable))
+      if (newTarget && newTarget.gameObject.TryGetComponent<IHitable>(out hitable))
       {
         SetTarget(hitable);
+      } else {
+        SetTarget(GameManager.Instance.Core);
       }
     }
   }
