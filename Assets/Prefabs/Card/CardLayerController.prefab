@@ -140,6 +140,7 @@ MonoBehaviour:
   _shadowSprite: {fileID: 2485184831167638871}
   _onHoverSprite: {fileID: 326103082829130535}
   _nameText: {fileID: 8049731418897075407}
+  _descriptionText: {fileID: 701299628430066152}
   _cardCost: {fileID: 2907798517761156430}
 --- !u!1 &2218253603778028939
 GameObject:
@@ -470,12 +471,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
+  m_fontSize: 0.05
   m_fontSizeBase: 0.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0.1
-  m_fontSizeMax: 72
+  m_fontSizeMin: 0.05
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -689,11 +690,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
+  m_fontSize: 0.05
   m_fontSizeBase: 0.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0.1
+  m_fontSizeMin: 0.05
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
