@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5495328957036909638, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_Name
-      value: Card_Unit
+      value: Card_CavalryDuck
       objectReference: {fileID: 0}
     - target: {fileID: 6028996631765105068, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_RootOrder
@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8821145972834104212, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+      propertyPath: _cardPlayed
+      value: 
+      objectReference: {fileID: 8300000, guid: 10581e24934ab1944af7117ddd029a67, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
 --- !u!114 &1087026016607844461 stripped
@@ -87,9 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 1087026016607844461}
-  _cardProximityDetector: {fileID: 7490137223822458712}
+  _cardProximityDetector: {fileID: 0}
   _collider: {fileID: 5386491114478521979}
   _healthBar: {fileID: 4582158123897428908}
+  CardAudio: {fileID: 0}
   CurrentStateName: 
 --- !u!114 &4582158123897428908 stripped
 MonoBehaviour:
@@ -107,14 +112,3 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 4401766606963174833, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
   m_PrefabInstance: {fileID: 8635263373652337610}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7490137223822458712 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1163281479118298258, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
-  m_PrefabInstance: {fileID: 8635263373652337610}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

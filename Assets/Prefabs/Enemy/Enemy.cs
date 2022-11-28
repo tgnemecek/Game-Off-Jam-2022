@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
   private EnemyConfig _enemyConfig; public EnemyConfig EnemyConfig => _enemyConfig;
   [SerializeField]
   private CardProximityDetector _cardProximityDetector; public CardProximityDetector CardProximityDetector => _cardProximityDetector;
+  [SerializeField]
+  public EnemyAudio EnemyAudio;
   [HideInInspector]
   public Rigidbody Rigidbody;
   [HideInInspector]
