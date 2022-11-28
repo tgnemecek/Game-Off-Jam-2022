@@ -9,9 +9,13 @@ public class CardAudio : MonoBehaviour
   [SerializeField]
   AudioClip _cardTouchBoard;
   [SerializeField]
+  AudioClip _cardPlayed;
+  [SerializeField]
   AudioClip _cardDrawn;
   [SerializeField]
   AudioClip _cardConsumed;
+  [SerializeField]
+  List<AudioClip> _cardAttackedList;
   [SerializeField]
   float _cardConsumedPitchIncreaseRate = 1f;
 
@@ -24,18 +28,22 @@ public class CardAudio : MonoBehaviour
 
   public void PlayCardClicked()
   {
-    _source.clip = _cardClicked;
-    _source.Play();
+    _source.PlayOneShot(_cardClicked);
   }
   public void PlayCardTouchBoard()
   {
-    _source.clip = _cardTouchBoard;
-    _source.Play();
+    _source.PlayOneShot(_cardTouchBoard);
+  }
+  public void PlayCardPlayed()
+  {
+    if (_cardPlayed != null)
+    {
+      _source.PlayOneShot(_cardPlayed);
+    }
   }
   public void PlayCardDrawn()
   {
-    _source.clip = _cardDrawn;
-    _source.Play();
+    _source.PlayOneShot(_cardDrawn);
   }
 
   public void PlayCardConsumed()
@@ -56,6 +64,12 @@ public class CardAudio : MonoBehaviour
   public void StopCardConsumed()
   {
     FadeOut();
+  }
+
+  public void PlayCardAttacked()
+  {
+    int randomIndex = UnityEngine.Random.Range(0, _cardAttackedList.Count - 1);
+    _source.PlayOneShot(_cardAttackedList[randomIndex]);
   }
 
   void FadeOut(float duration = 0.5f)

@@ -153,6 +153,7 @@ public abstract class Card : MonoBehaviour, IHitable
   {
     HP -= damage;
     _healthBar.UpdateHealth(HP);
+    CardAudio.PlayCardAttacked();
   }
 
   public void StartBattle(IHitable hitable)

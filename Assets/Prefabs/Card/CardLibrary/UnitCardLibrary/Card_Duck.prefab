@@ -55,19 +55,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8821145972834104212, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+      propertyPath: _cardPlayed
+      value: 
+      objectReference: {fileID: 8300000, guid: f61826d3522f1e048bea2cf7f5d02c8e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
---- !u!114 &1605283652678107054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1163281479118298258, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
-  m_PrefabInstance: {fileID: 460443229829833532}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4284583258022923917 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 4401766606963174833, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
@@ -92,9 +85,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 9124478129484871835}
-  _cardProximityDetector: {fileID: 1605283652678107054}
+  _cardProximityDetector: {fileID: 0}
   _collider: {fileID: 4284583258022923917}
   _healthBar: {fileID: 5630155314361998170}
+  CardAudio: {fileID: 0}
   CurrentStateName: 
 --- !u!114 &5630155314361998170 stripped
 MonoBehaviour:
