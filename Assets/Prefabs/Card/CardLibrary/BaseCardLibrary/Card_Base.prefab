@@ -200,6 +200,10 @@ MonoBehaviour:
   _cardPlayed: {fileID: 0}
   _cardDrawn: {fileID: 8300000, guid: b55a116cbcef1ba4f9bb9e5cec7ef937, type: 3}
   _cardConsumed: {fileID: 8300000, guid: db4026e9fed602b49b1c7afa82770c90, type: 3}
+  _endOfTurnEffects:
+  - {fileID: 8300000, guid: d67b8ae0ea44ecb4a93f7b0b584307a0, type: 3}
+  - {fileID: 8300000, guid: 99267f6658911ce4988fdcd6d72c22a7, type: 3}
+  - {fileID: 8300000, guid: 0233593b19745eb4b8918547e6c9802f, type: 3}
   _cardAttackedList:
   - {fileID: 8300000, guid: 5ec4a007b0cbc8c4f9840983cfa672dd, type: 3}
   - {fileID: 8300000, guid: 3952dc0dcd108b141acdeb173fbc4c69, type: 3}

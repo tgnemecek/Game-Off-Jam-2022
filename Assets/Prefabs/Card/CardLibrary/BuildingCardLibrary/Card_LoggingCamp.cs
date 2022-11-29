@@ -24,8 +24,7 @@ public class Card_LoggingCamp : Card_Building
 
   public override IEnumerator EndOfTurn()
   {
-    base.EndOfTurn();
+    yield return base.EndOfTurn();
     ResourcesManager.Instance.Gain(1, ResourceTypes.Wood);
-    yield break;
   }
 }

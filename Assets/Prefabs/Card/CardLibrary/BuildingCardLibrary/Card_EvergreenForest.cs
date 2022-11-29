@@ -24,7 +24,7 @@ public class Card_EvergreenForest : Card_Building
 
   public override IEnumerator EndOfTurn()
   {
-    base.EndOfTurn();
+    yield return base.EndOfTurn();
     ResourcesManager.Instance.Gain(4, ResourceTypes.Wood);
     yield break;
   }

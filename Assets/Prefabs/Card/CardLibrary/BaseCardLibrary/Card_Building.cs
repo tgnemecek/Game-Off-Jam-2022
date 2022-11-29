@@ -23,6 +23,7 @@ public class Card_Building : Card_Base, ICardEndOfTurn
     float initRotation = transform.rotation.eulerAngles.y;
 
     base.CardLayerController.ToggleHoverOutline(true);
+    base.CardAudio.PlayEndOfTurn();
 
     while (timesCompleted < timesToComplete)
     {
