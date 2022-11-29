@@ -11,7 +11,7 @@ public class DiscardPile : MonoBehaviour, IPile
   private DeckBook _deckBook;
   private bool _isHovering = false;
 
-  private List<Card> _cards = new List<Card>();
+  private List<Card> _cards = new List<Card>(); public List<Card> Cards => _cards;
 
   void Update()
   {
@@ -27,9 +27,29 @@ public class DiscardPile : MonoBehaviour, IPile
     card.transform.SetParent(transform);
     card.transform.localPosition = Vector3.zero;
     card.enabled = false;
+    UpdateDisplays();
+  }
+  public List<Card> UndiscardAllCards()
+  {
+    var result = _cards;
+    _cards = new List<Card>();
+
+    result.ForEach((Card card) =>
+    {
+      card.enabled = true;
+    });
+
+    UpdateDisplays();
+
+    return result;
+  }
+
+  void UpdateDisplays()
+  {
     _counter.text = _cards.Count.ToString();
     _deckBook.PopulateCards(_cards);
   }
+
   public void MouseEnter() => _isHovering = true;
   public void MouseExit() => _isHovering = false;
 }

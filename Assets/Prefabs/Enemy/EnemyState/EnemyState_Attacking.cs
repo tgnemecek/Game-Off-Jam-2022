@@ -19,7 +19,12 @@ public class EnemyState_Attacking : EnemyState
 
   void Attack()
   {
-    var target = _context.Target.GetTransform().position;
+    var targetPos = _context.Target.GetTransform().position;
+    var target = new Vector3(
+      targetPos.x,
+      _context.transform.position.y,
+      targetPos.z
+    );
     var startPos = _context.transform.position;
     var seq = LeanTween.sequence();
 

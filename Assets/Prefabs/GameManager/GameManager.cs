@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
   private Deck _deck; public Deck Deck => _deck;
   [SerializeField]
   private BoosterPack _boosterPack; public BoosterPack BoosterPack => _boosterPack;
+  [Header("Debug Options")]
+  [ReadOnly] public string CurrentStateName;
 
   private GameStateFactory _stateFactory;
   private GameState _currentState; public GameState CurrentState { set { _currentState = value; } }
@@ -51,25 +53,26 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
-    _stateFactory = new GameStateFactory(this);
-    _drawPile.UseDeck(_deck);
+    _drawPile.AddCards(_deck.Cards);
     _drawPile.Shuffle();
     _deckBook.PopulateCards(_deck.Cards);
-    StartCoroutine(WaitAndStartTurn());
+
+    _stateFactory = new GameStateFactory(this);
+    _currentState = _stateFactory.PlayerTurn();
+    _currentState.EnterState();
+  }
+
+  void Update()
+  {
+    CurrentStateName = _currentState?.GetType().Name;
   }
 
   public void OnWaveClear() => _currentState.OnWaveClear();
+  public void OnCardSelected(Card card) => _currentState.OnCardSelected(card);
 
   public void GameOver()
   {
     _currentState = _stateFactory.GameOver();
-    _currentState.EnterState();
-  }
-
-  IEnumerator WaitAndStartTurn()
-  {
-    yield return new WaitForSeconds(3f);
-    _currentState = _stateFactory.PlayerTurn();
     _currentState.EnterState();
   }
 

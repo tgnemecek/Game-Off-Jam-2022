@@ -53,11 +53,12 @@ public class CardAudio : MonoBehaviour
     _source.Play();
     IEnumerator IncreasePitch()
     {
-      while (_source.isPlaying)
+      while (_source.isPlaying && _source.clip == _cardConsumed)
       {
         _source.pitch *= _cardConsumedPitchIncreaseRate;
         yield return null;
       }
+      _source.pitch = 1;
     }
     StartCoroutine(IncreasePitch());
   }
@@ -74,9 +75,15 @@ public class CardAudio : MonoBehaviour
 
   void FadeOut(float duration = 0.5f)
   {
+    float originalVolume = _source.volume;
+
     LeanTween
       .value(gameObject, _source.volume, 0f, duration)
       .setOnUpdate((value) => _source.volume = value)
-      .setOnComplete(_source.Stop);
+      .setOnComplete(() =>
+      {
+        _source.Stop();
+        _source.volume = originalVolume;
+      });
   }
 }
