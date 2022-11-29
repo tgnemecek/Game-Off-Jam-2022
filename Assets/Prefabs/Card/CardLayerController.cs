@@ -22,17 +22,22 @@ public class CardLayerController : MonoBehaviour
   private SpriteRenderer _onHoverSprite;
   [SerializeField]
   private TextMeshProUGUI _nameText;
+  
+  [SerializeField]
+  private TextMeshProUGUI _descriptionText;
   [SerializeField]
   private CardCost _cardCost;
   private CardConfig _cardConfig;
 
   private int _defaultSortingLayerID;
 
-  public void Initialize(string cardName, Sprite sprite, List<Resource> cost, CardConfig cardConfig)
+  public void Initialize(string cardName, Sprite sprite, string cardDescription, List<Resource> cost, CardConfig cardConfig)
   {
     _cardConfig = cardConfig;
     _nameText.text = cardName;
     _nameText.fontSize = _cardConfig.FontSizeInHand;
+    _descriptionText.text = cardDescription;
+    _descriptionText.fontSize = _cardConfig.FontSizeInHand;
     _cardImage.sprite = sprite;
     _defaultSortingLayerID = _canvas.sortingLayerID;
     _cardCost.SetCost(cost);
