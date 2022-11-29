@@ -20,3 +20,4 @@ MonoBehaviour:
   AttackedShrinkScale: 0.85
   AttackedRotationMultiplier: 6
   DeathDuration: 0.5
+  PoolCost: 5
