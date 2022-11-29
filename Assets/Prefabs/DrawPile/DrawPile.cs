@@ -27,7 +27,7 @@ public class DrawPile : MonoBehaviour, IPile
       Card card;
       Quaternion rotation = Quaternion.Euler(-90, -180, 0);
 
-      if (c.gameObject.scene.IsValid())
+      if (c.WasInitialized)
       {
         card = c;
         card.transform.position = transform.position;

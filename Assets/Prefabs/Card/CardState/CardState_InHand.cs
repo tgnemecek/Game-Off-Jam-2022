@@ -78,7 +78,7 @@ public class CardState_InHand : CardState
 
   void OnHoverStart()
   {
-    _context.CardLayerController.SetDraggedLayer();
+    _context.CardLayerController.SetCloseUpLayer();
 
     CardConfig cardConfig = _context.CardConfig;
 

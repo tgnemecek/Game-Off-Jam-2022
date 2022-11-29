@@ -13,6 +13,8 @@ public class CardLayerController : MonoBehaviour
   [SerializeField]
   private string _draggedSortingLayerName;
   [SerializeField]
+  private string _closeupSortingLayerName;
+  [SerializeField]
   private Image _cardImage;
   [SerializeField]
   private SpriteRenderer _backSprite;
@@ -43,18 +45,25 @@ public class CardLayerController : MonoBehaviour
     _cardImage.sprite = sprite;
   }
 
-  public void SetDrawPileLayer()
+  public void SetPileLayer()
   {
     _canvas.sortingLayerName = _drawPileSortingLayerName;
     _backSprite.sortingLayerName = _drawPileSortingLayerName;
     _onHoverSprite.sortingLayerName = _drawPileSortingLayerName;
   }
 
-  public void SetDraggedLayer()
+  public void SetOnBoardLayer()
   {
     _canvas.sortingLayerName = _draggedSortingLayerName;
     _backSprite.sortingLayerName = _draggedSortingLayerName;
     _onHoverSprite.sortingLayerName = _draggedSortingLayerName;
+  }
+
+  public void SetCloseUpLayer()
+  {
+    _canvas.sortingLayerName = _closeupSortingLayerName;
+    _backSprite.sortingLayerName = _closeupSortingLayerName;
+    _onHoverSprite.sortingLayerName = _closeupSortingLayerName;
   }
 
   public void SetDefaultLayer()

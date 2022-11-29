@@ -133,8 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvas: {fileID: 802550290944546770}
-  _drawPileSortingLayerName: 
-  _draggedSortingLayerName: CardDragged
+  _drawPileSortingLayerName: Pile
+  _draggedSortingLayerName: CardOnBoard
+  _closeupSortingLayerName: CardCloseUp
   _cardImage: {fileID: 3614790995213512525}
   _backSprite: {fileID: 4482020488952566839}
   _shadowSprite: {fileID: 2485184831167638871}
