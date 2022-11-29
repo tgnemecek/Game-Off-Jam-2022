@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
   private IPile _pilePointedTo;
 
   public bool IsDraggingCard => CardBeingDragged != null;
+  public bool CanInteractWithCards = true;
   private bool _isHoveringOnHand = false; public bool IsHoveringOnHand => _isHoveringOnHand;
 
   private void Awake()

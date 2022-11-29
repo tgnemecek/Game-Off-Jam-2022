@@ -9,7 +9,7 @@ public class GameState_EnemyTurn : GameState
 
   public override void EnterState()
   {
-    _context.IsCardInteractionActive = false;
+    PlayerController.Instance.CanInteractWithCards = false;
     _context.EnemyManager.SpawnNextWave();
     AudioManager.Instance.PlayEndTurn();
   }

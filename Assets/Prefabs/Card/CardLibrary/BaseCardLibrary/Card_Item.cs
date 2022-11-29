@@ -6,9 +6,9 @@ public class Card_Item : Card_Base
   {
     this.Type = CardTypes.Item;
   }
-  public override void Drag(Camera camera)
+  public override bool Drag(Camera camera)
   {
-    base.SnapToScreen(camera);
+    return base.SnapToScreen(camera);
   }
   public override CardState OnConsume() => _stateFactory.Consumed();
 }

@@ -15,7 +15,7 @@ public class EnemyState_Attacked : EnemyState
   IEnumerator AttackedAnimation()
   {
     float time = 1f / _context.EnemyConfig.AttackSpeed;
-    Vector3 scaleVector = Vector3.one * _context.EnemyConfig.AttackedShrinkScale;
+    Vector3 scaleVector = _context.transform.localScale * _context.EnemyConfig.AttackedShrinkScale;
 
     LTSeq rotateSequence = LeanTween.sequence();
 
@@ -25,7 +25,7 @@ public class EnemyState_Attacked : EnemyState
     rotateSequence.append(LeanTween.rotateY(_context.gameObject, 0.5f * _context.EnemyConfig.AttackedRotationMultiplier, time / 2f));
 
     LeanTween.scale(_context.gameObject, scaleVector, time).setOnComplete(() => LeanTween.scale(_context.gameObject, Vector3.one, time));
-    
+
     yield return new WaitForSeconds(time);
     SwitchState(_factory.Dead());
   }
@@ -33,7 +33,8 @@ public class EnemyState_Attacked : EnemyState
   public override void UpdateState() { }
   public override void FixedUpdateState() { }
   public override void ExitState() { }
-  public override void EndOfTurn() {
+  public override void EndOfTurn()
+  {
     SwitchState(_factory.Hunting());
   }
 }

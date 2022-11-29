@@ -6,9 +6,9 @@ public class Card_Spell : Card_Base
   {
     this.Type = CardTypes.Spell;
   }
-  public override void Drag(Camera camera)
+  public override bool Drag(Camera camera)
   {
-    base.SnapToScreen(camera);
+    return base.SnapToScreen(camera);
   }
   public override CardState OnConsume() => _stateFactory.Consumed();
 }

@@ -8,10 +8,14 @@ public class CardState_Dragged : CardState
 
   Camera _camera = Camera.main;
   Vector3 _lastValidPosition;
+  bool _canClick = false;
+  bool _clickQueued = false;
 
   public override void EnterState()
   {
     PlayerController.Instance.CardBeingDragged = _context;
+    _canClick = false;
+    _clickQueued = false;
     _context.CardLayerController.SetCloseUpLayer();
     _context.CardAudio.PlayCardClicked();
   }
@@ -22,7 +26,13 @@ public class CardState_Dragged : CardState
 
   public override void FixedUpdateState()
   {
-    _context.Drag(_camera);
+    _canClick = _context.Drag(_camera);
+
+    if (_canClick && _clickQueued)
+    {
+      _clickQueued = false;
+      Click();
+    }
     SaveLastValidPosition();
   }
 
@@ -37,20 +47,30 @@ public class CardState_Dragged : CardState
   {
     if (Input.GetMouseButtonDown(0))
     {
-      if (PlayerController.Instance.IsHoveringOnHand && !_context.WasPlayed)
-      {
-        SwitchState(_factory.InHand());
-        return;
-      }
-      if (_context.WasPlayed)
-      {
-        SwitchState(_factory.InBoard());
-        return;
-      }
-      if (ResourcesManager.Instance.TryConsume(_context.ResourcesCostDictionary))
-      {
-        SwitchState(_context.OnConsume());
-      }
+      Click();
+    }
+  }
+
+  void Click()
+  {
+    if (PlayerController.Instance.IsHoveringOnHand && !_context.WasPlayed)
+    {
+      SwitchState(_factory.InHand());
+      return;
+    }
+    if (_context.WasPlayed)
+    {
+      SwitchState(_factory.InBoard());
+      return;
+    }
+    if (!_canClick)
+    {
+      _clickQueued = true;
+      return;
+    }
+    if (ResourcesManager.Instance.TryConsume(_context.ResourcesCostDictionary))
+    {
+      SwitchState(_context.OnConsume());
     }
   }
 

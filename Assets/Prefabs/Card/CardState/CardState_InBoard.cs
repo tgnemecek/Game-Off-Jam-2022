@@ -68,24 +68,16 @@ public class CardState_InBoard : CardState
     _context.CardLayerController.ToggleHoverOutline(true);
   }
 
-  bool DetectBattle()
-  {
-    if (_context.BattlingAgainst.Count > 0)
-    {
-      SwitchState(_factory.InBattle());
-      return true;
-    }
-    return false;
-  }
-
   public override void UpdateState()
   {
     if (DetectDestroyed()) return;
-    if (DetectBattle()) return;
-    DetectClick();
+
+    if (PlayerController.Instance.CanInteractWithCards) DetectClick();
   }
   public override void FixedUpdateState()
   {
+    if (!PlayerController.Instance.CanInteractWithCards) return;
+
     if (_lastHoverState == false && _context.IsHovering) OnHoverStart();
     else if (_lastHoverState == true && !_context.IsHovering) OnHoverEnd();
     _lastHoverState = _context.IsHovering;

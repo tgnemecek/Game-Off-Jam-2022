@@ -39,7 +39,6 @@ public class CardLayerController : MonoBehaviour
     _nameText.text = cardName;
     _nameText.fontSize = _cardConfig.FontSizeInHand;
     _descriptionText.text = cardDescription;
-    _descriptionText.fontSize = _cardConfig.FontSizeInHand;
     _cardImage.sprite = sprite;
     _defaultSortingLayerID = _canvas.sortingLayerID;
     _cardCost.SetResourcesDictionary(resourcesDictionary);

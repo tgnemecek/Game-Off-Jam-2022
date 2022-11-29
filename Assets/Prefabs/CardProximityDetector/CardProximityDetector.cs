@@ -24,7 +24,7 @@ public class CardProximityDetector : MonoBehaviour
 
     List<Collider> list = new List<Collider>(_overlappingColliders);
 
-    Collider closer = null;
+    Collider? closer = null;
     float shortestDistance = 9999;
 
     foreach (var collider in list)

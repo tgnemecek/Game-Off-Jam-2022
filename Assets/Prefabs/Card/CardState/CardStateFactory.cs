@@ -9,7 +9,6 @@ enum CardStateEnum
   InPile,
   InHand,
   InBoard,
-  InBattle,
   Dragged,
   Consumed,
   Destroyed
@@ -28,7 +27,6 @@ public class CardStateFactory
     _states[CardStateEnum.InPile] = new CardState_InPile(_context, this);
     _states[CardStateEnum.InHand] = new CardState_InHand(_context, this);
     _states[CardStateEnum.InBoard] = new CardState_InBoard(_context, this);
-    _states[CardStateEnum.InBattle] = new CardState_InBattle(_context, this);
     _states[CardStateEnum.Dragged] = new CardState_Dragged(_context, this);
     _states[CardStateEnum.Consumed] = new CardState_Consumed(_context, this);
     _states[CardStateEnum.Destroyed] = new CardState_Destroyed(_context, this);
@@ -39,7 +37,6 @@ public class CardStateFactory
   public CardState InPile() => _states[CardStateEnum.InPile];
   public CardState InHand() => _states[CardStateEnum.InHand];
   public CardState InBoard() => _states[CardStateEnum.InBoard];
-  public CardState InBattle() => _states[CardStateEnum.InBattle];
   public CardState Dragged() => _states[CardStateEnum.Dragged];
   public CardState Consumed() => _states[CardStateEnum.Consumed];
   public CardState Destroyed() => _states[CardStateEnum.Destroyed];

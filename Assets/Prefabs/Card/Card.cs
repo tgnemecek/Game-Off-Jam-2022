@@ -87,7 +87,6 @@ public abstract class Card : MonoBehaviour, IHitable
   private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
   private bool _wasInitialized = false; public bool WasInitialized => _wasInitialized;
   public Vector3 LastValidBoardPosition { get; set; }
-  public List<IHitable> BattlingAgainst = new List<IHitable>();
 
   void Reset()
   {
@@ -158,52 +157,48 @@ public abstract class Card : MonoBehaviour, IHitable
     CardAudio.PlayCardAttacked();
   }
 
-  public void StartBattle(IHitable hitable)
-  {
-    BattlingAgainst.Add(hitable);
-  }
-
   public bool isDead()
   {
     return HP <= 0;
   }
 
-  protected void SnapToBoard(Camera camera)
+  protected bool SnapToBoard(Camera camera)
   {
     if (PlayerController.Instance.IsHoveringOnHand && !WasPlayed)
     {
-      SnapToScreen(camera);
       _cardLayerController.SetCloseUpLayer();
+      return SnapToScreen(camera);
     }
-    else
+
+    Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+    RaycastHit hitInfo;
+
+    Vector3 worldPos = transform.position;
+    Quaternion rotation = transform.rotation;
+
+    if (Physics.Raycast(ray, out hitInfo, 9999, GameManager.Instance.GameConfig.BoardLayerMask))
     {
-      Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-      RaycastHit hitInfo;
-
-      Vector3 worldPos = transform.position;
-      Quaternion rotation = transform.rotation;
-
-      if (Physics.Raycast(ray, out hitInfo, 9999, GameManager.Instance.GameConfig.BoardLayerMask))
-      {
-        worldPos = hitInfo.point;
-        rotation = hitInfo.collider.transform.rotation;
-      }
-
-      transform.position = Vector3.Lerp(
-        transform.position,
-        worldPos,
-        CardConfig.CatchUpSpeedWhileDragging
-      );
-      transform.rotation = Quaternion.Lerp(
-        transform.rotation,
-        rotation,
-        CardConfig.CatchUpSpeedWhileDragging
-      );
-      _cardLayerController.SetOnBoardLayer();
+      worldPos = hitInfo.point;
+      rotation = hitInfo.collider.transform.rotation;
     }
+
+    transform.position = Vector3.Lerp(
+      transform.position,
+      worldPos,
+      CardConfig.CatchUpSpeedWhileDragging
+    );
+    transform.rotation = Quaternion.Lerp(
+      transform.rotation,
+      rotation,
+      CardConfig.CatchUpSpeedWhileDragging
+    );
+    _cardLayerController.SetOnBoardLayer();
+
+    var distance = transform.position - worldPos;
+    return (distance.magnitude < 0.1f);
   }
 
-  protected void SnapToScreen(Camera camera)
+  protected bool SnapToScreen(Camera camera)
   {
     float targetX = camera.transform.rotation.eulerAngles.x;
     Quaternion rotation = Quaternion.Euler(targetX, 0, 0);
@@ -226,10 +221,11 @@ public abstract class Card : MonoBehaviour, IHitable
       rotation,
       CardConfig.CatchUpSpeedWhileDragging
     );
+    return true;
   }
 
   public abstract CardState OnConsume();
-  public abstract void Drag(Camera camera);
+  public abstract bool Drag(Camera camera);
   public Collider GetCollider() => _collider;
   public Transform GetTransform() => transform;
 }

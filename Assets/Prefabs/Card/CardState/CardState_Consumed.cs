@@ -30,7 +30,7 @@ public class CardState_Consumed : CardState
       .setOnComplete(() =>
       {
         GameManager.Instance.DiscardPile.Discard(_context);
-        SwitchState(_factory.NotInPlay());
+        SwitchState(_factory.InPile());
       });
   }
 

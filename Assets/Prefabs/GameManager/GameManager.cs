@@ -36,9 +36,6 @@ public class GameManager : MonoBehaviour
   private GameStateFactory _stateFactory;
   private GameState _currentState; public GameState CurrentState { set { _currentState = value; } }
 
-  [HideInInspector]
-  public bool IsCardInteractionActive = false;
-
   private void Awake()
   {
     if (_instance != null && _instance != this)

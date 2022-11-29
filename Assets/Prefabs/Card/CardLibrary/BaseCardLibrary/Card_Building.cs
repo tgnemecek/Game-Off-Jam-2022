@@ -7,9 +7,9 @@ public class Card_Building : Card_Base, ICardEndOfTurn
   {
     this.Type = CardTypes.Building;
   }
-  public override void Drag(Camera camera)
+  public override bool Drag(Camera camera)
   {
-    base.SnapToBoard(camera);
+    return base.SnapToBoard(camera);
   }
   public override CardState OnConsume() => _stateFactory.InBoard();
 

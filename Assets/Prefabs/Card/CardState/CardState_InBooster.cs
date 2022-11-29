@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CardState_InBooster : CardState
 {
+  bool _lastHoverState = false;
+
   public CardState_InBooster(Card context, CardStateFactory factory) : base(context, factory) { }
 
   public override void EnterState()
@@ -43,6 +45,27 @@ public class CardState_InBooster : CardState
   {
     LeanTween.move(_context.gameObject, _context.PositionInHand, _context.CardConfig.MovementToHandTime).setEaseInOutCubic();
   }
-  public override void FixedUpdateState() { }
-  public override void ExitState() { }
+
+
+  void OnHoverEnd()
+  {
+    _context.CardLayerController.ToggleHoverOutline(false);
+
+  }
+
+  void OnHoverStart()
+  {
+    _context.CardLayerController.ToggleHoverOutline(true);
+  }
+
+  public override void FixedUpdateState()
+  {
+    if (_lastHoverState == false && _context.IsHovering) OnHoverStart();
+    else if (_lastHoverState == true && !_context.IsHovering) OnHoverEnd();
+    _lastHoverState = _context.IsHovering;
+  }
+  public override void ExitState()
+  {
+    OnHoverEnd();
+  }
 }

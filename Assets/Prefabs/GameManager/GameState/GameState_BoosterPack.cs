@@ -9,16 +9,13 @@ public class GameState_BoosterPack : GameState
 
   public override void EnterState()
   {
-    _context.IsCardInteractionActive = false;
+    PlayerController.Instance.CanInteractWithCards = false;
     _context.BoosterPack.gameObject.SetActive(true);
   }
   public override void OnCardSelected(Card card)
   {
-    _context.BoosterPack.Cards.ForEach((Card c) =>
-    {
-      if (c != card) GameObject.Destroy(c.gameObject);
-    });
 
+    _context.BoosterPack.Cards.Remove(card);
     var cardsToAdd = _context.DiscardPile.UndiscardAllCards();
     cardsToAdd.Add(card);
 

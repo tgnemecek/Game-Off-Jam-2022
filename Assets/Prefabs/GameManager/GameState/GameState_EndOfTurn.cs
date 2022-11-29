@@ -9,7 +9,7 @@ public class GameState_EndOfTurn : GameState
 
   public override void EnterState()
   {
-    _context.IsCardInteractionActive = false;
+    PlayerController.Instance.CanInteractWithCards = false;
     _context.StartCoroutine(HandleEndOfTurnTasks());
   }
 

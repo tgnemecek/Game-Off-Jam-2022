@@ -9,7 +9,8 @@ public class EnemyState_Attacking : EnemyState
 
   public override void EnterState()
   {
-    if (_context.Target.isDead()) {
+    if (_context.Target.isDead())
+    {
       SwitchState(_factory.Hunting());
       return;
     }
@@ -40,7 +41,7 @@ public class EnemyState_Attacking : EnemyState
   void OnAttackLanded()
   {
     _context.Target.ReceiveDamage(_context.Damage);
-    SwitchState(_factory.InBattle());
+    SwitchState(_factory.Attacked());
   }
 
   public override void UpdateState() { }

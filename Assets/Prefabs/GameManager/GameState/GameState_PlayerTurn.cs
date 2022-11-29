@@ -9,7 +9,7 @@ public class GameState_PlayerTurn : GameState
 
   public override void EnterState()
   {
-    _context.IsCardInteractionActive = true;
+    PlayerController.Instance.CanInteractWithCards = true;
     _context.Hand.DrawHand();
   }
 

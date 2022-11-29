@@ -28,6 +28,7 @@ public class CardState_InHand : CardState
 
   void DetectClick()
   {
+    if (!PlayerController.Instance.CanInteractWithCards) return;
     if (!_context.IsHovering) return;
 
     if (Input.GetMouseButtonDown(0))
@@ -69,6 +70,8 @@ public class CardState_InHand : CardState
 
   public override void FixedUpdateState()
   {
+    if (!PlayerController.Instance.CanInteractWithCards) return;
+
     bool hoveringThisCard = _context.IsHovering && !PlayerController.Instance.CardBeingDragged;
 
     if (_lastHoverState == false && hoveringThisCard) OnHoverStart();

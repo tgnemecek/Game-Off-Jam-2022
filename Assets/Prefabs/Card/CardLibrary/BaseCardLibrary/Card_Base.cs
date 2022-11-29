@@ -8,6 +8,6 @@ public class Card_Base : Card
     // noop
   }
 
-  public override void Drag(Camera camera) { }
+  public override bool Drag(Camera camera) => false;
   public override CardState OnConsume() => _stateFactory.NotInPlay();
 }

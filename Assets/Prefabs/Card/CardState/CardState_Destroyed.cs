@@ -18,6 +18,7 @@ public class CardState_Destroyed : CardState
       {
         _context.transform.localScale = originalScale;
         GameManager.Instance.DiscardPile.Discard(_context);
+        SwitchState(_factory.InPile());
       });
   }
 
