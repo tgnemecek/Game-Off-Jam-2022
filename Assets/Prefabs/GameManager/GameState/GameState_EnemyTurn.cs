@@ -37,6 +37,7 @@ public class GameState_EnemyTurn : GameState
   }
 
 
+  public override void OnCardSelected(Card card) { }
   public override void FixedUpdateState() { }
   public override void EndPlayerTurn() { }
   public override void EndEnemyTurn() { }

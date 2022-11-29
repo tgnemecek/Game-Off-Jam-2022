@@ -12,11 +12,10 @@ public abstract class GameState
   protected void SwitchState(GameState newState)
   {
     ExitState();
-    newState.EnterState();
     _context.CurrentState = newState;
+    newState.EnterState();
   }
-
-
+  public abstract void OnCardSelected(Card card);
   public abstract void OnWaveClear();
   public abstract void EnterState();
   public abstract void UpdateState();

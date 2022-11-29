@@ -7,7 +7,10 @@ public class CardState_NotInPlay : CardState
   public CardState_NotInPlay(Card context, CardStateFactory factory) : base(context, factory) { }
 
 
-  public override void EnterState() { }
+  public override void EnterState()
+  {
+    _context.gameObject.SetActive(false);
+  }
   public override void UpdateState()
   {
     if (_context.CardInitializer == CardInitializer.BoosterPack)
@@ -20,5 +23,8 @@ public class CardState_NotInPlay : CardState
     }
   }
   public override void FixedUpdateState() { }
-  public override void ExitState() { }
+  public override void ExitState()
+  {
+    _context.gameObject.SetActive(true);
+  }
 }

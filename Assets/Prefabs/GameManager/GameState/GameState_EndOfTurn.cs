@@ -31,7 +31,7 @@ public class GameState_EndOfTurn : GameState
 
     SwitchState(_factory.EnemyTurn());
   }
-
+  public override void OnCardSelected(Card card) { }
   public override void OnWaveClear() { }
   public override void UpdateState() { }
   public override void FixedUpdateState() { }
