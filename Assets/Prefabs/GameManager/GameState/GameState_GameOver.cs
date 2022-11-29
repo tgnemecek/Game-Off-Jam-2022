@@ -14,6 +14,7 @@ public class GameState_GameOver : GameState
     _context.GameOverMenu.Show();
   }
 
+  public override void OnCardSelected(Card card) { }
   public override void OnWaveClear() { }
   public override void UpdateState() { }
   public override void FixedUpdateState() { }

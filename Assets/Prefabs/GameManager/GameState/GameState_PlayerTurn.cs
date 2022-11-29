@@ -12,6 +12,8 @@ public class GameState_PlayerTurn : GameState
     _context.IsCardInteractionActive = true;
     _context.Hand.DrawHand();
   }
+
+  public override void OnCardSelected(Card card) { }
   public override void OnWaveClear() { }
   public override void UpdateState() { }
   public override void FixedUpdateState() { }

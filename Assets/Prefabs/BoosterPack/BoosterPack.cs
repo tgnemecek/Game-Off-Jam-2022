@@ -29,7 +29,7 @@ public class BoosterPack : MonoBehaviour
   Quaternion _originalRotationForMesh;
   Vector3 _originalPosition;
 
-  List<Card> _boosterCards = new List<Card>();
+  List<Card> _boosterCards = new List<Card>(); public List<Card> Cards => _boosterCards;
 
   public void UpdateCardList()
   {
@@ -62,12 +62,24 @@ public class BoosterPack : MonoBehaviour
     for (int i = 0; i < _numberOfCardsInBooster; i++)
     {
       int randomIndex = UnityEngine.Random.Range(0, _allCards.Count - 1);
-      Card card = Instantiate(_allCards[randomIndex], _mesh.position, _mesh.rotation, transform);
+
+      var position = new Vector3(
+        _mesh.position.x,
+        _mesh.position.y,
+        _mesh.position.z - (.01f * i)
+      );
+
+      Card card = Instantiate(_allCards[randomIndex], position, _mesh.rotation, transform);
       card.transform.SetParent(_mesh);
       card.Initialize(CardInitializer.BoosterPack);
       _boosterCards.Add(card);
     }
     StartCoroutine(Animation());
+  }
+
+  public void Disable()
+  {
+    StartCoroutine(GoAway());
   }
 
   void ResetTransform()
@@ -80,7 +92,7 @@ public class BoosterPack : MonoBehaviour
   {
     foreach (var card in _boosterCards)
     {
-      Destroy(card.gameObject);
+      if (card != null) Destroy(card.gameObject);
     }
     _boosterCards.Clear();
   }
@@ -143,6 +155,17 @@ public class BoosterPack : MonoBehaviour
         .rotateZ(_mesh.gameObject, 0f, 1f / _shakeSpeed)
         .setOnComplete(() => hasReturnedToBaseRotation = true);
     yield return new WaitUntil(() => hasReturnedToBaseRotation);
+  }
+
+  IEnumerator GoAway()
+  {
+    bool hasCompleted = false;
+    LeanTween
+        .move(gameObject, _originalPosition, 1f / _boosterSpeed)
+        .setOnComplete(() => hasCompleted = true);
+
+    yield return new WaitUntil(() => hasCompleted);
+    gameObject.SetActive(false);
   }
 
   void CalculateHandPositions()

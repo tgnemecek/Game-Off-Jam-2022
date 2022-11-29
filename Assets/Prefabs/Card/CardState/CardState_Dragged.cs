@@ -12,7 +12,7 @@ public class CardState_Dragged : CardState
   public override void EnterState()
   {
     PlayerController.Instance.CardBeingDragged = _context;
-    _context.CardLayerController.SetDraggedLayer();
+    _context.CardLayerController.SetCloseUpLayer();
     _context.CardAudio.PlayCardClicked();
   }
   public override void UpdateState()

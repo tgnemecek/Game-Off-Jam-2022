@@ -43,18 +43,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: DrawPile
+  - name: Pile
     uniqueID: 3624696027
     locked: 0
-  - name: DrawPileCounter
+  - name: PileCounter
     uniqueID: 4258621367
     locked: 0
   - name: Card
     uniqueID: 2835788705
     locked: 0
-  - name: CardDragged
+  - name: CardOnBoard
     uniqueID: 667278683
     locked: 0
   - name: WorldSpaceUI
     uniqueID: 167551979
+    locked: 0
+  - name: CardCloseUp
+    uniqueID: 3171666013
     locked: 0

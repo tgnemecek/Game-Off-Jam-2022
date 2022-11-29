@@ -85,6 +85,7 @@ public abstract class Card : MonoBehaviour, IHitable
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
   private bool _wasPlayed = false; public bool WasPlayed { get { return _wasPlayed; } set { _wasPlayed = value; } }
   private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
+  private bool _wasInitialized = false; public bool WasInitialized => _wasInitialized;
   public Vector3 LastValidBoardPosition { get; set; }
   public List<IHitable> BattlingAgainst = new List<IHitable>();
 
@@ -132,10 +133,11 @@ public abstract class Card : MonoBehaviour, IHitable
   {
     _cardInitializer = cardInitializer;
     _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
-    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _resourcesCostDictionary, _cardConfig);
+    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
     HP = _cardConfig.MaxHP;
     _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
+    _wasInitialized = true;
   }
 
   public bool IsHovering => PlayerController.Instance.CardPointedTo == this;
@@ -153,6 +155,7 @@ public abstract class Card : MonoBehaviour, IHitable
   {
     HP -= damage;
     _healthBar.UpdateHealth(HP);
+    CardAudio.PlayCardAttacked();
   }
 
   public void StartBattle(IHitable hitable)
@@ -170,6 +173,7 @@ public abstract class Card : MonoBehaviour, IHitable
     if (PlayerController.Instance.IsHoveringOnHand && !WasPlayed)
     {
       SnapToScreen(camera);
+      _cardLayerController.SetCloseUpLayer();
     }
     else
     {
@@ -195,6 +199,7 @@ public abstract class Card : MonoBehaviour, IHitable
         rotation,
         CardConfig.CatchUpSpeedWhileDragging
       );
+      _cardLayerController.SetOnBoardLayer();
     }
   }
 

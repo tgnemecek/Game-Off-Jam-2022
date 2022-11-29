@@ -20,12 +20,24 @@ public class DrawPile : MonoBehaviour, IPile
     }
   }
 
-  public void UseDeck(Deck deck)
+  public void AddCards(List<Card> cards)
   {
-    foreach (var c in deck.Cards)
+    foreach (var c in cards)
     {
-      var card = Instantiate(c, transform.position, Quaternion.Euler(-90, -180, 0), transform);
-      card.Initialize(CardInitializer.Pile);
+      Card card;
+      Quaternion rotation = Quaternion.Euler(-90, -180, 0);
+
+      if (c.WasInitialized)
+      {
+        card = c;
+        card.transform.position = transform.position;
+        card.transform.SetParent(transform);
+      }
+      else
+      {
+        card = Instantiate(c, transform.position, rotation, transform);
+        card.Initialize(CardInitializer.Pile);
+      }
       _cards.Add(card);
     }
     _deckBook.PopulateCards(_cards);

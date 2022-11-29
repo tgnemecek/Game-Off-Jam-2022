@@ -197,8 +197,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardClicked: {fileID: 8300000, guid: 1028a6e39df3144499e55155a750aee0, type: 3}
   _cardTouchBoard: {fileID: 8300000, guid: 705d052ac155a5a4785f4cd516362083, type: 3}
+  _cardPlayed: {fileID: 0}
   _cardDrawn: {fileID: 8300000, guid: b55a116cbcef1ba4f9bb9e5cec7ef937, type: 3}
   _cardConsumed: {fileID: 8300000, guid: db4026e9fed602b49b1c7afa82770c90, type: 3}
+  _cardAttackedList:
+  - {fileID: 8300000, guid: 5ec4a007b0cbc8c4f9840983cfa672dd, type: 3}
+  - {fileID: 8300000, guid: 3952dc0dcd108b141acdeb173fbc4c69, type: 3}
+  - {fileID: 8300000, guid: 92917ceded1a3ed4c9b4de061436b674, type: 3}
+  - {fileID: 8300000, guid: 292171c5f1be8d34dbb32d58f7c2bc90, type: 3}
   _cardConsumedPitchIncreaseRate: 1.003
 --- !u!1001 &2327372554859226184
 PrefabInstance:

@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1692899336377121041, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
+      propertyPath: _cardPlayed
+      value: 
+      objectReference: {fileID: 8300000, guid: ea82f40533090f64db1900310abea0a9, type: 3}
     - target: {fileID: 2402168949140496067, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_Name
-      value: Card_Building
+      value: Card_Sea
       objectReference: {fileID: 0}
     - target: {fileID: 4521102765380268841, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_RootOrder
@@ -57,17 +61,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
---- !u!114 &3470269575623958760 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9021181929722435095, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
-  m_PrefabInstance: {fileID: 5555597929364731647}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6399452012273199069 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1573472963181531426, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
@@ -98,5 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 6399452012273199069}
-  _cardProximityDetector: {fileID: 3470269575623958760}
-  Type: 40
+  _cardProximityDetector: {fileID: 0}
+  _collider: {fileID: 0}
+  _healthBar: {fileID: 0}
+  CardAudio: {fileID: 0}
+  CurrentStateName: 

@@ -9,9 +9,13 @@ public class CardAudio : MonoBehaviour
   [SerializeField]
   AudioClip _cardTouchBoard;
   [SerializeField]
+  AudioClip _cardPlayed;
+  [SerializeField]
   AudioClip _cardDrawn;
   [SerializeField]
   AudioClip _cardConsumed;
+  [SerializeField]
+  List<AudioClip> _cardAttackedList;
   [SerializeField]
   float _cardConsumedPitchIncreaseRate = 1f;
 
@@ -24,18 +28,22 @@ public class CardAudio : MonoBehaviour
 
   public void PlayCardClicked()
   {
-    _source.clip = _cardClicked;
-    _source.Play();
+    _source.PlayOneShot(_cardClicked);
   }
   public void PlayCardTouchBoard()
   {
-    _source.clip = _cardTouchBoard;
-    _source.Play();
+    _source.PlayOneShot(_cardTouchBoard);
+  }
+  public void PlayCardPlayed()
+  {
+    if (_cardPlayed != null)
+    {
+      _source.PlayOneShot(_cardPlayed);
+    }
   }
   public void PlayCardDrawn()
   {
-    _source.clip = _cardDrawn;
-    _source.Play();
+    _source.PlayOneShot(_cardDrawn);
   }
 
   public void PlayCardConsumed()
@@ -45,11 +53,12 @@ public class CardAudio : MonoBehaviour
     _source.Play();
     IEnumerator IncreasePitch()
     {
-      while (_source.isPlaying)
+      while (_source.isPlaying && _source.clip == _cardConsumed)
       {
         _source.pitch *= _cardConsumedPitchIncreaseRate;
         yield return null;
       }
+      _source.pitch = 1;
     }
     StartCoroutine(IncreasePitch());
   }
@@ -58,11 +67,23 @@ public class CardAudio : MonoBehaviour
     FadeOut();
   }
 
+  public void PlayCardAttacked()
+  {
+    int randomIndex = UnityEngine.Random.Range(0, _cardAttackedList.Count - 1);
+    _source.PlayOneShot(_cardAttackedList[randomIndex]);
+  }
+
   void FadeOut(float duration = 0.5f)
   {
+    float originalVolume = _source.volume;
+
     LeanTween
       .value(gameObject, _source.volume, 0f, duration)
       .setOnUpdate((value) => _source.volume = value)
-      .setOnComplete(_source.Stop);
+      .setOnComplete(() =>
+      {
+        _source.Stop();
+        _source.volume = originalVolume;
+      });
   }
 }

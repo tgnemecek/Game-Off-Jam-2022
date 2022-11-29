@@ -26,14 +26,15 @@ public class DeckBook : MonoBehaviour
 
     for (int i = 0; i < cardCount; i++)
     {
-      var card = Instantiate(cards[i % cardCount]);
-      var canvas = card.CardLayerController.Canvas;
-      card.CardLayerController.ShowCardForUI();
+      var card = cards[i % cardCount];
+      var copiedCard = Instantiate(cards[i % cardCount]);
+      copiedCard.Initialize(card.CardInitializer);
+      copiedCard.CardLayerController.ShowCardForUI();
 
-
+      var canvas = copiedCard.CardLayerController.Canvas;
       canvas.transform.SetParent(_gridLayoutGroup.transform);
       canvas.transform.localScale = Vector3.one;
-      Destroy(card.gameObject);
+      Destroy(copiedCard.gameObject);
     }
   }
 

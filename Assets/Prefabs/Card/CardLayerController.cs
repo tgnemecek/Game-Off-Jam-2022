@@ -13,6 +13,8 @@ public class CardLayerController : MonoBehaviour
   [SerializeField]
   private string _draggedSortingLayerName;
   [SerializeField]
+  private string _closeupSortingLayerName;
+  [SerializeField]
   private Image _cardImage;
   [SerializeField]
   private SpriteRenderer _backSprite;
@@ -22,17 +24,22 @@ public class CardLayerController : MonoBehaviour
   private SpriteRenderer _onHoverSprite;
   [SerializeField]
   private TextMeshProUGUI _nameText;
+
+  [SerializeField]
+  private TextMeshProUGUI _descriptionText;
   [SerializeField]
   private CardCost _cardCost;
   private CardConfig _cardConfig;
 
   private int _defaultSortingLayerID;
 
-  public void Initialize(string cardName, Sprite sprite, ResourcesDictionary resourcesDictionary, CardConfig cardConfig)
+  public void Initialize(string cardName, Sprite sprite, string cardDescription, ResourcesDictionary resourcesDictionary, CardConfig cardConfig)
   {
     _cardConfig = cardConfig;
     _nameText.text = cardName;
     _nameText.fontSize = _cardConfig.FontSizeInHand;
+    _descriptionText.text = cardDescription;
+    _descriptionText.fontSize = _cardConfig.FontSizeInHand;
     _cardImage.sprite = sprite;
     _defaultSortingLayerID = _canvas.sortingLayerID;
     _cardCost.SetResourcesDictionary(resourcesDictionary);
@@ -43,18 +50,25 @@ public class CardLayerController : MonoBehaviour
     _cardImage.sprite = sprite;
   }
 
-  public void SetDrawPileLayer()
+  public void SetPileLayer()
   {
     _canvas.sortingLayerName = _drawPileSortingLayerName;
     _backSprite.sortingLayerName = _drawPileSortingLayerName;
     _onHoverSprite.sortingLayerName = _drawPileSortingLayerName;
   }
 
-  public void SetDraggedLayer()
+  public void SetOnBoardLayer()
   {
     _canvas.sortingLayerName = _draggedSortingLayerName;
     _backSprite.sortingLayerName = _draggedSortingLayerName;
     _onHoverSprite.sortingLayerName = _draggedSortingLayerName;
+  }
+
+  public void SetCloseUpLayer()
+  {
+    _canvas.sortingLayerName = _closeupSortingLayerName;
+    _backSprite.sortingLayerName = _closeupSortingLayerName;
+    _onHoverSprite.sortingLayerName = _closeupSortingLayerName;
   }
 
   public void SetDefaultLayer()

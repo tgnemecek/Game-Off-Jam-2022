@@ -12,7 +12,7 @@ public class CardState_InPile : CardState
     _context.transform.localScale = Vector3.one;
     _context.transform.rotation = Quaternion.Euler(-90, -180, 0);
     _context.CardLayerController.ShowCardBack();
-    _context.CardLayerController.SetDrawPileLayer();
+    _context.CardLayerController.SetPileLayer();
   }
   public override void UpdateState()
   {
