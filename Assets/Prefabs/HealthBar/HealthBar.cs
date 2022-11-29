@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
   [SerializeField]
-  RectTransform _group;
+  Transform _group;
   [SerializeField]
   RectTransform _hpBarForeground;
   [SerializeField]
@@ -32,16 +32,7 @@ public class HealthBar : MonoBehaviour
     _baseHpBarColor = _hpBarImage.color;
     _alwaysShow = alwaysShow;
     _group.gameObject.SetActive(_alwaysShow);
-  }
-
-  void FixedUpdate()
-  {
-    var screenPos = _camera.WorldToScreenPoint(_target.position);
-    _group.transform.position = new Vector3(
-        screenPos.x,
-        screenPos.y + _offsetY,
-        screenPos.z
-    );
+    PositionSelf();
   }
 
   public void UpdateHealth(int hp)
@@ -50,8 +41,8 @@ public class HealthBar : MonoBehaviour
 
     _group.gameObject.SetActive(_hp < _maxHP);
 
-    float right = _maxHP - _hp;
-    _hpBarForeground.offsetMax = new Vector2(-right, _hpBarForeground.offsetMax.y);
+    float left = _maxHP - _hp;
+    _hpBarForeground.offsetMin = new Vector2(left, _hpBarForeground.offsetMin.y);
     UpdateColor();
   }
 
@@ -65,5 +56,30 @@ public class HealthBar : MonoBehaviour
     {
       _hpBarImage.color = _baseHpBarColor;
     }
+  }
+
+  void FixedUpdate()
+  {
+    RotateSelf();
+  }
+
+  void PositionSelf()
+  {
+    transform.localPosition = new Vector3(
+      0f,
+      _offsetY,
+      0f
+    );
+  }
+
+  void RotateSelf()
+  {
+    var target = new Vector3(
+      transform.position.x,
+      Camera.main.transform.position.y,
+      Camera.main.transform.position.z
+    );
+
+    transform.LookAt(target);
   }
 }

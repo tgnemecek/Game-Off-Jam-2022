@@ -15,15 +15,12 @@ public class CardState_Destroyed : CardState
     LeanTween.scale(_context.gameObject, Vector3.zero, _context.CardConfig.DeathDuration)
       .setOnComplete(() =>
       {
-        _context.gameObject.SetActive(false);
         _context.transform.localScale = originalScale;
+        GameManager.Instance.DiscardPile.Discard(_context);
       });
   }
 
   public override void UpdateState() { }
   public override void FixedUpdateState() { }
-  public override void ExitState()
-  {
-    _context.gameObject.SetActive(true);
-  }
+  public override void ExitState() { }
 }

@@ -9,6 +9,7 @@ public class CardState_InBooster : CardState
   public override void EnterState()
   {
     _context.CardLayerController.ShowCardFront();
+    _context.CardLayerController.SetCloseUpLayer();
   }
 
   public override void UpdateState()
