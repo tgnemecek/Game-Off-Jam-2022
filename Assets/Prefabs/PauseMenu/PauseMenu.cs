@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+  [SerializeField]
+  private GameObject _panel;
   private bool _isPaused = false;
 
   void Start()
   {
-    this.gameObject.SetActive(false);
+    _panel.SetActive(false);
   }
 
   void Update()
@@ -29,29 +31,22 @@ public class PauseMenu : MonoBehaviour
 
   void PauseGame()
   {
-    this.gameObject.SetActive(true);
+    _panel.SetActive(true);
     Time.timeScale = 0f;
     _isPaused = true;
   }
 
   void ResumeGame()
   {
-    this.gameObject.SetActive(false);
+    _panel.SetActive(false);
     Time.timeScale = 1f;
     _isPaused = false;
   }
 
-  void GoToMainMenu()
+  public void GoToMainMenu()
   {
     Time.timeScale = 1f;
-    // Todo: We need to add a scene for the Main Menu
-    SceneManager.LoadScene("MainMenu");
     _isPaused = false;
-  }
-
-  void QuitGame()
-  {
-    // This only works when the game is built. Not in the editor
-    Application.Quit();
+    SceneManager.LoadScene("Scenes/MainMenu");
   }
 }

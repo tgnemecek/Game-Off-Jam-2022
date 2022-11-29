@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,6 +51,9 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
+    Music music = GameObject.FindObjectOfType<Music>();
+    if (music) DestroyOnLoad(music.gameObject);
+
     _drawPile.AddCards(_deck.Cards);
     _drawPile.Shuffle();
     _deckBook.PopulateCards(_deck.Cards);
@@ -64,6 +68,11 @@ public class GameManager : MonoBehaviour
     CurrentStateName = _currentState?.GetType().Name;
   }
 
+  void DestroyOnLoad(GameObject target)
+  {
+    SceneManager.MoveGameObjectToScene(target, SceneManager.GetActiveScene());
+  }
+
   public void OnWaveClear() => _currentState.OnWaveClear();
   public void OnCardSelected(Card card) => _currentState.OnCardSelected(card);
 
@@ -72,6 +81,7 @@ public class GameManager : MonoBehaviour
     _currentState = _stateFactory.GameOver();
     _currentState.EnterState();
   }
+  public void QuitGame() => Application.Quit();
 
   public void EndPlayerTurn() => _currentState?.EndPlayerTurn();
   public void EndEnemyTurn() => _currentState?.EndEnemyTurn();
