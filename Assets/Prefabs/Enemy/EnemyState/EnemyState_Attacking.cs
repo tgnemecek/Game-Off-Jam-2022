@@ -9,6 +9,11 @@ public class EnemyState_Attacking : EnemyState
 
   public override void EnterState()
   {
+    if (_context.Target.isDead()) {
+      SwitchState(_factory.Hunting());
+      return;
+    }
+
     _context.Rigidbody.velocity = Vector3.zero;
     _context.EnemyAudio.PlayAttack();
 
@@ -35,7 +40,7 @@ public class EnemyState_Attacking : EnemyState
   void OnAttackLanded()
   {
     _context.Target.ReceiveDamage(_context.Damage);
-    SwitchState(_factory.Attacked());
+    SwitchState(_factory.InBattle());
   }
 
   public override void UpdateState() { }

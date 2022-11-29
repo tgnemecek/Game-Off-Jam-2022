@@ -163,6 +163,11 @@ public abstract class Card : MonoBehaviour, IHitable
     BattlingAgainst.Add(hitable);
   }
 
+  public bool isDead()
+  {
+    return HP <= 0;
+  }
+
   protected void SnapToBoard(Camera camera)
   {
     if (PlayerController.Instance.IsHoveringOnHand && !WasPlayed)

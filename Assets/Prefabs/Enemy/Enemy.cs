@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
   {
     Rigidbody = GetComponent<Rigidbody>();
     NavMeshAgent = GetComponent<NavMeshAgent>();
+    NavMeshAgent.speed = _enemyConfig.MovementSpeed;
   }
 
   void Start()

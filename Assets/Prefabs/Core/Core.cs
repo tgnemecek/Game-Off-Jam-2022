@@ -40,6 +40,11 @@ public class Core : MonoBehaviour, IHitable
     }
   }
 
+  public bool isDead()
+  {
+    return _hp <= 0;
+  }
+
   public void StartBattle(IHitable hitable) { }
 
   public Collider GetCollider() => _collider;

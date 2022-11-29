@@ -28,3 +28,4 @@ MonoBehaviour:
   OnBoardHoverOutlineSize: 0.05
   ConsumeAnimationTime: 1
   ConsumeAnimationRotation: 1000
+  DeathDuration: 2
