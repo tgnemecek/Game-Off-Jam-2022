@@ -39,7 +39,7 @@ public class HealthBar : MonoBehaviour
   {
     _hp = hp;
 
-    _group.gameObject.SetActive(_hp < _maxHP);
+    _group.gameObject.SetActive(_hp < _maxHP && _hp > 0);
 
     float left = _maxHP - _hp;
     _hpBarForeground.offsetMin = new Vector2(left, _hpBarForeground.offsetMin.y);
