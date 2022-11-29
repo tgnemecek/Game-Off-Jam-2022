@@ -133,7 +133,7 @@ public abstract class Card : MonoBehaviour, IHitable
   {
     _cardInitializer = cardInitializer;
     _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
-    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), _resourcesCostDictionary, _cardConfig);
+    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
     HP = _cardConfig.MaxHP;
     _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
