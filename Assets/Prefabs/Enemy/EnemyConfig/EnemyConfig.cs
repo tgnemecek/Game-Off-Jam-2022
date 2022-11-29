@@ -15,4 +15,6 @@ public class EnemyConfig : ScriptableObject
   public float AttackedShrinkScale = 0.85f;
   public float AttackedRotationMultiplier = 6f;
   public float DeathDuration = 1f;
+  [Range(1, 100)]
+  public int PoolCost = 1;
 }

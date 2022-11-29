@@ -7,10 +7,13 @@ public class EnemyManager : MonoBehaviour
   [SerializeField]
   private Board _board;
   [SerializeField]
-  private SpawnMap _spawnMap;
+  private int _spawnPoolPoints;
   [SerializeField]
+  private SpawnMap _spawnMap;
   private List<Enemy> _nextWave = new List<Enemy>();
   private List<Enemy> _currentWave = new List<Enemy>();
+  [SerializeField]
+  private List<Enemy> _enemyTypes = new List<Enemy>();
 
   void Start()
   {
@@ -21,6 +24,8 @@ public class EnemyManager : MonoBehaviour
   {
     int spawnMapIndex = 0;
     var spawnPoints = _spawnMap.SpawnPoints;
+
+    GenerateWave();
 
     foreach (var e in _nextWave)
     {
@@ -34,6 +39,38 @@ public class EnemyManager : MonoBehaviour
 
       _currentWave.Add(enemy);
     }
+
+    IncreasePoolSize();
+  }
+
+  private void GenerateWave()
+  {
+    _nextWave.Clear();
+    int availablePoints = _spawnPoolPoints;
+    Enemy enemy = GrabEnemyFromPool(availablePoints);
+
+    while (enemy != null) 
+    {
+      _nextWave.Add(enemy);
+      availablePoints -= Mathf.Max(enemy.EnemyConfig.PoolCost, 1);
+      enemy = GrabEnemyFromPool(availablePoints);
+    }
+  }
+
+  private Enemy GrabEnemyFromPool(int availablePoints)
+  {
+    if (availablePoints == 0) return null;
+
+    List<Enemy> availableEnemies = _enemyTypes.FindAll(e => e.EnemyConfig.PoolCost <= availablePoints);
+    if (availableEnemies.Count == 0) return null;
+
+    int randomIndex = (int) Mathf.Min(Mathf.Round(UnityEngine.Random.Range(0, availableEnemies.Count)), availableEnemies.Count - 1);
+    return availableEnemies[randomIndex];
+  }
+
+  private void IncreasePoolSize()
+  {
+    _spawnPoolPoints += 15;
   }
 
 
