@@ -24,7 +24,7 @@ public class Card_LumberMill : Card_Building
 
   public override IEnumerator EndOfTurn()
   {
+    yield return base.EndOfTurn();
     ResourcesManager.Instance.Gain(2, ResourceTypes.Wood);
-    yield break;
   }
 }

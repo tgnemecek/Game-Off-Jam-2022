@@ -13,5 +13,39 @@ public class Card_Building : Card_Base, ICardEndOfTurn
   }
   public override CardState OnConsume() => _stateFactory.InBoard();
 
-  public virtual IEnumerator EndOfTurn() { yield break; }
+  public virtual IEnumerator EndOfTurn()
+  {
+    bool isTurningToPositive = true;
+    const int timesToComplete = 10;
+    int timesCompleted = 0;
+    float timeToRotate = .1f;
+
+    float initRotation = transform.rotation.eulerAngles.y;
+
+    base.CardLayerController.ToggleHoverOutline(true);
+
+    while (timesCompleted < timesToComplete)
+    {
+      float rotationAmount = 10f * (isTurningToPositive ? 1 : -1);
+
+      isTurningToPositive = !isTurningToPositive;
+
+      bool hasCompletedLoop = false;
+
+      LeanTween
+        .rotateY(gameObject, rotationAmount, timeToRotate)
+        .setOnComplete(() => hasCompletedLoop = true);
+
+      yield return new WaitUntil(() => hasCompletedLoop);
+      timesCompleted += 1;
+    }
+
+    bool hasReturnedToOriginalRotation = false;
+    LeanTween
+      .rotateY(gameObject, initRotation, timeToRotate)
+      .setOnComplete(() => hasReturnedToOriginalRotation = true);
+
+    base.CardLayerController.ToggleHoverOutline(false);
+    yield return new WaitUntil(() => hasReturnedToOriginalRotation);
+  }
 }

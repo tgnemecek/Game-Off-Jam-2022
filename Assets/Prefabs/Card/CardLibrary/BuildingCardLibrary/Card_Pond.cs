@@ -24,6 +24,7 @@ public class Card_Pond : Card_Building
 
   public override IEnumerator EndOfTurn()
   {
+    base.EndOfTurn();
     ResourcesManager.Instance.Gain(1, ResourceTypes.Fish);
     yield break;
   }
