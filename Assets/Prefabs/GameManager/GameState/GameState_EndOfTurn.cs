@@ -20,13 +20,18 @@ public class GameState_EndOfTurn : GameState
     for (int i = 0; i < cardsInBoard.Count; i++)
     {
       var card = cardsInBoard[i];
-      card.EndOfTurn();
-      yield return new WaitForSeconds(_context.GameConfig.DelayBetweenEndOfTurnTasks);
+      ICardEndOfTurn endOfTurn;
+
+      if (card.TryGetComponent<ICardEndOfTurn>(out endOfTurn))
+      {
+        yield return endOfTurn.EndOfTurn();
+        yield return new WaitForSeconds(_context.GameConfig.DelayBetweenEndOfTurnTasks);
+      }
     }
 
     SwitchState(_factory.EnemyTurn());
   }
-
+  public override void OnCardSelected(Card card) { }
   public override void OnWaveClear() { }
   public override void UpdateState() { }
   public override void FixedUpdateState() { }

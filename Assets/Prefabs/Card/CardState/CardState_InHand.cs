@@ -15,6 +15,7 @@ public class CardState_InHand : CardState
     _context.DrawnOnThisFrame = false;
     _context.CardLayerController.SetDefaultLayer();
     _context.CardLayerController.ToggleShadow(false);
+    _context.CardAudio.PlayCardDrawn();
     MoveToHandPosition();
     RotateToHand();
   }
@@ -77,7 +78,7 @@ public class CardState_InHand : CardState
 
   void OnHoverStart()
   {
-    _context.CardLayerController.SetDraggedLayer();
+    _context.CardLayerController.SetCloseUpLayer();
 
     CardConfig cardConfig = _context.CardConfig;
 

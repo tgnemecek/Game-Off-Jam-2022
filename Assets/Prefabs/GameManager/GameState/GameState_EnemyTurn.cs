@@ -11,6 +11,7 @@ public class GameState_EnemyTurn : GameState
   {
     _context.IsCardInteractionActive = false;
     _context.EnemyManager.SpawnNextWave();
+    AudioManager.Instance.PlayEndTurn();
   }
 
   public override void UpdateState()
@@ -36,6 +37,7 @@ public class GameState_EnemyTurn : GameState
   }
 
 
+  public override void OnCardSelected(Card card) { }
   public override void FixedUpdateState() { }
   public override void EndPlayerTurn() { }
   public override void EndEnemyTurn() { }

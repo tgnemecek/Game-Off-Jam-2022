@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: -9220227906806616179}
   - component: {fileID: 7863358496437064660}
   - component: {fileID: 715259857232081646}
+  - component: {fileID: -6833838695453058006}
+  - component: {fileID: 3052723712202493425}
   m_Layer: 8
   m_Name: Card_Base
   m_TagString: Card
@@ -54,6 +56,7 @@ MonoBehaviour:
   _cardProximityDetector: {fileID: 4751564841053618050}
   _collider: {fileID: 7863358496437064660}
   _healthBar: {fileID: 1763145288869447171}
+  CardAudio: {fileID: 0}
   CurrentStateName: 
 --- !u!65 &7863358496437064660
 BoxCollider:
@@ -84,6 +87,125 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!82 &-6833838695453058006
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050581620108519971}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 4627378988758205744, guid: ba09c392e3f358140a07d74373e146ea, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 15
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3052723712202493425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050581620108519971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec95aaef0bc2ee49bd17e986823496c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardClicked: {fileID: 8300000, guid: 1028a6e39df3144499e55155a750aee0, type: 3}
+  _cardTouchBoard: {fileID: 8300000, guid: 705d052ac155a5a4785f4cd516362083, type: 3}
+  _cardPlayed: {fileID: 0}
+  _cardDrawn: {fileID: 8300000, guid: b55a116cbcef1ba4f9bb9e5cec7ef937, type: 3}
+  _cardConsumed: {fileID: 8300000, guid: db4026e9fed602b49b1c7afa82770c90, type: 3}
+  _cardAttackedList:
+  - {fileID: 8300000, guid: 5ec4a007b0cbc8c4f9840983cfa672dd, type: 3}
+  - {fileID: 8300000, guid: 3952dc0dcd108b141acdeb173fbc4c69, type: 3}
+  - {fileID: 8300000, guid: 92917ceded1a3ed4c9b4de061436b674, type: 3}
+  - {fileID: 8300000, guid: 292171c5f1be8d34dbb32d58f7c2bc90, type: 3}
+  _cardConsumedPitchIncreaseRate: 1.003
 --- !u!1001 &2327372554859226184
 PrefabInstance:
   m_ObjectHideFlags: 0

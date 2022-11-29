@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5495328957036909638, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_Name
-      value: Card_Unit
+      value: Card_InfantryDuck
       objectReference: {fileID: 0}
     - target: {fileID: 6028996631765105068, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
       propertyPath: m_RootOrder
@@ -55,19 +55,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8821145972834104212, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
+      propertyPath: _cardPlayed
+      value: 
+      objectReference: {fileID: 8300000, guid: ef2523c9df997b4468708a9c7fbcf418, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
---- !u!114 &1202683798724584433 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1163281479118298258, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
-  m_PrefabInstance: {fileID: 41663645678813027}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4432161836314186450 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 4401766606963174833, guid: 3b07bb4c29ea3b14a9d388ee5ff24e9a, type: 3}
@@ -103,9 +96,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 8671539189755552964}
-  _cardProximityDetector: {fileID: 1202683798724584433}
+  _cardProximityDetector: {fileID: 0}
   _collider: {fileID: 4432161836314186450}
   _healthBar: {fileID: 5248244003301033733}
+  CardAudio: {fileID: 0}
   CurrentStateName: 
 --- !u!114 &8671539189755552964 stripped
 MonoBehaviour:

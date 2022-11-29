@@ -9,11 +9,13 @@ public class CardState_InBooster : CardState
   public override void EnterState()
   {
     _context.CardLayerController.ShowCardFront();
+    _context.CardLayerController.SetCloseUpLayer();
   }
 
   public override void UpdateState()
   {
     DetectPositionChange();
+    DetectClick();
   }
 
   void DetectPositionChange()
@@ -22,6 +24,18 @@ public class CardState_InBooster : CardState
     {
       _context.PositionChangedThisFrame = false;
       MoveToHandPosition();
+    }
+  }
+
+  void DetectClick()
+  {
+    if (!_context.IsHovering) return;
+
+    if (Input.GetMouseButtonDown(0))
+    {
+      GameManager.Instance.OnCardSelected(_context);
+      SwitchState(_factory.InPile());
+      return;
     }
   }
 

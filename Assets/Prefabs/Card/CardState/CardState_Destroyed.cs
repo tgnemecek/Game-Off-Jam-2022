@@ -9,15 +9,15 @@ public class CardState_Destroyed : CardState
   public override void EnterState()
   {
     _context.HP = 0;
-    _context.StartCoroutine(DestroyedAnimation());
-  }
+    Vector3 originalScale = _context.transform.localScale;
 
-  IEnumerator DestroyedAnimation()
-  {
     LeanTween.rotateAround(_context.gameObject, Vector3.up, 360 * 5, _context.CardConfig.DeathDuration).setEaseOutCirc();
-    LeanTween.scale(_context.gameObject, Vector3.zero, _context.CardConfig.DeathDuration);
-
-    yield break;
+    LeanTween.scale(_context.gameObject, Vector3.zero, _context.CardConfig.DeathDuration)
+      .setOnComplete(() =>
+      {
+        _context.transform.localScale = originalScale;
+        GameManager.Instance.DiscardPile.Discard(_context);
+      });
   }
 
   public override void UpdateState() { }

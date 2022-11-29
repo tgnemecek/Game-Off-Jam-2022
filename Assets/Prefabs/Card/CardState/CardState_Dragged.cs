@@ -12,7 +12,8 @@ public class CardState_Dragged : CardState
   public override void EnterState()
   {
     PlayerController.Instance.CardBeingDragged = _context;
-    _context.CardLayerController.SetDraggedLayer();
+    _context.CardLayerController.SetCloseUpLayer();
+    _context.CardAudio.PlayCardClicked();
   }
   public override void UpdateState()
   {
@@ -46,7 +47,7 @@ public class CardState_Dragged : CardState
         SwitchState(_factory.InBoard());
         return;
       }
-      if (ResourcesManager.Instance.TryConsume(_context.Cost))
+      if (ResourcesManager.Instance.TryConsume(_context.ResourcesCostDictionary))
       {
         SwitchState(_context.OnConsume());
       }

@@ -1,4 +1,6 @@
+using System.Collections;
+
 public interface ICardEndOfTurn
 {
-  void OnEndOfTurn();
+  IEnumerator EndOfTurn();
 }

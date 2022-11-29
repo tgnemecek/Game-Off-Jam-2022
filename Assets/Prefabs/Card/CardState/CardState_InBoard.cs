@@ -15,6 +15,14 @@ public class CardState_InBoard : CardState
     GameManager.Instance.Board.AddCardToBoard(_context);
     _context.Play();
     _context.CardLayerController.SetDefaultLayer();
+
+    if (!_context.WasPlayed)
+    {
+      _context.CardAudio.PlayCardPlayed();
+    }
+
+    _context.CardAudio.PlayCardTouchBoard();
+
     _context.WasPlayed = true;
     PositionCard();
     OnHoverStart();

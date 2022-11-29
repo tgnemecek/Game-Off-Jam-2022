@@ -10,6 +10,7 @@ public class EnemyState_Attacking : EnemyState
   public override void EnterState()
   {
     _context.Rigidbody.velocity = Vector3.zero;
+    _context.EnemyAudio.PlayAttack();
 
     LeanTween
       .rotateY(_context.gameObject, 0f, 1f / _context.EnemyConfig.WalkRotationSpeed)
@@ -18,15 +19,18 @@ public class EnemyState_Attacking : EnemyState
 
   void Attack()
   {
-    var target = _context.Target.GetTransform().position;
+    var targetPos = _context.Target.GetTransform().position;
+    var target = new Vector3(
+      targetPos.x,
+      _context.transform.position.y,
+      targetPos.z
+    );
     var startPos = _context.transform.position;
     var seq = LeanTween.sequence();
 
-    seq.append(LeanTween.move(_context.gameObject, target, 0.5f / _context.EnemyConfig.AttackSpeed).setEaseInBack());
-    seq.append(LeanTween.move(_context.gameObject, startPos, 0.5f / _context.EnemyConfig.AttackSpeed).setEaseOutExpo()
-      .setOnComplete(OnAttackLanded));
+    seq.append(LeanTween.move(_context.gameObject, target, 0.5f / _context.EnemyConfig.AttackSpeed).setEaseInBack().setOnComplete(OnAttackLanded));
+    seq.append(LeanTween.move(_context.gameObject, startPos, 0.5f / _context.EnemyConfig.AttackSpeed).setEaseOutExpo());
   }
-
 
   void OnAttackLanded()
   {

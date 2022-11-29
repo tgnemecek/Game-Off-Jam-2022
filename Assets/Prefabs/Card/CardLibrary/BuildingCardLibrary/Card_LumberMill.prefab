@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1692899336377121041, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
+      propertyPath: _cardPlayed
+      value: 
+      objectReference: {fileID: 8300000, guid: b099530f7791a764d9d9ce5e07d1c538, type: 3}
     - target: {fileID: 2402168949140496067, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_Name
-      value: Card_Building
+      value: Card_LumberMill
       objectReference: {fileID: 0}
     - target: {fileID: 4521102765380268841, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_RootOrder
@@ -87,9 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 4109947967617518644}
-  _cardProximityDetector: {fileID: 5903871250579901185}
+  _cardProximityDetector: {fileID: 0}
   _collider: {fileID: 8997130616778570274}
   _healthBar: {fileID: 687796238828531701}
+  CardAudio: {fileID: 0}
   CurrentStateName: 
 --- !u!114 &4109947967617518644 stripped
 MonoBehaviour:
@@ -100,17 +105,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9301693c1627464a92951417edd2eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5903871250579901185 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9021181929722435095, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
-  m_PrefabInstance: {fileID: 3233424778546355478}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &8997130616778570274 stripped

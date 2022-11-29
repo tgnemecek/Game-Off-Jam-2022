@@ -1,5 +1,6 @@
 using UnityEngine;
 using Com.LuisPedroFonseca.ProCamera2D;
+using System.Collections.Generic;
 
 public class Core : MonoBehaviour, IHitable
 {
@@ -9,6 +10,10 @@ public class Core : MonoBehaviour, IHitable
   Collider _collider;
   [SerializeField]
   HealthBar _healthBar;
+  [SerializeField]
+  List<AudioClip> _hitAudios;
+  [SerializeField]
+  AudioSource _audioSource;
 
   int _hp;
 
@@ -20,6 +25,9 @@ public class Core : MonoBehaviour, IHitable
 
   public void ReceiveDamage(int damage)
   {
+    int randomIndex = UnityEngine.Random.Range(0, _hitAudios.Count - 1);
+    _audioSource.PlayOneShot(_hitAudios[randomIndex]);
+
     _hp -= damage;
 
     _healthBar.UpdateHealth(_hp);

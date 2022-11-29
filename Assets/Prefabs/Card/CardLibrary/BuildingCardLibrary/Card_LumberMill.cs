@@ -1,27 +1,30 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
+using System.Collections;
+
 public class Card_LumberMill : Card_Building
 {
   public Card_LumberMill()
   {
     this.Id = 20;
-		this.Name = "Lumber Mill";
-		this.Description = "Gain 2 Wood at the end of each turn";
-		this.Image = "Card/Building/LumberMill";
-		this.WoodCost = 2;
-		this.FishCost = 0;
-		this.GoldCost = 1;
+    this.Name = "Lumber Mill";
+    this.Description = "Gain 2 Wood at the end of each turn";
+    this.Image = "Card/Building/LumberMill";
+    this.WoodCost = 2;
+    this.FishCost = 0;
+    this.GoldCost = 1;
   }
 
   #endregion AUTO-GENERATED
-  
+
   public override void Play()
   {
     // TODO: Add logic
   }
 
-  public override void EndOfTurn()
+  public override IEnumerator EndOfTurn()
   {
-    // TODO: Add logic
+    ResourcesManager.Instance.Gain(2, ResourceTypes.Wood);
+    yield break;
   }
 }

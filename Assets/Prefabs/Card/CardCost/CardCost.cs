@@ -12,16 +12,16 @@ public class CardCost : MonoBehaviour
 
   private List<ResourceDisplay> _displays = new List<ResourceDisplay>();
 
-  public void SetCost(List<Resource> cost)
+  public void SetResourcesDictionary(ResourcesDictionary resourcesDictionary)
   {
     ClearList();
 
-    foreach (var resource in cost)
+    foreach (var entry in resourcesDictionary.getValues())
     {
-      if (resource.Amount > 0)
+      if (entry.Value.Amount > 0)
       {
         var display = Instantiate<ResourceDisplay>(_displayPrefab, _layoutGroup.transform);
-        display.SetResource(resource);
+        display.SetResource(entry.Value);
       }
     }
   }

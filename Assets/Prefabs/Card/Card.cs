@@ -70,10 +70,12 @@ public abstract class Card : MonoBehaviour, IHitable
   private Collider _collider;
   [SerializeField]
   private HealthBar _healthBar;
+  [HideInInspector]
+  public CardAudio CardAudio;
   [Header("Debug Options")]
   [ReadOnly] public string CurrentStateName;
 
-  private List<Resource> _cost = new List<Resource>(); public List<Resource> Cost => _cost;
+  private ResourcesDictionary _resourcesCostDictionary; public ResourcesDictionary ResourcesCostDictionary => _resourcesCostDictionary;
 
   protected CardStateFactory _stateFactory;
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }
@@ -83,6 +85,7 @@ public abstract class Card : MonoBehaviour, IHitable
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
   private bool _wasPlayed = false; public bool WasPlayed { get { return _wasPlayed; } set { _wasPlayed = value; } }
   private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
+  private bool _wasInitialized = false; public bool WasInitialized => _wasInitialized;
   public Vector3 LastValidBoardPosition { get; set; }
   public List<IHitable> BattlingAgainst = new List<IHitable>();
 
@@ -93,26 +96,13 @@ public abstract class Card : MonoBehaviour, IHitable
 
   public void InjectDefaultDependencies()
   {
-    void InjectCardConfig()
-    {
-      string[] cardConfigs = AssetDatabase.FindAssets("t:CardConfig", null);
+    string[] cardConfigs = AssetDatabase.FindAssets("t:CardConfig", null);
 
-      if (cardConfigs.Length > 0)
-      {
-        var path = AssetDatabase.GUIDToAssetPath(cardConfigs[0]);
-        _cardConfig = AssetDatabase.LoadAssetAtPath<CardConfig>(path);
-      }
-    }
-    void InjectSubComponents()
+    if (cardConfigs.Length > 0)
     {
-      _cardLayerController = GetComponentInChildren<CardLayerController>();
-      _cardProximityDetector = GetComponentInChildren<CardProximityDetector>();
-      _healthBar = GetComponentInChildren<HealthBar>();
-      _collider = GetComponent<Collider>();
+      var path = AssetDatabase.GUIDToAssetPath(cardConfigs[0]);
+      _cardConfig = AssetDatabase.LoadAssetAtPath<CardConfig>(path);
     }
-
-    InjectCardConfig();
-    InjectSubComponents();
   }
 
   public void Draw() => _drawnOnThisFrame = true;
@@ -121,6 +111,15 @@ public abstract class Card : MonoBehaviour, IHitable
   {
     _positionInHand = positionInHand;
     _positionChangedThisFrame = true;
+  }
+
+  void Awake()
+  {
+    _cardLayerController = GetComponentInChildren<CardLayerController>();
+    _cardProximityDetector = GetComponentInChildren<CardProximityDetector>();
+    _healthBar = GetComponentInChildren<HealthBar>();
+    _collider = GetComponent<Collider>();
+    CardAudio = GetComponent<CardAudio>();
   }
 
   void Start()
@@ -133,13 +132,12 @@ public abstract class Card : MonoBehaviour, IHitable
   public void Initialize(CardInitializer cardInitializer)
   {
     _cardInitializer = cardInitializer;
-    _cost.Add(new Resource_Wood(WoodCost));
-    _cost.Add(new Resource_Fish(FishCost));
-    _cost.Add(new Resource_Gold(GoldCost));
-    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _cost, _cardConfig);
+    _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
+    CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
     HP = _cardConfig.MaxHP;
     _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
+    _wasInitialized = true;
   }
 
   public bool IsHovering => PlayerController.Instance.CardPointedTo == this;
@@ -152,12 +150,12 @@ public abstract class Card : MonoBehaviour, IHitable
   void FixedUpdate() => _currentState.FixedUpdateState();
 
   public abstract void Play();
-  public abstract void EndOfTurn();
 
   public void ReceiveDamage(int damage)
   {
     HP -= damage;
     _healthBar.UpdateHealth(HP);
+    CardAudio.PlayCardAttacked();
   }
 
   public void StartBattle(IHitable hitable)
@@ -170,6 +168,7 @@ public abstract class Card : MonoBehaviour, IHitable
     if (PlayerController.Instance.IsHoveringOnHand && !WasPlayed)
     {
       SnapToScreen(camera);
+      _cardLayerController.SetCloseUpLayer();
     }
     else
     {
@@ -195,6 +194,7 @@ public abstract class Card : MonoBehaviour, IHitable
         rotation,
         CardConfig.CatchUpSpeedWhileDragging
       );
+      _cardLayerController.SetOnBoardLayer();
     }
   }
 
