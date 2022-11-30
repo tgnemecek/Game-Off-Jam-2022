@@ -15,7 +15,7 @@ public abstract class Resource
     {
       if (_sprite == null)
       {
-        _sprite = Resources.Load<Sprite>("Card/Resource/" + _name);
+        _sprite = Resources.Load<Sprite>("Icons/" + _name + "Icon");
       }
       return _sprite;
     }

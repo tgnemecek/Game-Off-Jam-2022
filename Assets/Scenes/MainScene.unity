@@ -1695,15 +1695,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 910590815404208581, guid: 5ccae4184278a6649a5b50ca4fb923bc, type: 3}
       propertyPath: _initialFishAmount
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 910590815404208581, guid: 5ccae4184278a6649a5b50ca4fb923bc, type: 3}
       propertyPath: _initialGoldAmount
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 910590815404208581, guid: 5ccae4184278a6649a5b50ca4fb923bc, type: 3}
       propertyPath: _initialWoodAmount
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 910590815404208582, guid: 5ccae4184278a6649a5b50ca4fb923bc, type: 3}
       propertyPath: m_Name
