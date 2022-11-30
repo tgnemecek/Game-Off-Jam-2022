@@ -9,7 +9,7 @@ public class Card_Fish : Card_Resource
     this.Id = 2;
 		this.Name = "Fish";
 		this.Description = "";
-		this.Image = "undefined";
+		this.Image = "Card/Resource/Fish";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

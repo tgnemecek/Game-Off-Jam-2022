@@ -9,7 +9,7 @@ public class Card_2020Hindsight : Card_Spell
     this.Id = 30;
 		this.Name = "20 20 hindsight";
 		this.Description = "Shuffle your Hand and Discard Pile into your Draw Pile. Draw 3 cards";
-		this.Image = "undefined";
+		this.Image = "Card/Spell/2020Hindsight";
 		this.WoodCost = 4;
 		this.FishCost = 1;
 		this.GoldCost = 0;

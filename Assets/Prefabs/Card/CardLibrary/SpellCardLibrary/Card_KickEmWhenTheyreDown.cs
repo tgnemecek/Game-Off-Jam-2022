@@ -9,7 +9,7 @@ public class Card_KickEmWhenTheyreDown : Card_Spell
     this.Id = 24;
 		this.Name = "Kick 'em when they're down";
 		this.Description = "Your army deals double damage next turn";
-		this.Image = "undefined";
+		this.Image = "Card/Spell/KickEmWhenTheyreDown";
 		this.WoodCost = 0;
 		this.FishCost = 3;
 		this.GoldCost = 0;

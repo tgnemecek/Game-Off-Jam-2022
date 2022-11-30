@@ -52,41 +52,42 @@ public class CardLayerController : MonoBehaviour
   public void SetPileLayer()
   {
     _canvas.sortingLayerName = _drawPileSortingLayerName;
-    _backSprite.sortingLayerName = _drawPileSortingLayerName;
+    // _backSprite.sortingLayerName = _drawPileSortingLayerName;
     _onHoverSprite.sortingLayerName = _drawPileSortingLayerName;
   }
 
   public void SetOnBoardLayer()
   {
     _canvas.sortingLayerName = _draggedSortingLayerName;
-    _backSprite.sortingLayerName = _draggedSortingLayerName;
+    // _backSprite.sortingLayerName = _draggedSortingLayerName;
     _onHoverSprite.sortingLayerName = _draggedSortingLayerName;
   }
 
   public void SetCloseUpLayer()
   {
     _canvas.sortingLayerName = _closeupSortingLayerName;
-    _backSprite.sortingLayerName = _closeupSortingLayerName;
+    // _backSprite.sortingLayerName = _closeupSortingLayerName;
     _onHoverSprite.sortingLayerName = _closeupSortingLayerName;
   }
 
   public void SetDefaultLayer()
   {
     _canvas.sortingLayerID = _defaultSortingLayerID;
-    _backSprite.sortingLayerID = _defaultSortingLayerID;
+    // _backSprite.sortingLayerID = _defaultSortingLayerID;
     _onHoverSprite.sortingLayerID = _defaultSortingLayerID;
+    ToggleHoverOutline(false);
   }
 
   public void ShowCardBack()
   {
-    _backSprite.gameObject.SetActive(true);
-    _canvas.gameObject.SetActive(false);
+    // _backSprite.gameObject.SetActive(true);
+    // _canvas.gameObject.SetActive(false);
   }
 
   public void ShowCardFront()
   {
-    _backSprite.gameObject.SetActive(false);
-    _canvas.gameObject.SetActive(true);
+    // _backSprite.gameObject.SetActive(false);
+    // _canvas.gameObject.SetActive(true);
   }
 
   public void ShowCardForUI()
@@ -102,18 +103,6 @@ public class CardLayerController : MonoBehaviour
 
   public void ToggleHoverOutline(bool enabled)
   {
-    if (enabled)
-    {
-      float offsetSize = _cardConfig.OnBoardHoverOutlineSize;
-
-      float x = _backSprite.transform.localScale.x + offsetSize;
-      float y = _backSprite.transform.localScale.y + offsetSize;
-
-      _onHoverSprite.transform.localScale = new Vector3(x, y, 1);
-    }
-    else
-    {
-      _onHoverSprite.transform.localScale = Vector3.one;
-    }
+    _onHoverSprite.gameObject.SetActive(enabled);
   }
 }

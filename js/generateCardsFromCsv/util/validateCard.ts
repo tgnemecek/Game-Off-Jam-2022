@@ -14,6 +14,7 @@ const baseSchema: Joi.SchemaMap<Card> = {
   FishCost: Joi.number().positive().allow(0),
   GoldCost: Joi.number().positive().allow(0),
   MaxHP: Joi.string().optional().allow(0),
+  Image: Joi.string().optional().allow(""),
   Comments: Joi.string().optional().allow(""),
 };
 

@@ -49,7 +49,6 @@ const generateCardsFromCsv = async () => {
 
   // Validate before building
   for (const card of cards) {
-    delete (card as any).Image;
     await validateCard(card);
   }
 

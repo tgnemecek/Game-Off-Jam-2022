@@ -289,10 +289,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoosterPack
       objectReference: {fileID: 0}
-    - target: {fileID: 2871420476357368628, guid: 54c5d7de2b1ca394c90f9b4844e441eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2871420476357368634, guid: 54c5d7de2b1ca394c90f9b4844e441eb, type: 3}
       propertyPath: m_RootOrder
       value: 10

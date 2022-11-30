@@ -9,7 +9,7 @@ public class Card_LumberMill : Card_Building
     this.Id = 20;
 		this.Name = "Lumber Mill";
 		this.Description = "Gain 2 Wood and 1 Gold at the end of each turn";
-		this.Image = "undefined";
+		this.Image = "Card/Building/LumberMill";
 		this.WoodCost = 2;
 		this.FishCost = 0;
 		this.GoldCost = 1;
@@ -27,5 +27,6 @@ public class Card_LumberMill : Card_Building
   {
     yield return base.EndOfTurn();
     ResourcesManager.Instance.Gain(2, ResourceTypes.Wood);
+    ResourcesManager.Instance.Gain(1, ResourceTypes.Gold);
   }
 }

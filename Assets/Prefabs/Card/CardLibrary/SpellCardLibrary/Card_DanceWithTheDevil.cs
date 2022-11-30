@@ -9,10 +9,10 @@ public class Card_DanceWithTheDevil : Card_Spell
     this.Id = 43;
 		this.Name = "Dance with the devil";
 		this.Description = "Your Core is invulnerable next turn. Sacrifice a random Building.";
-		this.Image = "undefined";
-		this.WoodCost = 0;
-		this.FishCost = 0;
-		this.GoldCost = 3;
+		this.Image = "Card/Spell/DanceWithTheDevil";
+		this.WoodCost = 6;
+		this.FishCost = 6;
+		this.GoldCost = 6;
 		this.MaxHP = 0;
   }
 
