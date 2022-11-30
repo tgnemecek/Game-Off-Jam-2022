@@ -9,10 +9,10 @@ public class Card_Wooding : Card_Item
     this.Id = 12;
 		this.Name = "Wooding";
 		this.Description = "Gain 2 Wood";
-		this.Image = "undefined";
+		this.Image = "Card/Item/Wooding";
 		this.WoodCost = 0;
 		this.FishCost = 0;
-		this.GoldCost = 0;
+		this.GoldCost = 1;
 		this.MaxHP = 0;
   }
 

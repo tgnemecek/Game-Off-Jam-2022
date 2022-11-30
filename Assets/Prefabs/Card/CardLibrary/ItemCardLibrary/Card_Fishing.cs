@@ -9,8 +9,8 @@ public class Card_Fishing : Card_Item
     this.Id = 11;
 		this.Name = "Fishing";
 		this.Description = "Gain 2 Fish";
-		this.Image = "undefined";
-		this.WoodCost = 0;
+		this.Image = "Card/Item/Fishing";
+		this.WoodCost = 1;
 		this.FishCost = 0;
 		this.GoldCost = 0;
 		this.MaxHP = 0;

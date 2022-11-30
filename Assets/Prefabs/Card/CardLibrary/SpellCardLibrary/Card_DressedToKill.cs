@@ -9,7 +9,7 @@ public class Card_DressedToKill : Card_Spell
     this.Id = 36;
 		this.Name = "Dressed to kill";
 		this.Description = "A random unit is invulnerable next turn";
-		this.Image = "undefined";
+		this.Image = "Card/Spell/DressedToKill";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 0;

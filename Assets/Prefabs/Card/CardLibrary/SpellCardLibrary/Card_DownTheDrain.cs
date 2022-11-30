@@ -9,7 +9,7 @@ public class Card_DownTheDrain : Card_Spell
     this.Id = 35;
 		this.Name = "Down the drain";
 		this.Description = "Gain 1 Gold for every hit your Core takes this turn";
-		this.Image = "undefined";
+		this.Image = "Card/Spell/DownTheDrain";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 5;

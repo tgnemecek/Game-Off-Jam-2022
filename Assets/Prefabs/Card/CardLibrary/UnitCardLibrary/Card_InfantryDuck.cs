@@ -9,7 +9,7 @@ public class Card_InfantryDuck : Card_Unit
     this.Id = 5;
 		this.Name = "Infantry Duck";
 		this.Description = "";
-		this.Image = "undefined";
+		this.Image = "Card/Unit/InfantryDuck";
 		this.WoodCost = 0;
 		this.FishCost = 2;
 		this.GoldCost = 1;

@@ -9,7 +9,7 @@ public class Card_Lake : Card_Building
     this.Id = 16;
 		this.Name = "Lake";
 		this.Description = "Gain 2 Fish at the end of each turn";
-		this.Image = "undefined";
+		this.Image = "Card/Building/Lake";
 		this.WoodCost = 0;
 		this.FishCost = 2;
 		this.GoldCost = 1;
@@ -27,6 +27,5 @@ public class Card_Lake : Card_Building
   {
     yield return base.EndOfTurn();
     ResourcesManager.Instance.Gain(2, ResourceTypes.Fish);
-    yield break;
   }
 }

@@ -9,9 +9,9 @@ public class Card_BeatADeadHorse : Card_Spell
     this.Id = 38;
 		this.Name = "Beat a dead horse";
 		this.Description = "Gain a 1 Gold for each enemy defeated next turn";
-		this.Image = "undefined";
+		this.Image = "Card/Spell/BeatADeadHorse";
 		this.WoodCost = 4;
-		this.FishCost = 0;
+		this.FishCost = 2;
 		this.GoldCost = 0;
 		this.MaxHP = 0;
   }

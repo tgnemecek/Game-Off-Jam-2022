@@ -9,7 +9,7 @@ public class Card_MindOverMatter : Card_Spell
     this.Id = 25;
 		this.Name = "Mind over matter";
 		this.Description = "Prevent damage from enemies next turn";
-		this.Image = "undefined";
+		this.Image = "Card/Spell/MindOverMatter";
 		this.WoodCost = 0;
 		this.FishCost = 2;
 		this.GoldCost = 0;

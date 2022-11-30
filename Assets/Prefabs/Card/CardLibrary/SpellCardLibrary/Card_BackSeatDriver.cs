@@ -9,7 +9,7 @@ public class Card_BackSeatDriver : Card_Spell
     this.Id = 37;
 		this.Name = "Back-seat driver";
 		this.Description = "Heal your Core by 10% and sacrifice a random Unit";
-		this.Image = "undefined";
+		this.Image = "Card/Spell/BackSeatDriver";
 		this.WoodCost = 4;
 		this.FishCost = 4;
 		this.GoldCost = 0;

@@ -9,7 +9,7 @@ public class Card_CatchAFallingKnife : Card_Spell
     this.Id = 31;
 		this.Name = "Catch a falling knife";
 		this.Description = "Draw until you have 5 cards. Discard all Units from your hand";
-		this.Image = "undefined";
+		this.Image = "Card/Spell/CatchAFallingKnife";
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 7;
