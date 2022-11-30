@@ -1,6 +1,9 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
 using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine;
 
 public class Card_BackSeatDriver : Card_Spell
 {
@@ -20,6 +23,17 @@ public class Card_BackSeatDriver : Card_Spell
 
   public override void Play()
   {
-    // TODO: Add logic
+    Core core = GameManager.Instance.Core;
+
+    int amount = Mathf.CeilToInt((float)core.MaxHP * .1f);
+    GameManager.Instance.Core.Heal(amount);
+
+
+    var cards = GameManager.Instance.Board.Cards
+      .FindAll((Card card) => card.Type == CardTypes.Unit);
+
+    int randomIndex = UnityEngine.Random.Range(0, cards.Count - 1);
+    Card card = cards[randomIndex];
+    card.ReceiveDamage(99999);
   }
 }

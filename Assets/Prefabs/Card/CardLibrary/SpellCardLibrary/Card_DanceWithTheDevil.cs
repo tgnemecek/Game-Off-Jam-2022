@@ -1,6 +1,9 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
 using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine;
 
 public class Card_DanceWithTheDevil : Card_Spell
 {
@@ -20,6 +23,13 @@ public class Card_DanceWithTheDevil : Card_Spell
 
   public override void Play()
   {
-    // TODO: Add logic
+    GameManager.Instance.Core.Invulnerable = true;
+
+    var cards = GameManager.Instance.Board.Cards
+      .FindAll((Card card) => card.Type == CardTypes.Building);
+
+    int randomIndex = UnityEngine.Random.Range(0, cards.Count - 1);
+    Card card = cards[randomIndex];
+    card.ReceiveDamage(99999);
   }
 }

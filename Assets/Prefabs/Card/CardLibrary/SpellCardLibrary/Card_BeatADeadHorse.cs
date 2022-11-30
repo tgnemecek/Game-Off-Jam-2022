@@ -1,6 +1,9 @@
 #region AUTO-GENERATED
 // Do not manually change code within the AUTO-GENERATED region. Instead update the Card Library spreadsheet and run npm build-cards
 using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine;
 
 public class Card_BeatADeadHorse : Card_Spell
 {
@@ -18,8 +21,15 @@ public class Card_BeatADeadHorse : Card_Spell
 
   #endregion AUTO-GENERATED
 
+  delegate void MyDelegate();
+  MyDelegate attack;
+
   public override void Play()
   {
-    // TODO: Add logic
+    void Callback()
+    {
+      ResourcesManager.Instance.Gain(1, ResourceTypes.Gold);
+    };
+    GameManager.Instance.EnemyManager.OnEnemyKilled.Add(Callback);
   }
 }

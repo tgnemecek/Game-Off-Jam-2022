@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class EnemyManager : MonoBehaviour
   [SerializeField]
   private List<Enemy> _enemyTypes = new List<Enemy>();
 
+  private List<Action> _onEnemyKilled = new List<Action>(); public List<Action> OnEnemyKilled => _onEnemyKilled;
+
   void Start()
   {
     _spawnMap = Instantiate(_spawnMap, _board.transform);
@@ -24,6 +27,7 @@ public class EnemyManager : MonoBehaviour
   {
     int spawnMapIndex = 0;
     var spawnPoints = _spawnMap.SpawnPoints;
+    _onEnemyKilled = new List<Action>();
 
     GenerateWave();
 
@@ -49,7 +53,7 @@ public class EnemyManager : MonoBehaviour
     int availablePoints = _spawnPoolPoints;
     Enemy enemy = GrabEnemyFromPool(availablePoints);
 
-    while (enemy != null) 
+    while (enemy != null)
     {
       _nextWave.Add(enemy);
       availablePoints -= Mathf.Max(enemy.EnemyConfig.PoolCost, 1);
@@ -64,7 +68,7 @@ public class EnemyManager : MonoBehaviour
     List<Enemy> availableEnemies = _enemyTypes.FindAll(e => e.EnemyConfig.PoolCost <= availablePoints);
     if (availableEnemies.Count == 0) return null;
 
-    int randomIndex = (int) Mathf.Min(Mathf.Round(UnityEngine.Random.Range(0, availableEnemies.Count)), availableEnemies.Count - 1);
+    int randomIndex = (int)Mathf.Min(Mathf.Round(UnityEngine.Random.Range(0, availableEnemies.Count)), availableEnemies.Count - 1);
     return availableEnemies[randomIndex];
   }
 
@@ -79,6 +83,13 @@ public class EnemyManager : MonoBehaviour
   public void RegisterEnemyDeath(Enemy enemy)
   {
     _currentWave.Remove(enemy);
+
+    foreach (var Callback in _onEnemyKilled)
+    {
+      Callback();
+    }
+
+
     if (_currentWave.Count == 0)
     {
       GameManager.Instance.OnWaveClear();

@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Card_CavalryDuck : Card_Unit
+public class Card_GoldMine : Card_Building
 {
-  public Card_CavalryDuck()
+  public Card_GoldMine()
   {
-    this.Id = 6;
-		this.Name = "Cavalry Duck";
-		this.Description = "A knight in shining armor";
-		this.Image = "Card/Unit/CavalryDuck";
-		this.WoodCost = 0;
-		this.FishCost = 3;
+    this.Id = 21;
+		this.Name = "Gold Mine";
+		this.Description = "Gain 2 Gold at the end of each turn";
+		this.Image = "Card/Building/GoldMine";
+		this.WoodCost = 3;
+		this.FishCost = 1;
 		this.GoldCost = 2;
 		this.MaxHP = 3;
   }
@@ -25,4 +25,6 @@ public class Card_CavalryDuck : Card_Unit
   {
     // TODO: Add logic
   }
+
+  public override IEnumerator EndOfTurn() { yield break; }
 }

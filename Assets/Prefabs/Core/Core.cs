@@ -1,11 +1,12 @@
 using UnityEngine;
 using Com.LuisPedroFonseca.ProCamera2D;
 using System.Collections.Generic;
+using System;
 
 public class Core : MonoBehaviour, IHitable
 {
   [SerializeField]
-  int _maxHP;
+  int _maxHP; public int MaxHP => _maxHP;
   [SerializeField]
   Collider _collider;
   [SerializeField]
@@ -15,7 +16,10 @@ public class Core : MonoBehaviour, IHitable
   [SerializeField]
   AudioSource _audioSource;
 
-  int _hp;
+  private List<Action> _onCoreHit = new List<Action>(); public List<Action> OnCoreHit => _onCoreHit;
+
+  private int _hp;
+  public bool Invulnerable = false;
 
   void Start()
   {
@@ -25,6 +29,13 @@ public class Core : MonoBehaviour, IHitable
 
   public void ReceiveDamage(int damage)
   {
+    if (Invulnerable) return;
+
+    foreach (var Callback in _onCoreHit)
+    {
+      Callback();
+    }
+
     int randomIndex = UnityEngine.Random.Range(0, _hitAudios.Count - 1);
     _audioSource.PlayOneShot(_hitAudios[randomIndex]);
 
@@ -40,12 +51,17 @@ public class Core : MonoBehaviour, IHitable
     }
   }
 
+  public void Heal(int amount)
+  {
+    _hp += amount;
+    if (_hp > _maxHP) _hp = _maxHP;
+    _healthBar.UpdateHealth(_hp);
+  }
+
   public bool isDead()
   {
     return _hp <= 0;
   }
-
-  public void StartBattle(IHitable hitable) { }
 
   public Collider GetCollider() => _collider;
   public Transform GetTransform() => transform;
