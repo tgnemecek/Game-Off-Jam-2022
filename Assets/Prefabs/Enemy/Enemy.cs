@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
   public NavMeshAgent NavMeshAgent;
 
   [Header("Debug Options")]
-  [ReadOnly] public string CurrentStateName;
+  public string CurrentStateName;
 
   private EnemyStateFactory _stateFactory;
   private EnemyState _currentState; public EnemyState CurrentState { get { return _currentState; } set { _currentState = value; } }

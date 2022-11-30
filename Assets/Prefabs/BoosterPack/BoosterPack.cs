@@ -31,6 +31,8 @@ public class BoosterPack : MonoBehaviour
 
   List<Card> _boosterCards = new List<Card>(); public List<Card> Cards => _boosterCards;
 
+
+#if UNITY_EDITOR
   public void UpdateCardList()
   {
     string[] guids = AssetDatabase.FindAssets("Card_ t:GameObject", cardPaths);
@@ -47,6 +49,7 @@ public class BoosterPack : MonoBehaviour
       }
     }
   }
+#endif
 
   void Awake()
   {

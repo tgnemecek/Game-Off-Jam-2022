@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
   [SerializeField]
   private BoosterPack _boosterPack; public BoosterPack BoosterPack => _boosterPack;
   [Header("Debug Options")]
-  [ReadOnly] public string CurrentStateName;
+  public string CurrentStateName;
 
   private GameStateFactory _stateFactory;
   private GameState _currentState; public GameState CurrentState { set { _currentState = value; } }

@@ -70,7 +70,7 @@ public abstract class Card : MonoBehaviour, IHitable
   [HideInInspector]
   public CardAudio CardAudio;
   [Header("Debug Options")]
-  [ReadOnly] public string CurrentStateName;
+  public string CurrentStateName;
 
   private ResourcesDictionary _resourcesCostDictionary; public ResourcesDictionary ResourcesCostDictionary => _resourcesCostDictionary;
 
@@ -86,6 +86,7 @@ public abstract class Card : MonoBehaviour, IHitable
   public Vector3 LastValidBoardPosition { get; set; }
   public bool Invulnerable { get; set; }
 
+#if UNITY_EDITOR
   void Reset()
   {
     InjectDefaultDependencies();
@@ -101,6 +102,7 @@ public abstract class Card : MonoBehaviour, IHitable
       _cardConfig = AssetDatabase.LoadAssetAtPath<CardConfig>(path);
     }
   }
+#endif
 
   public void Draw() => _drawnOnThisFrame = true;
 
