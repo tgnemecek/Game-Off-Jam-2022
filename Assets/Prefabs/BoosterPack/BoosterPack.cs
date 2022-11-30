@@ -34,7 +34,7 @@ public class BoosterPack : MonoBehaviour
   public void UpdateCardList()
   {
     string[] guids = AssetDatabase.FindAssets("Card_ t:GameObject", cardPaths);
-    _allCards = new List<Card>();
+    _allCards.Clear();
 
     foreach (var guid in guids)
     {
