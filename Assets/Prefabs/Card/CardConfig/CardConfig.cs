@@ -7,9 +7,6 @@ public class CardConfig : ScriptableObject
 {
   [Header("Attributes")]
   public int MaxHP = 100;
-  [Header("Font")]
-  public float FontSizeInHand = .1f;
-  public float FontSizeInDeckBook = 20f;
   [Header("Hover & Drag")]
   public float ScaleOnHover = 1f;
   public float ScaleOnHoverTime = 1f;
