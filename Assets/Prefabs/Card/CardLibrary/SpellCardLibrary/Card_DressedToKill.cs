@@ -7,12 +7,13 @@ public class Card_DressedToKill : Card_Spell
   public Card_DressedToKill()
   {
     this.Id = 36;
-    this.Name = "Dressed to kill";
-    this.Description = "Deal [X] damage to a unit ";
-    this.Image = "Card/Spell/DressedToKill";
-    this.WoodCost = 0;
-    this.FishCost = 0;
-    this.GoldCost = 0;
+		this.Name = "Dressed to kill";
+		this.Description = "A random unit is invulnerable next turn";
+		this.Image = "undefined";
+		this.WoodCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 0;
+		this.MaxHP = 0;
   }
 
   #endregion AUTO-GENERATED

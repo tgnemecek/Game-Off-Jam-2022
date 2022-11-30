@@ -15,6 +15,8 @@ public class CardAudio : MonoBehaviour
   [SerializeField]
   AudioClip _cardConsumed;
   [SerializeField]
+  List<AudioClip> _endOfTurnEffects;
+  [SerializeField]
   List<AudioClip> _cardAttackedList;
   [SerializeField]
   float _cardConsumedPitchIncreaseRate = 1f;
@@ -69,8 +71,18 @@ public class CardAudio : MonoBehaviour
 
   public void PlayCardAttacked()
   {
-    int randomIndex = UnityEngine.Random.Range(0, _cardAttackedList.Count - 1);
-    _source.PlayOneShot(_cardAttackedList[randomIndex]);
+    _source.PlayOneShot(PickAtRandom(_cardAttackedList));
+  }
+
+  public void PlayEndOfTurn()
+  {
+    _source.PlayOneShot(PickAtRandom(_endOfTurnEffects));
+  }
+
+  T PickAtRandom<T>(List<T> list)
+  {
+    int randomIndex = UnityEngine.Random.Range(0, list.Count - 1);
+    return list[randomIndex];
   }
 
   void FadeOut(float duration = 0.5f)

@@ -7,12 +7,13 @@ public class Card_Fishing : Card_Item
   public Card_Fishing()
   {
     this.Id = 11;
-    this.Name = "Fishing";
-    this.Description = "Gain 2 Fish";
-    this.Image = "Card/Item/Fishing";
-    this.WoodCost = 0;
-    this.FishCost = 0;
-    this.GoldCost = 0;
+		this.Name = "Fishing";
+		this.Description = "Gain 2 Fish";
+		this.Image = "undefined";
+		this.WoodCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 0;
+		this.MaxHP = 0;
   }
 
   #endregion AUTO-GENERATED

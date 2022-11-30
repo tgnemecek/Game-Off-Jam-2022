@@ -7,12 +7,13 @@ public class Card_LumberMill : Card_Building
   public Card_LumberMill()
   {
     this.Id = 20;
-    this.Name = "Lumber Mill";
-    this.Description = "Gain 2 Wood at the end of each turn";
-    this.Image = "Card/Building/LumberMill";
-    this.WoodCost = 2;
-    this.FishCost = 0;
-    this.GoldCost = 1;
+		this.Name = "Lumber Mill";
+		this.Description = "Gain 2 Wood and 1 Gold at the end of each turn";
+		this.Image = "undefined";
+		this.WoodCost = 2;
+		this.FishCost = 0;
+		this.GoldCost = 1;
+		this.MaxHP = 2;
   }
 
   #endregion AUTO-GENERATED
@@ -24,7 +25,7 @@ public class Card_LumberMill : Card_Building
 
   public override IEnumerator EndOfTurn()
   {
+    yield return base.EndOfTurn();
     ResourcesManager.Instance.Gain(2, ResourceTypes.Wood);
-    yield break;
   }
 }

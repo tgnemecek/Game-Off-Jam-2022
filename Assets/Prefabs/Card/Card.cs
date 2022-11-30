@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEditor;
-using TMPro;
 
 public enum CardTypes
 {
@@ -55,7 +51,8 @@ public abstract class Card : MonoBehaviour, IHitable
 
   public int GoldCost { get; set; }
 
-  public int HP { get; set; }
+  private int _hp; public int HP => _hp;
+  public int MaxHP { get; set; }
 
   public CardTypes Type { get; set; }
 
@@ -134,9 +131,9 @@ public abstract class Card : MonoBehaviour, IHitable
     _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
     CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
-    HP = _cardConfig.MaxHP;
     _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
     _wasInitialized = true;
+    _hp = MaxHP;
   }
 
   public bool IsHovering => PlayerController.Instance.CardPointedTo == this;
@@ -152,15 +149,13 @@ public abstract class Card : MonoBehaviour, IHitable
 
   public void ReceiveDamage(int damage)
   {
-    HP -= damage;
-    _healthBar.UpdateHealth(HP);
+    _hp -= damage;
+    if (_hp < 0f) _hp = 0;
+    _healthBar.UpdateHealth(_hp);
     CardAudio.PlayCardAttacked();
   }
 
-  public bool isDead()
-  {
-    return HP <= 0;
-  }
+  public bool isDead() => _hp <= 0;
 
   protected bool SnapToBoard(Camera camera)
   {

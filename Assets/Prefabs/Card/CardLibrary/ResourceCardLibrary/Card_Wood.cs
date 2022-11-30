@@ -7,12 +7,13 @@ public class Card_Wood : Card_Resource
   public Card_Wood()
   {
     this.Id = 1;
-    this.Name = "Wood";
-    this.Description = "";
-    this.Image = "Card/Resource/Wood";
-    this.WoodCost = 0;
-    this.FishCost = 0;
-    this.GoldCost = 0;
+		this.Name = "Wood";
+		this.Description = "";
+		this.Image = "undefined";
+		this.WoodCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 0;
+		this.MaxHP = 0;
   }
 
   #endregion AUTO-GENERATED

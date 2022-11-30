@@ -7,12 +7,13 @@ public class Card_Lake : Card_Building
   public Card_Lake()
   {
     this.Id = 16;
-    this.Name = "Lake";
-    this.Description = "Gain 2 Fish at the end of each turn";
-    this.Image = "Card/Building/Lake";
-    this.WoodCost = 0;
-    this.FishCost = 2;
-    this.GoldCost = 1;
+		this.Name = "Lake";
+		this.Description = "Gain 2 Fish at the end of each turn";
+		this.Image = "undefined";
+		this.WoodCost = 0;
+		this.FishCost = 2;
+		this.GoldCost = 1;
+		this.MaxHP = 2;
   }
 
   #endregion AUTO-GENERATED
@@ -24,6 +25,7 @@ public class Card_Lake : Card_Building
 
   public override IEnumerator EndOfTurn()
   {
+    yield return base.EndOfTurn();
     ResourcesManager.Instance.Gain(2, ResourceTypes.Fish);
     yield break;
   }

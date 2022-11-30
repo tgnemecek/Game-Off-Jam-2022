@@ -31,6 +31,7 @@ export type CardRow = {
   WoodCost: string;
   FishCost: string;
   GoldCost: string;
+  MaxHP: number;
   Comments?: string;
 };
 

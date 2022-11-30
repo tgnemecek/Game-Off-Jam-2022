@@ -7,12 +7,13 @@ public class Card_BeatADeadHorse : Card_Spell
   public Card_BeatADeadHorse()
   {
     this.Id = 38;
-    this.Name = "Beat a dead horse";
-    this.Description = "Gain a [X] for each enemy [unit] defeated this turn";
-    this.Image = "Card/Spell/BeatADeadHorse";
-    this.WoodCost = 4;
-    this.FishCost = 0;
-    this.GoldCost = 0;
+		this.Name = "Beat a dead horse";
+		this.Description = "Gain a 1 Gold for each enemy defeated next turn";
+		this.Image = "undefined";
+		this.WoodCost = 4;
+		this.FishCost = 0;
+		this.GoldCost = 0;
+		this.MaxHP = 0;
   }
 
   #endregion AUTO-GENERATED
