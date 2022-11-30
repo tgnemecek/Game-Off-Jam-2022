@@ -9,12 +9,13 @@ public class Hand : MonoBehaviour
   [SerializeField]
   private float _drawDelay = 0f;
 
-  private List<Card> _cards = new List<Card>();
+  private List<Card> _cards = new List<Card>(); public List<Card> Cards => _cards;
 
   [SerializeField]
   private float _spaceBetweenCardsInHand;
 
-  public void DrawHand()
+  public void DrawHand() => DrawHand(_drawUpTo);
+  public void DrawHand(int upTo)
   {
     var drawPile = GameManager.Instance.DrawPile;
 
@@ -86,5 +87,11 @@ public class Hand : MonoBehaviour
   {
     _cards.Remove(card);
     CalculateHandPositions();
+  }
+  public List<Card> RemoveAllCards()
+  {
+    var cards = new List<Card>(_cards);
+    _cards.Clear();
+    return cards;
   }
 }

@@ -5,18 +5,18 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Card_CavalryDuck : Card_Unit
+public class Card_DuckBank : Card_Building
 {
-  public Card_CavalryDuck()
+  public Card_DuckBank()
   {
-    this.Id = 6;
-		this.Name = "Cavalry Duck";
-		this.Description = "A knight in shining armor";
-		this.Image = "Card/Unit/CavalryDuck";
-		this.WoodCost = 0;
-		this.FishCost = 3;
+    this.Id = 44;
+		this.Name = "Duck Bank";
+		this.Description = "Gain 5 Gold at the end of each turn";
+		this.Image = "Card/Building/DuckBank";
+		this.WoodCost = 5;
+		this.FishCost = 2;
 		this.GoldCost = 2;
-		this.MaxHP = 3;
+		this.MaxHP = 0;
   }
 
   #endregion AUTO-GENERATED
@@ -25,4 +25,6 @@ public class Card_CavalryDuck : Card_Unit
   {
     // TODO: Add logic
   }
+
+  public override IEnumerator EndOfTurn() { yield break; }
 }

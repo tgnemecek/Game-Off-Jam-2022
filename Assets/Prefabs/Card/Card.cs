@@ -84,6 +84,7 @@ public abstract class Card : MonoBehaviour, IHitable
   private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
   private bool _wasInitialized = false; public bool WasInitialized => _wasInitialized;
   public Vector3 LastValidBoardPosition { get; set; }
+  public bool Invulnerable { get; set; }
 
   void Reset()
   {
@@ -149,10 +150,19 @@ public abstract class Card : MonoBehaviour, IHitable
 
   public void ReceiveDamage(int damage)
   {
+    if (Invulnerable) return;
+
     _hp -= damage;
     if (_hp < 0f) _hp = 0;
     _healthBar.UpdateHealth(_hp);
     CardAudio.PlayCardAttacked();
+  }
+
+  public void Heal(int amount)
+  {
+    _hp += amount;
+    if (_hp > MaxHP) _hp = MaxHP;
+    _healthBar.UpdateHealth(_hp);
   }
 
   public bool isDead() => _hp <= 0;

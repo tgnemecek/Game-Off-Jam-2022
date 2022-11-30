@@ -15,10 +15,7 @@ const baseBuilder: BuildCardFn = (card) => {
     // TODO: Add logic
   }
 
-  public override void EndOfTurn()
-  {
-    // TODO: Add logic
-  }
+  public override IEnumerator EndOfTurn() { yield break; }
 }
 `.trim();
 

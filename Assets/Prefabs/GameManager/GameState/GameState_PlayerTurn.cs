@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class GameState_PlayerTurn : GameState
   {
     PlayerController.Instance.CanInteractWithCards = true;
     _context.Hand.DrawHand();
+    _context.Core.Invulnerable = false;
+    _context.Core.OnCoreHit.Clear();
+    _context.Board.Cards.ForEach((Card card) => card.Invulnerable = false);
   }
 
   public override void OnCardSelected(Card card) { }

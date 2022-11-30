@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Deck_Starter
   m_EditorClassIdentifier: 
   Cards:
-  - {fileID: 4463184017070323126, guid: 82886f1684b71ec488dd5f358bc320ab, type: 3}
-  - {fileID: 7886706528149863899, guid: 363dd8407cab11b4b9e60a6f254925b3, type: 3}
   - {fileID: 4660269509735302854, guid: dc22e0e2b82e00942abc2e2ab1e82463, type: 3}
-  - {fileID: 6820015131837343318, guid: 7aa3d2afa89e4d246aa91fdcbde4f38d, type: 3}
-  - {fileID: 3820112099869572468, guid: f6f750a684b2f904db55e16c6ac844b5, type: 3}
+  - {fileID: 938874538083923654, guid: 49fb2f3a86678a04ca39403f01007d34, type: 3}
+  - {fileID: 5098434213494510276, guid: 3cbb3ad135f0ff14392d12558fd4bbc2, type: 3}
+  - {fileID: 4471829069634088668, guid: c3b68e7a088acc640bdf06fa51add662, type: 3}
+  - {fileID: 460104075700525484, guid: 852e4e49e5d542449b37f13ba0bf4019, type: 3}
