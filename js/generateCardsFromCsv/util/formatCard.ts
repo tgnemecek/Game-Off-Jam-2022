@@ -1,5 +1,4 @@
 import upperCamelCase  from 'uppercamelcase';
-import path from "path";
 import { Card, CardRow, CardType } from "../types";
 
 const BASE_IMAGE_PATH = "Card";
@@ -12,7 +11,6 @@ const formatCard = (card: CardRow): Card => {
     Type: CardType[card.Type],
     TypeName: card.Type,
     InternalTitle,
-    Comments: card.Comments?.replace(/\n/g, ". "),
     Image: `${BASE_IMAGE_PATH}/${card.Type}/${InternalTitle}`
   };
 };

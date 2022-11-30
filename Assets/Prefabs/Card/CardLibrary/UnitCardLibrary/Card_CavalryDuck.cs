@@ -7,12 +7,13 @@ public class Card_CavalryDuck : Card_Unit
   public Card_CavalryDuck()
   {
     this.Id = 6;
-    this.Name = "Cavalry Duck";
-    this.Description = "A knight in shining armor";
-    this.Image = "Card/Unit/CavalryDuck";
-    this.WoodCost = 0;
-    this.FishCost = 3;
-    this.GoldCost = 2;
+		this.Name = "Cavalry Duck";
+		this.Description = "A knight in shining armor";
+		this.Image = "undefined";
+		this.WoodCost = 0;
+		this.FishCost = 3;
+		this.GoldCost = 2;
+		this.MaxHP = 3;
   }
 
   #endregion AUTO-GENERATED

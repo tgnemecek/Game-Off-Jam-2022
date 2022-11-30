@@ -7,12 +7,13 @@ public class Card_MechanizedDuck : Card_Unit
   public Card_MechanizedDuck()
   {
     this.Id = 8;
-    this.Name = "Mechanized Duck";
-    this.Description = "This duck deals [X] damage";
-    this.Image = "Card/Unit/MechanizedDuck";
-    this.WoodCost = 0;
-    this.FishCost = 5;
-    this.GoldCost = 3;
+		this.Name = "Mechanized Duck";
+		this.Description = "";
+		this.Image = "undefined";
+		this.WoodCost = 0;
+		this.FishCost = 5;
+		this.GoldCost = 3;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

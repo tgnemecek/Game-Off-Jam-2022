@@ -7,12 +7,13 @@ public class Card_InfantryDuck : Card_Unit
   public Card_InfantryDuck()
   {
     this.Id = 5;
-    this.Name = "Infantry Duck";
-    this.Description = "This duck deals [X] damage";
-    this.Image = "Card/Unit/InfantryDuck";
-    this.WoodCost = 0;
-    this.FishCost = 2;
-    this.GoldCost = 1;
+		this.Name = "Infantry Duck";
+		this.Description = "";
+		this.Image = "undefined";
+		this.WoodCost = 0;
+		this.FishCost = 2;
+		this.GoldCost = 1;
+		this.MaxHP = 2;
   }
 
   #endregion AUTO-GENERATED

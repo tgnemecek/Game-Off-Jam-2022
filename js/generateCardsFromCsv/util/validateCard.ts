@@ -10,10 +10,10 @@ const baseSchema: Joi.SchemaMap<Card> = {
   Name: Joi.string().required(),
   InternalTitle: Joi.string().disallow(" ").required(),
   Description: Joi.string().optional().allow(""),
-  Image: Joi.string().optional().allow(""), // not sure how images will be handled
   WoodCost: Joi.number().positive().allow(0),
   FishCost: Joi.number().positive().allow(0),
   GoldCost: Joi.number().positive().allow(0),
+  MaxHP: Joi.string().optional().allow(0),
   Comments: Joi.string().optional().allow(""),
 };
 

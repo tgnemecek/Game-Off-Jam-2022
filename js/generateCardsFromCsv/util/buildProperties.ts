@@ -8,6 +8,7 @@ CardProperties.set("Image", "string");
 CardProperties.set("WoodCost", "int");
 CardProperties.set("FishCost", "int");
 CardProperties.set("GoldCost", "int");
+CardProperties.set("MaxHP", "int");
 
 const buildConstructor = (card: Card) => {
   const entries = Array.from(CardProperties.entries());

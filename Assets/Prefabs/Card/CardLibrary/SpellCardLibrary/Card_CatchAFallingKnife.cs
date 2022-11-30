@@ -7,12 +7,13 @@ public class Card_CatchAFallingKnife : Card_Spell
   public Card_CatchAFallingKnife()
   {
     this.Id = 31;
-    this.Name = "Catch a falling knife";
-    this.Description = "Draw three cards. Cast a [spell] among them for free.";
-    this.Image = "Card/Spell/CatchAFallingKnife";
-    this.WoodCost = 0;
-    this.FishCost = 0;
-    this.GoldCost = 7;
+		this.Name = "Catch a falling knife";
+		this.Description = "Draw until you have 5 cards. Discard all Units from your hand";
+		this.Image = "undefined";
+		this.WoodCost = 0;
+		this.FishCost = 0;
+		this.GoldCost = 7;
+		this.MaxHP = 0;
   }
 
   #endregion AUTO-GENERATED

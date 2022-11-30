@@ -8,7 +8,6 @@ public class CardState_Destroyed : CardState
 
   public override void EnterState()
   {
-    _context.HP = 0;
     Vector3 originalScale = _context.transform.localScale;
     _context.GetCollider().enabled = false;
 
