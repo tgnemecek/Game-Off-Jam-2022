@@ -16,7 +16,7 @@ public class Card_DuckBank : Card_Building
 		this.WoodCost = 5;
 		this.FishCost = 2;
 		this.GoldCost = 2;
-		this.MaxHP = 1;
+		this.MaxHP = 35;
   }
 
   #endregion AUTO-GENERATED

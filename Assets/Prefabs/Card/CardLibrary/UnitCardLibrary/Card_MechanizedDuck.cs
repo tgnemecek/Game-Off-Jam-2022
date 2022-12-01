@@ -16,7 +16,7 @@ public class Card_MechanizedDuck : Card_Unit
 		this.WoodCost = 0;
 		this.FishCost = 5;
 		this.GoldCost = 3;
-		this.MaxHP = 1;
+		this.MaxHP = 50;
   }
 
   #endregion AUTO-GENERATED

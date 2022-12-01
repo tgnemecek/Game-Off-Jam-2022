@@ -16,7 +16,7 @@ public class Card_Sea : Card_Building
 		this.WoodCost = 0;
 		this.FishCost = 3;
 		this.GoldCost = 2;
-		this.MaxHP = 3;
+		this.MaxHP = 25;
   }
 
   #endregion AUTO-GENERATED

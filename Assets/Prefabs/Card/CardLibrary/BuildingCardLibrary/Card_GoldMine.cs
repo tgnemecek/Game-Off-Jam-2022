@@ -16,7 +16,7 @@ public class Card_GoldMine : Card_Building
 		this.WoodCost = 3;
 		this.FishCost = 1;
 		this.GoldCost = 2;
-		this.MaxHP = 3;
+		this.MaxHP = 25;
   }
 
   #endregion AUTO-GENERATED

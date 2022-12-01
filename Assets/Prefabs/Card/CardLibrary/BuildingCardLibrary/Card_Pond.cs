@@ -16,7 +16,7 @@ public class Card_Pond : Card_Building
 		this.WoodCost = 0;
 		this.FishCost = 1;
 		this.GoldCost = 1;
-		this.MaxHP = 1;
+		this.MaxHP = 9;
   }
 
   #endregion AUTO-GENERATED
