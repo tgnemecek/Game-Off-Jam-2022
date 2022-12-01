@@ -60,7 +60,7 @@ public class Core : MonoBehaviour, IHitable
 
   public bool CanBeTargeted()
   {
-    return _hp <= 0;
+    return _hp > 0;
   }
 
   public Collider GetCollider() => _collider;

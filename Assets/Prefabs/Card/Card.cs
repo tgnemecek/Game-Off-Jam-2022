@@ -167,7 +167,11 @@ public abstract class Card : MonoBehaviour, IHitable
     _healthBar.UpdateHealth(_hp);
   }
 
-  public bool CanBeTargeted() => _currentState.CanBeTargeted();
+  public bool CanBeTargeted()
+  {
+    if (_currentState == null) return false;
+    return _currentState.CanBeTargeted();
+  }
 
   protected bool SnapToBoard(Camera camera)
   {
