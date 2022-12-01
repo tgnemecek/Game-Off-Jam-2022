@@ -17,7 +17,6 @@ public class Hand : MonoBehaviour
   public void DrawHand() => DrawHand(_drawUpTo);
   public void DrawHand(int upTo)
   {
-    Debug.Break();
     var drawPile = GameManager.Instance.DrawPile;
 
     int cardsInHand = _cards.Count;

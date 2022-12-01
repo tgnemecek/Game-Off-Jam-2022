@@ -16,7 +16,6 @@ public class CardState_InHand : CardState
     _context.CardLayerController.SetDefaultLayer();
     _context.CardLayerController.ToggleShadow(false);
     _context.CardAudio.PlayCardDrawn();
-    MoveToHandPosition();
     RotateToHand();
   }
   public override void UpdateState()
