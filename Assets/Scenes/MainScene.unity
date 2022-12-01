@@ -1700,17 +1700,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2097143350 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2293146335897240056, guid: e668da41298086a4db2737b2a6a91b90, type: 3}
-  m_PrefabInstance: {fileID: 5796456694495082681}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2097143351 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 227616827854390340, guid: e668da41298086a4db2737b2a6a91b90, type: 3}
   m_PrefabInstance: {fileID: 5796456694495082681}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097143350}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 010b86878fd6f35478d7d4b893def4d4, type: 3}
@@ -1834,15 +1829,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 910590815404208581, guid: 5ccae4184278a6649a5b50ca4fb923bc, type: 3}
       propertyPath: _initialFishAmount
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 910590815404208581, guid: 5ccae4184278a6649a5b50ca4fb923bc, type: 3}
       propertyPath: _initialGoldAmount
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 910590815404208581, guid: 5ccae4184278a6649a5b50ca4fb923bc, type: 3}
       propertyPath: _initialWoodAmount
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 910590815404208582, guid: 5ccae4184278a6649a5b50ca4fb923bc, type: 3}
       propertyPath: m_Name
@@ -2289,14 +2284,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2293146336199635349, guid: e668da41298086a4db2737b2a6a91b90, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2097143350}
-    - target: {fileID: 2293146336199635349, guid: e668da41298086a4db2737b2a6a91b90, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e668da41298086a4db2737b2a6a91b90, type: 3}
 --- !u!1001 &6783028979025825082
@@ -2552,6 +2539,10 @@ PrefabInstance:
     - target: {fileID: 8916486161563888078, guid: ecf4bad962f09ca489aec06b2d09f190, type: 3}
       propertyPath: m_SortingLayerID
       value: 167551979
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916486162066803232, guid: ecf4bad962f09ca489aec06b2d09f190, type: 3}
+      propertyPath: _maxHP
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8916486162066803234, guid: ecf4bad962f09ca489aec06b2d09f190, type: 3}
       propertyPath: m_Name
