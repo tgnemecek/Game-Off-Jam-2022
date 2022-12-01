@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8713839944000218116, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
       propertyPath: m_Name
-      value: Card_Item
+      value: Card_PlentyOfFishInTheSea
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
@@ -87,9 +87,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 2371460248721492917}
-  _cardProximityDetector: {fileID: 5192275376249474176}
+  _cardProximityDetector: {fileID: 0}
   _collider: {fileID: 7294797641631661475}
   _healthBar: {fileID: 1183288256139503732}
+  CardAudio: {fileID: 0}
   CurrentStateName: 
 --- !u!114 &2371460248721492917 stripped
 MonoBehaviour:
@@ -100,17 +101,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9301693c1627464a92951417edd2eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5192275376249474176 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2633019768617528528, guid: a47574468b9cad4439c25b6bcd6e54ea, type: 3}
-  m_PrefabInstance: {fileID: 7819646941790003280}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &7294797641631661475 stripped

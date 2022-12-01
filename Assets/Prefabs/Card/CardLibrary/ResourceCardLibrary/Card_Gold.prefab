@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5043983958204986506, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
       propertyPath: m_Name
-      value: Card_Resource
+      value: Card_Gold
       objectReference: {fileID: 0}
     - target: {fileID: 6491881979870140768, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
       propertyPath: m_RootOrder
@@ -87,16 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 223355330763503425}
-  _cardProximityDetector: {fileID: 7781710002322124916}
-  Type: 0
---- !u!114 &7781710002322124916 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1844310265406618718, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
-  m_PrefabInstance: {fileID: 8243415181555223594}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _cardProximityDetector: {fileID: 0}
+  _collider: {fileID: 0}
+  _healthBar: {fileID: 0}
+  CardAudio: {fileID: 0}
+  CurrentStateName: 
