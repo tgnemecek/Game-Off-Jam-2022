@@ -27,7 +27,6 @@ public class EnemyManager : MonoBehaviour
   {
     int spawnMapIndex = 0;
     var spawnPoints = _spawnMap.SpawnPoints;
-    _onEnemyKilled = new List<Action>();
 
     GenerateWave();
 
@@ -92,9 +91,16 @@ public class EnemyManager : MonoBehaviour
 
     if (_currentWave.Count == 0)
     {
-      GameManager.Instance.OnWaveClear();
+      OnWaveClear();
     }
   }
+
+  public void OnWaveClear()
+  {
+    _onEnemyKilled = new List<Action>();
+    GameManager.Instance.OnWaveClear();
+  }
+
   public void DisableAllEnemies()
   {
     foreach (var enemy in _currentWave)
