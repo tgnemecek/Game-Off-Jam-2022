@@ -26,8 +26,12 @@ public class Card_DressedToKill : Card_Spell
     var cards = GameManager.Instance.Board.Cards
       .FindAll((Card card) => card.Type == CardTypes.Unit);
 
-    int randomIndex = UnityEngine.Random.Range(0, cards.Count);
-    Card card = cards[randomIndex];
-    card.Heal(99999);
+    if (cards.Count > 0)
+    {
+      int randomIndex = UnityEngine.Random.Range(0, cards.Count);
+      Card card = cards[randomIndex];
+      card.Heal(99999);
+    }
+
   }
 }

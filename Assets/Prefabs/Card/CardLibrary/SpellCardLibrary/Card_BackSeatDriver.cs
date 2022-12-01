@@ -28,12 +28,14 @@ public class Card_BackSeatDriver : Card_Spell
     int amount = Mathf.CeilToInt((float)core.MaxHP * .1f);
     GameManager.Instance.Core.Heal(amount);
 
-
     var cards = GameManager.Instance.Board.Cards
       .FindAll((Card card) => card.Type == CardTypes.Unit);
 
-    int randomIndex = UnityEngine.Random.Range(0, cards.Count);
-    Card card = cards[randomIndex];
-    card.ReceiveDamage(99999);
+    if (cards.Count > 0)
+    {
+      int randomIndex = UnityEngine.Random.Range(0, cards.Count);
+      Card card = cards[randomIndex];
+      card.ReceiveDamage(99999);
+    }
   }
 }
