@@ -40,6 +40,14 @@ public class CardState_Dragged : CardState
   {
     if (PlayerController.Instance.IsHoveringOnHand) return;
     if (_context.CardProximityDetector.IsCloseToAnotherCard()) return;
+
+    Core core = GameManager.Instance.Core;
+
+    float distance = (core.transform.position - _context.transform.position).magnitude;
+    float threshold = _context.CardConfig.MinDistanceFromCoreWhenPlaced;
+
+    if (distance < threshold) return;
+
     _context.LastValidBoardPosition = _context.transform.position;
   }
 
