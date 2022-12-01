@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 635365412198995892, guid: 0653a9248dc8f4b46aa666ab1468e86d, type: 3}
       propertyPath: m_Name
-      value: Card_Spell
+      value: Card_DressedToKill
       objectReference: {fileID: 0}
     - target: {fileID: 1673471633572510302, guid: 0653a9248dc8f4b46aa666ab1468e86d, type: 3}
       propertyPath: m_RootOrder
@@ -57,17 +57,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0653a9248dc8f4b46aa666ab1468e86d, type: 3}
---- !u!114 &1028991975521052952 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6104312344568504160, guid: 0653a9248dc8f4b46aa666ab1468e86d, type: 3}
-  m_PrefabInstance: {fileID: 6553134397520967288}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2555035775334651963 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 8756165922158145091, guid: 0653a9248dc8f4b46aa666ab1468e86d, type: 3}
@@ -92,9 +81,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 7394913637652131373}
-  _cardProximityDetector: {fileID: 1028991975521052952}
+  _cardProximityDetector: {fileID: 0}
   _collider: {fileID: 2555035775334651963}
   _healthBar: {fileID: 6206802685679980012}
+  CardAudio: {fileID: 0}
   CurrentStateName: 
 --- !u!114 &6206802685679980012 stripped
 MonoBehaviour:

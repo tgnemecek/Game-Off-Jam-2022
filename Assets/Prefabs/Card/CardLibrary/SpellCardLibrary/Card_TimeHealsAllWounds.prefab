@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 635365412198995892, guid: 0653a9248dc8f4b46aa666ab1468e86d, type: 3}
       propertyPath: m_Name
-      value: Card_Spell
+      value: Card_TimeHealsAllWounds
       objectReference: {fileID: 0}
     - target: {fileID: 1673471633572510302, guid: 0653a9248dc8f4b46aa666ab1468e86d, type: 3}
       propertyPath: m_RootOrder
@@ -87,9 +87,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 2554581030476525506}
-  _cardProximityDetector: {fileID: 5445983967223982327}
+  _cardProximityDetector: {fileID: 0}
   _collider: {fileID: 7396877269543672276}
   _healthBar: {fileID: 1437014451882953731}
+  CardAudio: {fileID: 0}
   CurrentStateName: 
 --- !u!114 &2554581030476525506 stripped
 MonoBehaviour:
@@ -100,17 +101,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9301693c1627464a92951417edd2eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5445983967223982327 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6104312344568504160, guid: 0653a9248dc8f4b46aa666ab1468e86d, type: 3}
-  m_PrefabInstance: {fileID: 2243595447615764375}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &7396877269543672276 stripped

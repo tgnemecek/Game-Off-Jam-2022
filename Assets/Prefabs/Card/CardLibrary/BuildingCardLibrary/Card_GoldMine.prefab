@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2402168949140496067, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_Name
-      value: Card_Building
+      value: Card_GoldMine
       objectReference: {fileID: 0}
     - target: {fileID: 4521102765380268841, guid: 5c4e94494a828f04e8fb9982ba8b0d19, type: 3}
       propertyPath: m_RootOrder
