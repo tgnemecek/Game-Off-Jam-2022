@@ -11,7 +11,7 @@ public class GameState_GameOver : GameState
   {
     PlayerController.Instance.CanInteractWithCards = false;
     _context.EnemyManager.DisableAllEnemies();
-    // _context.GameOverMenu.Show();
+    _context.GameOverMenu.gameObject.SetActive(true);
   }
 
   public override void OnCardSelected(Card card) { }

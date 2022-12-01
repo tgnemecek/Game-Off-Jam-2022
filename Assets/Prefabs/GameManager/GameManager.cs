@@ -51,9 +51,6 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
-    Music music = GameObject.FindObjectOfType<Music>();
-    if (music) DestroyOnLoad(music.gameObject);
-
     _drawPile.AddCards(_deck.Cards);
     _drawPile.Shuffle();
     _deckBook.PopulateCards(_deck.Cards);
@@ -68,16 +65,12 @@ public class GameManager : MonoBehaviour
     CurrentStateName = _currentState?.GetType().Name;
   }
 
-  void DestroyOnLoad(GameObject target)
-  {
-    SceneManager.MoveGameObjectToScene(target, SceneManager.GetActiveScene());
-  }
-
   public void OnWaveClear() => _currentState.OnWaveClear();
   public void OnCardSelected(Card card) => _currentState.OnCardSelected(card);
 
   public void GameOver()
   {
+    _currentState.ExitState();
     _currentState = _stateFactory.GameOver();
     _currentState.EnterState();
   }

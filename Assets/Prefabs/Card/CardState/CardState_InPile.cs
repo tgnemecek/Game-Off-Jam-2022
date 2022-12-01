@@ -13,6 +13,7 @@ public class CardState_InPile : CardState
     _context.transform.rotation = Quaternion.Euler(-90, -180, 0);
     _context.CardLayerController.ShowCardBack();
     _context.CardLayerController.SetPileLayer();
+    _context.Heal(9999);
   }
   public override void UpdateState()
   {
