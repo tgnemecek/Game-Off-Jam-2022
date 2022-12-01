@@ -8,7 +8,7 @@ public class DiscardPile : MonoBehaviour, IPile
   [SerializeField]
   private TextMeshProUGUI _counter;
   [SerializeField]
-  private DeckBook _deckBook;
+  private DeckBook _discardDeckBook;
   private bool _isHovering = false;
 
   private List<Card> _cards = new List<Card>(); public List<Card> Cards => _cards;
@@ -17,7 +17,7 @@ public class DiscardPile : MonoBehaviour, IPile
   {
     if (_isHovering && Input.GetMouseButtonDown(0))
     {
-      _deckBook.gameObject.SetActive(true);
+      _discardDeckBook.gameObject.SetActive(true);
     }
   }
 
@@ -47,7 +47,7 @@ public class DiscardPile : MonoBehaviour, IPile
   void UpdateDisplays()
   {
     _counter.text = _cards.Count.ToString();
-    _deckBook.PopulateCards(_cards);
+    _discardDeckBook.SetCards(_cards);
   }
 
   public void MouseEnter() => _isHovering = true;
