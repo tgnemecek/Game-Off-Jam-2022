@@ -13,21 +13,36 @@ public class DeckBook : MonoBehaviour
   [SerializeField]
   private GridLayoutGroup _gridLayoutGroup;
 
+  private List<Card> _cards = new List<Card>(); public List<Card> Cards => _cards;
+
   void Start()
   {
     _textMesh.text = _title;
   }
 
-  public void PopulateCards(List<Card> cards)
+  public void AddCard(Card card)
   {
-    int cardCount = cards.Count;
+    _cards.Insert(0, card);
 
     Cleanup();
+    PopulateCards();
+  }
 
+   public void SetCards(List<Card> cards)
+  {
+    _cards = cards;
+
+    Cleanup();
+    PopulateCards();
+  }
+
+  void PopulateCards()
+  {
+    int cardCount = _cards.Count;
     for (int i = 0; i < cardCount; i++)
     {
-      var card = cards[i % cardCount];
-      var copiedCard = Instantiate(cards[i % cardCount]);
+      var card = _cards[i % cardCount];
+      var copiedCard = Instantiate(card);
       copiedCard.Initialize(card.CardInitializer);
       copiedCard.CardLayerController.ShowCardForUI();
 
