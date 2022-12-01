@@ -28,9 +28,9 @@ public class DeckBook : MonoBehaviour
     PopulateCards();
   }
 
-   public void SetCards(List<Card> cards)
+  public void SetCards(List<Card> cards)
   {
-    _cards = cards;
+    _cards = new List<Card>(cards);
 
     Cleanup();
     PopulateCards();
@@ -43,7 +43,7 @@ public class DeckBook : MonoBehaviour
     {
       var card = _cards[i % cardCount];
       var copiedCard = Instantiate(card);
-      copiedCard.Initialize(card.CardInitializer);
+      copiedCard.Initialize(CardStateEnum.InPile);
       copiedCard.CardLayerController.ShowCardForUI();
 
       var canvas = copiedCard.CardLayerController.Canvas;

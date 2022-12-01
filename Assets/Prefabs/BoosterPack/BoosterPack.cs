@@ -91,7 +91,7 @@ public class BoosterPack : MonoBehaviour
 
       Card card = Instantiate(_weightedList[randomIndex], position, _mesh.rotation, transform);
       card.transform.SetParent(_mesh);
-      card.Initialize(CardInitializer.BoosterPack);
+      card.Initialize(CardStateEnum.InBooster);
       _boosterCards.Add(card);
     }
   }

@@ -30,19 +30,20 @@ public class CardState_Consumed : CardState
       .setOnComplete(() =>
       {
         GameManager.Instance.DiscardPile.Discard(_context);
-        SwitchState(_factory.InPile());
       });
   }
 
-  public override void UpdateState()
+  public override void UpdateState() { }
+  public override void AddToPile(IPile pile)
   {
-    base.CheckCardSide(_camera);
+    SwitchState(_factory.InPile());
   }
   public override void Draw() { }
   public override bool CanBeTargeted() => false;
   public override void FixedUpdateState() { }
   public override void ExitState()
   {
+    _context.StopAllCoroutines();
     _context.CardAudio.StopCardConsumed();
   }
 }

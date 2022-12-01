@@ -25,19 +25,16 @@ public class DrawPile : MonoBehaviour, IPile
     foreach (var c in cards)
     {
       Card card;
-      Quaternion rotation = Quaternion.Euler(-90, -180, 0);
-
       if (c.WasInitialized)
       {
         card = c;
-        card.transform.position = transform.position;
-        card.transform.rotation = rotation;
         card.transform.SetParent(transform);
+        card.AddToPile(this);
       }
       else
       {
-        card = Instantiate(c, transform.position, rotation, transform);
-        card.Initialize(CardInitializer.Pile);
+        card = Instantiate(c, transform.position, Quaternion.Euler(-90, -180, 0), transform);
+        card.Initialize(CardStateEnum.InPile);
       }
       _cards.Add(card);
     }

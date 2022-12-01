@@ -86,6 +86,7 @@ public class CardState_Dragged : CardState
     }
   }
 
+  public override void AddToPile(IPile pile) { }
   public override void Draw() { }
   public override void ExitState()
   {

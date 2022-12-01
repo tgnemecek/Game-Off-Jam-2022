@@ -12,6 +12,7 @@ public class CardState_InHand : CardState
 
   public override void EnterState()
   {
+    _context.transform.SetParent(GameManager.Instance.Hand.transform);
     _context.CardLayerController.SetDefaultLayer();
     _context.CardLayerController.ToggleShadow(false);
     _context.CardAudio.PlayCardDrawn();
@@ -20,7 +21,6 @@ public class CardState_InHand : CardState
   }
   public override void UpdateState()
   {
-    base.CheckCardSide(_camera);
     DetectClick();
     DetectPositionChangeInHand();
   }
@@ -105,6 +105,7 @@ public class CardState_InHand : CardState
   {
     _context.CardLayerController.ToggleShadow(true);
   }
+  public override void AddToPile(IPile pile) { }
   public override void Draw() { }
   public override bool CanBeTargeted() => false;
 }
