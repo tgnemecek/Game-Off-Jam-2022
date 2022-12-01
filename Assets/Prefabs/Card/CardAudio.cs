@@ -11,6 +11,8 @@ public class CardAudio : MonoBehaviour
   [SerializeField]
   AudioClip _cardPlayed;
   [SerializeField]
+  AudioClip _cardCantPlay;
+  [SerializeField]
   AudioClip _cardDrawn;
   [SerializeField]
   AudioClip _cardConsumed;
@@ -46,6 +48,12 @@ public class CardAudio : MonoBehaviour
   public void PlayCardDrawn()
   {
     _source.PlayOneShot(_cardDrawn);
+  }
+
+  public void PlayCardCantPlay()
+  {
+    _source.pitch = 1.5f;
+    _source.PlayOneShot(_cardCantPlay);
   }
 
   public void PlayCardConsumed()

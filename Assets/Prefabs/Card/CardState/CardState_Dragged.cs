@@ -71,6 +71,9 @@ public class CardState_Dragged : CardState
     if (ResourcesManager.Instance.TryConsume(_context.ResourcesCostDictionary))
     {
       SwitchState(_context.OnConsume());
+    } else
+    {
+      _context.CardAudio.PlayCardCantPlay();
     }
   }
 
