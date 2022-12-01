@@ -1231,6 +1231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrawPile
       objectReference: {fileID: 0}
+    - target: {fileID: 1049917730022141854, guid: 26ba79c6fbbd8e24cb1dd7e9b79e9f32, type: 3}
+      propertyPath: _drawDeckBook
+      value: 
+      objectReference: {fileID: 1416820530}
     - target: {fileID: 1049917730022141855, guid: 26ba79c6fbbd8e24cb1dd7e9b79e9f32, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -1277,6 +1281,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26ba79c6fbbd8e24cb1dd7e9b79e9f32, type: 3}
+--- !u!114 &1416820530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3988571798361962925, guid: 26ba79c6fbbd8e24cb1dd7e9b79e9f32, type: 3}
+  m_PrefabInstance: {fileID: 1160629729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0c370bfc0643b4282f48be06507303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1552135859 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3083603366651583692, guid: a097d714624cf6b40a76a545a7305d60, type: 3}
@@ -1345,6 +1360,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c720e60aad7a04e80d4720ce2a0bd3, type: 3}
+--- !u!114 &1651921582 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1215331699536443330, guid: 67f3828bd1633f047881ab8d4d42a363, type: 3}
+  m_PrefabInstance: {fileID: 3153573990571284475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0c370bfc0643b4282f48be06507303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1659062280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,6 +2161,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3153573990956800685, guid: 67f3828bd1633f047881ab8d4d42a363, type: 3}
+      propertyPath: _discardDeckBook
+      value: 
+      objectReference: {fileID: 1651921582}
     - target: {fileID: 3153573990956800686, guid: 67f3828bd1633f047881ab8d4d42a363, type: 3}
       propertyPath: m_Name
       value: DiscardPile

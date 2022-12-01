@@ -8,7 +8,7 @@ public class DrawPile : MonoBehaviour, IPile
   [SerializeField]
   private TextMeshProUGUI _counter;
   [SerializeField]
-  private DeckBook _deckBook;
+  private DeckBook _drawDeckBook;
   private List<Card> _cards = new List<Card>(); public List<Card> Cards => _cards;
   private bool _isHovering = false;
 
@@ -16,7 +16,7 @@ public class DrawPile : MonoBehaviour, IPile
   {
     if (_isHovering && Input.GetMouseButtonDown(0))
     {
-      _deckBook.gameObject.SetActive(true);
+      _drawDeckBook.gameObject.SetActive(true);
     }
   }
 
@@ -41,7 +41,8 @@ public class DrawPile : MonoBehaviour, IPile
       }
       _cards.Add(card);
     }
-    _deckBook.PopulateCards(_cards);
+
+    _drawDeckBook.SetCards(_cards);
   }
 
   public void Shuffle()
@@ -75,7 +76,7 @@ public class DrawPile : MonoBehaviour, IPile
     int lastIndex = _cards.Count - 1;
     var card = _cards[lastIndex];
     _cards.RemoveAt(lastIndex);
-    _deckBook.PopulateCards(_cards);
+    _drawDeckBook.SetCards(_cards);
     UpdateCounter();
     return card;
   }

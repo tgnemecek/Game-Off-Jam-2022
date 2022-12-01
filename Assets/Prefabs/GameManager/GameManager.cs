@@ -58,10 +58,11 @@ public class GameManager : MonoBehaviour
     _waveCounter = 0;
     UpdateWaveText();
 
+    _deckBook.SetCards(_deck.Cards);
+
     _drawPile.AddCards(_deck.Cards);
     _drawPile.Shuffle();
-    _deckBook.PopulateCards(_deck.Cards);
-
+  
     _stateFactory = new GameStateFactory(this);
     _currentState = _stateFactory.PlayerTurn();
     _currentState.EnterState();
