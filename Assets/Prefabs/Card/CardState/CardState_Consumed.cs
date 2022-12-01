@@ -38,6 +38,7 @@ public class CardState_Consumed : CardState
   {
     base.CheckCardSide(_camera);
   }
+  public override bool CanBeTargeted() => false;
   public override void FixedUpdateState() { }
   public override void ExitState()
   {

@@ -9,7 +9,7 @@ public class EnemyState_Attacking : EnemyState
 
   public override void EnterState()
   {
-    if (_context.Target.isDead())
+    if (!_context.Target.CanBeTargeted())
     {
       SwitchState(_factory.Hunting());
       return;

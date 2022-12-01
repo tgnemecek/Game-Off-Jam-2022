@@ -86,4 +86,5 @@ public class CardState_InBoard : CardState
   {
     GameManager.Instance.Board.RemoveCardFromBoard(_context);
   }
+  public override bool CanBeTargeted() => true;
 }

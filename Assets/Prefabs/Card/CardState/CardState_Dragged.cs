@@ -86,4 +86,5 @@ public class CardState_Dragged : CardState
   {
     PlayerController.Instance.CardBeingDragged = null;
   }
+  public override bool CanBeTargeted() => false;
 }

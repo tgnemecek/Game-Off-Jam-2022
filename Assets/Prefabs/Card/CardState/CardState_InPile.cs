@@ -25,4 +25,5 @@ public class CardState_InPile : CardState
   }
   public override void FixedUpdateState() { }
   public override void ExitState() { }
+  public override bool CanBeTargeted() => false;
 }

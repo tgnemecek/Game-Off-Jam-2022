@@ -99,4 +99,5 @@ public class CardState_InHand : CardState
   {
     _context.CardLayerController.ToggleShadow(true);
   }
+  public override bool CanBeTargeted() => false;
 }
