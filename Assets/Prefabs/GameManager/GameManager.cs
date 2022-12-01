@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class GameManager : MonoBehaviour
   private Deck _deck; public Deck Deck => _deck;
   [SerializeField]
   private BoosterPack _boosterPack; public BoosterPack BoosterPack => _boosterPack;
+  private int _waveCounter; public int WaveCount => _waveCounter;
+  [SerializeField]
+  private TextMeshProUGUI _waveText;
   [Header("Debug Options")]
   public string CurrentStateName;
 
@@ -51,6 +55,9 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
+    _waveCounter = 0;
+    UpdateWaveText();
+
     _drawPile.AddCards(_deck.Cards);
     _drawPile.Shuffle();
     _deckBook.PopulateCards(_deck.Cards);
@@ -65,7 +72,21 @@ public class GameManager : MonoBehaviour
     CurrentStateName = _currentState?.GetType().Name;
   }
 
-  public void OnWaveClear() => _currentState.OnWaveClear();
+  void UpdateWaveText()
+  {
+    _waveText.text = "Wave: " + _waveCounter;
+  }
+
+  public void OnWaveStart()
+  {
+    _waveCounter++;
+    UpdateWaveText();
+  }
+
+  public void OnWaveClear()
+  {
+    _currentState.OnWaveClear();
+  } 
   public void OnCardSelected(Card card) => _currentState.OnCardSelected(card);
 
   public void GameOver()

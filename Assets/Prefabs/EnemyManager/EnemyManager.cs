@@ -25,6 +25,8 @@ public class EnemyManager : MonoBehaviour
 
   public void SpawnNextWave()
   {
+    GameManager.Instance.OnWaveStart();
+
     int spawnMapIndex = 0;
     var spawnPoints = _spawnMap.SpawnPoints;
 
