@@ -83,6 +83,7 @@ public abstract class Card : MonoBehaviour, IHitable
   private bool _wasPlayed = false; public bool WasPlayed { get { return _wasPlayed; } set { _wasPlayed = value; } }
   private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
   private bool _wasInitialized = false; public bool WasInitialized => _wasInitialized;
+  public Vector3 DefaultScale { get; set; }
   public Vector3 LastValidBoardPosition { get; set; }
   public bool Invulnerable { get; set; }
 
@@ -134,6 +135,7 @@ public abstract class Card : MonoBehaviour, IHitable
     _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
     CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
+    DefaultScale = transform.localScale;
     _healthBar.Initialize(transform, MaxHP, false);
     _wasInitialized = true;
     _hp = MaxHP;

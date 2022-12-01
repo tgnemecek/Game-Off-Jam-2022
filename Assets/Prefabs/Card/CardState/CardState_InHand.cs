@@ -51,7 +51,7 @@ public class CardState_InHand : CardState
   {
     CardConfig cardConfig = _context.CardConfig;
 
-    LeanTween.scale(_context.gameObject, Vector3.one, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
+    LeanTween.scale(_context.gameObject, _context.DefaultScale, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
     LeanTween.moveLocalY(_context.gameObject, 0f, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
   }
 
@@ -84,6 +84,13 @@ public class CardState_InHand : CardState
     _context.CardLayerController.SetCloseUpLayer();
 
     CardConfig cardConfig = _context.CardConfig;
+
+    _context.transform.localScale = _context.DefaultScale;
+    _context.transform.localPosition = new Vector3(
+      _context.transform.localPosition.x,
+      0f,
+      _context.transform.localPosition.z
+    );
 
     LeanTween.scale(_context.gameObject, _context.transform.localScale * cardConfig.ScaleOnHover, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
     LeanTween.moveLocalY(_context.gameObject, cardConfig.OffsetYOnHover, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
