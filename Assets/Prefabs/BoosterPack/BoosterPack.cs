@@ -62,9 +62,23 @@ public class BoosterPack : MonoBehaviour
     ResetCards();
     ResetTransform();
     StopAllCoroutines();
+    ChooseCards();
+    StartCoroutine(Animation());
+  }
+
+  public void ChooseCards()
+  {
+    Dictionary<int, bool> chosenIndexes = new Dictionary<int, bool>();
+
     for (int i = 0; i < _numberOfCardsInBooster; i++)
     {
-      int randomIndex = UnityEngine.Random.Range(0, _allCards.Count - 1);
+      int randomIndex;
+      do
+      {
+        randomIndex = UnityEngine.Random.Range(0, _allCards.Count - 1);
+      } while (chosenIndexes.ContainsKey(randomIndex));
+
+      chosenIndexes[randomIndex] = true;
 
       var position = new Vector3(
         _mesh.position.x,
@@ -77,7 +91,6 @@ public class BoosterPack : MonoBehaviour
       card.Initialize(CardInitializer.BoosterPack);
       _boosterCards.Add(card);
     }
-    StartCoroutine(Animation());
   }
 
   public void Disable()
