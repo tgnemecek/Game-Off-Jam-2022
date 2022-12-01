@@ -10,13 +10,13 @@ public class Card_DuckBank : Card_Building
   public Card_DuckBank()
   {
     this.Id = 44;
-    this.Name = "Duck Bank";
-    this.Description = "Gain 5 Gold at the end of each turn";
-    this.Image = "Card/Building/DuckBank";
-    this.WoodCost = 5;
-    this.FishCost = 2;
-    this.GoldCost = 2;
-    this.MaxHP = 0;
+		this.Name = "Duck Bank";
+		this.Description = "Gain 5 Gold at the end of each turn";
+		this.Image = "Card/Building/DuckBank";
+		this.WoodCost = 5;
+		this.FishCost = 2;
+		this.GoldCost = 2;
+		this.MaxHP = 35;
   }
 
   #endregion AUTO-GENERATED

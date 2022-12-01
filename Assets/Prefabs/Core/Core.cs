@@ -58,9 +58,9 @@ public class Core : MonoBehaviour, IHitable
     _healthBar.UpdateHealth(_hp);
   }
 
-  public bool isDead()
+  public bool CanBeTargeted()
   {
-    return _hp <= 0;
+    return _hp > 0;
   }
 
   public Collider GetCollider() => _collider;

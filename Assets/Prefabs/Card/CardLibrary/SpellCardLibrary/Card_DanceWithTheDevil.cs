@@ -13,10 +13,10 @@ public class Card_DanceWithTheDevil : Card_Spell
 		this.Name = "Dance with the devil";
 		this.Description = "Your Core is invulnerable next turn. Sacrifice a random Building.";
 		this.Image = "Card/Spell/DanceWithTheDevil";
-		this.WoodCost = 6;
-		this.FishCost = 6;
-		this.GoldCost = 6;
-		this.MaxHP = 0;
+		this.WoodCost = 2;
+		this.FishCost = 2;
+		this.GoldCost = 2;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

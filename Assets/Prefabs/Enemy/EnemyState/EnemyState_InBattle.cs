@@ -11,9 +11,12 @@ public class EnemyState_InBattle : EnemyState
   {
     _context.Rigidbody.velocity = Vector3.zero;
 
-    if (_context.Target.isDead()) {
+    if (!_context.Target.CanBeTargeted())
+    {
       SwitchState(_factory.Hunting());
-    } else {
+    }
+    else
+    {
       LeanTween
       .rotateY(_context.gameObject, 0f, 1f / _context.EnemyConfig.WalkRotationSpeed)
       .setOnComplete(() => _context.StartCoroutine(AttackSpeedTimer()));

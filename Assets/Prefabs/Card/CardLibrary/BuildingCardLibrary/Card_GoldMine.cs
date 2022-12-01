@@ -10,13 +10,13 @@ public class Card_GoldMine : Card_Building
   public Card_GoldMine()
   {
     this.Id = 21;
-    this.Name = "Gold Mine";
-    this.Description = "Gain 2 Gold at the end of each turn";
-    this.Image = "Card/Building/GoldMine";
-    this.WoodCost = 3;
-    this.FishCost = 1;
-    this.GoldCost = 2;
-    this.MaxHP = 3;
+		this.Name = "Gold Mine";
+		this.Description = "Gain 2 Gold at the end of each turn";
+		this.Image = "Card/Building/GoldMine";
+		this.WoodCost = 3;
+		this.FishCost = 1;
+		this.GoldCost = 2;
+		this.MaxHP = 25;
   }
 
   #endregion AUTO-GENERATED

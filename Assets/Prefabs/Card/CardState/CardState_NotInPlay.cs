@@ -21,4 +21,5 @@ public class CardState_NotInPlay : CardState
   }
   public override void FixedUpdateState() { }
   public override void ExitState() { }
+  public override bool CanBeTargeted() => false;
 }

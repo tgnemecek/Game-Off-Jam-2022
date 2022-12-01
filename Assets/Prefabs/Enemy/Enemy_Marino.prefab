@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Marino
   _hp: 10000
-  _damage: 1000
+  _damage: 50
   _enemyConfig: {fileID: 11400000, guid: 76dbfabf343c4cc42bf341a4de7d52a5, type: 2}
   _cardProximityDetector: {fileID: 6759121287631922687}
   EnemyAudio: {fileID: 699674543800413178}

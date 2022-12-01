@@ -16,7 +16,7 @@ public class Card_LoggingCamp : Card_Building
 		this.WoodCost = 1;
 		this.FishCost = 0;
 		this.GoldCost = 1;
-		this.MaxHP = 1;
+		this.MaxHP = 9;
   }
 
   #endregion AUTO-GENERATED

@@ -44,6 +44,7 @@ public abstract class CardState
     _context.CardLayerController.ShowCardBack();
   }
 
+  public abstract bool CanBeTargeted();
   public abstract void EnterState();
   public abstract void UpdateState();
   public abstract void FixedUpdateState();

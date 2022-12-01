@@ -16,7 +16,7 @@ public class Card_LumberMill : Card_Building
 		this.WoodCost = 2;
 		this.FishCost = 0;
 		this.GoldCost = 1;
-		this.MaxHP = 2;
+		this.MaxHP = 16;
   }
 
   #endregion AUTO-GENERATED

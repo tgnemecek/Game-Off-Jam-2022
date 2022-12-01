@@ -58,7 +58,7 @@ public class CardProximityDetector : MonoBehaviour
       Card otherCard;
       if (collider.TryGetComponent<Card>(out otherCard))
       {
-        if (_card != otherCard)
+        if (otherCard.CanBeTargeted() && _card != otherCard)
         {
           _overlappingColliders.Add(collider);
         }

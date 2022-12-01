@@ -16,7 +16,7 @@ public class Card_Fishing : Card_Item
 		this.WoodCost = 1;
 		this.FishCost = 0;
 		this.GoldCost = 0;
-		this.MaxHP = 0;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

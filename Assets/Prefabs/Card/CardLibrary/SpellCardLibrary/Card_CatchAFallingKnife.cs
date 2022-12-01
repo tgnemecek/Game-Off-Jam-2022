@@ -16,7 +16,7 @@ public class Card_CatchAFallingKnife : Card_Spell
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 7;
-		this.MaxHP = 0;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

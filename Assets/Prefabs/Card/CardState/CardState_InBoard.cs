@@ -82,5 +82,9 @@ public class CardState_InBoard : CardState
     else if (_lastHoverState == true && !_context.IsHovering) OnHoverEnd();
     _lastHoverState = _context.IsHovering;
   }
-  public override void ExitState() { }
+  public override void ExitState()
+  {
+    GameManager.Instance.Board.RemoveCardFromBoard(_context);
+  }
+  public override bool CanBeTargeted() => true;
 }

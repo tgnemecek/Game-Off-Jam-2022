@@ -134,7 +134,7 @@ public abstract class Card : MonoBehaviour, IHitable
     _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
     CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
-    _healthBar.Initialize(transform, _cardConfig.MaxHP, false);
+    _healthBar.Initialize(transform, MaxHP, false);
     _wasInitialized = true;
     _hp = MaxHP;
   }
@@ -167,7 +167,11 @@ public abstract class Card : MonoBehaviour, IHitable
     _healthBar.UpdateHealth(_hp);
   }
 
-  public bool isDead() => _hp <= 0;
+  public bool CanBeTargeted()
+  {
+    if (_currentState == null) return false;
+    return _currentState.CanBeTargeted();
+  }
 
   protected bool SnapToBoard(Camera camera)
   {

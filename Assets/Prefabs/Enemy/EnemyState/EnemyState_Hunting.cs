@@ -12,14 +12,15 @@ public class EnemyState_Hunting : EnemyState
   {
     _walkCoroutine = _context.StartCoroutine(WalkAnimation());
     _context.NavMeshAgent.enabled = true;
-    if (_context.Target.isDead())
+    if (!_context.Target.CanBeTargeted())
     {
       SetTarget(GameManager.Instance.Core);
-    } else 
+    }
+    else
     {
       SetTarget(_context.Target);
     }
-    
+
   }
   public override void UpdateState()
   {
@@ -43,7 +44,9 @@ public class EnemyState_Hunting : EnemyState
       if (newTarget && newTarget.gameObject.TryGetComponent<IHitable>(out hitable))
       {
         SetTarget(hitable);
-      } else {
+      }
+      else
+      {
         SetTarget(GameManager.Instance.Core);
       }
     }

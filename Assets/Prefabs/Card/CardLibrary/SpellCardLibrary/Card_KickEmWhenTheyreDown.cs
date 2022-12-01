@@ -10,13 +10,13 @@ public class Card_KickEmWhenTheyreDown : Card_Spell
   public Card_KickEmWhenTheyreDown()
   {
     this.Id = 24;
-    this.Name = "Kick 'em when they're down";
-    this.Description = "Your Units are invulnerable next turn. Your Core loses 50% of Max HP";
-    this.Image = "Card/Spell/KickEmWhenTheyreDown";
-    this.WoodCost = 0;
-    this.FishCost = 3;
-    this.GoldCost = 0;
-    this.MaxHP = 0;
+		this.Name = "Kick 'em when they're down";
+		this.Description = "Your Units are invulnerable next turn. Your Core loses 50% of Max HP";
+		this.Image = "Card/Spell/KickEmWhenTheyreDown";
+		this.WoodCost = 0;
+		this.FishCost = 1;
+		this.GoldCost = 0;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

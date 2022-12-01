@@ -5,24 +5,24 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Card_Wooding : Card_Item
+public class Card_AirborneDuck : Card_Unit
 {
-  public Card_Wooding()
+  public Card_AirborneDuck()
   {
-    this.Id = 12;
-		this.Name = "Wooding";
-		this.Description = "Gain 2 Wood";
-		this.Image = "Card/Item/Wooding";
-		this.WoodCost = 0;
-		this.FishCost = 0;
-		this.GoldCost = 1;
-		this.MaxHP = 1;
+    this.Id = 45;
+		this.Name = "Airborne Duck";
+		this.Description = "";
+		this.Image = "Card/Unit/AirborneDuck";
+		this.WoodCost = 3;
+		this.FishCost = 5;
+		this.GoldCost = 3;
+		this.MaxHP = 75;
   }
 
   #endregion AUTO-GENERATED
 
   public override void Play()
   {
-    ResourcesManager.Instance.Gain(2, ResourceTypes.Wood);
+    // TODO: Add logic
   }
 }
