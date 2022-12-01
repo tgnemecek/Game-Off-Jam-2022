@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5043983958204986506, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
       propertyPath: m_Name
-      value: Card_Resource
+      value: Card_Fish
       objectReference: {fileID: 0}
     - target: {fileID: 6491881979870140768, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
       propertyPath: m_RootOrder
@@ -57,17 +57,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
---- !u!114 &730075574913218633 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1844310265406618718, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
-  m_PrefabInstance: {fileID: 1421432913694475287}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ea7175c5663c3408718c2ce3528d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6216697136300257437 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5043983958204986506, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}
@@ -87,8 +76,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardConfig: {fileID: 11400000, guid: 598f552fc5387d6438f0a6c94668d2da, type: 2}
   _cardLayerController: {fileID: 7117389077166342012}
-  _cardProximityDetector: {fileID: 730075574913218633}
-  Type: 0
+  _cardProximityDetector: {fileID: 0}
+  _collider: {fileID: 0}
+  _healthBar: {fileID: 0}
+  CardAudio: {fileID: 0}
+  CurrentStateName: 
 --- !u!114 &7117389077166342012 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8178530411269356395, guid: 3061516153ee11f4da346bd8c02422c2, type: 3}

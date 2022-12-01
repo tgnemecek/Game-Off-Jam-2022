@@ -14,6 +14,7 @@ public class CardState_InPile : CardState
     _context.CardLayerController.ShowCardBack();
     _context.CardLayerController.SetPileLayer();
     _context.Heal(9999);
+    _context.WasPlayed = false;
   }
   public override void UpdateState()
   {
