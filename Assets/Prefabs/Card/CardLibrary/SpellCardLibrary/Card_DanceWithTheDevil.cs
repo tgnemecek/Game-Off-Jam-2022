@@ -10,13 +10,13 @@ public class Card_DanceWithTheDevil : Card_Spell
   public Card_DanceWithTheDevil()
   {
     this.Id = 43;
-		this.Name = "Dance with the devil";
-		this.Description = "Your Core is invulnerable next turn. Sacrifice a random Building.";
-		this.Image = "Card/Spell/DanceWithTheDevil";
-		this.WoodCost = 2;
-		this.FishCost = 2;
-		this.GoldCost = 2;
-		this.MaxHP = 1;
+    this.Name = "Dance with the devil";
+    this.Description = "Your Core is invulnerable next turn. Sacrifice a random Building.";
+    this.Image = "Card/Spell/DanceWithTheDevil";
+    this.WoodCost = 2;
+    this.FishCost = 2;
+    this.GoldCost = 2;
+    this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED
@@ -28,8 +28,11 @@ public class Card_DanceWithTheDevil : Card_Spell
     var cards = GameManager.Instance.Board.Cards
       .FindAll((Card card) => card.Type == CardTypes.Building);
 
-    int randomIndex = UnityEngine.Random.Range(0, cards.Count - 1);
-    Card card = cards[randomIndex];
-    card.ReceiveDamage(99999);
+    if (cards.Count > 0)
+    {
+      int randomIndex = UnityEngine.Random.Range(0, cards.Count - 1);
+      Card card = cards[randomIndex];
+      card.ReceiveDamage(99999);
+    }
   }
 }
