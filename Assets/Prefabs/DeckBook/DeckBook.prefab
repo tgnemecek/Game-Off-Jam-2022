@@ -663,7 +663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4550566833722015065
 Transform:
   m_ObjectHideFlags: 0
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0c370bfc0643b4282f48be06507303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: 
+  _title: Deck List
   _textMesh: {fileID: 1097343566265531753}
   _gridLayoutGroup: {fileID: 656461247126741276}
 --- !u!1 &5448779996552529064

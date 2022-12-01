@@ -47,4 +47,14 @@ public class DeckBook : MonoBehaviour
       Destroy(child.gameObject);
     }
   }
+
+  void OnEnable()
+  {
+    PlayerController.Instance.CanInteractWithCards = false;
+  }
+
+  void OnDisable()
+  {
+    PlayerController.Instance.CanInteractWithCards = true;
+  }
 }
