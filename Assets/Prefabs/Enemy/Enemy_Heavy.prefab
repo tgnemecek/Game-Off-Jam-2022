@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Shark
   _hp: 1000
-  _damage: 100
+  _damage: 25
   _enemyConfig: {fileID: 11400000, guid: 59281b92f2bf5284489c708d7a4b9498, type: 2}
   _cardProximityDetector: {fileID: 6759121287631922687}
   EnemyAudio: {fileID: 1775055045809524120}
