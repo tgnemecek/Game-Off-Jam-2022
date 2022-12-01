@@ -19,6 +19,7 @@ public class CardState_NotInPlay : CardState
       SwitchState(_factory.InPile());
     }
   }
+  public override void Draw() { }
   public override void FixedUpdateState() { }
   public override void ExitState() { }
   public override bool CanBeTargeted() => false;

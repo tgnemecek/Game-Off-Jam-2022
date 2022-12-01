@@ -16,13 +16,10 @@ public class CardState_InPile : CardState
     _context.Heal(9999);
     _context.WasPlayed = false;
   }
-  public override void UpdateState()
+  public override void UpdateState() { }
+  public override void Draw()
   {
-    if (_context.DrawnOnThisFrame)
-    {
-      SwitchState(_factory.InHand());
-      return;
-    }
+    SwitchState(_factory.InHand());
   }
   public override void FixedUpdateState() { }
   public override void ExitState() { }

@@ -14,7 +14,6 @@ public class GameState_BoosterPack : GameState
   }
   public override void OnCardSelected(Card card)
   {
-
     _context.BoosterPack.Cards.Remove(card);
     var cardsToAdd = _context.DiscardPile.UndiscardAllCards();
     cardsToAdd.Add(card);
@@ -23,6 +22,7 @@ public class GameState_BoosterPack : GameState
     _context.DrawPile.Shuffle();
     _context.BoosterPack.Disable();
     SwitchState(_factory.PlayerTurn());
+    Debug.Break();
   }
   public override void OnWaveClear() { }
   public override void UpdateState() { }

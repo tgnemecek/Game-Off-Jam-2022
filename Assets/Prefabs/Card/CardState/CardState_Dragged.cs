@@ -79,12 +79,14 @@ public class CardState_Dragged : CardState
     if (ResourcesManager.Instance.TryConsume(_context.ResourcesCostDictionary))
     {
       SwitchState(_context.OnConsume());
-    } else
+    }
+    else
     {
       _context.CardAudio.PlayCardCantPlay();
     }
   }
 
+  public override void Draw() { }
   public override void ExitState()
   {
     PlayerController.Instance.CardBeingDragged = null;

@@ -12,7 +12,6 @@ public class CardState_InHand : CardState
 
   public override void EnterState()
   {
-    _context.DrawnOnThisFrame = false;
     _context.CardLayerController.SetDefaultLayer();
     _context.CardLayerController.ToggleShadow(false);
     _context.CardAudio.PlayCardDrawn();
@@ -51,7 +50,7 @@ public class CardState_InHand : CardState
   {
     CardConfig cardConfig = _context.CardConfig;
 
-    LeanTween.scale(_context.gameObject, _context.DefaultScale, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
+    LeanTween.scale(_context.gameObject, Vector3.one, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
     LeanTween.moveLocalY(_context.gameObject, 0f, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
   }
 
@@ -85,7 +84,7 @@ public class CardState_InHand : CardState
 
     CardConfig cardConfig = _context.CardConfig;
 
-    _context.transform.localScale = _context.DefaultScale;
+    _context.transform.localScale = Vector3.one;
     _context.transform.localPosition = new Vector3(
       _context.transform.localPosition.x,
       0f,
@@ -106,5 +105,6 @@ public class CardState_InHand : CardState
   {
     _context.CardLayerController.ToggleShadow(true);
   }
+  public override void Draw() { }
   public override bool CanBeTargeted() => false;
 }

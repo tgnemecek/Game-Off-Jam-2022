@@ -29,6 +29,8 @@ public class BoosterPack : MonoBehaviour
   Quaternion _originalRotationForMesh;
   Vector3 _originalPosition;
 
+  List<Card> _weightedList = new List<Card>();
+
   List<Card> _boosterCards = new List<Card>(); public List<Card> Cards => _boosterCards;
 
 
@@ -55,6 +57,7 @@ public class BoosterPack : MonoBehaviour
   {
     _originalRotationForMesh = _mesh.rotation;
     _originalPosition = transform.position;
+    PopulateWeightedList();
   }
 
   void OnEnable()
@@ -75,7 +78,7 @@ public class BoosterPack : MonoBehaviour
       int randomIndex;
       do
       {
-        randomIndex = UnityEngine.Random.Range(0, _allCards.Count);
+        randomIndex = UnityEngine.Random.Range(0, _weightedList.Count);
       } while (chosenIndexes.ContainsKey(randomIndex));
 
       chosenIndexes[randomIndex] = true;
@@ -86,7 +89,7 @@ public class BoosterPack : MonoBehaviour
         _mesh.position.z - (.01f * i)
       );
 
-      Card card = Instantiate(_allCards[randomIndex], position, _mesh.rotation, transform);
+      Card card = Instantiate(_weightedList[randomIndex], position, _mesh.rotation, transform);
       card.transform.SetParent(_mesh);
       card.Initialize(CardInitializer.BoosterPack);
       _boosterCards.Add(card);
@@ -96,6 +99,28 @@ public class BoosterPack : MonoBehaviour
   public void Disable()
   {
     StartCoroutine(GoAway());
+  }
+
+  void PopulateWeightedList()
+  {
+    _weightedList.Clear();
+
+    int unitWeight = 2;
+
+    foreach (var card in _allCards)
+    {
+      if (card.Type == CardTypes.Unit)
+      {
+        for (int i = 0; i < unitWeight; i++)
+        {
+          _weightedList.Add(card);
+        }
+      }
+      else
+      {
+        _weightedList.Add(card);
+      }
+    }
   }
 
   void ResetTransform()

@@ -21,6 +21,7 @@ public class CardState_Destroyed : CardState
       });
   }
 
+  public override void Draw() { }
   public override bool CanBeTargeted() => false;
   public override void UpdateState() { }
   public override void FixedUpdateState() { }

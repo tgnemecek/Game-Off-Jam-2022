@@ -77,13 +77,11 @@ public abstract class Card : MonoBehaviour, IHitable
   protected CardStateFactory _stateFactory;
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }
 
-  private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
   private bool _wasPlayed = false; public bool WasPlayed { get { return _wasPlayed; } set { _wasPlayed = value; } }
   private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
   private bool _wasInitialized = false; public bool WasInitialized => _wasInitialized;
-  public Vector3 DefaultScale { get; set; }
   public Vector3 LastValidBoardPosition { get; set; }
   public bool Invulnerable { get; set; }
 
@@ -105,7 +103,7 @@ public abstract class Card : MonoBehaviour, IHitable
   }
 #endif
 
-  public void Draw() => _drawnOnThisFrame = true;
+  public void Draw() => _currentState.Draw();
 
   public void SetPositionInHand(Vector3 positionInHand)
   {
@@ -135,7 +133,6 @@ public abstract class Card : MonoBehaviour, IHitable
     _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
     CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
-    DefaultScale = transform.localScale;
     _healthBar.Initialize(transform, MaxHP, false);
     _wasInitialized = true;
     _hp = MaxHP;

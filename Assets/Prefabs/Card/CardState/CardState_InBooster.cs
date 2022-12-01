@@ -68,5 +68,6 @@ public class CardState_InBooster : CardState
   {
     OnHoverEnd();
   }
+  public override void Draw() { }
   public override bool CanBeTargeted() => false;
 }
