@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2871420476357368634
 Transform:
   m_ObjectHideFlags: 0
@@ -53,6 +53,8 @@ MonoBehaviour:
   - Assets/Prefabs/Card/CardLibrary/SpellCardLibrary
   - Assets/Prefabs/Card/CardLibrary/UnitCardLibrary
   _allCards:
+  - {fileID: 3272097367122250568, guid: 1ea727e698e107a449b7a86cc5e54575, type: 3}
+  - {fileID: 5504524670771657336, guid: 8edbf1d9ad204c043a428d6b9f261167, type: 3}
   - {fileID: 5986166708192998365, guid: bb0192a6e136f0c4ba5a5d0735bb6497, type: 3}
   - {fileID: 3820112099869572468, guid: f6f750a684b2f904db55e16c6ac844b5, type: 3}
   - {fileID: 6820015131837343318, guid: 7aa3d2afa89e4d246aa91fdcbde4f38d, type: 3}
@@ -74,7 +76,6 @@ MonoBehaviour:
   - {fileID: 7091196368889697442, guid: ed69f6aed1a9e3d4f81ece6485455278, type: 3}
   - {fileID: 4006223067856569364, guid: 44796e5adab047c418c1f4baef360d95, type: 3}
   - {fileID: 7768048501883036619, guid: 23b804436e36a2440841c91549d63d96, type: 3}
-  - {fileID: 4834501498590511700, guid: 8c9796d44d5bc69459ffab5f3c665bfd, type: 3}
   - {fileID: 7004276406495496357, guid: 4139f5d2443027e44af80ecf3f996616, type: 3}
   - {fileID: 460104075700525484, guid: 852e4e49e5d542449b37f13ba0bf4019, type: 3}
   - {fileID: 4471829069634088668, guid: c3b68e7a088acc640bdf06fa51add662, type: 3}

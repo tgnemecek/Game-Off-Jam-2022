@@ -4,40 +4,22 @@ using UnityEngine;
 
 public class GameOverMenu : MonoBehaviour
 {
-  // Start is called before the first frame update
-  void Start()
+  void OnEnable()
   {
-    Hide();
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-
-  }
-
-  public void Show()
-  {
-    this.gameObject.SetActive(true);
-    this.enabled = true;
     Time.timeScale = 0f;
   }
-
-  public void Hide()
+  void OnDisable()
   {
-    this.gameObject.SetActive(false);
-    this.enabled = false;
     Time.timeScale = 1f;
   }
 
   public void RestartGame()
   {
-    UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/MainScene");
   }
 
   public void QuitGame()
   {
-    // This only works when the game is built. Not in the editor
-    Application.Quit();
+    UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/MainMenu");
   }
 }
