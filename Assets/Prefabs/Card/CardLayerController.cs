@@ -17,8 +17,6 @@ public class CardLayerController : MonoBehaviour
   [SerializeField]
   private Image _cardImage;
   [SerializeField]
-  private SpriteRenderer _backSprite;
-  [SerializeField]
   private SpriteRenderer _shadowSprite;
   [SerializeField]
   private SpriteRenderer _onHoverSprite;
@@ -51,48 +49,31 @@ public class CardLayerController : MonoBehaviour
   public void SetPileLayer()
   {
     _canvas.sortingLayerName = _drawPileSortingLayerName;
-    // _backSprite.sortingLayerName = _drawPileSortingLayerName;
     _onHoverSprite.sortingLayerName = _drawPileSortingLayerName;
   }
 
   public void SetOnBoardLayer()
   {
     _canvas.sortingLayerName = _draggedSortingLayerName;
-    // _backSprite.sortingLayerName = _draggedSortingLayerName;
     _onHoverSprite.sortingLayerName = _draggedSortingLayerName;
   }
 
   public void SetCloseUpLayer()
   {
     _canvas.sortingLayerName = _closeupSortingLayerName;
-    // _backSprite.sortingLayerName = _closeupSortingLayerName;
     _onHoverSprite.sortingLayerName = _closeupSortingLayerName;
   }
 
   public void SetDefaultLayer()
   {
     _canvas.sortingLayerID = _defaultSortingLayerID;
-    // _backSprite.sortingLayerID = _defaultSortingLayerID;
     _onHoverSprite.sortingLayerID = _defaultSortingLayerID;
     ToggleHoverOutline(false);
-  }
-
-  public void ShowCardBack()
-  {
-    // _backSprite.gameObject.SetActive(true);
-    // _canvas.gameObject.SetActive(false);
-  }
-
-  public void ShowCardFront()
-  {
-    // _backSprite.gameObject.SetActive(false);
-    // _canvas.gameObject.SetActive(true);
   }
 
   public void ShowCardForUI()
   {
     _canvas.transform.rotation = Quaternion.identity;
-    ShowCardFront();
   }
 
   public void ToggleShadow(bool enabled)

@@ -26,6 +26,7 @@ public class GameState_BoosterPack : GameState
     _context.BoosterPack.Disable();
     SwitchState(_factory.PlayerTurn());
   }
+
   public override void OnWaveClear() { }
   public override void UpdateState() { }
   public override void FixedUpdateState() { }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259f5ee969c790b4b854a6f8554a1878, type: 3}
   m_Name: EnemyConfig_Default
   m_EditorClassIdentifier: 
-  MovementSpeed: 3
+  MovementSpeed: 4
   StopDistanceFromTarget: 2
   AttackSpeed: 2
   WalkRotationAmount: 3

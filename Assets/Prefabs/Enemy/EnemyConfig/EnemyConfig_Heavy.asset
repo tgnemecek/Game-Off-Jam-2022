@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259f5ee969c790b4b854a6f8554a1878, type: 3}
   m_Name: EnemyConfig_Heavy
   m_EditorClassIdentifier: 
-  MovementSpeed: 1
+  MovementSpeed: 3
   StopDistanceFromTarget: 3
   AttackSpeed: 1
   WalkRotationAmount: 5

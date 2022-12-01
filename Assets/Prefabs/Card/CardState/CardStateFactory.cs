@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum CardStateEnum
+public enum CardStateEnum
 {
   NotInPlay,
   InBooster,

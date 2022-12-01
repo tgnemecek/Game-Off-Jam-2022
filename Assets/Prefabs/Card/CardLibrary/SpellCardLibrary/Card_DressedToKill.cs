@@ -28,7 +28,7 @@ public class Card_DressedToKill : Card_Spell
 
     if (cards.Count > 0)
     {
-      int randomIndex = UnityEngine.Random.Range(0, cards.Count - 1);
+      int randomIndex = UnityEngine.Random.Range(0, cards.Count);
       Card card = cards[randomIndex];
       card.Heal(99999);
     }

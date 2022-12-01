@@ -12,7 +12,7 @@ public class CardState_InHand : CardState
 
   public override void EnterState()
   {
-    _context.DrawnOnThisFrame = false;
+    _context.transform.SetParent(GameManager.Instance.Hand.transform);
     _context.CardLayerController.SetDefaultLayer();
     _context.CardLayerController.ToggleShadow(false);
     _context.CardAudio.PlayCardDrawn();
@@ -21,7 +21,6 @@ public class CardState_InHand : CardState
   }
   public override void UpdateState()
   {
-    base.CheckCardSide(_camera);
     DetectClick();
     DetectPositionChangeInHand();
   }
@@ -85,6 +84,13 @@ public class CardState_InHand : CardState
 
     CardConfig cardConfig = _context.CardConfig;
 
+    _context.transform.localScale = Vector3.one;
+    _context.transform.localPosition = new Vector3(
+      _context.transform.localPosition.x,
+      0f,
+      _context.transform.localPosition.z
+    );
+
     LeanTween.scale(_context.gameObject, _context.transform.localScale * cardConfig.ScaleOnHover, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
     LeanTween.moveLocalY(_context.gameObject, cardConfig.OffsetYOnHover, cardConfig.ScaleOnHoverTime).setEaseInOutCubic();
   }
@@ -99,5 +105,7 @@ public class CardState_InHand : CardState
   {
     _context.CardLayerController.ToggleShadow(true);
   }
+  public override void AddToPile(IPile pile) { }
+  public override void Draw() { }
   public override bool CanBeTargeted() => false;
 }

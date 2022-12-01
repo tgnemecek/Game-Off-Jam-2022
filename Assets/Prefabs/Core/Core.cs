@@ -36,7 +36,7 @@ public class Core : MonoBehaviour, IHitable
       Callback();
     }
 
-    int randomIndex = UnityEngine.Random.Range(0, _hitAudios.Count - 1);
+    int randomIndex = UnityEngine.Random.Range(0, _hitAudios.Count);
     _audioSource.PlayOneShot(_hitAudios[randomIndex]);
 
     _hp -= damage;

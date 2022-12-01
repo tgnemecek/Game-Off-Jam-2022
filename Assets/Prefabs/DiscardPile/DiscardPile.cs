@@ -25,19 +25,14 @@ public class DiscardPile : MonoBehaviour, IPile
   {
     _cards.Add(card);
     card.transform.SetParent(transform);
+    card.AddToPile(this);
     card.transform.localPosition = Vector3.zero;
-    card.enabled = false;
     UpdateDisplays();
   }
   public List<Card> UndiscardAllCards()
   {
     var result = _cards;
     _cards = new List<Card>();
-
-    result.ForEach((Card card) =>
-    {
-      card.enabled = true;
-    });
 
     UpdateDisplays();
 

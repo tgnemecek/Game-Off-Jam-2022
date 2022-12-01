@@ -29,6 +29,8 @@ public class BoosterPack : MonoBehaviour
   Quaternion _originalRotationForMesh;
   Vector3 _originalPosition;
 
+  List<Card> _weightedList = new List<Card>();
+
   List<Card> _boosterCards = new List<Card>(); public List<Card> Cards => _boosterCards;
 
 
@@ -55,6 +57,7 @@ public class BoosterPack : MonoBehaviour
   {
     _originalRotationForMesh = _mesh.rotation;
     _originalPosition = transform.position;
+    PopulateWeightedList();
   }
 
   void OnEnable()
@@ -62,9 +65,23 @@ public class BoosterPack : MonoBehaviour
     ResetCards();
     ResetTransform();
     StopAllCoroutines();
+    ChooseCards();
+    StartCoroutine(Animation());
+  }
+
+  public void ChooseCards()
+  {
+    Dictionary<int, bool> chosenIndexes = new Dictionary<int, bool>();
+
     for (int i = 0; i < _numberOfCardsInBooster; i++)
     {
-      int randomIndex = UnityEngine.Random.Range(0, _allCards.Count - 1);
+      int randomIndex;
+      do
+      {
+        randomIndex = UnityEngine.Random.Range(0, _weightedList.Count);
+      } while (chosenIndexes.ContainsKey(randomIndex));
+
+      chosenIndexes[randomIndex] = true;
 
       var position = new Vector3(
         _mesh.position.x,
@@ -72,17 +89,38 @@ public class BoosterPack : MonoBehaviour
         _mesh.position.z - (.01f * i)
       );
 
-      Card card = Instantiate(_allCards[randomIndex], position, _mesh.rotation, transform);
+      Card card = Instantiate(_weightedList[randomIndex], position, _mesh.rotation, transform);
       card.transform.SetParent(_mesh);
-      card.Initialize(CardInitializer.BoosterPack);
+      card.Initialize(CardStateEnum.InBooster);
       _boosterCards.Add(card);
     }
-    StartCoroutine(Animation());
   }
 
   public void Disable()
   {
     StartCoroutine(GoAway());
+  }
+
+  void PopulateWeightedList()
+  {
+    _weightedList.Clear();
+
+    int unitWeight = 2;
+
+    foreach (var card in _allCards)
+    {
+      if (card.Type == CardTypes.Unit)
+      {
+        for (int i = 0; i < unitWeight; i++)
+        {
+          _weightedList.Add(card);
+        }
+      }
+      else
+      {
+        _weightedList.Add(card);
+      }
+    }
   }
 
   void ResetTransform()

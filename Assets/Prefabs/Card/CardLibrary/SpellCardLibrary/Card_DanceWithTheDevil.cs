@@ -30,7 +30,7 @@ public class Card_DanceWithTheDevil : Card_Spell
 
     if (cards.Count > 0)
     {
-      int randomIndex = UnityEngine.Random.Range(0, cards.Count - 1);
+      int randomIndex = UnityEngine.Random.Range(0, cards.Count);
       Card card = cards[randomIndex];
       card.ReceiveDamage(99999);
     }

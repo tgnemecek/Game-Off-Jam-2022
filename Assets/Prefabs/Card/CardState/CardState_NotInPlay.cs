@@ -8,17 +8,9 @@ public class CardState_NotInPlay : CardState
 
 
   public override void EnterState() { }
-  public override void UpdateState()
-  {
-    if (_context.CardInitializer == CardInitializer.BoosterPack)
-    {
-      SwitchState(_factory.InBooster());
-    }
-    else if (_context.CardInitializer == CardInitializer.Pile)
-    {
-      SwitchState(_factory.InPile());
-    }
-  }
+  public override void UpdateState() { }
+  public override void AddToPile(IPile pile) { }
+  public override void Draw() { }
   public override void FixedUpdateState() { }
   public override void ExitState() { }
   public override bool CanBeTargeted() => false;

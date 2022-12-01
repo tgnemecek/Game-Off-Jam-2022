@@ -10,12 +10,6 @@ public enum CardTypes
   Building = 40,
 }
 
-public enum CardInitializer
-{
-  Pile,
-  BoosterPack
-}
-
 public abstract class Card : MonoBehaviour, IHitable
 {
   public static bool IsConsumableCardType(CardTypes type)
@@ -77,11 +71,9 @@ public abstract class Card : MonoBehaviour, IHitable
   protected CardStateFactory _stateFactory;
   private CardState _currentState; public CardState CurrentState { set { _currentState = value; } }
 
-  private bool _drawnOnThisFrame; public bool DrawnOnThisFrame { get { return _drawnOnThisFrame; } set { _drawnOnThisFrame = value; } }
   private Vector3 _positionInHand; public Vector3 PositionInHand => _positionInHand;
   private bool _positionChangedThisFrame; public bool PositionChangedThisFrame { get { return _positionChangedThisFrame; } set { _positionChangedThisFrame = value; } }
   private bool _wasPlayed = false; public bool WasPlayed { get { return _wasPlayed; } set { _wasPlayed = value; } }
-  private CardInitializer _cardInitializer; public CardInitializer CardInitializer => _cardInitializer;
   private bool _wasInitialized = false; public bool WasInitialized => _wasInitialized;
   public Vector3 LastValidBoardPosition { get; set; }
   public bool Invulnerable { get; set; }
@@ -104,7 +96,7 @@ public abstract class Card : MonoBehaviour, IHitable
   }
 #endif
 
-  public void Draw() => _drawnOnThisFrame = true;
+  public void Draw() => _currentState.Draw();
 
   public void SetPositionInHand(Vector3 positionInHand)
   {
@@ -121,22 +113,20 @@ public abstract class Card : MonoBehaviour, IHitable
     CardAudio = GetComponent<CardAudio>();
   }
 
-  void Start()
+  public void Initialize(CardStateEnum firstState)
   {
-    _stateFactory = new CardStateFactory(this);
-    _currentState = _stateFactory.NotInPlay();
-    _currentState.EnterState();
-  }
-
-  public void Initialize(CardInitializer cardInitializer)
-  {
-    _cardInitializer = cardInitializer;
     _resourcesCostDictionary = new ResourcesDictionary(WoodCost, FishCost, GoldCost);
     CardLayerController.Initialize(Name, Resources.Load<Sprite>(Image), Description, _resourcesCostDictionary, _cardConfig);
     CardProximityDetector.Initialize(this);
     _healthBar.Initialize(transform, MaxHP, false);
     _wasInitialized = true;
     _hp = MaxHP;
+
+    _stateFactory = new CardStateFactory(this);
+
+    if (firstState == CardStateEnum.InBooster) _currentState = _stateFactory.InBooster();
+    else _currentState = _stateFactory.InPile();
+    _currentState.EnterState();
   }
 
   public bool IsHovering => PlayerController.Instance.CardPointedTo == this;
@@ -172,6 +162,7 @@ public abstract class Card : MonoBehaviour, IHitable
     if (_currentState == null) return false;
     return _currentState.CanBeTargeted();
   }
+  public void AddToPile(IPile pile) => _currentState?.AddToPile(pile);
 
   protected bool SnapToBoard(Camera camera)
   {

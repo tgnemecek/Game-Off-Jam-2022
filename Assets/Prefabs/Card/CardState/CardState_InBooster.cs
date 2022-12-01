@@ -10,7 +10,6 @@ public class CardState_InBooster : CardState
 
   public override void EnterState()
   {
-    _context.CardLayerController.ShowCardFront();
     _context.CardLayerController.SetCloseUpLayer();
   }
 
@@ -36,7 +35,6 @@ public class CardState_InBooster : CardState
     if (Input.GetMouseButtonDown(0))
     {
       GameManager.Instance.OnCardSelected(_context);
-      SwitchState(_factory.InPile());
       return;
     }
   }
@@ -68,5 +66,10 @@ public class CardState_InBooster : CardState
   {
     OnHoverEnd();
   }
+  public override void AddToPile(IPile pile)
+  {
+    SwitchState(_factory.InPile());
+  }
+  public override void Draw() { }
   public override bool CanBeTargeted() => false;
 }

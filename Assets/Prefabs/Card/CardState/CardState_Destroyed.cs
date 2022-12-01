@@ -17,10 +17,14 @@ public class CardState_Destroyed : CardState
       {
         _context.transform.localScale = originalScale;
         GameManager.Instance.DiscardPile.Discard(_context);
-        SwitchState(_factory.InPile());
       });
   }
 
+  public override void AddToPile(IPile pile)
+  {
+    SwitchState(_factory.InPile());
+  }
+  public override void Draw() { }
   public override bool CanBeTargeted() => false;
   public override void UpdateState() { }
   public override void FixedUpdateState() { }
