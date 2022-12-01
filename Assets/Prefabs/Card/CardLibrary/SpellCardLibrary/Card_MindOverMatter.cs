@@ -23,6 +23,10 @@ public class Card_MindOverMatter : Card_Spell
 
   public override void Play()
   {
-    // TODO: Add logic
+    GameManager gm = GameManager.Instance;
+
+    gm.Board.Cards
+      .FindAll((Card card) => card.Type == CardTypes.Unit)
+      .ForEach((Card card) => card.Invulnerable = true);
   }
 }
