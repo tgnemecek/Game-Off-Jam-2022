@@ -750,7 +750,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &919741354
 RectTransform:
@@ -2354,10 +2354,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 7455213146652145923, guid: ed41a1efa4453db4e838ffbd52d4a223, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7455213146652145976, guid: ed41a1efa4453db4e838ffbd52d4a223, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2440,10 +2436,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7455213146652145976, guid: ed41a1efa4453db4e838ffbd52d4a223, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7455213148047185076, guid: ed41a1efa4453db4e838ffbd52d4a223, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Card
+  m_Name: Mat_CardShadow
   m_Shader: {fileID: -6465566751694194690, guid: 14498c9818223b743a938b7ea8452666, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
