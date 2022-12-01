@@ -16,7 +16,7 @@ public class Card_DanceWithTheDevil : Card_Spell
 		this.WoodCost = 6;
 		this.FishCost = 6;
 		this.GoldCost = 6;
-		this.MaxHP = 0;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

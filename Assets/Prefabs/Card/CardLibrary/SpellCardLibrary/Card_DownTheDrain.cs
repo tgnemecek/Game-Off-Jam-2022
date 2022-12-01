@@ -16,7 +16,7 @@ public class Card_DownTheDrain : Card_Spell
 		this.WoodCost = 0;
 		this.FishCost = 0;
 		this.GoldCost = 5;
-		this.MaxHP = 0;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

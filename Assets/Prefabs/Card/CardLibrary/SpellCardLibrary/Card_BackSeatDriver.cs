@@ -16,7 +16,7 @@ public class Card_BackSeatDriver : Card_Spell
 		this.WoodCost = 4;
 		this.FishCost = 4;
 		this.GoldCost = 0;
-		this.MaxHP = 0;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

@@ -13,10 +13,10 @@ public class Card_MindOverMatter : Card_Spell
 		this.Name = "Mind over matter";
 		this.Description = "Prevent damage from enemies next turn";
 		this.Image = "Card/Spell/MindOverMatter";
-		this.WoodCost = 0;
-		this.FishCost = 2;
-		this.GoldCost = 0;
-		this.MaxHP = 0;
+		this.WoodCost = 5;
+		this.FishCost = 4;
+		this.GoldCost = 4;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED

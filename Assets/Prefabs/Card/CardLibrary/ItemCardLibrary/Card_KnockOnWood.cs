@@ -16,7 +16,7 @@ public class Card_KnockOnWood : Card_Item
 		this.WoodCost = 0;
 		this.FishCost = 1;
 		this.GoldCost = 0;
-		this.MaxHP = 0;
+		this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED
