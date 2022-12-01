@@ -10,13 +10,13 @@ public class Card_BackSeatDriver : Card_Spell
   public Card_BackSeatDriver()
   {
     this.Id = 37;
-		this.Name = "Back-seat driver";
-		this.Description = "Heal your Core by 10% and sacrifice a random Unit";
-		this.Image = "Card/Spell/BackSeatDriver";
-		this.WoodCost = 4;
-		this.FishCost = 4;
-		this.GoldCost = 0;
-		this.MaxHP = 1;
+    this.Name = "Back-seat driver";
+    this.Description = "Heal your Core by 10% and sacrifice a random Unit";
+    this.Image = "Card/Spell/BackSeatDriver";
+    this.WoodCost = 4;
+    this.FishCost = 4;
+    this.GoldCost = 0;
+    this.MaxHP = 1;
   }
 
   #endregion AUTO-GENERATED
@@ -32,7 +32,7 @@ public class Card_BackSeatDriver : Card_Spell
     var cards = GameManager.Instance.Board.Cards
       .FindAll((Card card) => card.Type == CardTypes.Unit);
 
-    int randomIndex = UnityEngine.Random.Range(0, cards.Count - 1);
+    int randomIndex = UnityEngine.Random.Range(0, cards.Count);
     Card card = cards[randomIndex];
     card.ReceiveDamage(99999);
   }

@@ -14,7 +14,7 @@ public class AudioEvent : MonoBehaviour
 
   AudioClip GetClip()
   {
-    int randomIndex = UnityEngine.Random.Range(0, _clips.Count - 1);
+    int randomIndex = UnityEngine.Random.Range(0, _clips.Count);
 
     if (_lastPlayedIndex == randomIndex)
     {

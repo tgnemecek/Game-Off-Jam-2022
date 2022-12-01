@@ -75,7 +75,7 @@ public class BoosterPack : MonoBehaviour
       int randomIndex;
       do
       {
-        randomIndex = UnityEngine.Random.Range(0, _allCards.Count - 1);
+        randomIndex = UnityEngine.Random.Range(0, _allCards.Count);
       } while (chosenIndexes.ContainsKey(randomIndex));
 
       chosenIndexes[randomIndex] = true;

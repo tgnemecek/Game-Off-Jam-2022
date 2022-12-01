@@ -89,7 +89,7 @@ public class CardAudio : MonoBehaviour
 
   T PickAtRandom<T>(List<T> list)
   {
-    int randomIndex = UnityEngine.Random.Range(0, list.Count - 1);
+    int randomIndex = UnityEngine.Random.Range(0, list.Count);
     return list[randomIndex];
   }
 

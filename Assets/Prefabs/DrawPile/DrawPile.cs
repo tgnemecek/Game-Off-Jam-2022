@@ -31,6 +31,7 @@ public class DrawPile : MonoBehaviour, IPile
       {
         card = c;
         card.transform.position = transform.position;
+        card.transform.rotation = rotation;
         card.transform.SetParent(transform);
       }
       else
@@ -49,7 +50,7 @@ public class DrawPile : MonoBehaviour, IPile
 
     while (_cards.Count > 0)
     {
-      int randomIndex = UnityEngine.Random.Range(0, _cards.Count - 1);
+      int randomIndex = UnityEngine.Random.Range(0, _cards.Count);
       var card = _cards[randomIndex];
       newList.Add(card);
       _cards.Remove(card);

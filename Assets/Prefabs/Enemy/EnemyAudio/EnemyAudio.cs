@@ -12,7 +12,7 @@ public class EnemyAudio : MonoBehaviour
 
   public void PlayAttack()
   {
-    int randomIndex = UnityEngine.Random.Range(0, _attackAudios.Count - 1);
+    int randomIndex = UnityEngine.Random.Range(0, _attackAudios.Count);
     var clip = _attackAudios[randomIndex];
     _source.PlayOneShot(clip);
   }
