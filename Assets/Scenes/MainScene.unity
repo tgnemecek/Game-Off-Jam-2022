@@ -2602,10 +2602,6 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 167551979
       objectReference: {fileID: 0}
-    - target: {fileID: 8916486162066803232, guid: ecf4bad962f09ca489aec06b2d09f190, type: 3}
-      propertyPath: _maxHP
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8916486162066803234, guid: ecf4bad962f09ca489aec06b2d09f190, type: 3}
       propertyPath: m_Name
       value: Core
